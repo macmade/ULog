@@ -8,7 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		0597E3321DB7E55200E845E9 /* ULog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0597E3301DB7E55200E845E9 /* ULog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0597E35A1DB7E71900E845E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3591DB7E71900E845E9 /* main.m */; };
+		0597E3671DB7EC2300E845E9 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3661DB7EC2300E845E9 /* ApplicationDelegate.m */; };
+		0597E36B1DB7ECCF00E845E9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0597E3691DB7ECCF00E845E9 /* MainMenu.xib */; };
+		0597E36C1DB7ECE300E845E9 /* ULog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053291B81DA64C4B00E46312 /* ULog.framework */; };
+		0597E36E1DB7ECF600E845E9 /* ULog.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 053291B81DA64C4B00E46312 /* ULog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0597E3711DB7EDB800E845E9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3701DB7EDB800E845E9 /* MainWindowController.m */; };
+		0597E3741DB7EE2400E845E9 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0597E3721DB7EE2400E845E9 /* MainWindowController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0597E36D1DB7ECEC00E845E9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0597E36E1DB7ECF600E845E9 /* ULog.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		053291B81DA64C4B00E46312 /* ULog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ULog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -21,6 +41,15 @@
 		053292BD1DA8FEAB00E46312 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0597E3301DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3311DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
+		0597E3531DB7E71900E845E9 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0597E3591DB7E71900E845E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0597E3601DB7E71900E845E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0597E3651DB7EC2300E845E9 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
+		0597E3661DB7EC2300E845E9 /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
+		0597E36A1DB7ECCF00E845E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0597E36F1DB7EDB800E845E9 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		0597E3701DB7EDB800E845E9 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		0597E3731DB7EE2400E845E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +57,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0597E3501DB7E71900E845E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0597E36C1DB7ECE300E845E9 /* ULog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +78,7 @@
 				053292971DA6B50D00E46312 /* Makefile */,
 				0532929C1DA8FA3E00E46312 /* Scripts */,
 				053291BA1DA64C4B00E46312 /* ULog */,
+				0597E3541DB7E71900E845E9 /* Example */,
 				053291B91DA64C4B00E46312 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				053291B81DA64C4B00E46312 /* ULog.framework */,
+				0597E3531DB7E71900E845E9 /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +137,45 @@
 			path = ULog;
 			sourceTree = "<group>";
 		};
+		0597E3541DB7E71900E845E9 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				0597E3641DB7EC2300E845E9 /* Classes */,
+				0597E3681DB7ECCF00E845E9 /* Interface */,
+				0597E3581DB7E71900E845E9 /* Supporting Files */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		0597E3581DB7E71900E845E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0597E3601DB7E71900E845E9 /* Info.plist */,
+				0597E3591DB7E71900E845E9 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0597E3641DB7EC2300E845E9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0597E3651DB7EC2300E845E9 /* ApplicationDelegate.h */,
+				0597E3661DB7EC2300E845E9 /* ApplicationDelegate.m */,
+				0597E36F1DB7EDB800E845E9 /* MainWindowController.h */,
+				0597E3701DB7EDB800E845E9 /* MainWindowController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0597E3681DB7ECCF00E845E9 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				0597E3691DB7ECCF00E845E9 /* MainMenu.xib */,
+				0597E3721DB7EE2400E845E9 /* MainWindowController.xib */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -130,6 +208,24 @@
 			productReference = 053291B81DA64C4B00E46312 /* ULog.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		0597E3521DB7E71900E845E9 /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0597E3631DB7E71900E845E9 /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				0597E34F1DB7E71900E845E9 /* Sources */,
+				0597E3501DB7E71900E845E9 /* Frameworks */,
+				0597E3511DB7E71900E845E9 /* Resources */,
+				0597E36D1DB7ECEC00E845E9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Example;
+			productName = Example;
+			productReference = 0597E3531DB7E71900E845E9 /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -144,6 +240,10 @@
 						DevelopmentTeam = 326Y53CJMD;
 						ProvisioningStyle = Automatic;
 					};
+					0597E3521DB7E71900E845E9 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 053291B21DA64C4B00E46312 /* Build configuration list for PBXProject "ULog" */;
@@ -152,6 +252,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 053291AE1DA64C4B00E46312;
 			productRefGroup = 053291B91DA64C4B00E46312 /* Products */;
@@ -159,6 +260,7 @@
 			projectRoot = "";
 			targets = (
 				053291B71DA64C4B00E46312 /* ULog */,
+				0597E3521DB7E71900E845E9 /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -168,6 +270,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0597E3511DB7E71900E845E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0597E3741DB7EE2400E845E9 /* MainWindowController.xib in Resources */,
+				0597E36B1DB7ECCF00E845E9 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,7 +292,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0597E34F1DB7E71900E845E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0597E3711DB7EDB800E845E9 /* MainWindowController.m in Sources */,
+				0597E3671DB7EC2300E845E9 /* ApplicationDelegate.m in Sources */,
+				0597E35A1DB7E71900E845E9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0597E3691DB7ECCF00E845E9 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0597E36A1DB7ECCF00E845E9 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0597E3721DB7EE2400E845E9 /* MainWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0597E3731DB7EE2400E845E9 /* en */,
+			);
+			name = MainWindowController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		053291BE1DA64C4C00E46312 /* Debug */ = {
@@ -213,7 +353,7 @@
 				CLANG_ANALYZER_SECURITY_KEYCHAIN_API = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
@@ -232,7 +372,7 @@
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
@@ -288,7 +428,7 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -327,7 +467,7 @@
 				CLANG_ANALYZER_SECURITY_KEYCHAIN_API = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
@@ -346,7 +486,7 @@
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
@@ -397,7 +537,7 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
@@ -448,6 +588,30 @@
 			};
 			name = Release;
 		};
+		0597E3611DB7E71900E845E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ULog-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0597E3621DB7E71900E845E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ULog-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -468,6 +632,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		0597E3631DB7E71900E845E9 /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0597E3611DB7E71900E845E9 /* Debug */,
+				0597E3621DB7E71900E845E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
