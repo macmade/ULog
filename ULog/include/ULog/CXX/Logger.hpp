@@ -23,10 +23,43 @@
  ******************************************************************************/
 
 /*!
- * @file        CXX.cpp
+ * @header      Logger.hpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#include <ULog/CXX.hpp>
+#ifndef ULOG_CXX_LOGGER_H
+#define ULOG_CXX_LOGGER_H
 
+#include <ULog/Base.h>
+#include <ULog/CXX/Message.hpp>
 
+namespace ULog
+{
+    class ULOG_EXPORT Logger
+    {
+        public:
+            
+            static Logger * sharedInstance( void );
+            
+            Logger( void );
+            Logger( const Logger & o );
+            
+            #if __cplusplus > 199711L
+            Logger( Logger && o );
+            #endif
+            
+            ~Logger( void );
+            
+            Logger & operator =( Logger o );
+            
+            friend void swap( Logger & o1, Logger & o2 );
+            
+        private:
+            
+            class IMPL;
+            
+            IMPL * impl;
+    };
+}
+
+#endif /* ULOG_CXX_LOGGER_H */

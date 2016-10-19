@@ -23,23 +23,76 @@
  ******************************************************************************/
 
 /*!
- * @header      CXX.hpp
+ * @file        Logger.cpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_CXX_H
-#define ULOG_CXX_H
+#include <ULog/ULog.h>
+#include <cstdlib>
+#include <vector>
 
-#include <ULog/Base.h>
+static ULog::Logger * volatile SharedLogger = nullptr;
 
 namespace ULog
 {
-    class ULOG_EXPORT Logger
+    class Logger::IMPL
     {
         public:
             
+            IMPL( void );
+            IMPL( const IMPL & o );
             
+            ~IMPL( void );
+            
+            std::vector< Message > _messages;
     };
+    
+    Logger * Logger::sharedInstance( void )
+    {
+        ( void )SharedLogger;
+        
+        return NULL;
+    }
+    
+    Logger::Logger( void ): impl( new IMPL )
+    {}
+    
+    Logger::Logger( const Logger & o ): impl( new IMPL( *( o.impl ) ) )
+    {}
+    
+    #if __cplusplus > 199711L
+    
+    Logger::Logger( Logger && o ): impl( o.impl )
+    {
+        o.impl = nullptr;
+    }
+    
+    #endif
+    
+    Logger::~Logger( void )
+    {}
+    
+    Logger & Logger::operator =( Logger o )
+    {
+        swap( *( this ), o );
+        
+        return *( this );
+    }
+    
+    void swap( Logger & o1, Logger & o2 )
+    {
+        using std::swap;
+        
+        swap( o1.impl, o2.impl );
+    }
+    
+    Logger::IMPL::IMPL( void )
+    {}
+    
+    Logger::IMPL::IMPL( const IMPL & o ):
+        _messages( o._messages )
+    {}
+    
+    Logger::IMPL::~IMPL( void )
+    {}
 }
-
-#endif /* ULOG_CXX_H */

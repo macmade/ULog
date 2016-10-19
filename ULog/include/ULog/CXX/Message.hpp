@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2016 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2016 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,20 +23,57 @@
  ******************************************************************************/
 
 /*!
- * @header      ULog.h
+ * @header      Message.hpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_H
-#define ULOG_H
+#ifndef ULOG_CXX_MESSAGE_H
+#define ULOG_CXX_MESSAGE_H
 
 #include <ULog/Base.h>
+#include <string>
 
-#ifdef __cplusplus
+namespace ULog
+{
+    class ULOG_EXPORT Message
+    {
+        public:
+            
+            typedef enum
+            {
+                LevelEmergency  = 0,
+                LevelAlert      = 1,
+                LevelCritical   = 2,
+                LevelError      = 3,
+                LevelWarning    = 4,
+                LevelNotice     = 5,
+                LevelInfo       = 6,
+                LevelDebug      = 7
+            }
+            Level;
+            
+            Message( Level level, const std::string & message );
+            Message( const Message & o );
+            
+            #if __cplusplus > 199711L
+            Message( Message && o );
+            #endif
+            
+            ~Message( void );
+            
+            Message & operator =( Message o );
+            
+            friend void swap( Message & o1, Message & o2 );
+            
+            Level       GetLevel( void )   const;
+            std::string GetMessage( void ) const;
+            
+        private:
+            
+            class IMPL;
+            
+            IMPL * impl;
+    };
+}
 
-#include <ULog/CXX/Message.hpp>
-#include <ULog/CXX/Logger.hpp>
-
-#endif
-
-#endif /* ULOG_H */
+#endif /* ULOG_CXX_MESSAGE_H */
