@@ -82,6 +82,26 @@ namespace ULog
         return *( this );
     }
     
+    bool Message::operator ==( const Message & o )
+    {
+        if( this->impl->_level != o.impl->_level )
+        {
+            return false;
+        }
+        
+        if( this->impl->_message != o.impl->_message )
+        {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    bool Message::operator !=( const Message & o )
+    {
+        return !operator ==( o );
+    }
+    
     void swap( Message & o1, Message & o2 )
     {
         using std::swap;
@@ -92,6 +112,27 @@ namespace ULog
     Message::Level Message::GetLevel( void ) const
     {
         return this->impl->_level;
+    }
+    
+    std::string Message::GetLevelString( void ) const
+    {
+        switch( this->impl->_level )
+        {
+            case LevelEmergency:    return "Emergency";
+            case LevelAlert:        return "Alert";
+            case LevelCritical:     return "Critical";
+            case LevelError:        return "Error";
+            case LevelWarning:      return "Warning";
+            case LevelNotice:       return "Notice";
+            case LevelInfo:         return "Info";
+            case LevelDebug:        return "Debug";
+        }
+        
+        #if defined( _WIN32 ) && !defined( __clang__ )
+        
+        return "Unknown";
+        
+        #endif
     }
     
     std::string Message::GetMessage( void ) const

@@ -63,10 +63,14 @@ namespace ULog
             
             Message & operator =( Message o );
             
+            bool operator ==( const Message & o );
+            bool operator !=( const Message & o );
+            
             friend void swap( Message & o1, Message & o2 );
             
-            Level       GetLevel( void )   const;
-            std::string GetMessage( void ) const;
+            Level       GetLevel( void )       const;
+            std::string GetLevelString( void ) const;
+            std::string GetMessage( void )     const;
             
         private:
             
