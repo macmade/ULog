@@ -32,6 +32,7 @@
 #include <cstdlib>
 
 static ULog::Logger * volatile SharedLogger = nullptr;
+static ULog::SpinLock          GlobalLock   = 0;
 
 namespace ULog
 {
@@ -49,9 +50,16 @@ namespace ULog
     
     Logger * Logger::sharedInstance( void )
     {
-        ( void )SharedLogger;
+        SpinLockLock( &GlobalLock );
         
-        return NULL;
+        if( SharedLogger == nullptr )
+        {
+            SharedLogger = new Logger();
+        }
+        
+        SpinLockUnlock( &GlobalLock );
+        
+        return SharedLogger;
     }
     
     Logger::Logger( void ): impl( new IMPL )
