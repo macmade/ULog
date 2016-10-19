@@ -39,20 +39,36 @@ DIR_SRC             := ULog/source/
 DIR_RES             := ULog/
 DIR_TESTS           := Unit-Tests/
 EXT_C               := .c
+EXT_CPP             := .cpp
+EXT_M               := .m
+EXT_MM              := .mm
 EXT_H               := .h
 CC                  := clang
 FLAGS_OPTIM         := Os
 FLAGS_WARN          := -Werror -Wall
-FLAGS_STD           := c99
+FLAGS_STD_C         := c99
+FLAGS_STD_CPP       := c++11
 FLAGS_OTHER         := -fno-strict-aliasing
-LIBS                := -lpthread
+LIBS                := -lpthread -lc++
 XCODE_PROJECT       := ULog.xcodeproj
 XCODE_TEST_SCHEME   := ULog
 
-FILES_C             := $(call GET_C_FILES, $(DIR_SRC))
+FILES_C             := 
 FILES_C_EXCLUDE     := 
 
-FILES               := $(filter-out $(FILES_C_EXCLUDE),$(FILES_C))
+FILES_CPP           := $(call GET_CPP_FILES, $(DIR_SRC)CXX/)
+FILES_CPP_EXCLUDE   := 
+
+FILES_M             := 
+FILES_M_EXCLUDE     := 
+
+FILES_MM            := 
+FILES_MM_EXCLUDE    := 
+
+FILES               := $(filter-out $(FILES_C_EXCLUDE),$(FILES_C))      \
+                       $(filter-out $(FILES_CPP_EXCLUDE),$(FILES_CPP))  \
+                       $(filter-out $(FILES_M_EXCLUDE),$(FILES_M))      \
+                       $(filter-out $(FILES_MM_EXCLUDE),$(FILES_MM))
 FILES_TESTS         := $(call GET_C_FILES, $(DIR_TESTS))
 
 include Submodules/makelib/Targets.mk
