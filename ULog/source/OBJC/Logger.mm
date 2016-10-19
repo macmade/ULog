@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2016 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2016 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,29 +23,17 @@
  ******************************************************************************/
 
 /*!
- * @header      ULog.h
+ * @file        Logger.mm
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_H
-#define ULOG_H
+#include <ULog/ULog.h>
 
-#include <ULog/Base.h>
-#include <ULog/C/Log.h>
+@interface ULogLogger()
 
-#ifdef __cplusplus
+@end
 
-#include <ULog/CXX/Log.hpp>
-#include <ULog/CXX/Message.hpp>
-#include <ULog/CXX/Logger.hpp>
+@implementation ULogLogger
 
-#endif
+@end
 
-#ifdef __OBJC__
-
-#include <ULog/OBJC/Message.h>
-#include <ULog/OBJC/Logger.h>
-
-#endif
-
-#endif /* ULOG_H */

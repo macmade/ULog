@@ -56,15 +56,27 @@ XCODE_TEST_SCHEME   := ULog
 FILES_C             := 
 FILES_C_EXCLUDE     := 
 
-FILES_CPP           := $(call GET_CPP_FILES, $(DIR_SRC)CXX/)    \
+FILES_CPP           := $(call GET_CPP_FILES, $(DIR_SRC)CXX/)            \
                        $(call GET_CPP_FILES, $(DIR_SRC)C/)
 FILES_CPP_EXCLUDE   := 
+
+ifeq ($(BUILD_TYPE),linux)
 
 FILES_M             := 
 FILES_M_EXCLUDE     := 
 
 FILES_MM            := 
 FILES_MM_EXCLUDE    := 
+
+else
+
+FILES_M             := 
+FILES_M_EXCLUDE     := 
+
+FILES_MM            := $(call GET_MM_FILES, $(DIR_SRC)OBJC/)
+FILES_MM_EXCLUDE    := 
+
+endif
 
 FILES               := $(filter-out $(FILES_C_EXCLUDE),$(FILES_C))      \
                        $(filter-out $(FILES_CPP_EXCLUDE),$(FILES_CPP))  \

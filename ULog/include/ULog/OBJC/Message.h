@@ -23,29 +23,23 @@
  ******************************************************************************/
 
 /*!
- * @header      ULog.h
+ * @header      Logger.h
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_H
-#define ULOG_H
+#ifndef ULOG_OBJC_MESSAGE_H
+#define ULOG_OBJC_MESSAGE_H
+
+#if defined( __has_feature ) && __has_feature( objc_modules )
+@import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
 
 #include <ULog/Base.h>
-#include <ULog/C/Log.h>
 
-#ifdef __cplusplus
+@interface ULogMessage: NSObject
 
-#include <ULog/CXX/Log.hpp>
-#include <ULog/CXX/Message.hpp>
-#include <ULog/CXX/Logger.hpp>
+@end
 
-#endif
-
-#ifdef __OBJC__
-
-#include <ULog/OBJC/Message.h>
-#include <ULog/OBJC/Logger.h>
-
-#endif
-
-#endif /* ULOG_H */
+#endif /* ULOG_OBJC_MESSAGE_H */
