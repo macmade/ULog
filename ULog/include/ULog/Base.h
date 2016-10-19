@@ -58,16 +58,16 @@ ULOG_EXTERN_C_BEGIN
  */
 #if defined( _WIN32 )
 #if defined( ULOG_DLL_BUILD ) && defined( __cplusplus )
-#define ULOG_EXPORT             extern "C" __declspec( dllexport )
+#define ULOG_EXPORT             __declspec( dllexport )
 #elif defined( ULOG_DLL_BUILD ) && !defined( __cplusplus )
-#define ULOG_EXPORT             extern __declspec( dllexport )
+#define ULOG_EXPORT             __declspec( dllexport )
 #elif defined( __cplusplus )
-#define ULOG_EXPORT             extern "C" __declspec( dllimport )
+#define ULOG_EXPORT             __declspec( dllimport )
 #else
-#define ULOG_EXPORT             extern __declspec( dllimport )
+#define ULOG_EXPORT             __declspec( dllimport )
 #endif
 #else
-#define ULOG_EXPORT             extern
+#define ULOG_EXPORT             
 #endif
 
 ULOG_EXTERN_C_END

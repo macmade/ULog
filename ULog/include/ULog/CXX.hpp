@@ -27,9 +27,19 @@
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_BASE_H
-#define ULOG_BASE_H
+#ifndef ULOG_CXX_H
+#define ULOG_CXX_H
 
 #include <ULog/Base.h>
 
-#endif /* ULOG_BASE_H */
+namespace ULog
+{
+    class ULOG_EXPORT Logger
+    {
+        public:
+            
+            
+    };
+}
+
+#endif /* ULOG_CXX_H */
