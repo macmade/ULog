@@ -53,6 +53,9 @@ namespace ULog
             
             friend void swap( Logger & o1, Logger & o2 );
             
+            bool IsEnabled( void ) const;
+            void SetEnabled( bool value );
+            
             void Log( const Message & msg );
             void Log( const char * fmt, ... );
             void Log( const char * fmt, va_list ap );

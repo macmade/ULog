@@ -48,6 +48,7 @@ namespace ULog
             
                     std::vector< Message > _messages;
             mutable std::recursive_mutex   _rmtx;
+                    bool                   _enabled;
     };
     
     Logger * Logger::sharedInstance( void )
@@ -100,6 +101,20 @@ namespace ULog
         using std::swap;
         
         swap( o1.impl, o2.impl );
+    }
+    
+    bool Logger::IsEnabled( void ) const
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        return this->impl->_enabled;
+    }
+    
+    void Logger::SetEnabled( bool value )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        this->impl->_enabled = value;
     }
     
     void Logger::Log( const Message & msg )
@@ -314,6 +329,7 @@ namespace ULog
         std::lock_guard< std::recursive_mutex > l( o._rmtx );
         
         this->_messages = o._messages;
+        this->_enabled  = o._enabled;
     }
     
     Logger::IMPL::~IMPL( void )

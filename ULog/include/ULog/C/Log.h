@@ -32,6 +32,7 @@
 
 #include <ULog/Base.h>
 #include <stdarg.h>
+#include <stdbool.h>
 
 ULOG_EXTERN_C_BEGIN
 
@@ -47,6 +48,9 @@ typedef enum
     ULog_Message_LevelDebug      = 7
 }
 ULog_Message_Level;
+
+ULOG_EXPORT bool ULog_IsEnabled( void );
+ULOG_EXPORT void ULog_SetEnabled( bool value );
 
 ULOG_EXPORT void ULog_Log( const char * fmt, ... );
 ULOG_EXPORT void ULog_Log_V( const char * fmt, va_list ap );

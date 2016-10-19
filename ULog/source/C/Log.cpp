@@ -29,6 +29,32 @@
 
 #include <ULog/ULog.h>
 
+bool ULog_IsEnabled( void )
+{
+    ULog::Logger * logger;
+    
+    logger = ULog::Logger::sharedInstance();
+    
+    if( logger )
+    {
+        logger->IsEnabled();
+    }
+    
+    return false;
+}
+
+void ULog_SetEnabled( bool value )
+{
+    ULog::Logger * logger;
+    
+    logger = ULog::Logger::sharedInstance();
+    
+    if( logger )
+    {
+        logger->SetEnabled( value );
+    }
+}
+
 void ULog_Log( const char * fmt, ... )
 {
     va_list ap;
