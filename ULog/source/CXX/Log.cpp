@@ -60,6 +60,13 @@ namespace ULog
     
     void Log( Message::Level level, const char * fmt, va_list ap )
     {
-        Logger::sharedInstance()->Log( level, fmt, ap );
+        Logger * logger;
+        
+        logger = Logger::sharedInstance();
+        
+        if( logger )
+        {
+            logger->Log( level, fmt, ap );
+        }
     }
 }
