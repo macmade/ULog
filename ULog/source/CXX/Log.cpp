@@ -44,7 +44,14 @@ namespace ULog
     
     void Log( const char * fmt, va_list ap )
     {
-        Log( Message::LevelDebug, fmt, ap );
+        Logger * logger;
+        
+        logger = Logger::sharedInstance();
+        
+        if( logger )
+        {
+            logger->Log( fmt, ap );
+        }
     }
     
     void Log( Message::Level level, const char * fmt, ... )
@@ -68,5 +75,133 @@ namespace ULog
         {
             logger->Log( level, fmt, ap );
         }
+    }
+    
+    void Emergency( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Emergency( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Emergency( const char * fmt, va_list ap )
+    {
+        Log( Message::LevelEmergency, fmt, ap );
+    }
+    
+    void Alert( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Alert( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Alert( const char * fmt, va_list ap )
+    {
+        Log( Message::LevelAlert, fmt, ap );
+    }
+    
+    void Critical( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Critical( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Critical( const char * fmt, va_list ap )
+    {
+        Log( Message::LevelCritical, fmt, ap );
+    }
+    
+    void Error( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Error( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Error( const char * fmt, va_list ap )
+    {
+        Log( Message::LevelError, fmt, ap );
+    }
+    
+    void Warning( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Warning( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Warning( const char * fmt, va_list ap )
+    {
+        Log( Message::LevelError, fmt, ap );
+    }
+    
+    void Notice( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Notice( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Notice( const char * fmt, va_list ap )
+    {
+        Log( Message::LevelNotice, fmt, ap );
+    }
+    
+    void Info( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Info( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Info( const char * fmt, va_list ap )
+    {
+        Log( Message::LevelInfo, fmt, ap );
+    }
+    
+    void Debug( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Debug( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Debug( const char * fmt, va_list ap )
+    {
+        Log( Message::LevelDebug, fmt, ap );
     }
 }

@@ -54,6 +54,8 @@ namespace ULog
             friend void swap( Logger & o1, Logger & o2 );
             
             void Log( const Message & msg );
+            void Log( const char * fmt, ... );
+            void Log( const char * fmt, va_list ap );
             void Log( Message::Level level, const char * fmt, ... );
             void Log( Message::Level level, const char * fmt, va_list ap );
             

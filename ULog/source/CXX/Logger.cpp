@@ -109,6 +109,23 @@ namespace ULog
         this->impl->_messages.push_back( msg );
     }
     
+    void Logger::Log( const char * fmt, ... )
+    {
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        va_start( ap, fmt );
+        
+        this->Log( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Log( const char * fmt, va_list ap )
+    {
+        this->Log( Message::LevelDebug, fmt, ap );
+    }
+    
     void Logger::Log( Message::Level level, const char * fmt, ... )
     {
         va_list                                 ap;

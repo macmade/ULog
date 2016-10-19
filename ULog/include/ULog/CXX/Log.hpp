@@ -40,6 +40,23 @@ namespace ULog
     ULOG_EXPORT void Log( const char * fmt, va_list ap );
     ULOG_EXPORT void Log( Message::Level level, const char * fmt, ... );
     ULOG_EXPORT void Log( Message::Level level, const char * fmt, va_list ap );
+    
+    ULOG_EXPORT void Emergency( const char * fmt, ... );
+    ULOG_EXPORT void Emergency( const char * fmt, va_list ap );
+    ULOG_EXPORT void Alert( const char * fmt, ... );
+    ULOG_EXPORT void Alert( const char * fmt, va_list ap );
+    ULOG_EXPORT void Critical( const char * fmt, ... );
+    ULOG_EXPORT void Critical( const char * fmt, va_list ap );
+    ULOG_EXPORT void Error( const char * fmt, ... );
+    ULOG_EXPORT void Error( const char * fmt, va_list ap );
+    ULOG_EXPORT void Warning( const char * fmt, ... );
+    ULOG_EXPORT void Warning( const char * fmt, va_list ap );
+    ULOG_EXPORT void Notice( const char * fmt, ... );
+    ULOG_EXPORT void Notice( const char * fmt, va_list ap );
+    ULOG_EXPORT void Info( const char * fmt, ... );
+    ULOG_EXPORT void Info( const char * fmt, va_list ap );
+    ULOG_EXPORT void Debug( const char * fmt, ... );
+    ULOG_EXPORT void Debug( const char * fmt, va_list ap );
 }
 
 #endif /* ULOG_CXX_LOG_H */
