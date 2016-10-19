@@ -31,21 +31,52 @@
 
 @interface ULogLogger()
 
+@property( atomic, readwrite, assign ) ULog::Logger * logger;
+
+- ( instancetype )initWithLogger: (  ULog::Logger * )logger NS_DESIGNATED_INITIALIZER;
+
 @end
 
 @implementation ULogLogger
 
 + ( instancetype )sharedInstance
 {
-    return nil;
+    static dispatch_once_t once;
+    static id              instance = nil;
+    
+    dispatch_once
+    (
+        &once,
+        ^( void )
+        {
+            instance = [ [ self alloc ] initWithLogger: ULog::Logger::sharedInstance() ];
+        }
+    );
+    
+    return instance;
 }
 
 - ( instancetype )init
 {
+    return [ self initWithLogger: new ULog::Logger() ];
+}
+
+- ( instancetype )initWithLogger: (  ULog::Logger * )logger
+{
     if( ( self = [ super init ] ) )
-    {}
+    {
+        self.logger = logger;
+    }
     
     return self;
+}
+
+- ( void )dealloc
+{
+    if( self.logger != ULog::Logger::sharedInstance() )
+    {
+        delete self.logger;
+    }
 }
 
 @end
