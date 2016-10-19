@@ -28,8 +28,8 @@
  */
 
 #include <ULog/ULog.h>
+#include <ULog/CXX/SpinLock.hpp>
 #include <cstdlib>
-#include <vector>
 
 static ULog::Logger * volatile SharedLogger = nullptr;
 
@@ -60,14 +60,10 @@ namespace ULog
     Logger::Logger( const Logger & o ): impl( new IMPL( *( o.impl ) ) )
     {}
     
-    #if __cplusplus > 199711L
-    
     Logger::Logger( Logger && o ): impl( o.impl )
     {
         o.impl = nullptr;
     }
-    
-    #endif
     
     Logger::~Logger( void )
     {}
@@ -84,6 +80,11 @@ namespace ULog
         using std::swap;
         
         swap( o1.impl, o2.impl );
+    }
+    
+    std::vector< Message > Logger::GetMessages( void ) const
+    {
+        return this->impl->_messages;
     }
     
     Logger::IMPL::IMPL( void )

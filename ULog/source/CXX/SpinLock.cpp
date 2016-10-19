@@ -23,54 +23,50 @@
  ******************************************************************************/
 
 /*!
- * @header      Message.hpp
+ * @file        SpinLock.cpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_CXX_MESSAGE_H
-#define ULOG_CXX_MESSAGE_H
+#include <ULog/ULog.h>
+#include <ULog/CXX/SpinLock.hpp>
+#include <ULog/CXX/Atomic.hpp>
 
-#include <ULog/Base.h>
-#include <string>
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 
 namespace ULog
 {
-    class ULOG_EXPORT Message
+    void SpinLockLock( SpinLock * lock )
     {
-        public:
+        if( lock == NULL )
+        {
+            return;
+        }
+        
+        while( Atomic::CompareAndSwap32( 0, 1, lock ) )
+        {
+            #ifdef _WIN32
             
-            typedef enum
-            {
-                LevelEmergency  = 0,
-                LevelAlert      = 1,
-                LevelCritical   = 2,
-                LevelError      = 3,
-                LevelWarning    = 4,
-                LevelNotice     = 5,
-                LevelInfo       = 6,
-                LevelDebug      = 7
-            }
-            Level;
+            Sleep( 0 );
             
-            Message( Level level, const std::string & message );
-            Message( const Message & o );
-            Message( Message && o );
+            #else
             
-            ~Message( void );
+            sleep( 0 );
             
-            Message & operator =( Message o );
-            
-            friend void swap( Message & o1, Message & o2 );
-            
-            Level       GetLevel( void )   const;
-            std::string GetMessage( void ) const;
-            
-        private:
-            
-            class IMPL;
-            
-            IMPL * impl;
-    };
-}
+            #endif
+        }
+    }
 
-#endif /* ULOG_CXX_MESSAGE_H */
+    void SpinLockUnlock( SpinLock * lock )
+    {
+        if( lock == NULL )
+        {
+            return;
+        }
+        
+        Atomic::Decrement32( lock );
+    }
+}

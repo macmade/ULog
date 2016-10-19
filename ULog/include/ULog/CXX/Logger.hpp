@@ -32,6 +32,7 @@
 
 #include <ULog/Base.h>
 #include <ULog/CXX/Message.hpp>
+#include <vector>
 
 namespace ULog
 {
@@ -43,16 +44,15 @@ namespace ULog
             
             Logger( void );
             Logger( const Logger & o );
-            
-            #if __cplusplus > 199711L
             Logger( Logger && o );
-            #endif
             
             ~Logger( void );
             
             Logger & operator =( Logger o );
             
             friend void swap( Logger & o1, Logger & o2 );
+            
+            std::vector< Message > GetMessages( void ) const;
             
         private:
             

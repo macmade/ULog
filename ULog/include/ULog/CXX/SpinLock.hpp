@@ -23,54 +23,22 @@
  ******************************************************************************/
 
 /*!
- * @header      Message.hpp
+ * @header      SpinLock.hpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_CXX_MESSAGE_H
-#define ULOG_CXX_MESSAGE_H
+#ifndef ULOG_CXX_SPINLOCK_H
+#define ULOG_CXX_SPINLOCK_H
 
 #include <ULog/Base.h>
-#include <string>
+#include <cstdint>
 
 namespace ULog
 {
-    class ULOG_EXPORT Message
-    {
-        public:
-            
-            typedef enum
-            {
-                LevelEmergency  = 0,
-                LevelAlert      = 1,
-                LevelCritical   = 2,
-                LevelError      = 3,
-                LevelWarning    = 4,
-                LevelNotice     = 5,
-                LevelInfo       = 6,
-                LevelDebug      = 7
-            }
-            Level;
-            
-            Message( Level level, const std::string & message );
-            Message( const Message & o );
-            Message( Message && o );
-            
-            ~Message( void );
-            
-            Message & operator =( Message o );
-            
-            friend void swap( Message & o1, Message & o2 );
-            
-            Level       GetLevel( void )   const;
-            std::string GetMessage( void ) const;
-            
-        private:
-            
-            class IMPL;
-            
-            IMPL * impl;
-    };
+    typedef volatile int32_t SpinLock;
+    
+    ULOG_EXPORT void SpinLockLock( SpinLock * lock );
+    ULOG_EXPORT void SpinLockUnlock( SpinLock * lock );
 }
 
-#endif /* ULOG_CXX_MESSAGE_H */
+#endif /* ULOG_CXX_SPINLOCK_H */

@@ -11,6 +11,8 @@
 		05362AEA1DB7F4FF00AAA8E9 /* CXX in Resources */ = {isa = PBXBuildFile; fileRef = 05362AE91DB7F4FF00AAA8E9 /* CXX */; };
 		05362AF01DB7F51800AAA8E9 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362AEE1DB7F51800AAA8E9 /* Logger.cpp */; };
 		05362AF11DB7F51800AAA8E9 /* Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362AEF1DB7F51800AAA8E9 /* Message.cpp */; };
+		05362B031DB7FAC200AAA8E9 /* SpinLock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362B021DB7FAC200AAA8E9 /* SpinLock.cpp */; };
+		05362B051DB7FB8300AAA8E9 /* Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362B041DB7FB8300AAA8E9 /* Atomic.cpp */; };
 		0597E3321DB7E55200E845E9 /* ULog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0597E3301DB7E55200E845E9 /* ULog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0597E35A1DB7E71900E845E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3591DB7E71900E845E9 /* main.m */; };
 		0597E3671DB7EC2300E845E9 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3661DB7EC2300E845E9 /* ApplicationDelegate.m */; };
@@ -47,6 +49,8 @@
 		05362AE91DB7F4FF00AAA8E9 /* CXX */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CXX; sourceTree = "<group>"; };
 		05362AEE1DB7F51800AAA8E9 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
 		05362AEF1DB7F51800AAA8E9 /* Message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Message.cpp; sourceTree = "<group>"; };
+		05362B021DB7FAC200AAA8E9 /* SpinLock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpinLock.cpp; sourceTree = "<group>"; };
+		05362B041DB7FB8300AAA8E9 /* Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Atomic.cpp; sourceTree = "<group>"; };
 		0597E3301DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3311DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3531DB7E71900E845E9 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,8 +145,10 @@
 		05362AED1DB7F51800AAA8E9 /* CXX */ = {
 			isa = PBXGroup;
 			children = (
+				05362B041DB7FB8300AAA8E9 /* Atomic.cpp */,
 				05362AEE1DB7F51800AAA8E9 /* Logger.cpp */,
 				05362AEF1DB7F51800AAA8E9 /* Message.cpp */,
+				05362B021DB7FAC200AAA8E9 /* SpinLock.cpp */,
 			);
 			path = CXX;
 			sourceTree = "<group>";
@@ -311,8 +317,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05362B051DB7FB8300AAA8E9 /* Atomic.cpp in Sources */,
 				05362AF01DB7F51800AAA8E9 /* Logger.cpp in Sources */,
 				05362AF11DB7F51800AAA8E9 /* Message.cpp in Sources */,
+				05362B031DB7FAC200AAA8E9 /* SpinLock.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

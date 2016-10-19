@@ -52,14 +52,10 @@ namespace ULog
     Message::Message( const Message & o ): impl( new IMPL( *( o.impl ) ) )
     {}
     
-    #if __cplusplus > 199711L
-    
     Message::Message( Message && o ): impl( o.impl )
     {
         o.impl = nullptr;
     }
-    
-    #endif
     
     Message::~Message( void )
     {

@@ -23,54 +23,30 @@
  ******************************************************************************/
 
 /*!
- * @header      Message.hpp
+ * @header      Atomic.hpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_CXX_MESSAGE_H
-#define ULOG_CXX_MESSAGE_H
+#ifndef ULOG_CXX_ATOMIC_H
+#define ULOG_CXX_ATOMIC_H
 
 #include <ULog/Base.h>
-#include <string>
+#include <cstdint>
 
 namespace ULog
 {
-    class ULOG_EXPORT Message
+    namespace Atomic
     {
-        public:
-            
-            typedef enum
-            {
-                LevelEmergency  = 0,
-                LevelAlert      = 1,
-                LevelCritical   = 2,
-                LevelError      = 3,
-                LevelWarning    = 4,
-                LevelNotice     = 5,
-                LevelInfo       = 6,
-                LevelDebug      = 7
-            }
-            Level;
-            
-            Message( Level level, const std::string & message );
-            Message( const Message & o );
-            Message( Message && o );
-            
-            ~Message( void );
-            
-            Message & operator =( Message o );
-            
-            friend void swap( Message & o1, Message & o2 );
-            
-            Level       GetLevel( void )   const;
-            std::string GetMessage( void ) const;
-            
-        private:
-            
-            class IMPL;
-            
-            IMPL * impl;
-    };
+        ULOG_EXPORT int32_t Increment32( volatile int32_t * value );
+        ULOG_EXPORT int64_t Increment64( volatile int64_t * value );
+        
+        ULOG_EXPORT int32_t Decrement32( volatile int32_t * value );
+        ULOG_EXPORT int64_t Decrement64( volatile int64_t * value );
+        
+        ULOG_EXPORT bool CompareAndSwap32( int32_t oldValue, int32_t newValue, volatile int32_t * value );
+        ULOG_EXPORT bool CompareAndSwap64( int64_t oldValue, int64_t newValue, volatile int64_t * value );
+        ULOG_EXPORT bool CompareAndSwapPointer( void * oldValue, void * newValue, void * volatile * value );
+    }
 }
 
-#endif /* ULOG_CXX_MESSAGE_H */
+#endif /* ULOG_CXX_ATOMIC_H */
