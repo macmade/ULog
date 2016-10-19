@@ -49,7 +49,6 @@ FLAGS_WARN          := -Werror -Wall
 FLAGS_STD_C         := c99
 FLAGS_STD_CPP       := c++11
 FLAGS_OTHER         := -fno-strict-aliasing -stdlib=libc++
-LIBS                := -lpthread -lc++
 XCODE_PROJECT       := ULog.xcodeproj
 XCODE_TEST_SCHEME   := ULog
 
@@ -62,6 +61,8 @@ FILES_CPP_EXCLUDE   :=
 
 ifeq ($(BUILD_TYPE),linux)
 
+LIBS                := -lpthread -lc++
+
 FILES_M             := 
 FILES_M_EXCLUDE     := 
 
@@ -69,6 +70,8 @@ FILES_MM            :=
 FILES_MM_EXCLUDE    := 
 
 else
+
+LIBS                := -lpthread -lc++ -lobjc
 
 FILES_M             := 
 FILES_M_EXCLUDE     := 
