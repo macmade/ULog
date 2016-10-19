@@ -90,6 +90,157 @@ namespace ULog
         swap( o1.impl, o2.impl );
     }
     
+    void Logger::Log( const Message & msg )
+    {
+        this->impl->_messages.push_back( msg );
+    }
+    
+    void Logger::Log( Message::Level level, const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->Log( level, fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Log( Message::Level level, const char * fmt, va_list ap )
+    {
+        Message msg( level, fmt, ap );
+        
+        this->Log( msg );
+    }
+    
+    void Logger::Emergency( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->Emergency( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Emergency( const char * fmt, va_list ap )
+    {
+        this->Log( Message::LevelEmergency, fmt, ap );
+    }
+    
+    void Logger::Alert( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->Alert( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Alert( const char * fmt, va_list ap )
+    {
+        this->Log( Message::LevelAlert, fmt, ap );
+    }
+    
+    void Logger::Critical( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->Critical( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Critical( const char * fmt, va_list ap )
+    {
+        this->Log( Message::LevelCritical, fmt, ap );
+    }
+    
+    void Logger::Error( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->Error( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Error( const char * fmt, va_list ap )
+    {
+        this->Log( Message::LevelError, fmt, ap );
+    }
+    
+    void Logger::Warning( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->Warning( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Warning( const char * fmt, va_list ap )
+    {
+        this->Log( Message::LevelWarning, fmt, ap );
+    }
+    
+    void Logger::Notice( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->Notice( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Notice( const char * fmt, va_list ap )
+    {
+        this->Log( Message::LevelNotice, fmt, ap );
+    }
+    
+    void Logger::Info( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->Info( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Info( const char * fmt, va_list ap )
+    {
+        this->Log( Message::LevelInfo, fmt, ap );
+    }
+    
+    void Logger::Debug( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->Debug( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Logger::Debug( const char * fmt, va_list ap )
+    {
+        this->Log( Message::LevelDebug, fmt, ap );
+    }
+    
     std::vector< Message > Logger::GetMessages( void ) const
     {
         return this->impl->_messages;

@@ -49,6 +49,19 @@ namespace ULog
     Message::Message( Level level, const std::string & message ): impl( new IMPL( level, message ) )
     {}
     
+    Message::Message( Level level, const char * fmt, ... ): impl( new IMPL )
+    {
+        ( void )level;
+        ( void )fmt;
+    }
+    
+    Message::Message( Level level, const char * fmt, va_list ap ): impl( new IMPL )
+    {
+        ( void )level;
+        ( void )fmt;
+        ( void )ap;
+    }
+    
     Message::Message( const Message & o ): impl( new IMPL( *( o.impl ) ) )
     {}
     

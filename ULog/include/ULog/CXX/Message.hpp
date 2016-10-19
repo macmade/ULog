@@ -32,6 +32,7 @@
 
 #include <ULog/Base.h>
 #include <string>
+#include <cstdarg>
 
 namespace ULog
 {
@@ -53,6 +54,8 @@ namespace ULog
             Level;
             
             Message( Level level, const std::string & message );
+            Message( Level level, const char * fmt, ... );
+            Message( Level level, const char * fmt, va_list ap );
             Message( const Message & o );
             Message( Message && o );
             

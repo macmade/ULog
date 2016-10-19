@@ -33,6 +33,7 @@
 #include <ULog/Base.h>
 #include <ULog/CXX/Message.hpp>
 #include <vector>
+#include <cstdarg>
 
 namespace ULog
 {
@@ -51,6 +52,27 @@ namespace ULog
             Logger & operator =( Logger o );
             
             friend void swap( Logger & o1, Logger & o2 );
+            
+            void Log( const Message & msg );
+            void Log( Message::Level level, const char * fmt, ... );
+            void Log( Message::Level level, const char * fmt, va_list ap );
+            
+            void Emergency( const char * fmt, ... );
+            void Emergency( const char * fmt, va_list ap );
+            void Alert( const char * fmt, ... );
+            void Alert( const char * fmt, va_list ap );
+            void Critical( const char * fmt, ... );
+            void Critical( const char * fmt, va_list ap );
+            void Error( const char * fmt, ... );
+            void Error( const char * fmt, va_list ap );
+            void Warning( const char * fmt, ... );
+            void Warning( const char * fmt, va_list ap );
+            void Notice( const char * fmt, ... );
+            void Notice( const char * fmt, va_list ap );
+            void Info( const char * fmt, ... );
+            void Info( const char * fmt, va_list ap );
+            void Debug( const char * fmt, ... );
+            void Debug( const char * fmt, va_list ap );
             
             std::vector< Message > GetMessages( void ) const;
             
