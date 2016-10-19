@@ -30,6 +30,7 @@
 #include <ULog/ULog.h>
 #include <ULog/CXX/SpinLock.hpp>
 #include <cstdlib>
+#include <mutex>
 
 static ULog::Logger * volatile SharedLogger = nullptr;
 static ULog::SpinLock          GlobalLock   = 0;
@@ -45,7 +46,8 @@ namespace ULog
             
             ~IMPL( void );
             
-            std::vector< Message > _messages;
+                    std::vector< Message > _messages;
+            mutable std::recursive_mutex   _rmtx;
     };
     
     Logger * Logger::sharedInstance( void )
@@ -78,6 +80,11 @@ namespace ULog
     
     Logger & Logger::operator =( Logger o )
     {
+        std::lock( this->impl->_rmtx, o.impl->_rmtx );
+        
+        std::lock_guard< std::recursive_mutex > l1( this->impl->_rmtx, std::adopt_lock );
+        std::lock_guard< std::recursive_mutex > l2( o.impl->_rmtx,     std::adopt_lock );
+        
         swap( *( this ), o );
         
         return *( this );
@@ -85,6 +92,11 @@ namespace ULog
     
     void swap( Logger & o1, Logger & o2 )
     {
+        std::lock( o1.impl->_rmtx, o2.impl->_rmtx );
+        
+        std::lock_guard< std::recursive_mutex > l1( o1.impl->_rmtx, std::adopt_lock );
+        std::lock_guard< std::recursive_mutex > l2( o2.impl->_rmtx, std::adopt_lock );
+        
         using std::swap;
         
         swap( o1.impl, o2.impl );
@@ -92,12 +104,15 @@ namespace ULog
     
     void Logger::Log( const Message & msg )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         this->impl->_messages.push_back( msg );
     }
     
     void Logger::Log( Message::Level level, const char * fmt, ... )
     {
-        va_list ap;
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         va_start( ap, fmt );
         
@@ -108,6 +123,8 @@ namespace ULog
     
     void Logger::Log( Message::Level level, const char * fmt, va_list ap )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         Message msg( level, fmt, ap );
         
         this->Log( msg );
@@ -115,7 +132,8 @@ namespace ULog
     
     void Logger::Emergency( const char * fmt, ... )
     {
-        va_list ap;
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         va_start( ap, fmt );
         
@@ -126,12 +144,15 @@ namespace ULog
     
     void Logger::Emergency( const char * fmt, va_list ap )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         this->Log( Message::LevelEmergency, fmt, ap );
     }
     
     void Logger::Alert( const char * fmt, ... )
     {
-        va_list ap;
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         va_start( ap, fmt );
         
@@ -142,12 +163,15 @@ namespace ULog
     
     void Logger::Alert( const char * fmt, va_list ap )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         this->Log( Message::LevelAlert, fmt, ap );
     }
     
     void Logger::Critical( const char * fmt, ... )
     {
-        va_list ap;
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         va_start( ap, fmt );
         
@@ -158,12 +182,15 @@ namespace ULog
     
     void Logger::Critical( const char * fmt, va_list ap )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         this->Log( Message::LevelCritical, fmt, ap );
     }
     
     void Logger::Error( const char * fmt, ... )
     {
-        va_list ap;
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         va_start( ap, fmt );
         
@@ -174,12 +201,15 @@ namespace ULog
     
     void Logger::Error( const char * fmt, va_list ap )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         this->Log( Message::LevelError, fmt, ap );
     }
     
     void Logger::Warning( const char * fmt, ... )
     {
-        va_list ap;
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         va_start( ap, fmt );
         
@@ -190,12 +220,15 @@ namespace ULog
     
     void Logger::Warning( const char * fmt, va_list ap )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         this->Log( Message::LevelWarning, fmt, ap );
     }
     
     void Logger::Notice( const char * fmt, ... )
     {
-        va_list ap;
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         va_start( ap, fmt );
         
@@ -206,12 +239,15 @@ namespace ULog
     
     void Logger::Notice( const char * fmt, va_list ap )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         this->Log( Message::LevelNotice, fmt, ap );
     }
     
     void Logger::Info( const char * fmt, ... )
     {
-        va_list ap;
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         va_start( ap, fmt );
         
@@ -222,12 +258,15 @@ namespace ULog
     
     void Logger::Info( const char * fmt, va_list ap )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         this->Log( Message::LevelInfo, fmt, ap );
     }
     
     void Logger::Debug( const char * fmt, ... )
     {
-        va_list ap;
+        va_list                                 ap;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         va_start( ap, fmt );
         
@@ -238,20 +277,27 @@ namespace ULog
     
     void Logger::Debug( const char * fmt, va_list ap )
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         this->Log( Message::LevelDebug, fmt, ap );
     }
     
     std::vector< Message > Logger::GetMessages( void ) const
     {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
         return this->impl->_messages;
     }
     
     Logger::IMPL::IMPL( void )
     {}
     
-    Logger::IMPL::IMPL( const IMPL & o ):
-        _messages( o._messages )
-    {}
+    Logger::IMPL::IMPL( const IMPL & o )
+    {
+        std::lock_guard< std::recursive_mutex > l( o._rmtx );
+        
+        this->_messages = o._messages;
+    }
     
     Logger::IMPL::~IMPL( void )
     {}
