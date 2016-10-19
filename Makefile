@@ -48,7 +48,7 @@ FLAGS_OPTIM         := Os
 FLAGS_WARN          := -Werror -Wall
 FLAGS_STD_C         := c99
 FLAGS_STD_CPP       := c++11
-FLAGS_OTHER         := -fno-strict-aliasing
+FLAGS_OTHER         := -fno-strict-aliasing -stdlib=libc++
 LIBS                := -lpthread -lc++
 XCODE_PROJECT       := ULog.xcodeproj
 XCODE_TEST_SCHEME   := ULog
