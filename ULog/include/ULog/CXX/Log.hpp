@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 /*!
- * @header      Logger.hpp
+ * @header      Log.hpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 

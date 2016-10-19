@@ -31,6 +31,7 @@
 #define ULOG_H
 
 #include <ULog/Base.h>
+#include <ULog/C/Log.h>
 
 #ifdef __cplusplus
 

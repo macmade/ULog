@@ -56,7 +56,8 @@ XCODE_TEST_SCHEME   := ULog
 FILES_C             := 
 FILES_C_EXCLUDE     := 
 
-FILES_CPP           := $(call GET_CPP_FILES, $(DIR_SRC)CXX/)
+FILES_CPP           := $(call GET_CPP_FILES, $(DIR_SRC)CXX/)    \
+                       $(call GET_CPP_FILES, $(DIR_SRC)C/)
 FILES_CPP_EXCLUDE   := 
 
 FILES_M             := 
