@@ -40,6 +40,8 @@
 
 @interface ULogMessage: NSObject
 
+- ( instancetype )init;
+
 @end
 
 #endif /* ULOG_OBJC_MESSAGE_H */

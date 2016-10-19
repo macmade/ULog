@@ -40,6 +40,9 @@
 
 @interface ULogLogger: NSObject
 
++ ( instancetype )sharedInstance;
+- ( instancetype )init;
+
 @end
 
 #endif /* ULOG_OBJC_LOGGER_H */

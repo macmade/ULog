@@ -35,5 +35,18 @@
 
 @implementation ULogLogger
 
++ ( instancetype )sharedInstance
+{
+    return nil;
+}
+
+- ( instancetype )init
+{
+    if( ( self = [ super init ] ) )
+    {}
+    
+    return self;
+}
+
 @end
 
