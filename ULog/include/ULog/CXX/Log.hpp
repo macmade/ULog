@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2016 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2016 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,21 +23,23 @@
  ******************************************************************************/
 
 /*!
- * @header      ULog.h
+ * @header      Logger.hpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_H
-#define ULOG_H
+#ifndef ULOG_CXX_LOG_H
+#define ULOG_CXX_LOG_H
 
 #include <ULog/Base.h>
-
-#ifdef __cplusplus
-
-#include <ULog/CXX/Log.hpp>
 #include <ULog/CXX/Message.hpp>
-#include <ULog/CXX/Logger.hpp>
+#include <cstdarg>
 
-#endif
+namespace ULog
+{
+    ULOG_EXPORT void Log( const char * fmt, ... );
+    ULOG_EXPORT void Log( const char * fmt, va_list ap );
+    ULOG_EXPORT void Log( Message::Level level, const char * fmt, ... );
+    ULOG_EXPORT void Log( Message::Level level, const char * fmt, va_list ap );
+}
 
-#endif /* ULOG_H */
+#endif /* ULOG_CXX_LOG_H */

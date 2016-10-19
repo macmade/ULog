@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2016 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2016 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,21 +23,43 @@
  ******************************************************************************/
 
 /*!
- * @header      ULog.h
+ * @file        SpinLock.cpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_H
-#define ULOG_H
+#include <ULog/ULog.h>
 
-#include <ULog/Base.h>
-
-#ifdef __cplusplus
-
-#include <ULog/CXX/Log.hpp>
-#include <ULog/CXX/Message.hpp>
-#include <ULog/CXX/Logger.hpp>
-
-#endif
-
-#endif /* ULOG_H */
+namespace ULog
+{
+    void Log( const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Log( fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Log( const char * fmt, va_list ap )
+    {
+        Log( Message::LevelDebug, fmt, ap );
+    }
+    
+    void Log( Message::Level level, const char * fmt, ... )
+    {
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        Log( level, fmt, ap );
+        
+        va_end( ap );
+    }
+    
+    void Log( Message::Level level, const char * fmt, va_list ap )
+    {
+        Logger::sharedInstance()->Log( level, fmt, ap );
+    }
+}
