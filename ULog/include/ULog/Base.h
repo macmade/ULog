@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2016 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2016 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,13 +23,53 @@
  ******************************************************************************/
 
 /*!
- * @header      ULog.h
+ * @header      Base.hpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_H
-#define ULOG_H
+#ifndef ULOG_BASE_H
+#define ULOG_BASE_H
 
-#include <ULog/Base.h>
+/*!
+ * @define      ULOG_EXTERN_C_BEGIN
+ * @abstract    Extern "C" start / C++ compatibility
+ */
+#ifdef __cplusplus
+#define ULOG_EXTERN_C_BEGIN     extern "C" {
+#else
+#define ULOG_EXTERN_C_BEGIN     
+#endif
 
-#endif /* ULOG_H */
+/*!
+ * @define      ULOG_EXTERN_C_END
+ * @abstract    Extern "C" end / C++ compatibility
+ */
+#ifdef __cplusplus
+#define ULOG_EXTERN_C_END       }
+#else
+#define ULOG_EXTERN_C_END       
+#endif
+
+ULOG_EXTERN_C_BEGIN
+
+/*!
+ * @define      ULOG_EXPORT
+ * @abstract    Definition for exported symbols
+ */
+#if defined( _WIN32 )
+#if defined( ULOG_DLL_BUILD ) && defined( __cplusplus )
+#define ULOG_EXPORT             extern "C" __declspec( dllexport )
+#elif defined( ULOG_DLL_BUILD ) && !defined( __cplusplus )
+#define ULOG_EXPORT             extern __declspec( dllexport )
+#elif defined( __cplusplus )
+#define ULOG_EXPORT             extern "C" __declspec( dllimport )
+#else
+#define ULOG_EXPORT             extern __declspec( dllimport )
+#endif
+#else
+#define ULOG_EXPORT             extern
+#endif
+
+ULOG_EXTERN_C_END
+
+#endif /* ULOG_BASE_H */

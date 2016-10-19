@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05362AD11DB7F03700AAA8E9 /* Base.h in Headers */ = {isa = PBXBuildFile; fileRef = 05362ACE1DB7F03700AAA8E9 /* Base.h */; };
+		05362AD21DB7F03700AAA8E9 /* CXX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362ACF1DB7F03700AAA8E9 /* CXX.cpp */; };
+		05362AD31DB7F03700AAA8E9 /* CXX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 05362AD01DB7F03700AAA8E9 /* CXX.hpp */; };
 		0597E3321DB7E55200E845E9 /* ULog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0597E3301DB7E55200E845E9 /* ULog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0597E35A1DB7E71900E845E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3591DB7E71900E845E9 /* main.m */; };
 		0597E3671DB7EC2300E845E9 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3661DB7EC2300E845E9 /* ApplicationDelegate.m */; };
@@ -39,6 +42,9 @@
 		053292A01DA8FA3E00E46312 /* travis-osx-after.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "travis-osx-after.sh"; sourceTree = "<group>"; };
 		053292A11DA8FA3E00E46312 /* travis-osx-before.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "travis-osx-before.sh"; sourceTree = "<group>"; };
 		053292BD1DA8FEAB00E46312 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		05362ACE1DB7F03700AAA8E9 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
+		05362ACF1DB7F03700AAA8E9 /* CXX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CXX.cpp; sourceTree = "<group>"; };
+		05362AD01DB7F03700AAA8E9 /* CXX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CXX.hpp; sourceTree = "<group>"; };
 		0597E3301DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3311DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3531DB7E71900E845E9 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +138,9 @@
 		0597E32F1DB7E55200E845E9 /* ULog */ = {
 			isa = PBXGroup;
 			children = (
+				05362ACE1DB7F03700AAA8E9 /* Base.h */,
+				05362ACF1DB7F03700AAA8E9 /* CXX.cpp */,
+				05362AD01DB7F03700AAA8E9 /* CXX.hpp */,
 				0597E3301DB7E55200E845E9 /* ULog.h */,
 			);
 			path = ULog;
@@ -183,7 +192,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05362AD31DB7F03700AAA8E9 /* CXX.hpp in Headers */,
 				0597E3321DB7E55200E845E9 /* ULog.h in Headers */,
+				05362AD11DB7F03700AAA8E9 /* Base.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05362AD21DB7F03700AAA8E9 /* CXX.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +652,7 @@
 				0597E3621DB7E71900E845E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
