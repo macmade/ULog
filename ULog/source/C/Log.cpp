@@ -75,7 +75,7 @@ void ULog_Log_V( const char * fmt, va_list ap )
     
     if( logger )
     {
-        logger->Log( fmt, ap );
+        logger->Log( ULog::Message::SourceC, ULog::Message::LevelDebug, fmt, ap );
     }
 }
 
@@ -117,7 +117,7 @@ void ULog_LogWithLevel_V( ULog_Message_Level level, const char * fmt, va_list ap
     
     if( logger )
     {
-        logger->Log( l, fmt, ap );
+        logger->Log( ULog::Message::SourceC, l, fmt, ap );
     }
 }
 

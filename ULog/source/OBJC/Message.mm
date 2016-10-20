@@ -34,10 +34,12 @@
     ULog::Message _cxxMessage;
 }
 
-@property( atomic, readwrite, assign ) ULog::Message    cxxMessage;
-@property( atomic, readwrite, assign ) ULogMessageLevel level;
-@property( atomic, readwrite, strong ) NSString       * levelString;
-@property( atomic, readwrite, strong ) NSString       * message;
+@property( atomic, readwrite, assign ) ULog::Message     cxxMessage;
+@property( atomic, readwrite, assign ) ULogMessageSource source;
+@property( atomic, readwrite, assign ) ULogMessageLevel  level;
+@property( atomic, readwrite, strong ) NSString        * sourceString;
+@property( atomic, readwrite, strong ) NSString        * levelString;
+@property( atomic, readwrite, strong ) NSString        * message;
 
 @end
 
@@ -58,44 +60,56 @@
     return self;
 }
 
-- ( instancetype )initWithLevel: ( ULogMessageLevel )level message: ( NSString * )message
+- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level message: ( NSString * )message
 {
-    ULog::Message::Level l;
+    ULog::Message::Source s;
+    ULog::Message::Level  l;
     
-    switch( level )
+    switch( source )
     {
-        case ULogMessageLevelEmergency: l = ULog::Message::LevelEmergency; break;
-        case ULogMessageLevelAlert:     l = ULog::Message::LevelAlert;     break;
-        case ULogMessageLevelCritical:  l = ULog::Message::LevelCritical;  break;
-        case ULogMessageLevelError:     l = ULog::Message::LevelError;     break;
-        case ULogMessageLevelWarning:   l = ULog::Message::LevelWarning;   break;
-        case ULogMessageLevelNotice:    l = ULog::Message::LevelNotice;    break;
-        case ULogMessageLevelInfo:      l = ULog::Message::LevelInfo;      break;
-        case ULogMessageLevelDebug:     l = ULog::Message::LevelDebug;     break;
+        case ULogMessageSourceCXX:      s = ULog::Message::SourceCXX;       break;
+        case ULogMessageSourceC:        s = ULog::Message::SourceC;         break;
+        case ULogMessageSourceOBJC:     s = ULog::Message::SourceOBJC;      break;
+        case ULogMessageSourceOBJCXX:   s = ULog::Message::SourceOBJCXX;    break;
+        case ULogMessageSourceASL:      s = ULog::Message::SourceASL;       break;
         
         break;
     }
     
-    return [ self initWithCXXMessage: ULog::Message( l, std::string( message.UTF8String ) ) ];
+    switch( level )
+    {
+        case ULogMessageLevelEmergency: l = ULog::Message::LevelEmergency;  break;
+        case ULogMessageLevelAlert:     l = ULog::Message::LevelAlert;      break;
+        case ULogMessageLevelCritical:  l = ULog::Message::LevelCritical;   break;
+        case ULogMessageLevelError:     l = ULog::Message::LevelError;      break;
+        case ULogMessageLevelWarning:   l = ULog::Message::LevelWarning;    break;
+        case ULogMessageLevelNotice:    l = ULog::Message::LevelNotice;     break;
+        case ULogMessageLevelInfo:      l = ULog::Message::LevelInfo;       break;
+        case ULogMessageLevelDebug:     l = ULog::Message::LevelDebug;      break;
+        
+        break;
+    }
+    
+    return [ self initWithCXXMessage: ULog::Message( s, l, std::string( message.UTF8String ) ) ];
 }
 
-- ( instancetype )initWithLevel: ( ULogMessageLevel )level format: ( NSString * )format, ...
+- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )format, ...
 {
     va_list       ap;
     ULogMessage * message;
     
     va_start( ap, format );
     
-    message = [ self initWithLevel: level format: format arguments: ap ];
+    message = [ self initWithSource: source level: level format: format arguments: ap ];
     
     va_end( ap);
     
     return message;
 }
 
-- ( instancetype )initWithLevel: ( ULogMessageLevel )level format: ( NSString * )format arguments: ( va_list )ap
+- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )format arguments: ( va_list )ap
 {
-    return [ self initWithLevel: level message: [ [ NSString alloc ] initWithFormat: format arguments: ap ] ];
+    return [ self initWithSource: source level: level message: [ [ NSString alloc ] initWithFormat: format arguments: ap ] ];
 }
 
 - ( instancetype )copyWithZone: ( nullable NSZone * )zone
@@ -120,8 +134,9 @@
     @synchronized( self )
     {
         _cxxMessage         = message;
-        self.levelString    = [ NSString stringWithUTF8String: message.GetLevelString().c_str() ];
         self.message        = [ NSString stringWithUTF8String: message.GetMessage().c_str() ];
+        self.sourceString   = [ NSString stringWithUTF8String: message.GetSourceString().c_str() ];
+        self.levelString    = [ NSString stringWithUTF8String: message.GetLevelString().c_str() ];
         
         switch( message.GetLevel() )
         {

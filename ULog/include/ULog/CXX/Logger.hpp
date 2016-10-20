@@ -61,23 +61,48 @@ namespace ULog
             void Log( const char * fmt, va_list ap );
             void Log( Message::Level level, const char * fmt, ... );
             void Log( Message::Level level, const char * fmt, va_list ap );
+            void Log( Message::Source source, Message::Level level, const char * fmt, ... );
+            void Log( Message::Source source, Message::Level level, const char * fmt, va_list ap );
             
             void Emergency( const char * fmt, ... );
             void Emergency( const char * fmt, va_list ap );
+            void Emergency( Message::Source source, const char * fmt, ... );
+            void Emergency( Message::Source source, const char * fmt, va_list ap );
+            
             void Alert( const char * fmt, ... );
             void Alert( const char * fmt, va_list ap );
+            void Alert( Message::Source source, const char * fmt, ... );
+            void Alert( Message::Source source, const char * fmt, va_list ap );
+            
             void Critical( const char * fmt, ... );
             void Critical( const char * fmt, va_list ap );
+            void Critical( Message::Source source, const char * fmt, ... );
+            void Critical( Message::Source source, const char * fmt, va_list ap );
+            
             void Error( const char * fmt, ... );
             void Error( const char * fmt, va_list ap );
+            void Error( Message::Source source, const char * fmt, ... );
+            void Error( Message::Source source, const char * fmt, va_list ap );
+            
             void Warning( const char * fmt, ... );
             void Warning( const char * fmt, va_list ap );
+            void Warning( Message::Source source, const char * fmt, ... );
+            void Warning( Message::Source source, const char * fmt, va_list ap );
+            
             void Notice( const char * fmt, ... );
             void Notice( const char * fmt, va_list ap );
+            void Notice( Message::Source source, const char * fmt, ... );
+            void Notice( Message::Source source, const char * fmt, va_list ap );
+            
             void Info( const char * fmt, ... );
             void Info( const char * fmt, va_list ap );
+            void Info( Message::Source source, const char * fmt, ... );
+            void Info( Message::Source source, const char * fmt, va_list ap );
+            
             void Debug( const char * fmt, ... );
             void Debug( const char * fmt, va_list ap );
+            void Debug( Message::Source source, const char * fmt, ... );
+            void Debug( Message::Source source, const char * fmt, va_list ap );
             
             std::vector< Message > GetMessages( void ) const;
             

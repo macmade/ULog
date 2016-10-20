@@ -39,34 +39,37 @@ namespace ULog
         public:
             
             IMPL( void );
-            IMPL( Level level, const std::string & message );
+            IMPL( Source source, Level level, const std::string & message );
             IMPL( const IMPL & o );
             
             ~IMPL( void );
             
+            Source      _source;
             Level       _level;
             std::string _message;
             
             std::string GetStringWithFormat( const char * fmt, va_list ap );
     };
     
-    Message::Message( Level level, const std::string & message ): impl( new IMPL( level, message ) )
+    Message::Message( Source source, Level level, const std::string & message ): impl( new IMPL( source, level, message ) )
     {}
     
-    Message::Message( Level level, const char * fmt, ... ): impl( new IMPL )
+    Message::Message( Source source, Level level, const char * fmt, ... ): impl( new IMPL )
     {
         va_list ap;
         
         va_start( ap, fmt );
         
+        this->impl->_source  = source;
         this->impl->_level   = level;
         this->impl->_message = this->impl->GetStringWithFormat( fmt, ap );
         
         va_end( ap );
     }
     
-    Message::Message( Level level, const char * fmt, va_list ap ): impl( new IMPL )
+    Message::Message( Source source, Level level, const char * fmt, va_list ap ): impl( new IMPL )
     {
+        this->impl->_source  = source;
         this->impl->_level   = level;
         this->impl->_message = this->impl->GetStringWithFormat( fmt, ap );
     }
@@ -93,6 +96,11 @@ namespace ULog
     
     bool Message::operator ==( const Message & o )
     {
+        if( this->impl->_source != o.impl->_source )
+        {
+            return false;
+        }
+        
         if( this->impl->_level != o.impl->_level )
         {
             return false;
@@ -118,9 +126,32 @@ namespace ULog
         swap( o1.impl, o2.impl );
     }
     
+    Message::Source Message::GetSource( void ) const
+    {
+        return this->impl->_source;
+    }
+    
     Message::Level Message::GetLevel( void ) const
     {
         return this->impl->_level;
+    }
+    
+    std::string Message::GetSourceString( void ) const
+    {
+        switch( this->impl->_source )
+        {
+            case SourceCXX:     return "C++";
+            case SourceC:       return "C";
+            case SourceOBJC:    return "Objective-C";
+            case SourceOBJCXX:  return "Objective-C++";
+            case SourceASL:     return "ASL";
+        }
+        
+        #if defined( _WIN32 ) && !defined( __clang__ )
+        
+        return "Unknown";
+        
+        #endif
     }
     
     std::string Message::GetLevelString( void ) const
@@ -150,16 +181,19 @@ namespace ULog
     }
     
     Message::IMPL::IMPL( void ):
+        _source( SourceCXX ),
         _level( LevelDebug ),
         _message( "" )
     {}
     
-    Message::IMPL::IMPL( Level level, const std::string & message ):
+    Message::IMPL::IMPL( Source source, Level level, const std::string & message ):
+        _source( source ),
         _level( level ),
         _message( message )
     {}
     
     Message::IMPL::IMPL( const IMPL & o ):
+        _source( o._source ),
         _level( o._level ),
         _message( o._message )
     {}

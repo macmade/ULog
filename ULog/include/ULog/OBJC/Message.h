@@ -40,22 +40,34 @@
 
 typedef enum
 {
-    ULogMessageLevelEmergency  = 0,
-    ULogMessageLevelAlert      = 1,
-    ULogMessageLevelCritical   = 2,
-    ULogMessageLevelError      = 3,
-    ULogMessageLevelWarning    = 4,
-    ULogMessageLevelNotice     = 5,
-    ULogMessageLevelInfo       = 6,
-    ULogMessageLevelDebug      = 7
+    ULogMessageSourceCXX        = 0,
+    ULogMessageSourceC          = 1,
+    ULogMessageSourceOBJC       = 2,
+    ULogMessageSourceOBJCXX     = 3,
+    ULogMessageSourceASL        = 4
+}
+ULogMessageSource;
+
+typedef enum
+{
+    ULogMessageLevelEmergency   = 0,
+    ULogMessageLevelAlert       = 1,
+    ULogMessageLevelCritical    = 2,
+    ULogMessageLevelError       = 3,
+    ULogMessageLevelWarning     = 4,
+    ULogMessageLevelNotice      = 5,
+    ULogMessageLevelInfo        = 6,
+    ULogMessageLevelDebug       = 7
 }
 ULogMessageLevel;
 
 @interface ULogMessage: NSObject < NSCopying >
 
-@property( atomic, readonly ) ULogMessageLevel level;
-@property( atomic, readonly ) NSString       * levelString;
-@property( atomic, readonly ) NSString       * message;
+@property( atomic, readonly ) ULogMessageSource source;
+@property( atomic, readonly ) ULogMessageLevel  level;
+@property( atomic, readonly ) NSString        * sourceString;
+@property( atomic, readonly ) NSString        * levelString;
+@property( atomic, readonly ) NSString        * message;
 
 #ifdef __cplusplus
 
@@ -65,9 +77,9 @@ ULogMessageLevel;
 
 #endif
 
-- ( instancetype )initWithLevel: ( ULogMessageLevel )level message: ( NSString * )message;
-- ( instancetype )initWithLevel: ( ULogMessageLevel )level format: ( NSString * )format, ...;
-- ( instancetype )initWithLevel: ( ULogMessageLevel )level format: ( NSString * )format arguments: ( va_list )ap;
+- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level message: ( NSString * )message;
+- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )format, ...;
+- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )format arguments: ( va_list )ap;
 
 - ( BOOL )isEqualToMessage: ( ULogMessage * )message;
 

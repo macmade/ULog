@@ -173,7 +173,29 @@
 {
     @synchronized( self )
     {
-        [ self log: [ [ ULogMessage alloc ] initWithLevel: level format: fmt arguments: ap ] ];
+        [ self logWithSource: ULogMessageSourceOBJC level: level format: fmt arguments: ap ];
+    }
+}
+
+- ( void )logWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self logWithSource: source level: level format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )logWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self log: [ [ ULogMessage alloc ] initWithSource: source level: level format: fmt arguments: ap ] ];
     }
 }
 
@@ -195,7 +217,29 @@
 {
     @synchronized( self )
     {
-        [ self logWithLevel: ULogMessageLevelEmergency format: fmt arguments: ap ];
+        [ self emergencyWithSource: ULogMessageSourceOBJC format: fmt arguments: ap ];
+    }
+}
+
+- ( void )emergencyWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self emergencyWithSource: source format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )emergencyWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithSource: source level: ULogMessageLevelEmergency format: fmt arguments: ap ];
     }
 }
 
@@ -217,7 +261,29 @@
 {
     @synchronized( self )
     {
-        [ self logWithLevel: ULogMessageLevelAlert format: fmt arguments: ap ];
+        [ self alertWithSource: ULogMessageSourceOBJC format: fmt arguments: ap ];
+    }
+}
+
+- ( void )alertWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self alertWithSource: source format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )alertWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithSource: source level: ULogMessageLevelAlert format: fmt arguments: ap ];
     }
 }
 
@@ -239,7 +305,29 @@
 {
     @synchronized( self )
     {
-        [ self logWithLevel: ULogMessageLevelCritical format: fmt arguments: ap ];
+        [ self criticalWithSource: ULogMessageSourceOBJC format: fmt arguments: ap ];
+    }
+}
+
+- ( void )criticalWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self criticalWithSource: source format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )criticalWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithSource: source level: ULogMessageLevelCritical format: fmt arguments: ap ];
     }
 }
 
@@ -261,7 +349,29 @@
 {
     @synchronized( self )
     {
-        [ self logWithLevel: ULogMessageLevelError format: fmt arguments: ap ];
+        [ self errorWithSource: ULogMessageSourceOBJC format: fmt arguments: ap ];
+    }
+}
+
+- ( void )errorWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self errorWithSource: source format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )errorWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithSource: source level: ULogMessageLevelError format: fmt arguments: ap ];
     }
 }
 
@@ -280,7 +390,29 @@
 {
     @synchronized( self )
     {
-        [ self logWithLevel: ULogMessageLevelWarning format: fmt arguments: ap ];
+        [ self warningWithSource: ULogMessageSourceOBJC format: fmt arguments: ap ];
+    }
+}
+
+- ( void )warningWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self warningWithSource: source format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )warningWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithSource: source level: ULogMessageLevelWarning format: fmt arguments: ap ];
     }
 }
 
@@ -302,7 +434,29 @@
 {
     @synchronized( self )
     {
-        [ self logWithLevel: ULogMessageLevelNotice format: fmt arguments: ap ];
+        [ self noticeWithSource: ULogMessageSourceOBJC format: fmt arguments: ap ];
+    }
+}
+
+- ( void )noticeWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self noticeWithSource: source format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )noticeWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithSource: source level: ULogMessageLevelNotice format: fmt arguments: ap ];
     }
 }
 
@@ -324,7 +478,29 @@
 {
     @synchronized( self )
     {
-        [ self logWithLevel: ULogMessageLevelInfo format: fmt arguments: ap ];
+        [ self infoWithSource: ULogMessageSourceOBJC format: fmt arguments: ap ];
+    }
+}
+
+- ( void )infoWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self infoWithSource: source format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )infoWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithSource: source level: ULogMessageLevelInfo format: fmt arguments: ap ];
     }
 }
 
@@ -346,7 +522,29 @@
 {
     @synchronized( self )
     {
-        [ self logWithLevel: ULogMessageLevelDebug format: fmt arguments: ap ];
+        [ self debugWithSource: ULogMessageSourceOBJC format: fmt arguments: ap ];
+    }
+}
+
+- ( void )debugWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self debugWithSource: source format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )debugWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithSource: source level: ULogMessageLevelDebug format: fmt arguments: ap ];
     }
 }
 

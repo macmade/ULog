@@ -42,6 +42,16 @@ namespace ULog
             
             typedef enum
             {
+                SourceCXX       = 0,
+                SourceC         = 1,
+                SourceOBJC      = 2,
+                SourceOBJCXX    = 3,
+                SourceASL       = 4
+            }
+            Source;
+            
+            typedef enum
+            {
                 LevelEmergency  = 0,
                 LevelAlert      = 1,
                 LevelCritical   = 2,
@@ -53,9 +63,9 @@ namespace ULog
             }
             Level;
             
-            Message( Level level = LevelDebug, const std::string & message = "" );
-            Message( Level level, const char * fmt, ... );
-            Message( Level level, const char * fmt, va_list ap );
+            Message( Source = SourceCXX, Level level = LevelDebug, const std::string & message = "" );
+            Message( Source source, Level level, const char * fmt, ... );
+            Message( Source source, Level level, const char * fmt, va_list ap );
             Message( const Message & o );
             Message( Message && o );
             
@@ -68,9 +78,11 @@ namespace ULog
             
             friend void swap( Message & o1, Message & o2 );
             
-            Level       GetLevel( void )       const;
-            std::string GetLevelString( void ) const;
-            std::string GetMessage( void )     const;
+            Source      GetSource( void )       const;
+            Level       GetLevel( void )        const;
+            std::string GetSourceString( void ) const;
+            std::string GetLevelString( void )  const;
+            std::string GetMessage( void )      const;
             
         private:
             
