@@ -11,7 +11,10 @@
 		05180D1C1DB82189000723D7 /* OBJC in Resources */ = {isa = PBXBuildFile; fileRef = 05180D1B1DB82189000723D7 /* OBJC */; };
 		05180D301DB82246000723D7 /* Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05180D2E1DB82246000723D7 /* Logger.mm */; };
 		05180D311DB82246000723D7 /* Message.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05180D2F1DB82246000723D7 /* Message.mm */; };
-		05362AD11DB7F03700AAA8E9 /* Base.h in Headers */ = {isa = PBXBuildFile; fileRef = 05362ACE1DB7F03700AAA8E9 /* Base.h */; };
+		05180D801DB945FD000723D7 /* C in Headers */ = {isa = PBXBuildFile; fileRef = 055FD5711DB81AC300AE1BF4 /* C */; settings = {ATTRIBUTES = (Public, ); }; };
+		05180D811DB945FD000723D7 /* CXX in Headers */ = {isa = PBXBuildFile; fileRef = 05362AE91DB7F4FF00AAA8E9 /* CXX */; settings = {ATTRIBUTES = (Public, ); }; };
+		05180D821DB945FD000723D7 /* OBJC in Headers */ = {isa = PBXBuildFile; fileRef = 05180D1B1DB82189000723D7 /* OBJC */; settings = {ATTRIBUTES = (Public, ); }; };
+		05362AD11DB7F03700AAA8E9 /* Base.h in Headers */ = {isa = PBXBuildFile; fileRef = 05362ACE1DB7F03700AAA8E9 /* Base.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05362AEA1DB7F4FF00AAA8E9 /* CXX in Resources */ = {isa = PBXBuildFile; fileRef = 05362AE91DB7F4FF00AAA8E9 /* CXX */; };
 		05362AF01DB7F51800AAA8E9 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362AEE1DB7F51800AAA8E9 /* Logger.cpp */; };
 		05362AF11DB7F51800AAA8E9 /* Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362AEF1DB7F51800AAA8E9 /* Message.cpp */; };
@@ -245,6 +248,9 @@
 			files = (
 				0597E3321DB7E55200E845E9 /* ULog.h in Headers */,
 				05362AD11DB7F03700AAA8E9 /* Base.h in Headers */,
+				05180D801DB945FD000723D7 /* C in Headers */,
+				05180D811DB945FD000723D7 /* CXX in Headers */,
+				05180D821DB945FD000723D7 /* OBJC in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +629,6 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 326Y53CJMD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -644,7 +649,6 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 326Y53CJMD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

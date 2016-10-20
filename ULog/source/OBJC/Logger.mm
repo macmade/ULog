@@ -27,13 +27,7 @@
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#include <ULog/ULog.h>
-
-static void init( void ) __attribute__( ( constructor ) );
-static void init( void )
-{
-    [ [ ULogLogger sharedInstance ] logWithFormat: @"Test: %i", 42 ];
-}
+#import <ULog/ULog.h>
 
 @interface ULogLogger()
 

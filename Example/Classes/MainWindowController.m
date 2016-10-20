@@ -28,6 +28,7 @@
  */
 
 #import "MainWindowController.h"
+#import <ULog/ULog.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

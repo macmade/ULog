@@ -39,8 +39,8 @@
 
 /* Objective-C API */
 #ifdef __OBJC__
-#include <ULog/OBJC/Message.h>
-#include <ULog/OBJC/Logger.h>
+#import <ULog/OBJC/Message.h>
+#import <ULog/OBJC/Logger.h>
 #endif
 
 /* C API */
