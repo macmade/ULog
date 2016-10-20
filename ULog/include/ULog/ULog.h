@@ -30,22 +30,23 @@
 #ifndef ULOG_H
 #define ULOG_H
 
-#include <ULog/Base.h>
-#include <ULog/C/Log.h>
-
+/* C++ API */
 #ifdef __cplusplus
-
 #include <ULog/CXX/Log.hpp>
 #include <ULog/CXX/Message.hpp>
 #include <ULog/CXX/Logger.hpp>
-
 #endif
 
+/* Objective-C API */
 #ifdef __OBJC__
-
 #include <ULog/OBJC/Message.h>
 #include <ULog/OBJC/Logger.h>
+#endif
 
+/* C API */
+#if !defined( __cplusplus ) && !defined( __OBJC__ )
+#include <ULog/Base.h>
+#include <ULog/C/Log.h>
 #endif
 
 #endif /* ULOG_H */

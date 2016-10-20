@@ -28,6 +28,7 @@
  */
 
 #include <ULog/ULog.h>
+#include <ULog/C/Log.h>
 
 bool ULog_IsEnabled( void )
 {
