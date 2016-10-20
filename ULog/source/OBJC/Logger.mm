@@ -49,7 +49,7 @@
         &once,
         ^( void )
         {
-            instance = [ [ self alloc ] initWithCXXLogger: ULog::Logger::sharedInstance() ];
+            instance = [ [ self alloc ] initWithCXXLogger: ULog::Logger::SharedInstance() ];
         }
     );
     
@@ -78,7 +78,7 @@
 
 - ( void )dealloc
 {
-    if( self.cxxLogger != ULog::Logger::sharedInstance() )
+    if( self.cxxLogger != ULog::Logger::SharedInstance() )
     {
         delete self.cxxLogger;
     }

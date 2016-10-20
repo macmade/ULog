@@ -51,7 +51,7 @@ namespace ULog
                     bool                   _enabled;
     };
     
-    Logger * Logger::sharedInstance( void )
+    Logger * Logger::SharedInstance( void )
     {
         SpinLockLock( &GlobalLock );
         

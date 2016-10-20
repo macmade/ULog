@@ -41,7 +41,7 @@ namespace ULog
     {
         public:
             
-            static Logger * sharedInstance( void );
+            static Logger * SharedInstance( void );
             
             Logger( void );
             Logger( const Logger & o );

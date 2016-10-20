@@ -30,6 +30,8 @@
 #ifndef ULOG_H
 #define ULOG_H
 
+#include <ULog/Macros.h>
+
 /* C++ API */
 #ifdef __cplusplus
 #include <ULog/CXX/Log.hpp>

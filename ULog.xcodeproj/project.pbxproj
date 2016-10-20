@@ -14,6 +14,7 @@
 		05180D801DB945FD000723D7 /* C in Headers */ = {isa = PBXBuildFile; fileRef = 055FD5711DB81AC300AE1BF4 /* C */; settings = {ATTRIBUTES = (Public, ); }; };
 		05180D811DB945FD000723D7 /* CXX in Headers */ = {isa = PBXBuildFile; fileRef = 05362AE91DB7F4FF00AAA8E9 /* CXX */; settings = {ATTRIBUTES = (Public, ); }; };
 		05180D821DB945FD000723D7 /* OBJC in Headers */ = {isa = PBXBuildFile; fileRef = 05180D1B1DB82189000723D7 /* OBJC */; settings = {ATTRIBUTES = (Public, ); }; };
+		05180D841DB950EF000723D7 /* Macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 05180D831DB950EF000723D7 /* Macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05362AD11DB7F03700AAA8E9 /* Base.h in Headers */ = {isa = PBXBuildFile; fileRef = 05362ACE1DB7F03700AAA8E9 /* Base.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05362AEA1DB7F4FF00AAA8E9 /* CXX in Resources */ = {isa = PBXBuildFile; fileRef = 05362AE91DB7F4FF00AAA8E9 /* CXX */; };
 		05362AF01DB7F51800AAA8E9 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362AEE1DB7F51800AAA8E9 /* Logger.cpp */; };
@@ -50,6 +51,7 @@
 		05180D1B1DB82189000723D7 /* OBJC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OBJC; sourceTree = "<group>"; };
 		05180D2E1DB82246000723D7 /* Logger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Logger.mm; sourceTree = "<group>"; };
 		05180D2F1DB82246000723D7 /* Message.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Message.mm; sourceTree = "<group>"; };
+		05180D831DB950EF000723D7 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		053291B81DA64C4B00E46312 /* ULog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ULog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		053291BC1DA64C4C00E46312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		053292971DA6B50D00E46312 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				05362ACE1DB7F03700AAA8E9 /* Base.h */,
 				055FD5711DB81AC300AE1BF4 /* C */,
 				05362AE91DB7F4FF00AAA8E9 /* CXX */,
+				05180D831DB950EF000723D7 /* Macros.h */,
 				05180D1B1DB82189000723D7 /* OBJC */,
 				0597E3301DB7E55200E845E9 /* ULog.h */,
 			);
@@ -249,6 +252,7 @@
 				0597E3321DB7E55200E845E9 /* ULog.h in Headers */,
 				05362AD11DB7F03700AAA8E9 /* Base.h in Headers */,
 				05180D801DB945FD000723D7 /* C in Headers */,
+				05180D841DB950EF000723D7 /* Macros.h in Headers */,
 				05180D811DB945FD000723D7 /* CXX in Headers */,
 				05180D821DB945FD000723D7 /* OBJC in Headers */,
 			);

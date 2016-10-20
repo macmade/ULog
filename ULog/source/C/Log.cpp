@@ -34,7 +34,7 @@ bool ULog_IsEnabled( void )
 {
     ULog::Logger * logger;
     
-    logger = ULog::Logger::sharedInstance();
+    logger = ULog::Logger::SharedInstance();
     
     if( logger )
     {
@@ -48,7 +48,7 @@ void ULog_SetEnabled( bool value )
 {
     ULog::Logger * logger;
     
-    logger = ULog::Logger::sharedInstance();
+    logger = ULog::Logger::SharedInstance();
     
     if( logger )
     {
@@ -71,7 +71,7 @@ void ULog_Log_V( const char * fmt, va_list ap )
 {
     ULog::Logger * logger;
     
-    logger = ULog::Logger::sharedInstance();
+    logger = ULog::Logger::SharedInstance();
     
     if( logger )
     {
@@ -95,7 +95,7 @@ void ULog_LogWithLevel_V( ULog_Message_Level level, const char * fmt, va_list ap
     ULog::Logger       * logger;
     ULog::Message::Level l;
     
-    logger = ULog::Logger::sharedInstance();
+    logger = ULog::Logger::SharedInstance();
     
     switch( level )
     {

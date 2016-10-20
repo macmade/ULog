@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainWindowController()
 
+- ( void )test;
+
 @end
 
 NS_ASSUME_NONNULL_END
@@ -43,6 +45,24 @@ NS_ASSUME_NONNULL_END
 - ( instancetype )init
 {
     return [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ];
+}
+
+- ( instancetype )initWithWindowNibName: ( NSString * )name
+{
+    if( ( self = [ super initWithWindowNibName: name ] ) )
+    {
+        [ NSThread detachNewThreadSelector: @selector( test ) toTarget: self withObject: nil ];
+    }
+    
+    return self;
+}
+
+- ( void )test
+{
+    while( 1 )
+    {
+        [ NSThread sleepForTimeInterval: 1 ];
+    }
 }
 
 @end

@@ -46,7 +46,7 @@ namespace ULog
     {
         Logger * logger;
         
-        logger = Logger::sharedInstance();
+        logger = Logger::SharedInstance();
         
         if( logger )
         {
@@ -69,7 +69,7 @@ namespace ULog
     {
         Logger * logger;
         
-        logger = Logger::sharedInstance();
+        logger = Logger::SharedInstance();
         
         if( logger )
         {
