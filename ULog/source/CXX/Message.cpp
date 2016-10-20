@@ -126,6 +126,13 @@ namespace ULog
         swap( o1.impl, o2.impl );
     }
     
+    std::ostream & operator <<( std::ostream & os, const Message & e )
+    {
+        os << e.GetDescription();
+        
+        return os;
+    }
+    
     Message::Source Message::GetSource( void ) const
     {
         return this->impl->_source;
@@ -178,6 +185,20 @@ namespace ULog
     std::string Message::GetMessage( void ) const
     {
         return this->impl->_message;
+    }
+    
+    std::string Message::GetDescription( void ) const
+    {
+        std::string description;
+        
+        description = "[ "
+                    + this->GetLevelString()
+                    + " - "
+                    + this->GetSourceString()
+                    + " ]> "
+                    + this->GetMessage();
+                    
+        return description;
     }
     
     Message::IMPL::IMPL( void ):

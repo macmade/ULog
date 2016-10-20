@@ -32,6 +32,7 @@
 
 #include <ULog/Base.h>
 #include <string>
+#include <iostream>
 #include <cstdarg>
 
 namespace ULog
@@ -77,12 +78,14 @@ namespace ULog
             bool operator !=( const Message & o );
             
             friend void swap( Message & o1, Message & o2 );
+            friend std::ostream & operator <<( std::ostream & os, const Message & e );
             
             Source      GetSource( void )       const;
             Level       GetLevel( void )        const;
             std::string GetSourceString( void ) const;
             std::string GetLevelString( void )  const;
             std::string GetMessage( void )      const;
+            std::string GetDescription( void )  const;
             
         private:
             

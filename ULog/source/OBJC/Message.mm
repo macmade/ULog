@@ -156,11 +156,7 @@
 
 - ( NSString * )description
 {
-    NSString * description;
-    
-    description = [ super description ];
-    
-    return [ description stringByAppendingFormat: @" %@: %@", self.levelString, self.message ];
+    return [ [ super description ] stringByAppendingFormat: @" %s", self.cxxMessage.GetDescription().c_str() ];
 }
 
 - ( BOOL )isEqualToMessage: ( ULogMessage * )message
@@ -195,7 +191,7 @@
 
 - ( NSUInteger )hash
 {
-    return [ NSString stringWithFormat: @"%@ %@", self.levelString, self.message ].hash;
+    return [ NSString stringWithUTF8String: self.cxxMessage.GetDescription().c_str() ].hash;
 }
 
 @end
