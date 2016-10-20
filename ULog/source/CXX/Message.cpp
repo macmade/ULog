@@ -29,6 +29,8 @@
 
 #include <ULog/ULog.h>
 #include <algorithm>
+#include <cstdlib>
+#include <iostream>
 
 namespace ULog
 {
@@ -44,6 +46,8 @@ namespace ULog
             
             Level       _level;
             std::string _message;
+            
+            std::string GetStringWithFormat( const char * fmt, va_list ap );
     };
     
     Message::Message( Level level, const std::string & message ): impl( new IMPL( level, message ) )
@@ -51,15 +55,20 @@ namespace ULog
     
     Message::Message( Level level, const char * fmt, ... ): impl( new IMPL )
     {
-        ( void )level;
-        ( void )fmt;
+        va_list ap;
+        
+        va_start( ap, fmt );
+        
+        this->impl->_level   = level;
+        this->impl->_message = this->impl->GetStringWithFormat( fmt, ap );
+        
+        va_end( ap );
     }
     
     Message::Message( Level level, const char * fmt, va_list ap ): impl( new IMPL )
     {
-        ( void )level;
-        ( void )fmt;
-        ( void )ap;
+        this->impl->_level   = level;
+        this->impl->_message = this->impl->GetStringWithFormat( fmt, ap );
     }
     
     Message::Message( const Message & o ): impl( new IMPL( *( o.impl ) ) )
@@ -157,4 +166,39 @@ namespace ULog
     
     Message::IMPL::~IMPL( void )
     {}
+    
+    std::string Message::IMPL::GetStringWithFormat( const char * fmt, va_list ap )
+    {
+        va_list ap2;
+        int     length;
+        char  * str;
+        
+        if( fmt == NULL )
+        {
+            return "";
+        }
+        
+        va_copy( ap2, ap );
+        
+        length = vsnprintf( NULL, 0, fmt, ap );
+        
+        if( length <= 0 )
+        {
+            va_end( ap );
+            
+            return "";
+        }
+        
+        str = static_cast< char * >( calloc( static_cast< size_t >( length + 1 ), 1 ) );
+        
+        if( str == nullptr )
+        {
+            return "";
+        }
+        
+        vsnprintf( str, static_cast< size_t >( length + 1 ), fmt, ap2 );
+        va_end( ap2 );
+        
+        return std::string( str );
+    }
 }

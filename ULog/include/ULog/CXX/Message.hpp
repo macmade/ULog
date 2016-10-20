@@ -53,7 +53,7 @@ namespace ULog
             }
             Level;
             
-            Message( Level level, const std::string & message );
+            Message( Level level = LevelDebug, const std::string & message = "" );
             Message( Level level, const char * fmt, ... );
             Message( Level level, const char * fmt, va_list ap );
             Message( const Message & o );
