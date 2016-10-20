@@ -26,6 +26,8 @@
 # makelib configuration
 #-------------------------------------------------------------------------------
 
+BUILD_LEGACY_ARCHS  := 0
+
 include Submodules/makelib/Common.mk
 
 PRODUCT             := ULog
@@ -51,8 +53,8 @@ FLAGS_STD_CPP       := c++11
 FLAGS_OTHER         := -fno-strict-aliasing -stdlib=libc++
 FLAGS_C             := 
 FLAGS_CPP           := 
-FLAGS_M             := -fobjc-arc -Wno-objc-property-implementation
-FLAGS_MM            := -fobjc-arc -Wno-objc-property-implementation
+FLAGS_M             := -fobjc-arc
+FLAGS_MM            := -fobjc-arc
 XCODE_PROJECT       := ULog.xcodeproj
 XCODE_TEST_SCHEME   := ULog
 
