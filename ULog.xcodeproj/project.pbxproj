@@ -15,6 +15,7 @@
 		05180D811DB945FD000723D7 /* CXX in Headers */ = {isa = PBXBuildFile; fileRef = 05362AE91DB7F4FF00AAA8E9 /* CXX */; settings = {ATTRIBUTES = (Public, ); }; };
 		05180D821DB945FD000723D7 /* OBJC in Headers */ = {isa = PBXBuildFile; fileRef = 05180D1B1DB82189000723D7 /* OBJC */; settings = {ATTRIBUTES = (Public, ); }; };
 		05180D841DB950EF000723D7 /* Macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 05180D831DB950EF000723D7 /* Macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05348F011DB95C5B00371541 /* LogWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05348F001DB95C5B00371541 /* LogWindowController.m */; };
 		05362AD11DB7F03700AAA8E9 /* Base.h in Headers */ = {isa = PBXBuildFile; fileRef = 05362ACE1DB7F03700AAA8E9 /* Base.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05362AEA1DB7F4FF00AAA8E9 /* CXX in Resources */ = {isa = PBXBuildFile; fileRef = 05362AE91DB7F4FF00AAA8E9 /* CXX */; };
 		05362AF01DB7F51800AAA8E9 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362AEE1DB7F51800AAA8E9 /* Logger.cpp */; };
@@ -60,6 +61,7 @@
 		053292A01DA8FA3E00E46312 /* travis-osx-after.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "travis-osx-after.sh"; sourceTree = "<group>"; };
 		053292A11DA8FA3E00E46312 /* travis-osx-before.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "travis-osx-before.sh"; sourceTree = "<group>"; };
 		053292BD1DA8FEAB00E46312 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		05348F001DB95C5B00371541 /* LogWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogWindowController.m; sourceTree = "<group>"; };
 		05362ACE1DB7F03700AAA8E9 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
 		05362AE91DB7F4FF00AAA8E9 /* CXX */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CXX; sourceTree = "<group>"; };
 		05362AEE1DB7F51800AAA8E9 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				05180D2E1DB82246000723D7 /* Logger.mm */,
+				05348F001DB95C5B00371541 /* LogWindowController.m */,
 				05180D2F1DB82246000723D7 /* Message.mm */,
 			);
 			path = OBJC;
@@ -370,6 +373,7 @@
 				05362AF01DB7F51800AAA8E9 /* Logger.cpp in Sources */,
 				05362AF11DB7F51800AAA8E9 /* Message.cpp in Sources */,
 				05362B031DB7FAC200AAA8E9 /* SpinLock.cpp in Sources */,
+				05348F011DB95C5B00371541 /* LogWindowController.m in Sources */,
 				05180D311DB82246000723D7 /* Message.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

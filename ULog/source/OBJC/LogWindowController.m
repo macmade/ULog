@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2016 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2016 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,33 +23,65 @@
  ******************************************************************************/
 
 /*!
- * @header      ULog.h
+ * @file        LogWindowController.m
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_H
-#define ULOG_H
+#import <ULog/ULog.h>
 
-#include <ULog/Macros.h>
+#if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
 
-/* C++ API */
-#ifdef __cplusplus
-#include <ULog/CXX/Log.hpp>
-#include <ULog/CXX/Message.hpp>
-#include <ULog/CXX/Logger.hpp>
+static void init( void ) __attribute__( ( constructor ) );
+static void init( void )
+{
+    [ ULogLogWindowController sharedInstance ];
+}
+
+@interface ULogLogWindowController()
+
+@property( atomic, readwrite, assign ) ULogLogger * logger;
+
+@end
+
+@implementation ULogLogWindowController
+
++ ( instancetype )sharedInstance
+{
+    static dispatch_once_t once;
+    static id              instance = nil;
+    
+    dispatch_once
+    (
+        &once,
+        ^( void )
+        {
+            instance = [ [ self alloc ] initWithLogger: [ ULogLogger sharedInstance ] ];
+        }
+    );
+    
+    return instance;
+}
+
+- ( instancetype )initWithLogger: ( ULogLogger * )logger
+{
+    if( logger == nil )
+    {
+        return nil;
+    }
+    
+    if( ( self = [ self init ] ) )
+    {
+        self.logger = nil;
+    }
+    
+    return self;
+}
+
+- ( instancetype )init
+{
+    return [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ];
+}
+
+@end
+
 #endif
-
-/* Objective-C API */
-#ifdef __OBJC__
-#import <ULog/OBJC/Message.h>
-#import <ULog/OBJC/Logger.h>
-#import <ULog/OBJC/LogWindowController.h>
-#endif
-
-/* C API */
-#if !defined( __cplusplus ) && !defined( __OBJC__ )
-#include <ULog/Base.h>
-#include <ULog/C/Log.h>
-#endif
-
-#endif /* ULOG_H */

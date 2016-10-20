@@ -79,7 +79,7 @@ else
 
 LIBS                := -lpthread -lc++ -lobjc -framework CoreFoundation -framework Foundation -framework Cocoa -framework AppKit
 
-FILES_M             := 
+FILES_M             := $(call GET_M_FILES, $(DIR_SRC)OBJC/)
 FILES_M_EXCLUDE     := 
 
 FILES_MM            := $(call GET_MM_FILES, $(DIR_SRC)OBJC/)
