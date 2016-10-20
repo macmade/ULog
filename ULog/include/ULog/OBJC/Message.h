@@ -38,9 +38,38 @@
 
 #include <ULog/Base.h>
 
-@interface ULogMessage: NSObject
+typedef enum
+{
+    ULogMessageLevelEmergency  = 0,
+    ULogMessageLevelAlert      = 1,
+    ULogMessageLevelCritical   = 2,
+    ULogMessageLevelError      = 3,
+    ULogMessageLevelWarning    = 4,
+    ULogMessageLevelNotice     = 5,
+    ULogMessageLevelInfo       = 6,
+    ULogMessageLevelDebug      = 7
+}
+ULogMessageLevel;
 
-- ( instancetype )init;
+@interface ULogMessage: NSObject < NSCopying >
+
+@property( atomic, readonly ) ULogMessageLevel level;
+@property( atomic, readonly ) NSString       * levelString;
+@property( atomic, readonly ) NSString       * message;
+
+#ifdef __cplusplus
+
+@property( atomic, readonly ) ULog::Message cxxMessage;
+
+- ( instancetype )initWithCXXMessage: ( const ULog::Message & )message;
+
+#endif
+
+- ( instancetype )initWithLevel: ( ULogMessageLevel )level message: ( NSString * )message;
+- ( instancetype )initWithLevel: ( ULogMessageLevel )level format: ( NSString * )format, ...;
+- ( instancetype )initWithLevel: ( ULogMessageLevel )level format: ( NSString * )format arguments: ( va_list )ap;
+
+- ( BOOL )isEqualToMessage: ( ULogMessage * )message;
 
 @end
 

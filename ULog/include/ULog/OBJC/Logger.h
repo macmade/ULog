@@ -40,8 +40,33 @@
 
 @interface ULogLogger: NSObject
 
+@property( atomic, readwrite, assign, getter = isEnabled ) BOOL                       enabled;
+@property( atomic, readonly                              ) NSArray< ULogMessage * > * messages;
+
 + ( instancetype )sharedInstance;
-- ( instancetype )init;
+
+- ( void )log: ( ULogMessage * )msg;
+- ( void )logWithFormat: ( NSString * )fmt, ...;
+- ( void )logWithFormat: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )logWithLevel: ( ULogMessageLevel )level format: ( NSString * )fmt, ...;
+- ( void )logWithLevel: ( ULogMessageLevel )level format: ( NSString * )fmt arguments: ( va_list )ap;
+
+- ( void )emergency: ( NSString * )fmt, ...;
+- ( void )emergency: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )alert: ( NSString * )fmt, ...;
+- ( void )alert: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )critical: ( NSString * )fmt, ...;
+- ( void )critical: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )error: ( NSString * )fmt, ...;
+- ( void )error: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )warning: ( NSString * )fmt, ...;
+- ( void )warning: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )notice: ( NSString * )fmt, ...;
+- ( void )notice: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )info: ( NSString * )fmt, ...;
+- ( void )info: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )debug: ( NSString * )fmt, ...;
+- ( void )debug: ( NSString * )fmt arguments: ( va_list )ap;
 
 @end
 

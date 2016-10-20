@@ -29,11 +29,17 @@
 
 #include <ULog/ULog.h>
 
+static void init( void ) __attribute__( ( constructor ) );
+static void init( void )
+{
+    [ [ ULogLogger sharedInstance ] logWithFormat: @"Test: %i", 42 ];
+}
+
 @interface ULogLogger()
 
-@property( atomic, readwrite, assign ) ULog::Logger * logger;
+@property( atomic, readwrite, assign ) ULog::Logger * cxxLogger;
 
-- ( instancetype )initWithLogger: (  ULog::Logger * )logger NS_DESIGNATED_INITIALIZER;
+- ( instancetype )initWithCXXLogger: (  ULog::Logger * )logger NS_DESIGNATED_INITIALIZER;
 
 @end
 
@@ -49,7 +55,7 @@
         &once,
         ^( void )
         {
-            instance = [ [ self alloc ] initWithLogger: ULog::Logger::sharedInstance() ];
+            instance = [ [ self alloc ] initWithCXXLogger: ULog::Logger::sharedInstance() ];
         }
     );
     
@@ -58,14 +64,19 @@
 
 - ( instancetype )init
 {
-    return [ self initWithLogger: new ULog::Logger() ];
+    return [ self initWithCXXLogger: new ULog::Logger() ];
 }
 
-- ( instancetype )initWithLogger: (  ULog::Logger * )logger
+- ( instancetype )initWithCXXLogger: (  ULog::Logger * )logger
 {
+    if( logger == nullptr )
+    {
+        return nil;
+    }
+    
     if( ( self = [ super init ] ) )
     {
-        self.logger = logger;
+        self.cxxLogger = logger;
     }
     
     return self;
@@ -73,9 +84,275 @@
 
 - ( void )dealloc
 {
-    if( self.logger != ULog::Logger::sharedInstance() )
+    if( self.cxxLogger != ULog::Logger::sharedInstance() )
     {
-        delete self.logger;
+        delete self.cxxLogger;
+    }
+}
+
+- ( BOOL )isEnabled
+{
+    @synchronized( self )
+    {
+        return self.cxxLogger->IsEnabled();
+    }
+}
+
+- ( void )setEnabled: ( BOOL )value
+{
+    @synchronized( self )
+    {
+        return self.cxxLogger->SetEnabled( value );
+    }
+}
+
+- ( NSArray< ULogMessage * > * )messages
+{
+    NSMutableArray< ULogMessage * > * array;
+    std::vector< ULog::Message >      messages;
+    ULogMessage                     * message;
+    
+    @synchronized( self )
+    {
+        messages = self.cxxLogger->GetMessages();
+        array    = [ [ NSMutableArray alloc ] initWithCapacity: messages.size() ];
+        
+        for( const auto & m: messages )
+        {
+            message = [ [ ULogMessage alloc ] initWithCXXMessage: m ];
+            
+            if( message )
+            {
+                [ array addObject: message ];
+            }
+        }
+        
+        return [ NSArray arrayWithArray: array ];
+    }
+}
+
+- ( void )log: ( ULogMessage * )msg
+{
+    @synchronized( self )
+    {
+        self.cxxLogger->Log( msg.cxxMessage );
+    }
+}
+
+- ( void )logWithFormat: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self logWithFormat: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )logWithFormat: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithLevel: ULogMessageLevelDebug format: fmt arguments: ap ];
+    }
+}
+
+- ( void )logWithLevel: ( ULogMessageLevel )level format: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self logWithLevel: level format: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )logWithLevel: ( ULogMessageLevel )level format: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self log: [ [ ULogMessage alloc ] initWithLevel: level format: fmt arguments: ap ] ];
+    }
+}
+
+- ( void )emergency: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self emergency: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )emergency: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithLevel: ULogMessageLevelEmergency format: fmt arguments: ap ];
+    }
+}
+
+- ( void )alert: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self alert: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )alert: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithLevel: ULogMessageLevelAlert format: fmt arguments: ap ];
+    }
+}
+
+- ( void )critical: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self critical: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )critical: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithLevel: ULogMessageLevelCritical format: fmt arguments: ap ];
+    }
+}
+
+- ( void )error: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self error: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )error: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithLevel: ULogMessageLevelError format: fmt arguments: ap ];
+    }
+}
+
+- ( void )warning: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    va_start( ap, fmt );
+    
+    [ self warning: fmt arguments: ap ];
+    
+    va_end( ap );
+}
+
+- ( void )warning: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithLevel: ULogMessageLevelWarning format: fmt arguments: ap ];
+    }
+}
+
+- ( void )notice: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self notice: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )notice: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithLevel: ULogMessageLevelNotice format: fmt arguments: ap ];
+    }
+}
+
+- ( void )info: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self info: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )info: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithLevel: ULogMessageLevelInfo format: fmt arguments: ap ];
+    }
+}
+
+- ( void )debug: ( NSString * )fmt, ...
+{
+    va_list ap;
+    
+    @synchronized( self )
+    {
+        va_start( ap, fmt );
+        
+        [ self debug: fmt arguments: ap ];
+        
+        va_end( ap );
+    }
+}
+
+- ( void )debug: ( NSString * )fmt arguments: ( va_list )ap
+{
+    @synchronized( self )
+    {
+        [ self logWithLevel: ULogMessageLevelDebug format: fmt arguments: ap ];
     }
 }
 
