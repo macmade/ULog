@@ -59,8 +59,14 @@ NS_ASSUME_NONNULL_END
 
 - ( void )test
 {
+    int i;
+    
+    i = 0;
+    
     while( 1 )
     {
+        ULog( @"Test %i", i++ );
+        
         [ NSThread sleepForTimeInterval: 1 ];
     }
 }

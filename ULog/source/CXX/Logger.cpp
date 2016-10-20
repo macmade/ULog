@@ -31,6 +31,11 @@
 #include <ULog/CXX/SpinLock.hpp>
 #include <cstdlib>
 #include <mutex>
+#include <iostream>
+
+#ifdef _WIN32
+#include <Windows.h>
+#endif
 
 static ULog::Logger * volatile SharedLogger = nullptr;
 static ULog::SpinLock          GlobalLock   = 0;
@@ -120,6 +125,20 @@ namespace ULog
     void Logger::Log( const Message & msg )
     {
         std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        if( msg.GetSource() != Message::SourceASL )
+        {
+            #ifdef _WIN32
+            
+            OutputDebugStringA( msg.GetDescription().c_str() );
+            OutputDebugStringA( "\n" );
+            
+            #else
+            
+            std::cerr << msg << std::endl;
+            
+            #endif
+        }
         
         this->impl->_messages.push_back( msg );
     }
