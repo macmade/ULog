@@ -30,7 +30,19 @@
 #ifndef ULOG_MACROS_H
 #define ULOG_MACROS_H
 
-#if defined( __cplusplus ) && defined( __OBJC__ )
+#if defined( ULOG_DISABLE ) && ULOG_DISABLE == 1
+
+#define ULog( _fmt_, ... )              
+#define ULogEmergency( _fmt_, ... )     
+#define ULogAlert( _fmt_, ... )         
+#define ULogCritical( _fmt_, ... )      
+#define ULogError( _fmt_, ... )         
+#define ULogWarning( _fmt_, ... )       
+#define ULogNotice( _fmt_, ... )        
+#define ULogInfo( _fmt_, ... )          
+#define ULogDebug( _fmt_, ... )         
+
+#elif defined( __cplusplus ) && defined( __OBJC__ )
 
 #define ULog( _fmt_, ... )              [ [ ULogLogger sharedInstance ] logWithSource: ULogMessageSourceOBJCXX level: ULogMessageLevelDebug format: _fmt_, __VA_ARGS__ ]
 #define ULogEmergency( _fmt_, ... )     [ [ ULogLogger sharedInstance ] emergencyWithSource: ULogMessageSourceOBJCXX format: _fmt_, __VA_ARGS__ ]
