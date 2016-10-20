@@ -32,6 +32,7 @@
 		0597E3711DB7EDB800E845E9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3701DB7EDB800E845E9 /* MainWindowController.m */; };
 		0597E3741DB7EE2400E845E9 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0597E3721DB7EE2400E845E9 /* MainWindowController.xib */; };
 		0598A1891DB805E3004CC9B7 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598A1881DB805E3004CC9B7 /* Log.cpp */; };
+		05E8D4351DB967A000C6EB6A /* ULogLogWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E8D4331DB967A000C6EB6A /* ULogLogWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,6 +82,7 @@
 		0597E3701DB7EDB800E845E9 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		0597E3731DB7EE2400E845E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindowController.xib; sourceTree = "<group>"; };
 		0598A1881DB805E3004CC9B7 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
+		05E8D4341DB967A000C6EB6A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ULogLogWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				053291C31DA64C8500E46312 /* include */,
-				053291C41DA64C8500E46312 /* source */,
 				053291BC1DA64C4C00E46312 /* Info.plist */,
+				053291C41DA64C8500E46312 /* source */,
+				05E8D4321DB9676C00C6EB6A /* ui */,
 			);
 			path = ULog;
 			sourceTree = "<group>";
@@ -243,6 +246,14 @@
 				0597E3721DB7EE2400E845E9 /* MainWindowController.xib */,
 			);
 			path = Interface;
+			sourceTree = "<group>";
+		};
+		05E8D4321DB9676C00C6EB6A /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				05E8D4331DB967A000C6EB6A /* ULogLogWindowController.xib */,
+			);
+			path = ui;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				055FD5721DB81AC300AE1BF4 /* C in Resources */,
+				05E8D4351DB967A000C6EB6A /* ULogLogWindowController.xib in Resources */,
 				05362AEA1DB7F4FF00AAA8E9 /* CXX in Resources */,
 				05180D1C1DB82189000723D7 /* OBJC in Resources */,
 			);
@@ -405,6 +417,14 @@
 				0597E3731DB7EE2400E845E9 /* en */,
 			);
 			name = MainWindowController.xib;
+			sourceTree = "<group>";
+		};
+		05E8D4331DB967A000C6EB6A /* ULogLogWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05E8D4341DB967A000C6EB6A /* en */,
+			);
+			name = ULogLogWindowController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
