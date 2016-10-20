@@ -75,7 +75,7 @@ FILES_MM_EXCLUDE    :=
 
 else
 
-LIBS                := -lpthread -lc++ -lobjc
+LIBS                := -lpthread -lc++ -lobjc -framework CoreFoundation -framework Foundation -framework Cocoa -framework AppKit
 
 FILES_M             := 
 FILES_M_EXCLUDE     := 
