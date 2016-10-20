@@ -49,6 +49,10 @@ FLAGS_WARN          := -Werror -Wall
 FLAGS_STD_C         := c99
 FLAGS_STD_CPP       := c++11
 FLAGS_OTHER         := -fno-strict-aliasing -stdlib=libc++
+FLAGS_C             := 
+FLAGS_CPP           := 
+FLAGS_M             := -fobjc-arc -Wno-objc-property-implementation
+FLAGS_MM            := -fobjc-arc -Wno-objc-property-implementation
 XCODE_PROJECT       := ULog.xcodeproj
 XCODE_TEST_SCHEME   := ULog
 
