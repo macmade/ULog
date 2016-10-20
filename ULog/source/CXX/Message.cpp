@@ -224,9 +224,10 @@ namespace ULog
     
     std::string Message::IMPL::GetStringWithFormat( const char * fmt, va_list ap )
     {
-        va_list ap2;
-        int     length;
-        char  * str;
+        va_list     ap2;
+        int         length;
+        char      * buf;
+        std::string str;
         
         if( fmt == NULL )
         {
@@ -244,16 +245,20 @@ namespace ULog
             return "";
         }
         
-        str = static_cast< char * >( calloc( static_cast< size_t >( length + 1 ), 1 ) );
+        buf = static_cast< char * >( calloc( static_cast< size_t >( length + 1 ), 1 ) );
         
-        if( str == nullptr )
+        if( buf == nullptr )
         {
             return "";
         }
         
-        vsnprintf( str, static_cast< size_t >( length + 1 ), fmt, ap2 );
+        vsnprintf( buf, static_cast< size_t >( length + 1 ), fmt, ap2 );
         va_end( ap2 );
         
-        return std::string( str );
+        str = std::string( buf );
+        
+        free( buf );
+        
+        return str;
     }
 }
