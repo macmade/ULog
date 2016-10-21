@@ -33,8 +33,12 @@
 
 @interface ULogSettingsWindowController()
 
-@property( atomic, readwrite, assign ) NSInteger selectedTheme;
+@property( atomic, readwrite, assign ) NSInteger  selectedTheme;
+@property( atomic, readwrite, strong ) NSString * fontDescription;
 
+- ( IBAction )chooseFont: ( id )sender;
+- ( void )changeFont: ( id )sender;
+- ( void )updateFontName;
 - ( IBAction )choosePreset: ( id )sender;
 - ( IBAction )restoreDefaults: ( id )sender;
 
@@ -45,6 +49,51 @@
 - ( instancetype )init
 {
     return [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ];
+}
+
+- ( void )windowDidLoad
+{
+    [ self updateFontName ];
+}
+
+- ( IBAction )chooseFont: ( id )sender
+{
+    NSFontManager * manager;
+    NSFontPanel   * panel;
+    NSFont        * font;
+    
+    font    = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    manager = [ NSFontManager sharedFontManager ];
+    panel   = [ manager fontPanel: YES ];
+    
+    [ manager setSelectedFont: font isMultiple: NO ];
+    [ manager setDelegate: self ];
+    
+    [ panel makeKeyAndOrderFront: sender ];
+}
+
+- ( void )changeFont: ( id )sender
+{
+    NSFontManager * manager;
+    NSFont        * font;
+    
+    if( [ sender isKindOfClass: [ NSFontManager class ] ] == NO )
+    {
+        return;
+    }
+    
+    manager = ( NSFontManager * )sender;
+    font    = [ manager convertFont: [ manager selectedFont ] ];
+    
+    [ ULogSettings sharedInstance ].fontName = font.fontName;
+    [ ULogSettings sharedInstance ].fontSize = font.pointSize;
+    
+    [ self updateFontName ];
+}
+
+- ( void )updateFontName;
+{
+    self.fontDescription = [ NSString stringWithFormat: @"%@ %u", [ ULogSettings sharedInstance ].fontName, ( unsigned int )( [ ULogSettings sharedInstance ].fontSize ) ];
 }
 
 - ( IBAction )choosePreset: ( id )sender
@@ -154,6 +203,7 @@
     ( void )sender;
     
     [ [ ULogSettings sharedInstance ] restoreDefaults ];
+    [ self updateFontName ];
     
     self.selectedTheme = 0;
 }
