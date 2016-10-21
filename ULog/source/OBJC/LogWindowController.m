@@ -60,6 +60,14 @@ static void init( void )
 @property( atomic, readwrite, assign ) BOOL                 filterShowOBJC;
 @property( atomic, readwrite, assign ) BOOL                 filterShowOBJCXX;
 @property( atomic, readwrite, assign ) BOOL                 filterShowASL;
+@property( atomic, readwrite, assign ) BOOL                 filterShowEmergency;
+@property( atomic, readwrite, assign ) BOOL                 filterShowAlert;
+@property( atomic, readwrite, assign ) BOOL                 filterShowCritical;
+@property( atomic, readwrite, assign ) BOOL                 filterShowError;
+@property( atomic, readwrite, assign ) BOOL                 filterShowWarning;
+@property( atomic, readwrite, assign ) BOOL                 filterShowNotice;
+@property( atomic, readwrite, assign ) BOOL                 filterShowInfo;
+@property( atomic, readwrite, assign ) BOOL                 filterShowDebug;
 
 @property( atomic, readwrite, strong ) IBOutlet NSTextView * textView;
 
@@ -123,11 +131,19 @@ static void init( void )
         self.lf                 = [ [ NSAttributedString alloc ] initWithString: @"\n" attributes: nil ];
         self.font               = [ NSFont fontWithName: @"Consolas" size: 11 ];
         
-        [ self addObserver: self forKeyPath: @"filterShowC"      options: NSKeyValueObservingOptionNew context: nil ];
-        [ self addObserver: self forKeyPath: @"filterShowCXX"    options: NSKeyValueObservingOptionNew context: nil ];
-        [ self addObserver: self forKeyPath: @"filterShowOBJC"   options: NSKeyValueObservingOptionNew context: nil ];
-        [ self addObserver: self forKeyPath: @"filterShowOBJCXX" options: NSKeyValueObservingOptionNew context: nil ];
-        [ self addObserver: self forKeyPath: @"filterShowASL"    options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowC"         options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowCXX"       options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowOBJC"      options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowOBJCXX"    options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowASL"       options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowEmergency" options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowAlert"     options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowCritical"  options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowError"     options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowWarning"   options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowNotice"    options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowInfo"      options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowDebug"     options: NSKeyValueObservingOptionNew context: nil ];
     }
     
     return self;
@@ -140,6 +156,14 @@ static void init( void )
     [ self removeObserver: self forKeyPath: @"filterShowOBJC" ];
     [ self removeObserver: self forKeyPath: @"filterShowOBJCXX" ];
     [ self removeObserver: self forKeyPath: @"filterShowASL" ];
+    [ self removeObserver: self forKeyPath: @"filterShowEmergency" ];
+    [ self removeObserver: self forKeyPath: @"filterShowAlert" ];
+    [ self removeObserver: self forKeyPath: @"filterShowCritical" ];
+    [ self removeObserver: self forKeyPath: @"filterShowError" ];
+    [ self removeObserver: self forKeyPath: @"filterShowWarning" ];
+    [ self removeObserver: self forKeyPath: @"filterShowNotice" ];
+    [ self removeObserver: self forKeyPath: @"filterShowInfo" ];
+    [ self removeObserver: self forKeyPath: @"filterShowDebug" ];
 }
 
 - ( void )observeValueForKeyPath: ( NSString * )keyPath ofObject: ( id )object change: ( NSDictionary< NSKeyValueChangeKey, id > * )change context: ( void * )context
@@ -185,6 +209,70 @@ static void init( void )
             
             return;
         }
+        
+        if( [ keyPath isEqualToString: @"filterShowEmergency" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowASL forKey: @"ULogFilterShowEmergency" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowAlert" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowASL forKey: @"ULogFilterShowAlert" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowCritical" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowASL forKey: @"ULogFilterShowCritical" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowError" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowASL forKey: @"ULogFilterShowError" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowWarning" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowASL forKey: @"ULogFilterShowWarning" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowNotice" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowASL forKey: @"ULogFilterShowNotice" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowInfo" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowASL forKey: @"ULogFilterShowInfo" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowDebug" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowASL forKey: @"ULogFilterShowDebug" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
     }
     
     [ super observeValueForKeyPath: keyPath ofObject: object change: change context: context ];
@@ -205,19 +293,35 @@ static void init( void )
     
     if( [ [ NSUserDefaults standardUserDefaults ] objectForKey: @"ULogFilterShowC" ] == nil )
     {
-        self.filterShowC      = YES;
-        self.filterShowCXX    = YES;
-        self.filterShowOBJC   = YES;
-        self.filterShowOBJCXX = YES;
-        self.filterShowASL    = YES;
+        self.filterShowC            = YES;
+        self.filterShowCXX          = YES;
+        self.filterShowOBJC         = YES;
+        self.filterShowOBJCXX       = YES;
+        self.filterShowASL          = YES;
+        self.filterShowEmergency    = YES;
+        self.filterShowAlert        = YES;
+        self.filterShowCritical     = YES;
+        self.filterShowError        = YES;
+        self.filterShowWarning      = YES;
+        self.filterShowNotice       = YES;
+        self.filterShowInfo         = YES;
+        self.filterShowDebug        = YES;
     }
     else
     {
-        self.filterShowC      = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowC" ];
-        self.filterShowCXX    = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowCXX" ];
-        self.filterShowOBJC   = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowOBJC" ];
-        self.filterShowOBJCXX = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowOBJCXX" ];
-        self.filterShowASL    = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowASL" ];
+        self.filterShowC            = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowC" ];
+        self.filterShowCXX          = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowCXX" ];
+        self.filterShowOBJC         = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowOBJC" ];
+        self.filterShowOBJCXX       = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowOBJCXX" ];
+        self.filterShowASL          = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowASL" ];
+        self.filterShowEmergency    = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowEmergency" ];
+        self.filterShowAlert        = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowAlert" ];
+        self.filterShowCritical     = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowCritical" ];
+        self.filterShowError        = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowError" ];
+        self.filterShowWarning      = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowWarning" ];
+        self.filterShowNotice       = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowNotice" ];
+        self.filterShowInfo         = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowInfo" ];
+        self.filterShowDebug        = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowDebug" ];
     }
 }
 
@@ -276,6 +380,46 @@ static void init( void )
             }
             
             if( message.source == ULogMessageSourceASL && self.filterShowASL == NO )
+            {
+                continue;
+            }
+            
+            if( message.level == ULogMessageLevelEmergency && self.filterShowEmergency == NO )
+            {
+                continue;
+            }
+            
+            if( message.level == ULogMessageLevelAlert && self.filterShowAlert == NO )
+            {
+                continue;
+            }
+            
+            if( message.level == ULogMessageLevelCritical && self.filterShowCritical == NO )
+            {
+                continue;
+            }
+            
+            if( message.level == ULogMessageLevelError && self.filterShowError == NO )
+            {
+                continue;
+            }
+            
+            if( message.level == ULogMessageLevelWarning && self.filterShowWarning == NO )
+            {
+                continue;
+            }
+            
+            if( message.level == ULogMessageLevelNotice && self.filterShowNotice == NO )
+            {
+                continue;
+            }
+            
+            if( message.level == ULogMessageLevelInfo && self.filterShowInfo == NO )
+            {
+                continue;
+            }
+            
+            if( message.level == ULogMessageLevelDebug && self.filterShowDebug == NO )
             {
                 continue;
             }
