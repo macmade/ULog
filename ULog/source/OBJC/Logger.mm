@@ -125,6 +125,14 @@
     }
 }
 
+- ( void )clear
+{
+    @synchronized( self )
+    {
+        self.cxxLogger->Clear();
+    }
+}
+
 - ( void )log: ( ULogMessage * )msg
 {
     @synchronized( self )

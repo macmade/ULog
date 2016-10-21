@@ -69,6 +69,10 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="togglePause:" target="-2" id="ajk-g6-lUA"/>
+                            <binding destination="-2" name="title" keyPath="pauseButtonTitle" id="4J6-CT-gNY"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Hp-uu-9LU">
                         <rect key="frame" x="915" y="23" width="70" height="28"/>
@@ -213,6 +217,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="clear:" target="-2" id="F1S-P6-ne6"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

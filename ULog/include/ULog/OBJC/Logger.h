@@ -45,6 +45,8 @@
 
 + ( instancetype )sharedInstance;
 
+- ( void )clear;
+
 - ( void )log: ( ULogMessage * )msg;
 - ( void )logWithFormat: ( NSString * )fmt, ...;
 - ( void )logWithFormat: ( NSString * )fmt arguments: ( va_list )ap;

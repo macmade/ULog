@@ -56,6 +56,8 @@ namespace ULog
             bool IsEnabled( void ) const;
             void SetEnabled( bool value );
             
+            void Clear( void );
+            
             void Log( const Message & msg );
             void Log( const char * fmt, ... );
             void Log( const char * fmt, va_list ap );

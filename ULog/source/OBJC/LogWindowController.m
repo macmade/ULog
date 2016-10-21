@@ -54,7 +54,9 @@ static void init( void )
 @property( atomic, readwrite, strong ) NSDictionary       * levelAttributes;
 @property( atomic, readwrite, strong ) NSDictionary       * messageAttributes;
 @property( atomic, readwrite, strong ) NSString           * searchText;
+@property( atomic, readwrite, strong ) NSString           * pauseButtonTitle;
 @property( atomic, readwrite, assign ) BOOL                 shown;
+@property( atomic, readwrite, assign ) BOOL                 paused;
 @property( atomic, readwrite, assign ) BOOL                 filterShowC;
 @property( atomic, readwrite, assign ) BOOL                 filterShowCXX;
 @property( atomic, readwrite, assign ) BOOL                 filterShowOBJC;
@@ -71,6 +73,8 @@ static void init( void )
 
 @property( atomic, readwrite, strong ) IBOutlet NSTextView * textView;
 
+- ( IBAction )clear: ( id )sender;
+- ( IBAction )togglePause: ( id )sender;
 - ( void )refresh;
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message;
 
@@ -290,6 +294,7 @@ static void init( void )
     self.textView.backgroundColor       = self.backgroundColor;
     self.textView.textContainerInset    = NSMakeSize( 5.0, 10.0 );
     self.window.title                   = [ NSString stringWithFormat: @"%@ - Logs", [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ] ];
+    self.pauseButtonTitle               = @"Pause";
     
     if( [ [ NSUserDefaults standardUserDefaults ] objectForKey: @"ULogFilterShowC" ] == nil )
     {
@@ -325,6 +330,37 @@ static void init( void )
     }
 }
 
+- ( IBAction )clear: ( id )sender
+{
+    ( void )sender;
+    
+    @synchronized( self )
+    {
+        [ self.logger clear ];
+        
+        self.log = nil;
+    }
+}
+
+- ( IBAction )togglePause: ( id )sender
+{
+    ( void )sender;
+    
+    @synchronized( self )
+    {
+        if( self.paused )
+        {
+            self.paused           = NO;
+            self.pauseButtonTitle = @"Pause";
+        }
+        else
+        {
+            self.paused           = YES;
+            self.pauseButtonTitle = @"Resume";
+        }
+    }
+}
+
 - ( void )refresh
 {
     NSArray< ULogMessage * >  * messages;
@@ -334,6 +370,13 @@ static void init( void )
     
     while( 1 )
     {
+        if( self.paused )
+        {
+            [ NSThread sleepForTimeInterval: 0.5 ];
+            
+            continue;
+        }
+        
         messages = self.logger.messages;
         log      = [ NSMutableAttributedString new ];
         

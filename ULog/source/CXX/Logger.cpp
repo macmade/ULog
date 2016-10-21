@@ -122,6 +122,13 @@ namespace ULog
         this->impl->_enabled = value;
     }
     
+    void Logger::Clear( void )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        this->impl->_messages.clear();
+    }
+    
     void Logger::Log( const Message & msg )
     {
         std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
