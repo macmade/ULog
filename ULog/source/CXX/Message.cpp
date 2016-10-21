@@ -218,16 +218,14 @@ namespace ULog
     {
         std::string description;
         
-        description = "[ "
-                    + this->GetTimeString()
-                    +
-                    " ]> [ "
+        description = this->GetTimeString()
+                    + " [ "
                     + this->GetSourceString()
-                    + " ]> [ "
+                    + " - "
                     + this->GetLevelString()
-                    + " ]> "
+                    + " ]: "
                     + this->GetMessage();
-                    
+        
         return description;
     }
     
