@@ -43,14 +43,7 @@
 
 @interface ULogLogWindowController: NSWindowController
 
-@property( atomic, readonly          ) ULogLogger      * logger;
-@property( atomic, readwrite, strong ) NSColor         * backgroundColor;
-@property( atomic, readwrite, strong ) NSColor         * textColor;
-@property( atomic, readwrite, strong ) NSColor         * timeColor;
-@property( atomic, readwrite, strong ) NSColor         * sourceColor;
-@property( atomic, readwrite, strong ) NSColor         * levelColor;
-@property( atomic, readwrite, strong ) NSColor         * messageColor;
-@property( atomic, readwrite, strong ) NSFont          * font;
+@property( atomic, readonly ) ULogLogger * logger;
 
 + ( instancetype )sharedInstance;
 - ( instancetype )initWithLogger: ( ULogLogger * )logger;

@@ -91,7 +91,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowC" id="xAE-E8-bpQ"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showC" id="1ml-7A-ZP6"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="iL8-XE-lyQ">
@@ -101,7 +101,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowCXX" id="Ewi-wz-uBD"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showCXX" id="ACQ-Yc-Qyl"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="HLa-hc-2jg">
@@ -111,7 +111,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowOBJC" id="qw0-ei-phE"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showOBJC" id="ARA-na-2WP"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Gcu-wM-Tfr">
@@ -121,7 +121,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowOBJCXX" id="wys-Vq-g3A"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showOBJCXX" id="yUH-W3-u6o"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="WRZ-nt-Val">
@@ -131,7 +131,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowASL" id="TOl-DW-bpH"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showASL" id="Vkc-ZC-08K"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="OCL-Bm-Vwm">
@@ -141,7 +141,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowEmergency" id="GUi-eR-6ad"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showEmergency" id="51T-ts-grD"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Sl0-YG-4oQ">
@@ -151,7 +151,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowAlert" id="ehS-Rh-Jn6"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showAlert" id="h3G-mD-Ovf"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="9PN-6C-SZh">
@@ -161,7 +161,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowCritical" id="7C1-yO-iWt"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showCritical" id="apd-48-l7D"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="6ed-bB-KN5">
@@ -171,7 +171,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowError" id="IUY-lH-S8C"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showError" id="iCo-oF-MVl"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Glc-So-Vrj">
@@ -181,7 +181,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowWarning" id="WcU-zA-C9w"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showWarning" id="nW4-4M-zMq"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="5yP-yD-Dcg">
@@ -191,7 +191,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowNotice" id="FGp-h1-TDa"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showNotice" id="r52-11-zJU"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="IWB-Xu-xC6">
@@ -201,7 +201,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowInfo" id="IEZ-ts-CkP"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showInfo" id="hn8-zi-kRV"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Ruc-K9-jRe">
@@ -211,7 +211,7 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="filterShowDebug" id="JXf-sV-iPW"/>
+                            <binding destination="XIX-oV-ytN" name="value" keyPath="showDebug" id="cq1-dL-wI1"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tmS-nC-gvx">
@@ -271,5 +271,7 @@
             <contentBorderThickness minY="55"/>
             <point key="canvasLocation" x="-257" y="-26"/>
         </window>
+        <customObject id="XIX-oV-ytN" customClass="ULogSettings"/>
+        <userDefaultsController representsSharedInstance="YES" id="ndo-3x-2nc"/>
     </objects>
 </document>
