@@ -37,7 +37,7 @@ extern "C" {
 void CXXLog( int * i );
     
 #ifdef __cplusplus
-    }
+}
 #endif
 
 #endif /* CXX_LOG_H */
