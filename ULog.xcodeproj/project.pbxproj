@@ -22,6 +22,10 @@
 		05362AF11DB7F51800AAA8E9 /* Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362AEF1DB7F51800AAA8E9 /* Message.cpp */; };
 		05362B031DB7FAC200AAA8E9 /* SpinLock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362B021DB7FAC200AAA8E9 /* SpinLock.cpp */; };
 		05362B051DB7FB8300AAA8E9 /* Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362B041DB7FB8300AAA8E9 /* Atomic.cpp */; };
+		05406D821DB9746E0046302A /* CLog.c in Sources */ = {isa = PBXBuildFile; fileRef = 05406D801DB9746E0046302A /* CLog.c */; };
+		05406D851DB9747B0046302A /* CXXLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05406D831DB9747B0046302A /* CXXLog.cpp */; };
+		05406D881DB974890046302A /* OBJCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406D871DB974890046302A /* OBJCLog.m */; };
+		05406D8B1DB974930046302A /* OBJCXXLog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05406D8A1DB974930046302A /* OBJCXXLog.mm */; };
 		055FD5721DB81AC300AE1BF4 /* C in Resources */ = {isa = PBXBuildFile; fileRef = 055FD5711DB81AC300AE1BF4 /* C */; };
 		0597E3321DB7E55200E845E9 /* ULog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0597E3301DB7E55200E845E9 /* ULog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0597E35A1DB7E71900E845E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3591DB7E71900E845E9 /* main.m */; };
@@ -69,6 +73,14 @@
 		05362AEF1DB7F51800AAA8E9 /* Message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Message.cpp; sourceTree = "<group>"; };
 		05362B021DB7FAC200AAA8E9 /* SpinLock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpinLock.cpp; sourceTree = "<group>"; };
 		05362B041DB7FB8300AAA8E9 /* Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Atomic.cpp; sourceTree = "<group>"; };
+		05406D801DB9746E0046302A /* CLog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CLog.c; sourceTree = "<group>"; };
+		05406D811DB9746E0046302A /* CLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLog.h; sourceTree = "<group>"; };
+		05406D831DB9747B0046302A /* CXXLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CXXLog.cpp; sourceTree = "<group>"; };
+		05406D841DB9747B0046302A /* CXXLog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CXXLog.hpp; sourceTree = "<group>"; };
+		05406D861DB974890046302A /* OBJCLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJCLog.h; sourceTree = "<group>"; };
+		05406D871DB974890046302A /* OBJCLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJCLog.m; sourceTree = "<group>"; };
+		05406D891DB974930046302A /* OBJCXXLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJCXXLog.h; sourceTree = "<group>"; };
+		05406D8A1DB974930046302A /* OBJCXXLog.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OBJCXXLog.mm; sourceTree = "<group>"; };
 		055FD5711DB81AC300AE1BF4 /* C */ = {isa = PBXFileReference; lastKnownFileType = folder; path = C; sourceTree = "<group>"; };
 		0597E3301DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3311DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
@@ -196,6 +208,21 @@
 			path = CXX;
 			sourceTree = "<group>";
 		};
+		05406D7F1DB9745D0046302A /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				05406D801DB9746E0046302A /* CLog.c */,
+				05406D811DB9746E0046302A /* CLog.h */,
+				05406D831DB9747B0046302A /* CXXLog.cpp */,
+				05406D841DB9747B0046302A /* CXXLog.hpp */,
+				05406D861DB974890046302A /* OBJCLog.h */,
+				05406D871DB974890046302A /* OBJCLog.m */,
+				05406D891DB974930046302A /* OBJCXXLog.h */,
+				05406D8A1DB974930046302A /* OBJCXXLog.mm */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		0597E32F1DB7E55200E845E9 /* ULog */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				0597E3641DB7EC2300E845E9 /* Classes */,
+				05406D7F1DB9745D0046302A /* Functions */,
 				0597E3681DB7ECCF00E845E9 /* Interface */,
 				0597E3581DB7E71900E845E9 /* Supporting Files */,
 			);
@@ -394,7 +422,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05406D881DB974890046302A /* OBJCLog.m in Sources */,
+				05406D821DB9746E0046302A /* CLog.c in Sources */,
+				05406D851DB9747B0046302A /* CXXLog.cpp in Sources */,
 				0597E3711DB7EDB800E845E9 /* MainWindowController.m in Sources */,
+				05406D8B1DB974930046302A /* OBJCXXLog.mm in Sources */,
 				0597E3671DB7EC2300E845E9 /* ApplicationDelegate.m in Sources */,
 				0597E35A1DB7E71900E845E9 /* main.m in Sources */,
 			);

@@ -23,68 +23,33 @@
  ******************************************************************************/
 
 /*!
- * @file        MainWindowController.m
+ * @file        OBJCLog.m
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#import <ULog/ULog.h>
-#import "MainWindowController.h"
-#import "CLog.h"
-#import "CXXLog.hpp"
+#include <ULog/ULog.h>
 #import "OBJCLog.h"
-#import "OBJCXXLog.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface MainWindowController()
-
-- ( void )test;
-
-@end
-
-NS_ASSUME_NONNULL_END
-
-@implementation MainWindowController
-
-- ( instancetype )init
+void OBJCLog( int * i )
 {
-    return [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ];
-}
-
-- ( instancetype )initWithWindowNibName: ( NSString * )name
-{
-    if( ( self = [ super initWithWindowNibName: name ] ) )
+    int x;
+    
+    if( i == NULL )
     {
-        [ NSThread detachNewThreadSelector: @selector( test ) toTarget: self withObject: nil ];
+        return;
     }
     
-    return self;
-}
-
-- ( void )test
-{
-    int i;
+    x = *( i );
     
-    i = 0;
+    ULog(           @"Log from Objective-C file: %i", x++ );
+    ULogEmergency(  @"Emergency from Objective-C file: %i", x++ );
+    ULogAlert(      @"Alert from Objective-C file: %i", x++ );
+    ULogCritical(   @"Critical from Objective-C file: %i", x++ );
+    ULogError(      @"Error from Objective-C file: %i", x++ );
+    ULogWarning(    @"Warning from Objective-C file: %i", x++ );
+    ULogNotice(     @"Notice from Objective-C file: %i", x++ );
+    ULogInfo(       @"Info from Objective-C file: %i", x++ );
+    ULogDebug(      @"Debug from Objective-C file: %i", x++ );
     
-    while( 1 )
-    {
-        CLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        CXXLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        OBJCLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        OBJCXXLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-    }
+    *( i ) = x;
 }
-
-@end

@@ -23,68 +23,21 @@
  ******************************************************************************/
 
 /*!
- * @file        MainWindowController.m
+ * @header      CXXLog.hpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#import <ULog/ULog.h>
-#import "MainWindowController.h"
-#import "CLog.h"
-#import "CXXLog.hpp"
-#import "OBJCLog.h"
-#import "OBJCXXLog.h"
+#ifndef CXX_LOG_H
+#define CXX_LOG_H
 
-NS_ASSUME_NONNULL_BEGIN
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-@interface MainWindowController()
-
-- ( void )test;
-
-@end
-
-NS_ASSUME_NONNULL_END
-
-@implementation MainWindowController
-
-- ( instancetype )init
-{
-    return [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ];
-}
-
-- ( instancetype )initWithWindowNibName: ( NSString * )name
-{
-    if( ( self = [ super initWithWindowNibName: name ] ) )
-    {
-        [ NSThread detachNewThreadSelector: @selector( test ) toTarget: self withObject: nil ];
+void CXXLog( int * i );
+    
+#ifdef __cplusplus
     }
-    
-    return self;
-}
+#endif
 
-- ( void )test
-{
-    int i;
-    
-    i = 0;
-    
-    while( 1 )
-    {
-        CLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        CXXLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        OBJCLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        OBJCXXLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-    }
-}
-
-@end
+#endif /* CXX_LOG_H */

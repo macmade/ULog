@@ -23,68 +23,34 @@
  ******************************************************************************/
 
 /*!
- * @file        MainWindowController.m
+ * @file        CLog.c
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#import <ULog/ULog.h>
-#import "MainWindowController.h"
-#import "CLog.h"
-#import "CXXLog.hpp"
-#import "OBJCLog.h"
-#import "OBJCXXLog.h"
+#include <ULog/ULog.h>
+#include <stdlib.h>
+#include "CLog.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface MainWindowController()
-
-- ( void )test;
-
-@end
-
-NS_ASSUME_NONNULL_END
-
-@implementation MainWindowController
-
-- ( instancetype )init
+void CLog( int * i )
 {
-    return [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ];
-}
-
-- ( instancetype )initWithWindowNibName: ( NSString * )name
-{
-    if( ( self = [ super initWithWindowNibName: name ] ) )
+    int x;
+    
+    if( i == NULL )
     {
-        [ NSThread detachNewThreadSelector: @selector( test ) toTarget: self withObject: nil ];
+        return;
     }
     
-    return self;
-}
-
-- ( void )test
-{
-    int i;
+    x = *( i );
     
-    i = 0;
+    ULog(           "Log from C file: %i", x++ );
+    ULogEmergency(  "Emergency from C file: %i", x++ );
+    ULogAlert(      "Alert from C file: %i", x++ );
+    ULogCritical(   "Critical from C file: %i", x++ );
+    ULogError(      "Error from C file: %i", x++ );
+    ULogWarning(    "Warning from C file: %i", x++ );
+    ULogNotice(     "Notice from C file: %i", x++ );
+    ULogInfo(       "Info from C file: %i", x++ );
+    ULogDebug(      "Debug from C file: %i", x++ );
     
-    while( 1 )
-    {
-        CLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        CXXLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        OBJCLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        OBJCXXLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-    }
+    *( i ) = x;
 }
-
-@end
