@@ -372,7 +372,7 @@ namespace ULog
         
         #endif
         
-        snprintf( tbuf, sizeof( tbuf ), "%s.%llu", dbuf, msec );
+        snprintf( tbuf, sizeof( tbuf ), "%s.%llu", dbuf, static_cast< unsigned long long >( msec ) );
         
         return std::string( tbuf );
     }
