@@ -45,36 +45,38 @@ static void init( void )
 
 @interface ULogLogWindowController()
 
-@property( atomic, readwrite, strong ) ULogLogger         * logger;
-@property( atomic, readwrite, strong ) NSAttributedString * log;
-@property( atomic, readwrite, strong ) NSAttributedString * lf;
-@property( atomic, readwrite, strong ) NSDictionary       * textAttributes;
-@property( atomic, readwrite, strong ) NSDictionary       * timeAttributes;
-@property( atomic, readwrite, strong ) NSDictionary       * sourceAttributes;
-@property( atomic, readwrite, strong ) NSDictionary       * levelAttributes;
-@property( atomic, readwrite, strong ) NSDictionary       * messageAttributes;
-@property( atomic, readwrite, strong ) NSString           * searchText;
-@property( atomic, readwrite, strong ) NSString           * pauseButtonTitle;
-@property( atomic, readwrite, assign ) BOOL                 shown;
-@property( atomic, readwrite, assign ) BOOL                 paused;
-@property( atomic, readwrite, assign ) BOOL                 filterShowC;
-@property( atomic, readwrite, assign ) BOOL                 filterShowCXX;
-@property( atomic, readwrite, assign ) BOOL                 filterShowOBJC;
-@property( atomic, readwrite, assign ) BOOL                 filterShowOBJCXX;
-@property( atomic, readwrite, assign ) BOOL                 filterShowASL;
-@property( atomic, readwrite, assign ) BOOL                 filterShowEmergency;
-@property( atomic, readwrite, assign ) BOOL                 filterShowAlert;
-@property( atomic, readwrite, assign ) BOOL                 filterShowCritical;
-@property( atomic, readwrite, assign ) BOOL                 filterShowError;
-@property( atomic, readwrite, assign ) BOOL                 filterShowWarning;
-@property( atomic, readwrite, assign ) BOOL                 filterShowNotice;
-@property( atomic, readwrite, assign ) BOOL                 filterShowInfo;
-@property( atomic, readwrite, assign ) BOOL                 filterShowDebug;
+@property( atomic, readwrite, strong ) ULogLogger                   * logger;
+@property( atomic, readwrite, strong ) ULogSettingsWindowController * settingsWindowController;
+@property( atomic, readwrite, strong ) NSAttributedString           * log;
+@property( atomic, readwrite, strong ) NSAttributedString           * lf;
+@property( atomic, readwrite, strong ) NSDictionary                 * textAttributes;
+@property( atomic, readwrite, strong ) NSDictionary                 * timeAttributes;
+@property( atomic, readwrite, strong ) NSDictionary                 * sourceAttributes;
+@property( atomic, readwrite, strong ) NSDictionary                 * levelAttributes;
+@property( atomic, readwrite, strong ) NSDictionary                 * messageAttributes;
+@property( atomic, readwrite, strong ) NSString                     * searchText;
+@property( atomic, readwrite, strong ) NSString                     * pauseButtonTitle;
+@property( atomic, readwrite, assign ) BOOL                           shown;
+@property( atomic, readwrite, assign ) BOOL                           paused;
+@property( atomic, readwrite, assign ) BOOL                           filterShowC;
+@property( atomic, readwrite, assign ) BOOL                           filterShowCXX;
+@property( atomic, readwrite, assign ) BOOL                           filterShowOBJC;
+@property( atomic, readwrite, assign ) BOOL                           filterShowOBJCXX;
+@property( atomic, readwrite, assign ) BOOL                           filterShowASL;
+@property( atomic, readwrite, assign ) BOOL                           filterShowEmergency;
+@property( atomic, readwrite, assign ) BOOL                           filterShowAlert;
+@property( atomic, readwrite, assign ) BOOL                           filterShowCritical;
+@property( atomic, readwrite, assign ) BOOL                           filterShowError;
+@property( atomic, readwrite, assign ) BOOL                           filterShowWarning;
+@property( atomic, readwrite, assign ) BOOL                           filterShowNotice;
+@property( atomic, readwrite, assign ) BOOL                           filterShowInfo;
+@property( atomic, readwrite, assign ) BOOL                           filterShowDebug;
 
 @property( atomic, readwrite, strong ) IBOutlet NSTextView * textView;
 
 - ( IBAction )clear: ( id )sender;
 - ( IBAction )togglePause: ( id )sender;
+- ( IBAction )showSettings: ( id )sender;
 - ( void )refresh;
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message;
 
@@ -358,6 +360,21 @@ static void init( void )
             self.paused           = YES;
             self.pauseButtonTitle = @"Resume";
         }
+    }
+}
+
+- ( IBAction )showSettings: ( id )sender
+{
+    @synchronized( self )
+    {
+        if( self.settingsWindowController == nil )
+        {
+            self.settingsWindowController = [ ULogSettingsWindowController new ];
+            
+            [ self.settingsWindowController.window center ];
+        }
+        
+        [ self.settingsWindowController.window makeKeyAndOrderFront: sender ];
     }
 }
 

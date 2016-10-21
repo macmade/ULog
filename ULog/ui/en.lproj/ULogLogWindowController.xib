@@ -14,7 +14,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="oSb-2r-Rbs">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1000" height="400"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
@@ -80,6 +80,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="showSettings:" target="-2" id="kXP-Si-NDF"/>
+                        </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="5OM-ri-Neb">
                         <rect key="frame" x="17" y="5" width="30" height="18"/>
@@ -268,6 +271,5 @@
             <contentBorderThickness minY="55"/>
             <point key="canvasLocation" x="-257" y="-26"/>
         </window>
-        <userDefaultsController representsSharedInstance="YES" id="M8K-4z-p83"/>
     </objects>
 </document>

@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2016 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2016 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,35 +23,25 @@
  ******************************************************************************/
 
 /*!
- * @header      ULog.h
+ * @file        SettingsWindowController.m
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_H
-#define ULOG_H
+#import <ULog/ULog.h>
 
-#include <ULog/Macros.h>
+#if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
 
-/* C++ API */
-#ifdef __cplusplus
-#include <ULog/CXX/Log.hpp>
-#include <ULog/CXX/Message.hpp>
-#include <ULog/CXX/Logger.hpp>
+@interface ULogSettingsWindowController()
+
+@end
+
+@implementation ULogSettingsWindowController
+
+- ( instancetype )init
+{
+    return [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ];
+}
+
+@end
+
 #endif
-
-/* Objective-C API */
-#ifdef __OBJC__
-#import <ULog/OBJC/Message.h>
-#import <ULog/OBJC/Logger.h>
-#import <ULog/OBJC/LogWindowController.h>
-#import <ULog/OBJC/Settings.h>
-#import <ULog/OBJC/SettingsWindowController.h>
-#endif
-
-/* C API */
-#if !defined( __cplusplus ) && !defined( __OBJC__ )
-#include <ULog/Base.h>
-#include <ULog/C/Log.h>
-#endif
-
-#endif /* ULOG_H */
