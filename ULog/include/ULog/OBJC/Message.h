@@ -67,6 +67,7 @@ ULogMessageLevel;
 @property( atomic, readonly ) ULogMessageLevel  level;
 @property( atomic, readonly ) NSString        * sourceString;
 @property( atomic, readonly ) NSString        * levelString;
+@property( atomic, readonly ) NSString        * timeString;
 @property( atomic, readonly ) NSString        * message;
 @property( atomic, readonly ) uint64_t          time;
 @property( atomic, readonly ) uint64_t          milliseconds;

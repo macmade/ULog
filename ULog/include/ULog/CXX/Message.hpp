@@ -83,12 +83,13 @@ namespace ULog
             
             Source      GetSource( void )       const;
             Level       GetLevel( void )        const;
-            std::string GetSourceString( void ) const;
-            std::string GetLevelString( void )  const;
-            std::string GetMessage( void )      const;
-            std::string GetDescription( void )  const;
             uint64_t    GetTime( void )         const;
             uint64_t    GetMilliseconds( void ) const;
+            std::string GetSourceString( void ) const;
+            std::string GetLevelString( void )  const;
+            std::string GetTimeString( void )   const;
+            std::string GetMessage( void )      const;
+            std::string GetDescription( void )  const;
             
         private:
             
