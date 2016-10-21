@@ -49,6 +49,10 @@ static void init( void )
 @property( atomic, readwrite, strong ) NSAttributedString * log;
 @property( atomic, readwrite, strong ) NSAttributedString * lf;
 @property( atomic, readwrite, strong ) NSDictionary       * textAttributes;
+@property( atomic, readwrite, strong ) NSDictionary       * dateAttributes;
+@property( atomic, readwrite, strong ) NSDictionary       * sourceAttributes;
+@property( atomic, readwrite, strong ) NSDictionary       * levelAttributes;
+@property( atomic, readwrite, strong ) NSDictionary       * messageAttributes;
 @property( atomic, readwrite, strong ) NSString           * searchText;
 @property( atomic, readwrite, assign ) BOOL                 shown;
 @property( atomic, readwrite, assign ) BOOL                 filterShowC;
@@ -110,10 +114,18 @@ static void init( void )
     if( ( self = [ super initWithWindowNibName: name ] ) )
     {
         self.backgroundColor    = HEXCOLOR( 0x161A1D, 1 );
-        self.textColor          = HEXCOLOR( 0xBFBFBF, 1 );
+        self.textColor          = HEXCOLOR( 0x6C6C6C, 1 );
+        self.dateColor          = HEXCOLOR( 0x5A773C, 1 );
+        self.sourceColor        = HEXCOLOR( 0x5EA09F, 1 );
+        self.levelColor         = HEXCOLOR( 0x996633, 1 );
+        self.messageColor       = HEXCOLOR( 0xBFBFBF, 1 );
         self.log                = [ NSMutableAttributedString new ];
         self.lf                 = [ [ NSAttributedString alloc ] initWithString: @"\n" attributes: nil ];
         self.font               = [ NSFont fontWithName: @"Consolas" size: 11 ];
+        self.dateFormatter      = [ NSDateFormatter new ];
+        
+        [ self.dateFormatter setDateStyle: NSDateFormatterShortStyle ];
+        [ self.dateFormatter setTimeStyle: NSDateFormatterMediumStyle ];
         
         [ self addObserver: self forKeyPath: @"filterShowC"      options: NSKeyValueObservingOptionNew context: nil ];
         [ self addObserver: self forKeyPath: @"filterShowCXX"    options: NSKeyValueObservingOptionNew context: nil ];
@@ -184,7 +196,11 @@ static void init( void )
 
 - ( void )windowDidLoad
 {
-    self.textAttributes                 = @{ NSForegroundColorAttributeName : self.textColor, NSFontAttributeName : self.font };
+    self.textAttributes                 = @{ NSForegroundColorAttributeName : self.textColor,    NSFontAttributeName : self.font };
+    self.dateAttributes                 = @{ NSForegroundColorAttributeName : self.dateColor,    NSFontAttributeName : self.font };
+    self.sourceAttributes               = @{ NSForegroundColorAttributeName : self.sourceColor,  NSFontAttributeName : self.font };
+    self.levelAttributes                = @{ NSForegroundColorAttributeName : self.levelColor,   NSFontAttributeName : self.font };
+    self.messageAttributes              = @{ NSForegroundColorAttributeName : self.messageColor, NSFontAttributeName : self.font };
     self.window.alphaValue              = 0.95;
     self.textView.drawsBackground       = YES;
     self.textView.backgroundColor       = self.backgroundColor;
@@ -286,18 +302,27 @@ static void init( void )
 
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message
 {
+    NSMutableAttributedString * str;
+    NSAttributedString        * text;
     NSAttributedString        * source;
     NSAttributedString        * level;
-    NSAttributedString        * text;
-    NSMutableAttributedString * str;
+    NSAttributedString        * date;
     
-    source = [ [ NSAttributedString alloc ] initWithString: message.sourceString attributes: self.textAttributes ];
-    level  = [ [ NSAttributedString alloc ] initWithString: message.levelString  attributes: self.textAttributes ];
-    text   = [ [ NSAttributedString alloc ] initWithString: message.message      attributes: self.textAttributes ];
     str    = [ NSMutableAttributedString new ];
+    date   = [ [ NSAttributedString alloc ] initWithString: [ self.dateFormatter stringFromDate: message.date ] attributes: self.dateAttributes ];
+    text   = [ [ NSAttributedString alloc ] initWithString: message.message attributes: self.messageAttributes ];
+    source = [ [ NSAttributedString alloc ] initWithString: message.sourceString attributes: self.sourceAttributes ];
+    level  = [ [ NSAttributedString alloc ] initWithString: message.levelString attributes: self.levelAttributes ];
     
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"[ " attributes: self.textAttributes ] ];
+    [ str appendAttributedString: date ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @" ]> " attributes: self.textAttributes ] ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"[ " attributes: self.textAttributes ] ];
     [ str appendAttributedString: source ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @" ]> " attributes: self.textAttributes ] ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"[ " attributes: self.textAttributes ] ];
     [ str appendAttributedString: level ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @" ]> " attributes: self.textAttributes ] ];
     [ str appendAttributedString: text ];
     [ str appendAttributedString: self.lf ];
     

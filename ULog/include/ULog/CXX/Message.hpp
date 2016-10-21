@@ -34,6 +34,7 @@
 #include <string>
 #include <iostream>
 #include <cstdarg>
+#include <cstdint>
 
 namespace ULog
 {
@@ -86,6 +87,8 @@ namespace ULog
             std::string GetLevelString( void )  const;
             std::string GetMessage( void )      const;
             std::string GetDescription( void )  const;
+            uint64_t    GetTime( void )         const;
+            uint64_t    GetMilliseconds( void ) const;
             
         private:
             

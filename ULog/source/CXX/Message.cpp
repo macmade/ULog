@@ -47,6 +47,8 @@ namespace ULog
             Source      _source;
             Level       _level;
             std::string _message;
+            uint64_t    _time;
+            uint64_t    _milliseconds;
             
             std::string GetStringWithFormat( const char * fmt, va_list ap );
     };
@@ -201,6 +203,16 @@ namespace ULog
         return description;
     }
     
+    uint64_t Message::GetTime( void ) const
+    {
+        return this->impl->_time;
+    }
+    
+    uint64_t Message::GetMilliseconds( void ) const
+    {
+        return this->impl->_milliseconds;
+    }
+    
     Message::IMPL::IMPL( void ):
         _source( SourceCXX ),
         _level( LevelDebug ),
@@ -210,13 +222,17 @@ namespace ULog
     Message::IMPL::IMPL( Source source, Level level, const std::string & message ):
         _source( source ),
         _level( level ),
-        _message( message )
+        _message( message ),
+        _time( 0 ),
+        _milliseconds( 0 )
     {}
     
     Message::IMPL::IMPL( const IMPL & o ):
         _source( o._source ),
         _level( o._level ),
-        _message( o._message )
+        _message( o._message ),
+        _time( o._time ),
+        _milliseconds( o._milliseconds )
     {}
     
     Message::IMPL::~IMPL( void )

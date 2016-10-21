@@ -40,6 +40,9 @@
 @property( atomic, readwrite, strong ) NSString        * sourceString;
 @property( atomic, readwrite, strong ) NSString        * levelString;
 @property( atomic, readwrite, strong ) NSString        * message;
+@property( atomic, readwrite, assign ) uint64_t          time;
+@property( atomic, readwrite, assign ) uint64_t          milliseconds;
+@property( atomic, readwrite, strong ) NSDate          * date;
 
 @end
 
@@ -137,6 +140,9 @@
         self.message        = [ NSString stringWithUTF8String: message.GetMessage().c_str() ];
         self.sourceString   = [ NSString stringWithUTF8String: message.GetSourceString().c_str() ];
         self.levelString    = [ NSString stringWithUTF8String: message.GetLevelString().c_str() ];
+        self.time           = message.GetTime();
+        self.milliseconds   = message.GetMilliseconds();
+        self.date           = [ NSDate dateWithTimeIntervalSince1970: self.time ];
         
         switch( message.GetLevel() )
         {
