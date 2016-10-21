@@ -49,7 +49,13 @@ static void init( void )
 @property( atomic, readwrite, strong ) NSAttributedString * log;
 @property( atomic, readwrite, strong ) NSAttributedString * lf;
 @property( atomic, readwrite, strong ) NSDictionary       * textAttributes;
+@property( atomic, readwrite, strong ) NSString           * searchText;
 @property( atomic, readwrite, assign ) BOOL                 shown;
+@property( atomic, readwrite, assign ) BOOL                 filterShowC;
+@property( atomic, readwrite, assign ) BOOL                 filterShowCXX;
+@property( atomic, readwrite, assign ) BOOL                 filterShowOBJC;
+@property( atomic, readwrite, assign ) BOOL                 filterShowOBJCXX;
+@property( atomic, readwrite, assign ) BOOL                 filterShowASL;
 
 @property( atomic, readwrite, strong ) IBOutlet NSTextView * textView;
 
@@ -107,10 +113,73 @@ static void init( void )
         self.textColor          = HEXCOLOR( 0xBFBFBF, 1 );
         self.log                = [ NSMutableAttributedString new ];
         self.lf                 = [ [ NSAttributedString alloc ] initWithString: @"\n" attributes: nil ];
-        self.font               = [ NSFont fontWithName: @"Consolas" size: 10 ];
+        self.font               = [ NSFont fontWithName: @"Consolas" size: 11 ];
+        
+        [ self addObserver: self forKeyPath: @"filterShowC"      options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowCXX"    options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowOBJC"   options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowOBJCXX" options: NSKeyValueObservingOptionNew context: nil ];
+        [ self addObserver: self forKeyPath: @"filterShowASL"    options: NSKeyValueObservingOptionNew context: nil ];
     }
     
     return self;
+}
+
+- ( void )dealloc
+{
+    [ self removeObserver: self forKeyPath: @"filterShowC" ];
+    [ self removeObserver: self forKeyPath: @"filterShowCXX" ];
+    [ self removeObserver: self forKeyPath: @"filterShowOBJC" ];
+    [ self removeObserver: self forKeyPath: @"filterShowOBJCXX" ];
+    [ self removeObserver: self forKeyPath: @"filterShowASL" ];
+}
+
+- ( void )observeValueForKeyPath: ( NSString * )keyPath ofObject: ( id )object change: ( NSDictionary< NSKeyValueChangeKey, id > * )change context: ( void * )context
+{
+    if( object == self )
+    {
+        if( [ keyPath isEqualToString: @"filterShowC" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowC forKey: @"ULogFilterShowC" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowCXX" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowCXX forKey: @"ULogFilterShowCXX" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowOBJC" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowOBJC forKey: @"ULogFilterShowOBJC" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowOBJCXX" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowOBJCXX forKey: @"ULogFilterShowOBJCXX" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+        
+        if( [ keyPath isEqualToString: @"filterShowASL" ] )
+        {
+            [ [ NSUserDefaults standardUserDefaults ] setBool: self.filterShowASL forKey: @"ULogFilterShowASL" ];
+            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
+            
+            return;
+        }
+    }
+    
+    [ super observeValueForKeyPath: keyPath ofObject: object change: change context: context ];
 }
 
 - ( void )windowDidLoad
@@ -119,8 +188,25 @@ static void init( void )
     self.window.alphaValue              = 0.95;
     self.textView.drawsBackground       = YES;
     self.textView.backgroundColor       = self.backgroundColor;
-    self.textView.textContainerInset    = NSMakeSize( 5.0, 5.0 );
+    self.textView.textContainerInset    = NSMakeSize( 5.0, 10.0 );
     self.window.title                   = [ NSString stringWithFormat: @"%@ - Logs", [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ] ];
+    
+    if( [ [ NSUserDefaults standardUserDefaults ] objectForKey: @"ULogFilterShowC" ] == nil )
+    {
+        self.filterShowC      = YES;
+        self.filterShowCXX    = YES;
+        self.filterShowOBJC   = YES;
+        self.filterShowOBJCXX = YES;
+        self.filterShowASL    = YES;
+    }
+    else
+    {
+        self.filterShowC      = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowC" ];
+        self.filterShowCXX    = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowCXX" ];
+        self.filterShowOBJC   = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowOBJC" ];
+        self.filterShowOBJCXX = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowOBJCXX" ];
+        self.filterShowASL    = [ [ NSUserDefaults standardUserDefaults ] boolForKey: @"ULogFilterShowASL" ];
+    }
 }
 
 - ( void )refresh
@@ -128,10 +214,12 @@ static void init( void )
     NSArray< ULogMessage * >  * messages;
     ULogMessage               * message;
     NSMutableAttributedString * log;
+    NSPredicate               * predicate;
     
     while( 1 )
     {
         messages = self.logger.messages;
+        log      = [ NSMutableAttributedString new ];
         
         if( messages.count && self.shown == NO )
         {
@@ -147,21 +235,50 @@ static void init( void )
             );
         }
         
-        log = [ NSMutableAttributedString new ];
+        if( self.searchText.length )
+        {
+            predicate = [ NSPredicate predicateWithFormat: @"message contains[c] %@", self.searchText ];
+            messages  = [ messages filteredArrayUsingPredicate: predicate ];
+        }
         
         for( message in messages )
         {
-            [ log appendAttributedString: [ self stringForMessage: message ] ];
+            if( message.source == ULogMessageSourceC && self.filterShowC == NO )
+            {
+                continue;
+            }
             
-            dispatch_async
-            (
-                dispatch_get_main_queue(),
-                ^( void )
-                {
-                    self.log = log;
-                }
-            );
+            if( message.source == ULogMessageSourceCXX && self.filterShowCXX == NO )
+            {
+                continue;
+            }
+            
+            if( message.source == ULogMessageSourceOBJC && self.filterShowOBJC == NO )
+            {
+                continue;
+            }
+            
+            if( message.source == ULogMessageSourceOBJCXX && self.filterShowOBJCXX == NO )
+            {
+                continue;
+            }
+            
+            if( message.source == ULogMessageSourceASL && self.filterShowASL == NO )
+            {
+                continue;
+            }
+            
+            [ log appendAttributedString: [ self stringForMessage: message ] ];
         }
+        
+        dispatch_sync
+        (
+            dispatch_get_main_queue(),
+            ^( void )
+            {
+                self.log = log;
+            }
+        );
         
         [ NSThread sleepForTimeInterval: 0.5 ];
     }
