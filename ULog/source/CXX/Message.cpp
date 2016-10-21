@@ -216,7 +216,9 @@ namespace ULog
     Message::IMPL::IMPL( void ):
         _source( SourceCXX ),
         _level( LevelDebug ),
-        _message( "" )
+        _message( "" ),
+        _time( 0 ),
+        _milliseconds( 0 )
     {}
     
     Message::IMPL::IMPL( Source source, Level level, const std::string & message ):
