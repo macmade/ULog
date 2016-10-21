@@ -38,7 +38,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainWindowController()
 
+@property( atomic, readwrite, strong ) NSString * buttonTitle;
+@property( atomic, readwrite, assign ) BOOL       started;
+
 - ( void )test;
+- ( IBAction )startStop: ( id )sender;
 
 @end
 
@@ -55,33 +59,61 @@ NS_ASSUME_NONNULL_END
 {
     if( ( self = [ super initWithWindowNibName: name ] ) )
     {
+        self.buttonTitle = @"Start Logging...";
+        
         [ NSThread detachNewThreadSelector: @selector( test ) toTarget: self withObject: nil ];
     }
     
     return self;
 }
 
+- ( IBAction )startStop: ( id )sender
+{
+    ( void )sender;
+    
+    if( self.started )
+    {
+        self.started     = NO;
+        self.buttonTitle = @"Start Logging...";
+    }
+    else
+    {
+        self.started     = YES;
+        self.buttonTitle = @"Stop Logging...";
+    }
+}
+
 - ( void )test
 {
+    int x;
     int i;
     
     i = 0;
+    x = 1;
     
     while( 1 )
     {
-        CLog( &i );
+        if( self.started )
+        {
+            if( x % 4 == 0 )
+            {
+                OBJCXXLog( &i );
+            }
+            else if( x % 3 == 0 )
+            {
+                OBJCLog( &i );
+            }
+            else if( x % 2 == 0 )
+            {
+                CXXLog( &i );
+            }
+            else
+            {
+                CLog( &i );
+            }
+        }
         
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        CXXLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        OBJCLog( &i );
-        
-        [ NSThread sleepForTimeInterval: 1 ];
-        
-        OBJCXXLog( &i );
+        x++;
         
         [ NSThread sleepForTimeInterval: 1 ];
     }
