@@ -151,6 +151,17 @@
             
             break;
         }
+        
+        switch( message.GetSource() )
+        {
+            case ULog::Message::SourceC:        self.source = ULogMessageSourceC;      break;
+            case ULog::Message::SourceCXX:      self.source = ULogMessageSourceCXX;    break;
+            case ULog::Message::SourceOBJC:     self.source = ULogMessageSourceOBJC;   break;
+            case ULog::Message::SourceOBJCXX:   self.source = ULogMessageSourceOBJCXX; break;
+            case ULog::Message::SourceASL:      self.source = ULogMessageSourceASL;    break;
+            
+            break;
+        }
     }
 }
 

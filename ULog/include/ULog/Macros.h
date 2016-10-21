@@ -80,7 +80,7 @@
 
 #else
 
-#define ULog( _fmt_, ... )              ULog_Log( ULog_Message_LevelDebug, _fmt_, __VA_ARGS__ )
+#define ULog( _fmt_, ... )              ULog_LogWithLevel( ULog_Message_LevelDebug, _fmt_, __VA_ARGS__ )
 #define ULogEmergency( _fmt_, ... )     ULog_Emergency( _fmt_, __VA_ARGS__ )
 #define ULogAlert( _fmt_, ... )         ULog_Alert( _fmt_, __VA_ARGS__ )
 #define ULogCritical( _fmt_, ... )      ULog_Critical( _fmt_, __VA_ARGS__ )

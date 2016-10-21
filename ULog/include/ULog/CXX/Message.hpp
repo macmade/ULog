@@ -43,8 +43,8 @@ namespace ULog
             
             typedef enum
             {
-                SourceCXX       = 0,
-                SourceC         = 1,
+                SourceC         = 0,
+                SourceCXX       = 1,
                 SourceOBJC      = 2,
                 SourceOBJCXX    = 3,
                 SourceASL       = 4
