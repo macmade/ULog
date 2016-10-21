@@ -31,12 +31,6 @@
 
 #if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
 
-#define HEXCOLOR( c, a )    [ NSColor   colorWithDeviceRed: ( ( CGFloat )( ( c >> 16 ) & 0x0000FF ) ) / ( CGFloat )255  \
-                                        green:              ( ( CGFloat )( ( c >>  8 ) & 0x0000FF ) ) / ( CGFloat )255  \
-                                        blue:               ( ( CGFloat )( ( c       ) & 0x0000FF ) ) / ( CGFloat )255  \
-                                        alpha:              ( CGFloat )a                                                \
-                            ]
-
 NSString * const ULogSettingsKeyFontName        = @"FontName";
 NSString * const ULogSettingsKeyFontSize        = @"FontSize";
 NSString * const ULogSettingsKeyBackgroundColor = @"BackgroundColor";
@@ -135,7 +129,7 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     {
         color = [ self colorForKey: ULogSettingsKeyBackgroundColor ];
         
-        return ( color ) ? color : HEXCOLOR( 0x161A1D, 1 );
+        return ( color ) ? color : ULOG_HEXCOLOR( 0x161A1D, 1 );
     }
 }
 
@@ -147,7 +141,7 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     {
         color = [ self colorForKey: ULogSettingsKeyForegoundColor ];
         
-        return ( color ) ? color : HEXCOLOR( 0x6C6C6C, 1 );
+        return ( color ) ? color : ULOG_HEXCOLOR( 0x6C6C6C, 1 );
     }
 }
 
@@ -159,7 +153,7 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     {
         color = [ self colorForKey: ULogSettingsKeyTimeColor ];
         
-        return ( color ) ? color : HEXCOLOR( 0x5A773C, 1 );
+        return ( color ) ? color : ULOG_HEXCOLOR( 0x5A773C, 1 );
     }
 }
 
@@ -171,7 +165,7 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     {
         color = [ self colorForKey: ULogSettingsKeySourceColor ];
         
-        return ( color ) ? color : HEXCOLOR( 0x5EA09F, 1 );
+        return ( color ) ? color : ULOG_HEXCOLOR( 0x5EA09F, 1 );
     }
 }
 
@@ -183,7 +177,7 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     {
         color = [ self colorForKey: ULogSettingsKeyLevelColor ];
         
-        return ( color ) ? color : HEXCOLOR( 0x996633, 1 );
+        return ( color ) ? color : ULOG_HEXCOLOR( 0x996633, 1 );
     }
 }
 
@@ -195,7 +189,7 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     {
         color = [ self colorForKey: ULogSettingsKeyMessageColor ];
         
-        return ( color ) ? color : HEXCOLOR( 0xBFBFBF, 1 );
+        return ( color ) ? color : ULOG_HEXCOLOR( 0xBFBFBF, 1 );
     }
 }
 

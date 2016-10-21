@@ -68,24 +68,28 @@
                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbG-m0-D3x">
                                     <rect key="frame" x="105" y="17" width="274" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <popUpButtonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="7MF-4t-hB6" id="gi7-HB-8b8">
+                                    <popUpButtonCell key="cell" type="push" title="Choose..." bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="7MF-4t-hB6" id="gi7-HB-8b8">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
                                         <menu key="menu" id="vE9-Sq-Ryq">
                                             <items>
-                                                <menuItem title="Choose" state="on" id="7MF-4t-hB6"/>
+                                                <menuItem title="Choose..." state="on" id="7MF-4t-hB6"/>
                                                 <menuItem isSeparatorItem="YES" id="aEV-9t-Wpf"/>
-                                                <menuItem title="BareBones" id="PN8-rL-LL4"/>
-                                                <menuItem title="Dusk" id="mpT-p1-K1r"/>
-                                                <menuItem title="Sunset" id="pYZ-dM-kIi"/>
-                                                <menuItem title="Xcode" id="SMv-g7-hVa"/>
-                                                <menuItem title="XS - Dark" id="dDO-6C-DDX"/>
-                                                <menuItem title="XS - Light" id="0ul-KN-aEv">
+                                                <menuItem title="BareBones" tag="1" id="PN8-rL-LL4"/>
+                                                <menuItem title="Dusk" tag="2" id="mpT-p1-K1r"/>
+                                                <menuItem title="Sunset" tag="3" id="pYZ-dM-kIi"/>
+                                                <menuItem title="Xcode" tag="4" id="SMv-g7-hVa"/>
+                                                <menuItem title="XS - Dark" tag="5" id="dDO-6C-DDX"/>
+                                                <menuItem title="XS - Light" tag="6" id="0ul-KN-aEv">
                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                 </menuItem>
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
+                                    <connections>
+                                        <action selector="choosePreset:" target="-2" id="AHx-Pn-0dg"/>
+                                        <binding destination="-2" name="selectedTag" keyPath="selectedTheme" id="pFl-e6-w7S"/>
+                                    </connections>
                                 </popUpButton>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNr-60-Jb2">
                                     <rect key="frame" x="18" y="22" width="83" height="17"/>
@@ -103,17 +107,17 @@
                         <rect key="frame" x="20" y="61" width="394" height="135"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="ysy-xl-NxJ">
-                            <rect key="frame" x="1" y="23" width="392" height="111"/>
+                            <rect key="frame" x="1" y="0.0" width="392" height="134"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="vol-e0-PVG" viewBased="YES" id="0Gx-i8-h0R">
-                                    <rect key="frame" x="0.0" y="0.0" width="394" height="111"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="392" height="111"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="391" minWidth="40" maxWidth="1000" id="2wp-K9-axf">
+                                        <tableColumn width="389" minWidth="40" maxWidth="1000" id="2wp-K9-axf">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Colors">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -127,11 +131,11 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="f4r-xN-KFZ">
-                                                    <rect key="frame" x="1" y="1" width="391" height="17"/>
+                                                    <rect key="frame" x="1" y="1" width="389" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdt-F0-vWS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="391" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="389" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="pA8-kB-D8d">
                                                                 <font key="font" metaFont="system"/>
@@ -150,8 +154,8 @@
                                 </tableView>
                             </subviews>
                         </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="a4N-aR-ZX3">
-                            <rect key="frame" x="1" y="118" width="392" height="16"/>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="a4N-aR-ZX3">
+                            <rect key="frame" x="1" y="7" width="0.0" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="H8K-nM-hkV">
@@ -159,7 +163,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="vol-e0-PVG">
-                            <rect key="frame" x="0.0" y="0.0" width="394" height="23"/>
+                            <rect key="frame" x="0.0" y="0.0" width="392" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
@@ -170,6 +174,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="restoreDefaults:" target="-2" id="wtu-xy-vD0"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

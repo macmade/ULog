@@ -38,6 +38,12 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
+#define ULOG_HEXCOLOR( c, a )   [ NSColor   colorWithDeviceRed: ( ( CGFloat )( ( c >> 16 ) & 0x0000FF ) ) / ( CGFloat )255  \
+                                            green:              ( ( CGFloat )( ( c >>  8 ) & 0x0000FF ) ) / ( CGFloat )255  \
+                                            blue:               ( ( CGFloat )( ( c       ) & 0x0000FF ) ) / ( CGFloat )255  \
+                                            alpha:              ( CGFloat )a                                                \
+                                ]
+
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyFontName;
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyFontSize;
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyBackgroundColor;

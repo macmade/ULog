@@ -33,6 +33,11 @@
 
 @interface ULogSettingsWindowController()
 
+@property( atomic, readwrite, assign ) NSInteger selectedTheme;
+
+- ( IBAction )choosePreset: ( id )sender;
+- ( IBAction )restoreDefaults: ( id )sender;
+
 @end
 
 @implementation ULogSettingsWindowController
@@ -40,6 +45,117 @@
 - ( instancetype )init
 {
     return [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ];
+}
+
+- ( IBAction )choosePreset: ( id )sender
+{
+    NSColor * background;
+    NSColor * foreground;
+    NSColor * time;
+    NSColor * source;
+    NSColor * level;
+    NSColor * message;
+    
+    ( void )sender;
+    
+    switch( self.selectedTheme )
+    {
+        /* BareBones */
+        case 1:
+            
+            background  = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            foreground  = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            time        = ULOG_HEXCOLOR( 0x993300, 1 );
+            source      = ULOG_HEXCOLOR( 0x0000CC, 1 );
+            level       = ULOG_HEXCOLOR( 0xFF3399, 1 );
+            message     = ULOG_HEXCOLOR( 0x000000, 1 );
+            
+            break;
+        
+        /* Dusk */
+        case 2:
+            
+            background  = ULOG_HEXCOLOR( 0x1E2028, 1 );
+            foreground  = ULOG_HEXCOLOR( 0x55747C, 1 );
+            time        = ULOG_HEXCOLOR( 0x41B645, 1 );
+            source      = ULOG_HEXCOLOR( 0xC67C48, 1 );
+            level       = ULOG_HEXCOLOR( 0xDB2C38, 1 );
+            message     = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            
+            break;
+            
+        /* Sunset */
+        case 3:
+            
+            background  = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
+            foreground  = ULOG_HEXCOLOR( 0x646485, 1 );
+            time        = ULOG_HEXCOLOR( 0x4349AC, 1 );
+            source      = ULOG_HEXCOLOR( 0x476A97, 1 );
+            level       = ULOG_HEXCOLOR( 0xDF0700, 1 );
+            message     = ULOG_HEXCOLOR( 0xC3741C, 1 );
+            
+            break;
+            
+        /* Xcode */
+        case 4:
+            
+            background  = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            foreground  = ULOG_HEXCOLOR( 0x203C3F, 1 );
+            time        = ULOG_HEXCOLOR( 0x1D8519, 1 );
+            source      = ULOG_HEXCOLOR( 0x000BFF, 1 );
+            level       = ULOG_HEXCOLOR( 0xBA0011, 1 );
+            message     = ULOG_HEXCOLOR( 0x000000, 1 );
+            
+            break;
+            
+        /* XS - Dark */
+        case 5:
+            
+            background  = ULOG_HEXCOLOR( 0x161A1D, 1 );
+            foreground  = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
+            time        = ULOG_HEXCOLOR( 0x5A773C, 1 );
+            source      = ULOG_HEXCOLOR( 0x5EA09F, 1 );
+            level       = ULOG_HEXCOLOR( 0x996633, 1 );
+            message     = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            
+            break;
+            
+        /* XS - Light */
+        case 6:
+            
+            background  = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            foreground  = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            time        = ULOG_HEXCOLOR( 0x7F007F, 1 );
+            source      = ULOG_HEXCOLOR( 0x007FFF, 1 );
+            level       = ULOG_HEXCOLOR( 0xFF7F7F, 1 );
+            message     = ULOG_HEXCOLOR( 0x000000, 1 );
+            
+            break;
+            
+        default:
+            
+            self.selectedTheme = 0;
+            
+            return;
+    }
+    
+    [ ULogSettings sharedInstance ].backgroundColor = background;
+    [ ULogSettings sharedInstance ].foregoundColor  = foreground;
+    [ ULogSettings sharedInstance ].timeColor       = time;
+    [ ULogSettings sharedInstance ].sourceColor     = source;
+    [ ULogSettings sharedInstance ].levelColor      = level;
+    [ ULogSettings sharedInstance ].messageColor    = message;
+    
+    self.selectedTheme = 0;
+}
+
+- ( IBAction )restoreDefaults: ( id )sender
+{
+    ( void )sender;
+    
+    [ [ ULogSettings sharedInstance ] restoreDefaults ];
+    
+    self.selectedTheme = 0;
 }
 
 @end
