@@ -129,61 +129,61 @@
         {
             theme = [ self new ];
             
-            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0x1F2029, 1 );
+            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
             
-            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0x1F2029, 1 );
+            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
             
-            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0x1F2029, 1 );
+            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
             
-            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0x1F2029, 1 );
+            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
             
-            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0x1F2029, 1 );
+            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
             
-            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0x1F2029, 1 );
+            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
             
-            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0x1F2029, 1 );
+            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
             
-            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0x1F2029, 1 );
+            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
+            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0xE1E2E7, 1 );
         }
     );
     
@@ -202,61 +202,61 @@
         {
             theme = [ self new ];
             
-            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0x1E2028, 1 );
+            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0x1E2028, 1 );
+            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0x1E2028, 1 );
+            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0x1E2028, 1 );
+            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0x1E2028, 1 );
+            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0x1E2028, 1 );
+            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0x1E2028, 1 );
+            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0x1E2028, 1 );
+            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
         }
     );
     
@@ -275,61 +275,61 @@
         {
             theme = [ self new ];
             
-            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x333333, 1 );
+            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x333333, 1 );
+            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x333333, 1 );
+            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x333333, 1 );
+            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x333333, 1 );
+            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x333333, 1 );
+            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x333333, 1 );
+            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
             
-            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x333333, 1 );
+            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
         }
     );
     
@@ -348,61 +348,61 @@
         {
             theme = [ self new ];
             
-            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
+            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0xD1C5A4, 1 );
+            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
+            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0xD1C5A4, 1 );
+            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
+            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0xD1C5A4, 1 );
+            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
+            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0xD1C5A4, 1 );
+            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
+            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0xD1C5A4, 1 );
+            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
+            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0xD1C5A4, 1 );
+            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
+            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0xD1C5A4, 1 );
+            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
+            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0xD1C5A4, 1 );
+            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0x000000, 1 );
         }
     );
     
@@ -421,61 +421,61 @@
         {
             theme = [ self new ];
             
-            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0x000000, 1 );
             
-            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
-            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
+            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
+            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0x000000, 1 );
+            theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0x000000, 1 );
         }
     );
     
@@ -495,59 +495,59 @@
             theme = [ self new ];
             
             theme.emergencyColors.backgroundColor   = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0x996633, 1 );
+            theme.emergencyColors.foregroundColor   = ULOG_HEXCOLOR( 0x313131, 1 );
+            theme.emergencyColors.timeColor         = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.emergencyColors.sourceColor       = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.emergencyColors.levelColor        = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             theme.emergencyColors.messageColor      = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             
             theme.alertColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
+            theme.alertColors.foregroundColor       = ULOG_HEXCOLOR( 0x313131, 1 );
+            theme.alertColors.timeColor             = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.alertColors.sourceColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.alertColors.levelColor            = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             theme.alertColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             
             theme.criticalColors.backgroundColor    = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0x996633, 1 );
+            theme.criticalColors.foregroundColor    = ULOG_HEXCOLOR( 0x313131, 1 );
+            theme.criticalColors.timeColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.criticalColors.sourceColor        = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.criticalColors.levelColor         = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             theme.criticalColors.messageColor       = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             
             theme.errorColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
+            theme.errorColors.foregroundColor       = ULOG_HEXCOLOR( 0x313131, 1 );
+            theme.errorColors.timeColor             = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.errorColors.sourceColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.errorColors.levelColor            = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             theme.errorColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             
             theme.warningColors.backgroundColor     = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0x996633, 1 );
+            theme.warningColors.foregroundColor     = ULOG_HEXCOLOR( 0x313131, 1 );
+            theme.warningColors.timeColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.warningColors.sourceColor         = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.warningColors.levelColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             theme.warningColors.messageColor        = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             
             theme.noticeColors.backgroundColor      = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0x996633, 1 );
+            theme.noticeColors.foregroundColor      = ULOG_HEXCOLOR( 0x313131, 1 );
+            theme.noticeColors.timeColor            = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.noticeColors.sourceColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.noticeColors.levelColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             theme.noticeColors.messageColor         = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             
             theme.infoColors.backgroundColor        = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0x996633, 1 );
+            theme.infoColors.foregroundColor        = ULOG_HEXCOLOR( 0x313131, 1 );
+            theme.infoColors.timeColor              = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.infoColors.sourceColor            = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.infoColors.levelColor             = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             theme.infoColors.messageColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             
             theme.debugColors.backgroundColor       = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0x996633, 1 );
+            theme.debugColors.foregroundColor       = ULOG_HEXCOLOR( 0x313131, 1 );
+            theme.debugColors.timeColor             = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.debugColors.sourceColor           = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+            theme.debugColors.levelColor            = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
             theme.debugColors.messageColor          = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
         }
     );
