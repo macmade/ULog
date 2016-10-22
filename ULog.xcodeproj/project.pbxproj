@@ -18,6 +18,7 @@
 		051EE27F1DBABE5E000A1D08 /* SettingsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051EE27E1DBABE5E000A1D08 /* SettingsWindowController.m */; };
 		051EE2821DBABFA2000A1D08 /* ULogSettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 051EE2801DBABFA2000A1D08 /* ULogSettingsWindowController.xib */; };
 		051EE2841DBAC533000A1D08 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 051EE2831DBAC533000A1D08 /* Settings.m */; };
+		0532751D1DBB0697001B7FF4 /* MessageColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0532751C1DBB0697001B7FF4 /* MessageColors.m */; };
 		05348F011DB95C5B00371541 /* LogWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05348F001DB95C5B00371541 /* LogWindowController.m */; };
 		05362AD11DB7F03700AAA8E9 /* Base.h in Headers */ = {isa = PBXBuildFile; fileRef = 05362ACE1DB7F03700AAA8E9 /* Base.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05362AEA1DB7F4FF00AAA8E9 /* CXX in Resources */ = {isa = PBXBuildFile; fileRef = 05362AE91DB7F4FF00AAA8E9 /* CXX */; };
@@ -39,6 +40,7 @@
 		0597E3711DB7EDB800E845E9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3701DB7EDB800E845E9 /* MainWindowController.m */; };
 		0597E3741DB7EE2400E845E9 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0597E3721DB7EE2400E845E9 /* MainWindowController.xib */; };
 		0598A1891DB805E3004CC9B7 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598A1881DB805E3004CC9B7 /* Log.cpp */; };
+		05B9A66B1DBB0B410071E19A /* ColorTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B9A66A1DBB0B410071E19A /* ColorTheme.m */; };
 		05E8D4351DB967A000C6EB6A /* ULogLogWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E8D4331DB967A000C6EB6A /* ULogLogWindowController.xib */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,7 @@
 		051EE27E1DBABE5E000A1D08 /* SettingsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWindowController.m; sourceTree = "<group>"; };
 		051EE2811DBABFA2000A1D08 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ULogSettingsWindowController.xib; sourceTree = "<group>"; };
 		051EE2831DBAC533000A1D08 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		0532751C1DBB0697001B7FF4 /* MessageColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageColors.m; sourceTree = "<group>"; };
 		053291B81DA64C4B00E46312 /* ULog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ULog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		053291BC1DA64C4C00E46312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		053292971DA6B50D00E46312 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 		0597E3701DB7EDB800E845E9 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		0597E3731DB7EE2400E845E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindowController.xib; sourceTree = "<group>"; };
 		0598A1881DB805E3004CC9B7 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
+		05B9A66A1DBB0B410071E19A /* ColorTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorTheme.m; sourceTree = "<group>"; };
 		05E8D4341DB967A000C6EB6A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ULogLogWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,9 +137,11 @@
 		05180D1D1DB82195000723D7 /* OBJC */ = {
 			isa = PBXGroup;
 			children = (
+				05B9A66A1DBB0B410071E19A /* ColorTheme.m */,
 				05180D2E1DB82246000723D7 /* Logger.mm */,
 				05348F001DB95C5B00371541 /* LogWindowController.m */,
 				05180D2F1DB82246000723D7 /* Message.mm */,
+				0532751C1DBB0697001B7FF4 /* MessageColors.m */,
 				051EE2831DBAC533000A1D08 /* Settings.m */,
 				051EE27E1DBABE5E000A1D08 /* SettingsWindowController.m */,
 			);
@@ -420,7 +426,9 @@
 				05180D1A1DB81CA3000723D7 /* Log.cpp in Sources */,
 				05362B051DB7FB8300AAA8E9 /* Atomic.cpp in Sources */,
 				051EE2841DBAC533000A1D08 /* Settings.m in Sources */,
+				0532751D1DBB0697001B7FF4 /* MessageColors.m in Sources */,
 				05180D301DB82246000723D7 /* Logger.mm in Sources */,
+				05B9A66B1DBB0B410071E19A /* ColorTheme.m in Sources */,
 				0598A1891DB805E3004CC9B7 /* Log.cpp in Sources */,
 				05362AF01DB7F51800AAA8E9 /* Logger.cpp in Sources */,
 				05362AF11DB7F51800AAA8E9 /* Message.cpp in Sources */,

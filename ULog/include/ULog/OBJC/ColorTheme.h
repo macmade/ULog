@@ -23,37 +23,46 @@
  ******************************************************************************/
 
 /*!
- * @header      ULog.h
+ * @header      ColorTheme.h
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef ULOG_H
-#define ULOG_H
+#ifndef ULOG_OBJC_COLOR_THEME_H
+#define ULOG_OBJC_COLOR_THEME_H
 
-#include <ULog/Macros.h>
+#if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
 
-/* C++ API */
-#ifdef __cplusplus
-#include <ULog/CXX/Log.hpp>
-#include <ULog/CXX/Message.hpp>
-#include <ULog/CXX/Logger.hpp>
+#if defined( __has_feature ) && __has_feature( objc_modules )
+@import Cocoa;
+#else
+#import <Cocoa/Cocoa.h>
 #endif
 
-/* Objective-C API */
-#ifdef __OBJC__
-#import <ULog/OBJC/Message.h>
-#import <ULog/OBJC/Logger.h>
-#import <ULog/OBJC/ColorTheme.h>
-#import <ULog/OBJC/MessageColors.h>
-#import <ULog/OBJC/LogWindowController.h>
-#import <ULog/OBJC/Settings.h>
-#import <ULog/OBJC/SettingsWindowController.h>
-#endif
-
-/* C API */
-#if !defined( __cplusplus ) && !defined( __OBJC__ )
 #include <ULog/Base.h>
-#include <ULog/C/Log.h>
+#include <ULog/OBJC/MessageColors.h>
+
+@interface ULogColorTheme: NSObject < NSSecureCoding >
+
+@property( atomic, readwrite, strong ) ULogMessageColors * emergencyColors;
+@property( atomic, readwrite, strong ) ULogMessageColors * alertColors;
+@property( atomic, readwrite, strong ) ULogMessageColors * criticalColors;
+@property( atomic, readwrite, strong ) ULogMessageColors * errorColors;
+@property( atomic, readwrite, strong ) ULogMessageColors * warningColors;
+@property( atomic, readwrite, strong ) ULogMessageColors * noticeColors;
+@property( atomic, readwrite, strong ) ULogMessageColors * infoColors;
+@property( atomic, readwrite, strong ) ULogMessageColors * debugColors;
+
++ ( instancetype )defaultTheme;
++ ( instancetype )xcodeTheme;
++ ( instancetype )duskTheme;
++ ( instancetype )sunsetTheme;
++ ( instancetype )xsTheme;
++ ( instancetype )bareBonesTheme;
++ ( instancetype )civicTheme;
++ ( instancetype )midnightTheme;
+
+@end
+
 #endif
 
-#endif /* ULOG_H */
+#endif /* ULOG_OBJC_COLOR_THEME_H */

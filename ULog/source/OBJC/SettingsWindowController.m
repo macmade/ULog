@@ -102,7 +102,6 @@
 - ( IBAction )chooseFont: ( id )sender;
 - ( void )changeFont: ( id )sender;
 - ( void )update;
-- ( IBAction)updateColor: ( id )sender;
 - ( IBAction )choosePreset: ( id )sender;
 - ( IBAction )restoreDefaults: ( id )sender;
 
@@ -142,7 +141,6 @@
     panel   = [ manager fontPanel: YES ];
     
     [ manager setSelectedFont: font isMultiple: NO ];
-    [ manager setDelegate: self ];
     
     [ panel makeKeyAndOrderFront: sender ];
 }
@@ -181,14 +179,6 @@
         [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Level" color: [ ULogSettings sharedInstance ].levelColor changedSelector: @selector( setLevelColor: ) ],
         [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Message" color: [ ULogSettings sharedInstance ].messageColor changedSelector: @selector( setMessageColor: ) ]
     ];
-}
-
-- ( IBAction )updateColor: ( id )sender
-{
-    ( void )sender;
-    
-    NSLog( @"%@", sender );
-    NSLog( @"%@", sender );
 }
 
 - ( IBAction )choosePreset: ( id )sender
