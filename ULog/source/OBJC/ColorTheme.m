@@ -31,6 +31,8 @@
 
 #if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
 
+static const int64_t ULogColorThemeVersion = 1;
+
 #define ULOG_HEXCOLOR( c, a )   [ NSColor   colorWithDeviceRed: ( ( CGFloat )( ( c >> 16 ) & 0x0000FF ) ) / ( CGFloat )255  \
                                             green:              ( ( CGFloat )( ( c >>  8 ) & 0x0000FF ) ) / ( CGFloat )255  \
                                             blue:               ( ( CGFloat )( ( c       ) & 0x0000FF ) ) / ( CGFloat )255  \
@@ -67,16 +69,27 @@
 
 - ( instancetype )initWithCoder: ( NSCoder * )coder
 {
+    double version;
+    
     if( ( self = [ super init ] ) )
     {
-        self.emergencyColors = [ coder decodeObjectForKey: @"EmergencyColors" ];
-        self.alertColors     = [ coder decodeObjectForKey: @"AlertColors" ];
-        self.criticalColors  = [ coder decodeObjectForKey: @"CriticalColors" ];
-        self.errorColors     = [ coder decodeObjectForKey: @"ErrorColors" ];
-        self.warningColors   = [ coder decodeObjectForKey: @"WarningColors" ];
-        self.noticeColors    = [ coder decodeObjectForKey: @"NoticeColors" ];
-        self.infoColors      = [ coder decodeObjectForKey: @"InfoColors" ];
-        self.debugColors     = [ coder decodeObjectForKey: @"DebugColors" ];
+        version = [ coder decodeInt64ForKey: @"Version" ];
+        
+        if( version == ULogColorThemeVersion )
+        {
+            self.emergencyColors = [ coder decodeObjectForKey: @"EmergencyColors" ];
+            self.alertColors     = [ coder decodeObjectForKey: @"AlertColors" ];
+            self.criticalColors  = [ coder decodeObjectForKey: @"CriticalColors" ];
+            self.errorColors     = [ coder decodeObjectForKey: @"ErrorColors" ];
+            self.warningColors   = [ coder decodeObjectForKey: @"WarningColors" ];
+            self.noticeColors    = [ coder decodeObjectForKey: @"NoticeColors" ];
+            self.infoColors      = [ coder decodeObjectForKey: @"InfoColors" ];
+            self.debugColors     = [ coder decodeObjectForKey: @"DebugColors" ];
+            
+            return self;
+        }
+        
+        return nil;
     }
     
     return self;
@@ -102,14 +115,15 @@
 
 - ( void )encodeWithCoder: ( NSCoder * )coder
 {
-    [ coder encodeObject: self.emergencyColors forKey: @"EmergencyColors" ];
-    [ coder encodeObject: self.alertColors     forKey: @"AlertColors" ];
-    [ coder encodeObject: self.criticalColors  forKey: @"CriticalColors" ];
-    [ coder encodeObject: self.errorColors     forKey: @"ErrorColors" ];
-    [ coder encodeObject: self.warningColors   forKey: @"WarningColors" ];
-    [ coder encodeObject: self.noticeColors    forKey: @"NoticeColors" ];
-    [ coder encodeObject: self.infoColors      forKey: @"InfoColors" ];
-    [ coder encodeObject: self.debugColors     forKey: @"DebugColors" ];
+    [ coder encodeInt64:  ULogColorThemeVersion forKey: @"Version" ];
+    [ coder encodeObject: self.emergencyColors  forKey: @"EmergencyColors" ];
+    [ coder encodeObject: self.alertColors      forKey: @"AlertColors" ];
+    [ coder encodeObject: self.criticalColors   forKey: @"CriticalColors" ];
+    [ coder encodeObject: self.errorColors      forKey: @"ErrorColors" ];
+    [ coder encodeObject: self.warningColors    forKey: @"WarningColors" ];
+    [ coder encodeObject: self.noticeColors     forKey: @"NoticeColors" ];
+    [ coder encodeObject: self.infoColors       forKey: @"InfoColors" ];
+    [ coder encodeObject: self.debugColors      forKey: @"DebugColors" ];
 }
 
 + ( instancetype )defaultTheme
