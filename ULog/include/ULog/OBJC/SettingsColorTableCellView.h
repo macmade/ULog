@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2016 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2016 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,36 +23,25 @@
  ******************************************************************************/
 
 /*!
- * @file        ApplicationDelegate.m
+ * @header      ColorTableCellView.h
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#import "ApplicationDelegate.h"
-#import "MainWindowController.h"
+#ifndef ULOG_OBJC_SETTINGS_COLOR_TABLE_VIEW_CELL_H
+#define ULOG_OBJC_SETTINGS_COLOR_TABLE_VIEW_CELL_H
 
-@interface ApplicationDelegate ()
+#if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
 
-@property( atomic, readwrite, strong ) MainWindowController * mainWindowController;
+#if defined( __has_feature ) && __has_feature( objc_modules )
+@import Cocoa;
+#else
+#import <Cocoa/Cocoa.h>
+#endif
 
-@end
-
-@implementation ApplicationDelegate
-
-- ( void )applicationDidFinishLaunching: ( NSNotification * )notification
-{
-    ( void )notification;
-    
-    self.mainWindowController = [ MainWindowController new ];
-    
-    [ self.mainWindowController.window center ];
-    [ self.mainWindowController.window makeKeyAndOrderFront: nil ];
-}
-
-- ( BOOL )applicationShouldTerminateAfterLastWindowClosed: ( NSApplication * )sender
-{
-    ( void )sender;
-    
-    return YES;
-}
+@interface ULogSettingsColorTableCellView: NSTableCellView
 
 @end
+
+#endif
+
+#endif /* ULOG_OBJC_SETTINGS_COLOR_TABLE_VIEW_CELL_H */

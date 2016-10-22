@@ -41,7 +41,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cwf-1I-tnz">
-                                    <rect key="frame" x="59" y="19" width="144" height="22"/>
+                                    <rect key="frame" x="59" y="19" width="84" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" bezelStyle="round" id="ezn-Hn-vBW">
                                         <font key="font" metaFont="smallSystem"/>
@@ -137,7 +137,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="f4r-xN-KFZ" customClass="ULogColorTableCellView">
+                                                <tableCellView id="f4r-xN-KFZ" customClass="ULogSettingsColorTableCellView">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>

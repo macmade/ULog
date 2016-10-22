@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2016 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2016 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,36 +23,27 @@
  ******************************************************************************/
 
 /*!
- * @file        ApplicationDelegate.m
+ * @file        SettingsColorTableCellView.m
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#import "ApplicationDelegate.h"
-#import "MainWindowController.h"
+#import <ULog/ULog.h>
 
-@interface ApplicationDelegate ()
+#if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
 
-@property( atomic, readwrite, strong ) MainWindowController * mainWindowController;
+@implementation ULogSettingsColorTableCellView
 
-@end
-
-@implementation ApplicationDelegate
-
-- ( void )applicationDidFinishLaunching: ( NSNotification * )notification
+- ( void )drawRect: ( NSRect )rect
 {
-    ( void )notification;
+    ULogSettingsColorItem * item;
     
-    self.mainWindowController = [ MainWindowController new ];
+    item = [ self valueForKey: @"objectValue" ];
     
-    [ self.mainWindowController.window center ];
-    [ self.mainWindowController.window makeKeyAndOrderFront: nil ];
-}
-
-- ( BOOL )applicationShouldTerminateAfterLastWindowClosed: ( NSApplication * )sender
-{
-    ( void )sender;
+    [ item.colors.backgroundColor setFill ];
     
-    return YES;
+    NSRectFill( rect );
 }
 
 @end
+
+#endif

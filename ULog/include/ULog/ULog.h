@@ -45,6 +45,9 @@
 #import <ULog/OBJC/Logger.h>
 #import <ULog/OBJC/ColorTheme.h>
 #import <ULog/OBJC/MessageColors.h>
+#import <ULog/OBJC/SettingsColorTableCellView.h>
+#import <ULog/OBJC/SettingsColorItem.h>
+#import <ULog/OBJC/MessageColors.h>
 #import <ULog/OBJC/LogWindowController.h>
 #import <ULog/OBJC/Settings.h>
 #import <ULog/OBJC/SettingsWindowController.h>
