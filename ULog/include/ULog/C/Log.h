@@ -33,6 +33,7 @@
 #include <ULog/Base.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 ULOG_EXTERN_C_BEGIN
 
@@ -48,6 +49,18 @@ typedef enum
     ULog_Message_LevelDebug      = 7
 }
 ULog_Message_Level;
+
+typedef enum
+{
+    ULog_Logger_DisplayOptionProcess  = 1 << 1,
+    ULog_Logger_DisplayOptionTime     = 1 << 2,
+    ULog_Logger_DisplayOptionSource   = 1 << 3,
+    ULog_Logger_DisplayOptionLevel    = 1 << 4
+}
+ULog_Logger_DisplayOption;
+
+ULOG_EXPORT uint64_t ULog_GetDisplayOptions( void );
+ULOG_EXPORT void     ULog_SetDisplayOptions( uint64_t opt );
 
 ULOG_EXPORT bool ULog_IsEnabled( void );
 ULOG_EXPORT void ULog_SetEnabled( bool value );

@@ -38,9 +38,19 @@
 
 #include <ULog/Base.h>
 
+typedef enum
+{
+    ULogLoggerDisplayOptionProcess  = 1 << 1,
+    ULogLoggerDisplayOptionTime     = 1 << 2,
+    ULogLoggerDisplayOptionSource   = 1 << 3,
+    ULogLoggerDisplayOptionLevel    = 1 << 4
+}
+ULog_Logger_DisplayOption;
+
 @interface ULogLogger: NSObject
 
 @property( atomic, readwrite, assign, getter = isEnabled ) BOOL                       enabled;
+@property( atomic, readwrite, assign                     ) uint64_t                   displayOptions;
 @property( atomic, readonly                              ) NSArray< ULogMessage * > * messages;
 
 + ( instancetype )sharedInstance;

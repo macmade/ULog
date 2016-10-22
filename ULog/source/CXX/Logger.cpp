@@ -53,6 +53,7 @@ namespace ULog
             
                     std::vector< Message > _messages;
             mutable std::recursive_mutex   _rmtx;
+                    uint64_t               _displayOptions;
                     bool                   _enabled;
     };
     
@@ -108,6 +109,20 @@ namespace ULog
         swap( o1.impl, o2.impl );
     }
     
+    uint64_t Logger::GetDisplayOptions( void )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        return this->impl->_displayOptions;
+    }
+    
+    void Logger::SetDisplayOptions( uint64_t opt )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        this->impl->_displayOptions = opt;
+    }
+    
     bool Logger::IsEnabled( void ) const
     {
         std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
@@ -132,17 +147,45 @@ namespace ULog
     void Logger::Log( const Message & msg )
     {
         std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        std::string                             s;
+        
+        if( this->impl->_enabled == false )
+        {
+            return;
+        }
+        
+        if( this->impl->_displayOptions & DisplayOptionProcess )
+        {
+            s += "[ " + msg.GetProcessString() + "]> ";
+        }
+        
+        if( this->impl->_displayOptions & DisplayOptionTime )
+        {
+            s += "[ " + msg.GetTimeString() + "]> ";
+        }
+        
+        if( this->impl->_displayOptions & DisplayOptionSource )
+        {
+            s += "[ " + msg.GetSourceString() + "]> ";
+        }
+        
+        if( this->impl->_displayOptions & DisplayOptionLevel )
+        {
+            s += "[ " + msg.GetLevelString() + "]> ";
+        }
+        
+        s += msg.GetMessage();
         
         if( msg.GetSource() != Message::SourceASL )
         {
             #ifdef _WIN32
             
-            OutputDebugStringA( msg.GetDescription().c_str() );
+            OutputDebugStringA( s.c_str() );
             OutputDebugStringA( "\n" );
             
             #else
             
-            std::cerr << msg << std::endl;
+            std::cerr << s << std::endl;
             
             #endif
         }
@@ -515,15 +558,18 @@ namespace ULog
         return this->impl->_messages;
     }
     
-    Logger::IMPL::IMPL( void )
+    Logger::IMPL::IMPL( void ):
+        _enabled( true ),
+        _displayOptions( DisplayOptionProcess | DisplayOptionTime | DisplayOptionSource | DisplayOptionLevel )
     {}
     
     Logger::IMPL::IMPL( const IMPL & o )
     {
         std::lock_guard< std::recursive_mutex > l( o._rmtx );
         
-        this->_messages = o._messages;
-        this->_enabled  = o._enabled;
+        this->_messages       = o._messages;
+        this->_enabled        = o._enabled;
+        this->_displayOptions = o._displayOptions;
     }
     
     Logger::IMPL::~IMPL( void )

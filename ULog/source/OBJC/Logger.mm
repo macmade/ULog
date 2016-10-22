@@ -84,6 +84,72 @@
     }
 }
 
+- ( uint64_t )displayOptions
+{
+    uint64_t o;
+    uint64_t r;
+    
+    @synchronized( self )
+    {
+        r = 0;
+        o = self.cxxLogger->GetDisplayOptions();
+        
+        if( o & ULog::Logger::DisplayOptionProcess )
+        {
+            r |= ULogLoggerDisplayOptionProcess;
+        }
+        
+        if( o & ULog::Logger::DisplayOptionTime )
+        {
+            r |= ULogLoggerDisplayOptionTime;
+        }
+        
+        if( o & ULog::Logger::DisplayOptionSource )
+        {
+            r |= ULogLoggerDisplayOptionSource;
+        }
+        
+        if( o & ULog::Logger::DisplayOptionLevel )
+        {
+            r |= ULogLoggerDisplayOptionLevel;
+        }
+        
+        return r;
+    }
+}
+
+- ( void )setDisplayOptions: ( uint64_t )opt
+{
+    uint64_t o;
+    
+    @synchronized( self )
+    {
+        o = 0;
+        
+        if( opt & ULogLoggerDisplayOptionProcess )
+        {
+            o |= ULog::Logger::DisplayOptionProcess;
+        }
+        
+        if( opt & ULogLoggerDisplayOptionTime )
+        {
+            o |= ULog::Logger::DisplayOptionTime;
+        }
+        
+        if( opt & ULogLoggerDisplayOptionSource )
+        {
+            o |= ULog::Logger::DisplayOptionSource;
+        }
+        
+        if( opt & ULogLoggerDisplayOptionLevel )
+        {
+            o |= ULog::Logger::DisplayOptionLevel;
+        }
+        
+        self.cxxLogger->SetDisplayOptions( o );
+    }
+}
+
 - ( BOOL )isEnabled
 {
     @synchronized( self )

@@ -30,6 +30,82 @@
 #include <ULog/ULog.h>
 #include <ULog/C/Log.h>
 
+uint64_t ULog_GetDisplayOptions( void )
+{
+    ULog::Logger * logger;
+    uint64_t       o;
+    uint64_t       r;
+    
+    logger = ULog::Logger::SharedInstance();
+    
+    if( logger == NULL )
+    {
+        return 0;
+    }
+    
+    r = 0;
+    o = logger->GetDisplayOptions();
+    
+    if( o & ULog::Logger::DisplayOptionProcess )
+    {
+        r |= ULog_Logger_DisplayOptionProcess;
+    }
+    
+    if( o & ULog::Logger::DisplayOptionTime )
+    {
+        r |= ULog_Logger_DisplayOptionTime;
+    }
+    
+    if( o & ULog::Logger::DisplayOptionSource )
+    {
+        r |= ULog_Logger_DisplayOptionSource;
+    }
+    
+    if( o & ULog::Logger::DisplayOptionLevel )
+    {
+        r |= ULog_Logger_DisplayOptionLevel;
+    }
+    
+    return r;
+}
+
+void ULog_SetDisplayOptions( uint64_t opt )
+{
+    ULog::Logger * logger;
+    uint64_t       o;
+    
+    logger = ULog::Logger::SharedInstance();
+    
+    if( logger == NULL )
+    {
+        return;
+    }
+    
+    o = 0;
+    
+    if( opt & ULog_Logger_DisplayOptionProcess )
+    {
+        o |= ULog::Logger::DisplayOptionProcess;
+    }
+    
+    if( opt & ULog_Logger_DisplayOptionTime )
+    {
+        o |= ULog::Logger::DisplayOptionTime;
+    }
+    
+    if( opt & ULog_Logger_DisplayOptionSource )
+    {
+        o |= ULog::Logger::DisplayOptionSource;
+    }
+    
+    if( opt & ULog_Logger_DisplayOptionLevel )
+    {
+        o |= ULog::Logger::DisplayOptionLevel;
+    }
+    
+    logger->SetDisplayOptions( o );
+}
+
 bool ULog_IsEnabled( void )
 {
     ULog::Logger * logger;

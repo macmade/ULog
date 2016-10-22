@@ -41,6 +41,15 @@ namespace ULog
     {
         public:
             
+            typedef enum
+            {
+                DisplayOptionProcess  = 1 << 1,
+                DisplayOptionTime     = 1 << 2,
+                DisplayOptionSource   = 1 << 3,
+                DisplayOptionLevel    = 1 << 4
+            }
+            DisplayOption;
+            
             static Logger * SharedInstance( void );
             
             Logger( void );
@@ -52,6 +61,9 @@ namespace ULog
             Logger & operator =( Logger o );
             
             friend void swap( Logger & o1, Logger & o2 );
+            
+            uint64_t GetDisplayOptions( void );
+            void     SetDisplayOptions( uint64_t opt );
             
             bool IsEnabled( void ) const;
             void SetEnabled( bool value );
