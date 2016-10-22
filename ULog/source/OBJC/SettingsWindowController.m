@@ -53,6 +53,7 @@
         
         [ self.colors addObserver: self forKeyPath: @"backgroundColor" options: NSKeyValueObservingOptionNew context: NULL ];
         [ self.colors addObserver: self forKeyPath: @"foregroundColor" options: NSKeyValueObservingOptionNew context: NULL ];
+        [ self.colors addObserver: self forKeyPath: @"processColor"    options: NSKeyValueObservingOptionNew context: NULL ];
         [ self.colors addObserver: self forKeyPath: @"timeColor"       options: NSKeyValueObservingOptionNew context: NULL ];
         [ self.colors addObserver: self forKeyPath: @"sourceColor"     options: NSKeyValueObservingOptionNew context: NULL ];
         [ self.colors addObserver: self forKeyPath: @"levelColor"      options: NSKeyValueObservingOptionNew context: NULL ];
@@ -66,6 +67,7 @@
 {
     [ self.colors removeObserver: self forKeyPath: @"backgroundColor" ];
     [ self.colors removeObserver: self forKeyPath: @"foregroundColor" ];
+    [ self.colors removeObserver: self forKeyPath: @"processColor" ];
     [ self.colors removeObserver: self forKeyPath: @"timeColor" ];
     [ self.colors removeObserver: self forKeyPath: @"sourceColor" ];
     [ self.colors removeObserver: self forKeyPath: @"levelColor" ];

@@ -81,15 +81,18 @@ namespace ULog
             friend void swap( Message & o1, Message & o2 );
             friend std::ostream & operator <<( std::ostream & os, const Message & e );
             
-            Source      GetSource( void )       const;
-            Level       GetLevel( void )        const;
-            uint64_t    GetTime( void )         const;
-            uint64_t    GetMilliseconds( void ) const;
-            std::string GetSourceString( void ) const;
-            std::string GetLevelString( void )  const;
-            std::string GetTimeString( void )   const;
-            std::string GetMessage( void )      const;
-            std::string GetDescription( void )  const;
+            Source      GetSource( void )        const;
+            Level       GetLevel( void )         const;
+            uint64_t    GetTime( void )          const;
+            uint64_t    GetMilliseconds( void )  const;
+            uint64_t    GetProcessID( void )     const;
+            uint64_t    GetThreadID( void )      const;
+            std::string GetSourceString( void )  const;
+            std::string GetLevelString( void )   const;
+            std::string GetTimeString( void )    const;
+            std::string GetProcessString( void ) const;
+            std::string GetMessage( void )       const;
+            std::string GetDescription( void )   const;
             
         private:
             

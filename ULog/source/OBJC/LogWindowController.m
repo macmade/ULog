@@ -62,6 +62,7 @@ static void init( void )
 - ( void )renderMessages: ( NSArray * )messages until: ( ULogMessage * )last;
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message;
 - ( NSDictionary * )foregroundAttributesForLevel: ( ULogMessageLevel )level;
+- ( NSDictionary * )processAttributesForLevel: ( ULogMessageLevel )level;
 - ( NSDictionary * )timeAttributesForLevel: ( ULogMessageLevel )level;
 - ( NSDictionary * )sourceAttributesForLevel: ( ULogMessageLevel )level;
 - ( NSDictionary * )levelAttributesForLevel: ( ULogMessageLevel )level;
@@ -442,6 +443,7 @@ static void init( void )
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message
 {
     NSMutableAttributedString * str;
+    NSAttributedString        * process;
     NSAttributedString        * time;
     NSAttributedString        * source;
     NSAttributedString        * level;
@@ -449,13 +451,17 @@ static void init( void )
     NSDictionary              * fg;
     NSColor                   * bg;
     
-    str    = [ NSMutableAttributedString new ];
-    time   = [ [ NSAttributedString alloc ] initWithString: message.timeString   attributes: [ self timeAttributesForLevel: message.level ] ];
-    source = [ [ NSAttributedString alloc ] initWithString: message.sourceString attributes: [ self sourceAttributesForLevel: message.level ] ];
-    level  = [ [ NSAttributedString alloc ] initWithString: message.levelString  attributes: [ self levelAttributesForLevel: message.level ] ];
-    text   = [ [ NSAttributedString alloc ] initWithString: message.message      attributes: [ self messageAttributesForLevel: message.level ] ];
-    fg     = [ self foregroundAttributesForLevel: message.level ];
+    str     = [ NSMutableAttributedString new ];
+    process = [ [ NSAttributedString alloc ] initWithString: message.processString attributes: [ self processAttributesForLevel: message.level ] ];
+    time    = [ [ NSAttributedString alloc ] initWithString: message.timeString    attributes: [ self timeAttributesForLevel: message.level ] ];
+    source  = [ [ NSAttributedString alloc ] initWithString: message.sourceString  attributes: [ self sourceAttributesForLevel: message.level ] ];
+    level   = [ [ NSAttributedString alloc ] initWithString: message.levelString   attributes: [ self levelAttributesForLevel: message.level ] ];
+    text    = [ [ NSAttributedString alloc ] initWithString: message.message       attributes: [ self messageAttributesForLevel: message.level ] ];
+    fg      = [ self foregroundAttributesForLevel: message.level ];
     
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
+    [ str appendAttributedString: process ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
     [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
     [ str appendAttributedString: time ];
     [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
@@ -507,6 +513,34 @@ static void init( void )
         case ULogMessageLevelInfo:      color = [ ULogSettings sharedInstance ].colorTheme.infoColors.foregroundColor;      break;
         case ULogMessageLevelDebug:     color = [ ULogSettings sharedInstance ].colorTheme.debugColors.foregroundColor;     break;
         default:                        color = nil;                                                                        break;
+    }
+    
+    if( color )
+    {
+        return @{ NSFontAttributeName : font, NSForegroundColorAttributeName : color };
+    }
+    
+    return @{ NSFontAttributeName : font };
+}
+
+- ( NSDictionary * )processAttributesForLevel: ( ULogMessageLevel )level
+{
+    NSFont            * font;
+    NSColor           * color;
+    
+    font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    
+    switch( level )
+    {
+        case ULogMessageLevelEmergency: color = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.processColor; break;
+        case ULogMessageLevelAlert:     color = [ ULogSettings sharedInstance ].colorTheme.alertColors.processColor;     break;
+        case ULogMessageLevelCritical:  color = [ ULogSettings sharedInstance ].colorTheme.criticalColors.processColor;  break;
+        case ULogMessageLevelError:     color = [ ULogSettings sharedInstance ].colorTheme.errorColors.processColor;     break;
+        case ULogMessageLevelWarning:   color = [ ULogSettings sharedInstance ].colorTheme.warningColors.processColor;   break;
+        case ULogMessageLevelNotice:    color = [ ULogSettings sharedInstance ].colorTheme.noticeColors.processColor;    break;
+        case ULogMessageLevelInfo:      color = [ ULogSettings sharedInstance ].colorTheme.infoColors.processColor;      break;
+        case ULogMessageLevelDebug:     color = [ ULogSettings sharedInstance ].colorTheme.debugColors.processColor;     break;
+        default:                        color = nil;                                                                     break;
     }
     
     if( color )

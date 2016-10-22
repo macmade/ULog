@@ -44,6 +44,7 @@
 
 @property( atomic, readwrite, strong ) NSColor * backgroundColor;
 @property( atomic, readwrite, strong ) NSColor * foregroundColor;
+@property( atomic, readwrite, strong ) NSColor * processColor;
 @property( atomic, readwrite, strong ) NSColor * timeColor;
 @property( atomic, readwrite, strong ) NSColor * sourceColor;
 @property( atomic, readwrite, strong ) NSColor * levelColor;

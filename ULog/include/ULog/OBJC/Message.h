@@ -68,9 +68,12 @@ ULogMessageLevel;
 @property( atomic, readonly ) NSString        * sourceString;
 @property( atomic, readonly ) NSString        * levelString;
 @property( atomic, readonly ) NSString        * timeString;
+@property( atomic, readonly ) NSString        * processString;
 @property( atomic, readonly ) NSString        * message;
 @property( atomic, readonly ) uint64_t          time;
 @property( atomic, readonly ) uint64_t          milliseconds;
+@property( atomic, readonly ) uint64_t          processID;
+@property( atomic, readonly ) uint64_t          threadID;
 @property( atomic, readonly ) NSDate          * date;
 
 #ifdef __cplusplus

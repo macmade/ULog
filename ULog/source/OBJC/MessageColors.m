@@ -51,6 +51,7 @@
     {
         self.backgroundColor = [ self decodeColorForKey: @"BackgroundColor" withCoder: coder ];
         self.foregroundColor = [ self decodeColorForKey: @"ForegroundColor" withCoder: coder ];
+        self.timeColor       = [ self decodeColorForKey: @"ProcessColor"    withCoder: coder ];
         self.timeColor       = [ self decodeColorForKey: @"TimeColor"       withCoder: coder ];
         self.sourceColor     = [ self decodeColorForKey: @"SourceColor"     withCoder: coder ];
         self.levelColor      = [ self decodeColorForKey: @"LevelColor"      withCoder: coder ];
@@ -68,6 +69,7 @@
     
     colors.backgroundColor = [ self.backgroundColor copy ];
     colors.foregroundColor = [ self.foregroundColor copy ];
+    colors.processColor    = [ self.processColor copy ];
     colors.timeColor       = [ self.timeColor copy ];
     colors.sourceColor     = [ self.sourceColor copy ];
     colors.levelColor      = [ self.levelColor copy ];
@@ -80,6 +82,7 @@
 {
     [ self encodeColor: self.backgroundColor forKey: @"BackgroundColor" withCoder: coder ];
     [ self encodeColor: self.foregroundColor forKey: @"ForegroundColor" withCoder: coder ];
+    [ self encodeColor: self.timeColor       forKey: @"ProcessColor"    withCoder: coder ];
     [ self encodeColor: self.timeColor       forKey: @"TimeColor"       withCoder: coder ];
     [ self encodeColor: self.sourceColor     forKey: @"SourceColor"     withCoder: coder ];
     [ self encodeColor: self.levelColor      forKey: @"LevelColor"      withCoder: coder ];

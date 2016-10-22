@@ -40,9 +40,12 @@
 @property( atomic, readwrite, strong ) NSString        * sourceString;
 @property( atomic, readwrite, strong ) NSString        * levelString;
 @property( atomic, readwrite, strong ) NSString        * timeString;
+@property( atomic, readwrite, strong ) NSString        * processString;
 @property( atomic, readwrite, strong ) NSString        * message;
 @property( atomic, readwrite, assign ) uint64_t          time;
 @property( atomic, readwrite, assign ) uint64_t          milliseconds;
+@property( atomic, readwrite, assign ) uint64_t          processID;
+@property( atomic, readwrite, assign ) uint64_t          threadID;
 @property( atomic, readwrite, strong ) NSDate          * date;
 
 @end
@@ -141,9 +144,12 @@
         self.sourceString   = [ NSString stringWithUTF8String: message.GetSourceString().c_str() ];
         self.levelString    = [ NSString stringWithUTF8String: message.GetLevelString().c_str() ];
         self.timeString     = [ NSString stringWithUTF8String: message.GetTimeString().c_str() ];
+        self.processString  = [ NSString stringWithUTF8String: message.GetProcessString().c_str() ];
         self.message        = [ NSString stringWithUTF8String: message.GetMessage().c_str() ];
         self.time           = message.GetTime();
         self.milliseconds   = message.GetMilliseconds();
+        self.processID      = message.GetProcessID();
+        self.threadID       = message.GetThreadID();
         self.date           = [ NSDate dateWithTimeIntervalSince1970: self.time ];
         
         switch( message.GetLevel() )

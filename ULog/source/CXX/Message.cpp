@@ -36,7 +36,10 @@
 #ifdef _WIN32
 #include <Windows.h>
 #else
+#include <sys/types.h>
 #include <sys/time.h>
+#include <unistd.h>
+#include <pthread.h>
 #endif
 
 namespace ULog
@@ -57,8 +60,12 @@ namespace ULog
             std::string _timeString;
             uint64_t    _time;
             uint64_t    _milliseconds;
+            uint64_t    _pid;
+            uint64_t    _tid;
             
             void        SetTimeToCurrent( void );
+            void        SetProcessToCurrent( void );
+            void        SetThreadToCurrent( void );
             std::string GetStringWithFormat( const char * fmt, va_list ap );
             std::string GetTimeString( uint64_t time, uint64_t msec );
     };
@@ -128,6 +135,16 @@ namespace ULog
             return false;
         }
         
+        if( this->impl->_pid != o.impl->_pid )
+        {
+            return false;
+        }
+        
+        if( this->impl->_tid != o.impl->_tid )
+        {
+            return false;
+        }
+        
         if( this->impl->_message != o.impl->_message )
         {
             return false;
@@ -168,6 +185,16 @@ namespace ULog
     uint64_t Message::GetTime( void ) const
     {
         return this->impl->_time;
+    }
+    
+    uint64_t Message::GetProcessID( void ) const
+    {
+        return this->impl->_pid;
+    }
+    
+    uint64_t Message::GetThreadID( void ) const
+    {
+        return this->impl->_tid;
     }
     
     uint64_t Message::GetMilliseconds( void ) const
@@ -219,6 +246,11 @@ namespace ULog
         return this->impl->_timeString;
     }
     
+    std::string Message::GetProcessString( void ) const
+    {
+        return std::to_string( this->impl->_pid ) + ":" + std::to_string( this->impl->_tid );
+    }
+    
     std::string Message::GetMessage( void ) const
     {
         return this->impl->_message;
@@ -228,12 +260,15 @@ namespace ULog
     {
         std::string description;
         
-        description = this->GetTimeString()
-                    + " [ "
+        description = "[ "
+                    + this->GetProcessString()
+                    + " ]> [ "
+                    + this->GetTimeString()
+                    + " ]> [ "
                     + this->GetSourceString()
-                    + " - "
+                    + " ]> [ "
                     + this->GetLevelString()
-                    + " ]: "
+                    + " ]> "
                     + this->GetMessage();
         
         return description;
@@ -244,9 +279,13 @@ namespace ULog
         _level( LevelDebug ),
         _message( "" ),
         _time( 0 ),
-        _milliseconds( 0 )
+        _milliseconds( 0 ),
+        _pid( 0 ),
+        _tid( 0 )
     {
         this->SetTimeToCurrent();
+        this->SetProcessToCurrent();
+        this->SetThreadToCurrent();
         
         this->_timeString = this->GetTimeString( this->_time, this->_milliseconds );
     }
@@ -256,9 +295,13 @@ namespace ULog
         _level( level ),
         _message( message ),
         _time( 0 ),
-        _milliseconds( 0 )
+        _milliseconds( 0 ),
+        _pid( 0 ),
+        _tid( 0 )
     {
         this->SetTimeToCurrent();
+        this->SetProcessToCurrent();
+        this->SetThreadToCurrent();
         
         this->_timeString = this->GetTimeString( this->_time, this->_milliseconds );
     }
@@ -269,7 +312,9 @@ namespace ULog
         _message( o._message ),
         _timeString( o._timeString ),
         _time( o._time ),
-        _milliseconds( o._milliseconds )
+        _milliseconds( o._milliseconds ),
+        _pid( o._pid ),
+        _tid( o._tid )
     {}
     
     Message::IMPL::~IMPL( void )
@@ -277,7 +322,7 @@ namespace ULog
     
     void Message::IMPL::SetTimeToCurrent( void )
     {
-        #ifdef _WIN32
+        #if defined( _WIN32 )
         
         {
             time_t     t;
@@ -303,6 +348,36 @@ namespace ULog
             this->_time         = static_cast< uint64_t >( t );
             this->_milliseconds = static_cast< uint64_t >( tv.tv_usec / 1000 );
         }
+        
+        #endif
+    }
+    
+    void Message::IMPL::SetProcessToCurrent( void )
+    {
+        #if defined( _WIN32 )
+        
+        this->_pid = static_cast< uint64_t >( GetCurrentProcessId() );
+        
+        #else
+        
+        this->_pid = static_cast< uint64_t >( getpid() );
+        
+        #endif
+    }
+    
+    void Message::IMPL::SetThreadToCurrent( void )
+    {
+        #if defined( _WIN32 )
+        
+        this->_tid = static_cast< uint64_t >( GetCurrentThreadId() );
+
+        #elif defined( __APPLE__ )
+        
+        this->_tid = static_cast< uint64_t >( pthread_threadid_np( pthread_self(), NULL ) );
+        
+        #else
+        
+        this->_tid = static_cast< uint64_t >( gettid() );
         
         #endif
     }
@@ -352,7 +427,7 @@ namespace ULog
         char dbuf[ 256 ];
         char tbuf[ 256 ];
         
-        #ifdef _WIN32
+        #if defined( _WIN32 )
         
         {
             time_t    t;
