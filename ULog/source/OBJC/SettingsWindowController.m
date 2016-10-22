@@ -31,14 +31,78 @@
 
 #if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
 
-@interface ULogSettingsWindowController()
+@interface ULogSettingsColorItem: NSObject
 
+- ( instancetype )initWithLabel: ( NSString * )label color: ( NSColor * )color changedSelector: ( SEL )selector;
+- ( instancetype )initWithLabel: ( NSString * )label color: ( NSColor * )color textColor: ( NSColor * )textColor changedSelector: ( SEL )selector;
+
+@property( atomic, readwrite, strong ) NSString * label;
+@property( atomic, readwrite, strong ) NSColor  * color;
+@property( atomic, readwrite, strong ) NSColor  * textColor;
+@property( atomic, readwrite, assign ) SEL        changedSelector;
+
+@end
+
+@implementation ULogSettingsColorItem
+
+- ( instancetype )initWithLabel: ( NSString * )label color: ( NSColor * )color changedSelector: ( SEL )selector
+{
+    return [ self initWithLabel: label color: color textColor: color changedSelector: selector ];
+}
+
+- ( instancetype )initWithLabel: ( NSString * )label color: ( NSColor * )color textColor: ( NSColor * )textColor changedSelector: ( SEL )selector
+{
+    if( ( self = [ self init ] ) )
+    {
+        self.label           = label;
+        self.color           = color;
+        self.textColor       = textColor;
+        self.changedSelector = selector;
+        
+        [ self addObserver: self forKeyPath: @"color" options: NSKeyValueObservingOptionNew context: NULL ];
+    }
+    
+    return self;
+}
+
+- ( void )dealloc
+{
+    [ self removeObserver: self forKeyPath: @"color" ];
+}
+
+- ( void )observeValueForKeyPath: ( NSString * )keyPath ofObject: ( id )object change: ( NSDictionary * )change context: ( void * )context
+{
+    ( void )context;
+    ( void )change;
+    
+    if( object == self && [ keyPath isEqualToString: @"color" ] )
+    {
+        if( self.changedSelector )
+        {
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [ [ ULogSettings sharedInstance ] performSelector: self.changedSelector withObject: self.color ];
+            #pragma clang diagnostic pop
+        }
+    }
+}
+
+@end
+
+@interface ULogSettingsWindowController() < NSTableViewDelegate, NSTableViewDataSource >
+
+@property( atomic, readwrite, strong ) NSFont   * font;
+@property( atomic, readwrite, strong ) NSArray  * colors;
 @property( atomic, readwrite, assign ) NSInteger  selectedTheme;
 @property( atomic, readwrite, strong ) NSString * fontDescription;
 
+@property( atomic, readwrite, strong ) IBOutlet NSArrayController * arrayController;
+@property( atomic, readwrite, strong ) IBOutlet NSTableView       * tableView;
+
 - ( IBAction )chooseFont: ( id )sender;
 - ( void )changeFont: ( id )sender;
-- ( void )updateFontName;
+- ( void )update;
+- ( IBAction)updateColor: ( id )sender;
 - ( IBAction )choosePreset: ( id )sender;
 - ( IBAction )restoreDefaults: ( id )sender;
 
@@ -48,12 +112,23 @@
 
 - ( instancetype )init
 {
-    return [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ];
+    if( ( self = [ self initWithWindowNibName: NSStringFromClass( [ self class ] ) ] ) )
+    {
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( update ) name: ULogSettingsNotificationDefaultsChanged  object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( update ) name: ULogSettingsNotificationDefaultsRestored object: nil ];
+    }
+    
+    return self;
+}
+
+- ( void )dealloc
+{
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self ];
 }
 
 - ( void )windowDidLoad
 {
-    [ self updateFontName ];
+    [ self update ];
 }
 
 - ( IBAction )chooseFont: ( id )sender
@@ -88,12 +163,32 @@
     [ ULogSettings sharedInstance ].fontName = font.fontName;
     [ ULogSettings sharedInstance ].fontSize = font.pointSize;
     
-    [ self updateFontName ];
+    [ self update ];
 }
 
-- ( void )updateFontName;
+- ( void )update
 {
-    self.fontDescription = [ NSString stringWithFormat: @"%@ %u", [ ULogSettings sharedInstance ].fontName, ( unsigned int )( [ ULogSettings sharedInstance ].fontSize ) ];
+    self.fontDescription           = [ NSString stringWithFormat: @"%@ %u", [ ULogSettings sharedInstance ].fontName, ( unsigned int )( [ ULogSettings sharedInstance ].fontSize ) ];
+    self.tableView.backgroundColor = [ ULogSettings sharedInstance ].backgroundColor;
+    self.font                      = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    self.selectedTheme             = 0;
+    
+    self.colors = @[
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Background" color: [ ULogSettings sharedInstance ].backgroundColor textColor: [ ULogSettings sharedInstance ].foregoundColor changedSelector: @selector( setBackgroundColor: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Foreground" color: [ ULogSettings sharedInstance ].foregoundColor changedSelector: @selector( setForegoundColor: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Time" color: [ ULogSettings sharedInstance ].timeColor changedSelector: @selector( setTimeColor: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Source" color: [ ULogSettings sharedInstance ].sourceColor changedSelector: @selector( setSourceColor: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Level" color: [ ULogSettings sharedInstance ].levelColor changedSelector: @selector( setLevelColor: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Message" color: [ ULogSettings sharedInstance ].messageColor changedSelector: @selector( setMessageColor: ) ]
+    ];
+}
+
+- ( IBAction )updateColor: ( id )sender
+{
+    ( void )sender;
+    
+    NSLog( @"%@", sender );
+    NSLog( @"%@", sender );
 }
 
 - ( IBAction )choosePreset: ( id )sender
@@ -195,7 +290,7 @@
     [ ULogSettings sharedInstance ].levelColor      = level;
     [ ULogSettings sharedInstance ].messageColor    = message;
     
-    self.selectedTheme = 0;
+    [ self update ];
 }
 
 - ( IBAction )restoreDefaults: ( id )sender
@@ -203,9 +298,7 @@
     ( void )sender;
     
     [ [ ULogSettings sharedInstance ] restoreDefaults ];
-    [ self updateFontName ];
-    
-    self.selectedTheme = 0;
+    [ self update ];
 }
 
 @end

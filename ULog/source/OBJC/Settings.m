@@ -31,6 +31,8 @@
 
 #if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
 
+#import <objc/runtime.h>
+
 NSString * const ULogSettingsKeyFontName        = @"FontName";
 NSString * const ULogSettingsKeyFontSize        = @"FontSize";
 NSString * const ULogSettingsKeyBackgroundColor = @"BackgroundColor";
