@@ -44,11 +44,6 @@ static void init( void )
 @property( atomic, readwrite, strong ) ULogSettingsWindowController * settingsWindowController;
 @property( atomic, readwrite, strong ) NSAttributedString           * log;
 @property( atomic, readwrite, strong ) NSAttributedString           * lf;
-@property( atomic, readwrite, strong ) NSDictionary                 * textAttributes;
-@property( atomic, readwrite, strong ) NSDictionary                 * timeAttributes;
-@property( atomic, readwrite, strong ) NSDictionary                 * sourceAttributes;
-@property( atomic, readwrite, strong ) NSDictionary                 * levelAttributes;
-@property( atomic, readwrite, strong ) NSDictionary                 * messageAttributes;
 @property( atomic, readwrite, strong ) NSString                     * searchText;
 @property( atomic, readwrite, strong ) NSString                     * pauseButtonTitle;
 @property( atomic, readwrite, assign ) BOOL                           shown;
@@ -66,6 +61,11 @@ static void init( void )
 - ( void )refresh;
 - ( void )renderMessages: ( NSArray * )messages until: ( ULogMessage * )last;
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message;
+- ( NSDictionary * )foregroundAttributesForLevel: ( ULogMessageLevel )level;
+- ( NSDictionary * )timeAttributesForLevel: ( ULogMessageLevel )level;
+- ( NSDictionary * )sourceAttributesForLevel: ( ULogMessageLevel )level;
+- ( NSDictionary * )levelAttributesForLevel: ( ULogMessageLevel )level;
+- ( NSDictionary * )messageAttributesForLevel: ( ULogMessageLevel )level;
 
 @end
 
@@ -241,18 +241,9 @@ static void init( void )
 
 - ( void )updateSettings
 {
-    NSFont * font;
-    
     @synchronized( self )
     {
-        font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
-        
-        self.textAttributes             = @{ NSForegroundColorAttributeName : [ ULogSettings sharedInstance ].foregoundColor,   NSFontAttributeName : font };
-        self.timeAttributes             = @{ NSForegroundColorAttributeName : [ ULogSettings sharedInstance ].timeColor,        NSFontAttributeName : font };
-        self.sourceAttributes           = @{ NSForegroundColorAttributeName : [ ULogSettings sharedInstance ].sourceColor,      NSFontAttributeName : font };
-        self.levelAttributes            = @{ NSForegroundColorAttributeName : [ ULogSettings sharedInstance ].levelColor,       NSFontAttributeName : font };
-        self.messageAttributes          = @{ NSForegroundColorAttributeName : [ ULogSettings sharedInstance ].messageColor,     NSFontAttributeName : font };
-        self.textView.backgroundColor   = [ ULogSettings sharedInstance ].backgroundColor;
+        self.textView.backgroundColor = [ ULogSettings sharedInstance ].colorTheme.debugColors.backgroundColor;
     }
 }
 
@@ -421,26 +412,187 @@ static void init( void )
     NSAttributedString        * source;
     NSAttributedString        * level;
     NSAttributedString        * text;
+    NSDictionary              * fg;
+    NSColor                   * bg;
     
     str    = [ NSMutableAttributedString new ];
-    time   = [ [ NSAttributedString alloc ] initWithString: message.timeString   attributes: self.timeAttributes ];
-    source = [ [ NSAttributedString alloc ] initWithString: message.sourceString attributes: self.sourceAttributes ];
-    level  = [ [ NSAttributedString alloc ] initWithString: message.levelString  attributes: self.levelAttributes ];
-    text   = [ [ NSAttributedString alloc ] initWithString: message.message      attributes: self.messageAttributes ];
+    time   = [ [ NSAttributedString alloc ] initWithString: message.timeString   attributes: [ self timeAttributesForLevel: message.level ] ];
+    source = [ [ NSAttributedString alloc ] initWithString: message.sourceString attributes: [ self sourceAttributesForLevel: message.level ] ];
+    level  = [ [ NSAttributedString alloc ] initWithString: message.levelString  attributes: [ self levelAttributesForLevel: message.level ] ];
+    text   = [ [ NSAttributedString alloc ] initWithString: message.message      attributes: [ self messageAttributesForLevel: message.level ] ];
+    fg     = [ self foregroundAttributesForLevel: message.level ];
     
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"[ " attributes: self.textAttributes ] ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
     [ str appendAttributedString: time ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @" ]> " attributes: self.textAttributes ] ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"[ " attributes: self.textAttributes ] ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
     [ str appendAttributedString: source ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @" ]> " attributes: self.textAttributes ] ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"[ " attributes: self.textAttributes ] ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
     [ str appendAttributedString: level ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @" ]> " attributes: self.textAttributes ] ];
+    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
     [ str appendAttributedString: text ];
     [ str appendAttributedString: self.lf ];
     
+    switch( message.level )
+    {
+        case ULogMessageLevelEmergency: bg = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.backgroundColor; break;
+        case ULogMessageLevelAlert:     bg = [ ULogSettings sharedInstance ].colorTheme.alertColors.backgroundColor;     break;
+        case ULogMessageLevelCritical:  bg = [ ULogSettings sharedInstance ].colorTheme.criticalColors.backgroundColor;  break;
+        case ULogMessageLevelError:     bg = [ ULogSettings sharedInstance ].colorTheme.errorColors.backgroundColor;     break;
+        case ULogMessageLevelWarning:   bg = [ ULogSettings sharedInstance ].colorTheme.warningColors.backgroundColor;   break;
+        case ULogMessageLevelNotice:    bg = [ ULogSettings sharedInstance ].colorTheme.noticeColors.backgroundColor;    break;
+        case ULogMessageLevelInfo:      bg = [ ULogSettings sharedInstance ].colorTheme.infoColors.backgroundColor;      break;
+        case ULogMessageLevelDebug:     bg = [ ULogSettings sharedInstance ].colorTheme.debugColors.backgroundColor;     break;
+        default:                        bg = nil;                                                                        break;
+    }
+    
+    if( bg )
+    {
+        [ str addAttribute: NSBackgroundColorAttributeName value: bg range: NSMakeRange( 0, str.length ) ];
+    }
+    
     return str;
+}
+
+- ( NSDictionary * )foregroundAttributesForLevel: ( ULogMessageLevel )level
+{
+    NSFont            * font;
+    NSColor           * color;
+    
+    font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    
+    switch( level )
+    {
+        case ULogMessageLevelEmergency: color = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.foregroundColor; break;
+        case ULogMessageLevelAlert:     color = [ ULogSettings sharedInstance ].colorTheme.alertColors.foregroundColor;     break;
+        case ULogMessageLevelCritical:  color = [ ULogSettings sharedInstance ].colorTheme.criticalColors.foregroundColor;  break;
+        case ULogMessageLevelError:     color = [ ULogSettings sharedInstance ].colorTheme.errorColors.foregroundColor;     break;
+        case ULogMessageLevelWarning:   color = [ ULogSettings sharedInstance ].colorTheme.warningColors.foregroundColor;   break;
+        case ULogMessageLevelNotice:    color = [ ULogSettings sharedInstance ].colorTheme.noticeColors.foregroundColor;    break;
+        case ULogMessageLevelInfo:      color = [ ULogSettings sharedInstance ].colorTheme.infoColors.foregroundColor;      break;
+        case ULogMessageLevelDebug:     color = [ ULogSettings sharedInstance ].colorTheme.debugColors.foregroundColor;     break;
+        default:                        color = nil;                                                                        break;
+    }
+    
+    if( color )
+    {
+        return @{ NSFontAttributeName : font, NSForegroundColorAttributeName : color };
+    }
+    
+    return @{ NSFontAttributeName : font };
+}
+
+- ( NSDictionary * )timeAttributesForLevel: ( ULogMessageLevel )level
+{
+    NSFont            * font;
+    NSColor           * color;
+    
+    font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    
+    switch( level )
+    {
+        case ULogMessageLevelEmergency: color = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.timeColor; break;
+        case ULogMessageLevelAlert:     color = [ ULogSettings sharedInstance ].colorTheme.alertColors.timeColor;     break;
+        case ULogMessageLevelCritical:  color = [ ULogSettings sharedInstance ].colorTheme.criticalColors.timeColor;  break;
+        case ULogMessageLevelError:     color = [ ULogSettings sharedInstance ].colorTheme.errorColors.timeColor;     break;
+        case ULogMessageLevelWarning:   color = [ ULogSettings sharedInstance ].colorTheme.warningColors.timeColor;   break;
+        case ULogMessageLevelNotice:    color = [ ULogSettings sharedInstance ].colorTheme.noticeColors.timeColor;    break;
+        case ULogMessageLevelInfo:      color = [ ULogSettings sharedInstance ].colorTheme.infoColors.timeColor;      break;
+        case ULogMessageLevelDebug:     color = [ ULogSettings sharedInstance ].colorTheme.debugColors.timeColor;     break;
+        default:                        color = nil;                                                                  break;
+    }
+    
+    if( color )
+    {
+        return @{ NSFontAttributeName : font, NSForegroundColorAttributeName : color };
+    }
+    
+    return @{ NSFontAttributeName : font };
+}
+
+- ( NSDictionary * )sourceAttributesForLevel: ( ULogMessageLevel )level
+{
+    NSFont            * font;
+    NSColor           * color;
+    
+    font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    
+    switch( level )
+    {
+        case ULogMessageLevelEmergency: color = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.sourceColor; break;
+        case ULogMessageLevelAlert:     color = [ ULogSettings sharedInstance ].colorTheme.alertColors.sourceColor;     break;
+        case ULogMessageLevelCritical:  color = [ ULogSettings sharedInstance ].colorTheme.criticalColors.sourceColor;  break;
+        case ULogMessageLevelError:     color = [ ULogSettings sharedInstance ].colorTheme.errorColors.sourceColor;     break;
+        case ULogMessageLevelWarning:   color = [ ULogSettings sharedInstance ].colorTheme.warningColors.sourceColor;   break;
+        case ULogMessageLevelNotice:    color = [ ULogSettings sharedInstance ].colorTheme.noticeColors.sourceColor;    break;
+        case ULogMessageLevelInfo:      color = [ ULogSettings sharedInstance ].colorTheme.infoColors.sourceColor;      break;
+        case ULogMessageLevelDebug:     color = [ ULogSettings sharedInstance ].colorTheme.debugColors.sourceColor;     break;
+        default:                        color = nil;                                                                    break;
+    }
+    
+    if( color )
+    {
+        return @{ NSFontAttributeName : font, NSForegroundColorAttributeName : color };
+    }
+    
+    return @{ NSFontAttributeName : font };
+}
+
+- ( NSDictionary * )levelAttributesForLevel: ( ULogMessageLevel )level
+{
+    NSFont            * font;
+    NSColor           * color;
+    
+    font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    
+    switch( level )
+    {
+        case ULogMessageLevelEmergency: color = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.levelColor; break;
+        case ULogMessageLevelAlert:     color = [ ULogSettings sharedInstance ].colorTheme.alertColors.levelColor;     break;
+        case ULogMessageLevelCritical:  color = [ ULogSettings sharedInstance ].colorTheme.criticalColors.levelColor;  break;
+        case ULogMessageLevelError:     color = [ ULogSettings sharedInstance ].colorTheme.errorColors.levelColor;     break;
+        case ULogMessageLevelWarning:   color = [ ULogSettings sharedInstance ].colorTheme.warningColors.levelColor;   break;
+        case ULogMessageLevelNotice:    color = [ ULogSettings sharedInstance ].colorTheme.noticeColors.levelColor;    break;
+        case ULogMessageLevelInfo:      color = [ ULogSettings sharedInstance ].colorTheme.infoColors.levelColor;      break;
+        case ULogMessageLevelDebug:     color = [ ULogSettings sharedInstance ].colorTheme.debugColors.levelColor;     break;
+        default:                        color = nil;                                                                   break;
+    }
+    
+    if( color )
+    {
+        return @{ NSFontAttributeName : font, NSForegroundColorAttributeName : color };
+    }
+    
+    return @{ NSFontAttributeName : font };
+}
+
+- ( NSDictionary * )messageAttributesForLevel: ( ULogMessageLevel )level
+{
+    NSFont            * font;
+    NSColor           * color;
+    
+    font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    
+    switch( level )
+    {
+        case ULogMessageLevelEmergency: color = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.messageColor; break;
+        case ULogMessageLevelAlert:     color = [ ULogSettings sharedInstance ].colorTheme.alertColors.messageColor;     break;
+        case ULogMessageLevelCritical:  color = [ ULogSettings sharedInstance ].colorTheme.criticalColors.messageColor;  break;
+        case ULogMessageLevelError:     color = [ ULogSettings sharedInstance ].colorTheme.errorColors.messageColor;     break;
+        case ULogMessageLevelWarning:   color = [ ULogSettings sharedInstance ].colorTheme.warningColors.messageColor;   break;
+        case ULogMessageLevelNotice:    color = [ ULogSettings sharedInstance ].colorTheme.noticeColors.messageColor;    break;
+        case ULogMessageLevelInfo:      color = [ ULogSettings sharedInstance ].colorTheme.infoColors.messageColor;      break;
+        case ULogMessageLevelDebug:     color = [ ULogSettings sharedInstance ].colorTheme.debugColors.messageColor;     break;
+        default:                        color = nil;                                                                     break;
+    }
+    
+    if( color )
+    {
+        return @{ NSFontAttributeName : font, NSForegroundColorAttributeName : color };
+    }
+    
+    return @{ NSFontAttributeName : font };
 }
 
 @end

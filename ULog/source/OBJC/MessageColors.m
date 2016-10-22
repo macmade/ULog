@@ -60,6 +60,22 @@
     return self;
 }
 
+- ( instancetype )copyWithZone: ( NSZone * )zone
+{
+    ULogMessageColors * colors;
+    
+    colors = [ [ [ self class ] allocWithZone: zone ] init ];
+    
+    colors.backgroundColor = [ self.backgroundColor copy ];
+    colors.foregroundColor = [ self.foregroundColor copy ];
+    colors.timeColor       = [ self.timeColor copy ];
+    colors.sourceColor     = [ self.sourceColor copy ];
+    colors.levelColor      = [ self.levelColor copy ];
+    colors.messageColor    = [ self.messageColor copy ];
+    
+    return colors;
+}
+
 - ( void )encodeWithCoder: ( NSCoder * )coder
 {
     [ self encodeColor: self.backgroundColor forKey: @"BackgroundColor" withCoder: coder ];

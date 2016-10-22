@@ -35,12 +35,7 @@
 
 NSString * const ULogSettingsKeyFontName        = @"FontName";
 NSString * const ULogSettingsKeyFontSize        = @"FontSize";
-NSString * const ULogSettingsKeyBackgroundColor = @"BackgroundColor";
-NSString * const ULogSettingsKeyForegoundColor  = @"ForegoundColor";
-NSString * const ULogSettingsKeyTimeColor       = @"TimeColor";
-NSString * const ULogSettingsKeySourceColor     = @"SourceColor";
-NSString * const ULogSettingsKeyLevelColor      = @"LevelColor";
-NSString * const ULogSettingsKeyMessageColor    = @"MessageColor";
+NSString * const ULogSettingsKeyColorTheme      = @"ColorTheme";
 NSString * const ULogSettingsKeyShowC           = @"ShowC";
 NSString * const ULogSettingsKeyShowCXX         = @"ShowCXX";
 NSString * const ULogSettingsKeyShowOBJC        = @"ShowOBJC";
@@ -61,9 +56,8 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
 @interface ULogSettings()
 
 @property( atomic, readwrite, strong ) NSUserDefaults * defaults;
+@property( atomic, readwrite, strong ) ULogColorTheme * cachedColorTheme;
 
-- ( NSColor * )colorForKey: ( NSString * )key;
-- ( void )setColor: ( NSColor * )color forKey: ( NSString * )key;
 - ( void )synchronizeDefaultsAndNotifyForKey: ( NSString * )key;
 - ( NSString * )propertyNameFromSetter: ( SEL )setter;
 
@@ -123,75 +117,29 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     }
 }
 
-- ( NSColor * )backgroundColor
+- ( ULogColorTheme * )colorTheme
 {
-    NSColor * color;
+    NSData         * data;
+    ULogColorTheme * theme;
     
     @synchronized( self )
     {
-        color = [ self colorForKey: ULogSettingsKeyBackgroundColor ];
+        if( self.cachedColorTheme )
+        {
+            return self.cachedColorTheme;
+        }
         
-        return ( color ) ? color : ULOG_HEXCOLOR( 0x161A1D, 1 );
-    }
-}
-
-- ( NSColor * )foregoundColor
-{
-    NSColor * color;
-    
-    @synchronized( self )
-    {
-        color = [ self colorForKey: ULogSettingsKeyForegoundColor ];
+        theme = nil;
         
-        return ( color ) ? color : ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-    }
-}
-
-- ( NSColor * )timeColor
-{
-    NSColor * color;
-    
-    @synchronized( self )
-    {
-        color = [ self colorForKey: ULogSettingsKeyTimeColor ];
+        if( [ self.defaults objectForKey: ULogSettingsKeyColorTheme ] )
+        {
+            data  = [ self.defaults objectForKey: ULogSettingsKeyColorTheme ];
+            theme = [ NSKeyedUnarchiver unarchiveObjectWithData: data ];
+        }
         
-        return ( color ) ? color : ULOG_HEXCOLOR( 0x5A773C, 1 );
-    }
-}
-
-- ( NSColor * )sourceColor
-{
-    NSColor * color;
-    
-    @synchronized( self )
-    {
-        color = [ self colorForKey: ULogSettingsKeySourceColor ];
+        self.cachedColorTheme = ( theme ) ? theme : [ ULogColorTheme defaultTheme ];
         
-        return ( color ) ? color : ULOG_HEXCOLOR( 0x5EA09F, 1 );
-    }
-}
-
-- ( NSColor * )levelColor
-{
-    NSColor * color;
-    
-    @synchronized( self )
-    {
-        color = [ self colorForKey: ULogSettingsKeyLevelColor ];
-        
-        return ( color ) ? color : ULOG_HEXCOLOR( 0x996633, 1 );
-    }
-}
-
-- ( NSColor * )messageColor
-{
-    NSColor * color;
-    
-    @synchronized( self )
-    {
-        color = [ self colorForKey: ULogSettingsKeyMessageColor ];
-        
-        return ( color ) ? color : ULOG_HEXCOLOR( 0xBFBFBF, 1 );
+        return self.cachedColorTheme;
     }
 }
 
@@ -386,69 +334,20 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     }
 }
 
-- ( void )setBackgroundColor: ( NSColor * )value
+- ( void )setColorTheme: ( ULogColorTheme * )value
 {
+    NSData * data;
+    
     @synchronized( self )
     {
+        data = [ NSKeyedArchiver archivedDataWithRootObject: value ];
+        
         [ self willChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-        [ self setColor: value forKey: ULogSettingsKeyBackgroundColor ];
-        [ self synchronizeDefaultsAndNotifyForKey: ULogSettingsKeyBackgroundColor ];
+        [ self setCachedColorTheme: value ];
+        [ self.defaults setObject: data forKey: ULogSettingsKeyColorTheme ];
+        [ self synchronizeDefaultsAndNotifyForKey: ULogSettingsKeyColorTheme ];
         [ self didChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-    }
-}
-
-- ( void )setForegoundColor: ( NSColor * )value
-{
-    @synchronized( self )
-    {
-        [ self willChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-        [ self setColor: value forKey: ULogSettingsKeyForegoundColor ];
-        [ self synchronizeDefaultsAndNotifyForKey: ULogSettingsKeyForegoundColor ];
-        [ self didChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-    }
-}
-
-- ( void )setTimeColor: ( NSColor * )value
-{
-    @synchronized( self )
-    {
-        [ self willChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-        [ self setColor: value forKey: ULogSettingsKeyTimeColor ];
-        [ self synchronizeDefaultsAndNotifyForKey: ULogSettingsKeyTimeColor ];
-        [ self didChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-    }
-}
-
-- ( void )setSourceColor: ( NSColor * )value
-{
-    @synchronized( self )
-    {
-        [ self willChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-        [ self setColor: value forKey: ULogSettingsKeySourceColor ];
-        [ self synchronizeDefaultsAndNotifyForKey: ULogSettingsKeySourceColor ];
-        [ self didChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-    }
-}
-
-- ( void )setLevelColor: ( NSColor * )value
-{
-    @synchronized( self )
-    {
-        [ self willChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-        [ self setColor: value forKey: ULogSettingsKeyLevelColor ];
-        [ self synchronizeDefaultsAndNotifyForKey: ULogSettingsKeyLevelColor ];
-        [ self didChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-    }
-}
-
-- ( void )setMessageColor: ( NSColor * )value
-{
-    @synchronized( self )
-    {
-        [ self willChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
-        [ self setColor: value forKey: ULogSettingsKeyMessageColor ];
-        [ self synchronizeDefaultsAndNotifyForKey: ULogSettingsKeyMessageColor ];
-        [ self didChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
+        
     }
 }
 
@@ -595,70 +494,6 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     }
 }
 
-- ( NSColor * )colorForKey: ( NSString * )key
-{
-    CGFloat    r;
-    CGFloat    g;
-    CGFloat    b;
-    NSString * kr;
-    NSString * kg;
-    NSString * kb;
-    
-    @synchronized( self )
-    {
-        kr = [ key stringByAppendingString: @"R" ];
-        kg = [ key stringByAppendingString: @"G" ];
-        kb = [ key stringByAppendingString: @"B" ];
-        
-        if( [ self.defaults objectForKey: kr ] == nil )
-        {
-            return nil;
-        }
-        
-        if( [ self.defaults objectForKey: kg ] == nil )
-        {
-            return nil;
-        }
-        
-        if( [ self.defaults objectForKey: kb ] == nil )
-        {
-            return nil;
-        }
-        
-        r = ( CGFloat )[ self.defaults doubleForKey: kr ];
-        g = ( CGFloat )[ self.defaults doubleForKey: kg ];
-        b = ( CGFloat )[ self.defaults doubleForKey: kb ];
-        
-        return [ NSColor colorWithDeviceRed: r green: g blue: b alpha: 1.0 ];
-    }
-}
-
-- ( void )setColor: ( NSColor * )color forKey: ( NSString * )key
-{
-    CGFloat    r;
-    CGFloat    g;
-    CGFloat    b;
-    NSString * kr;
-    NSString * kg;
-    NSString * kb;
-    
-    @synchronized( self )
-    {
-        r     = 0.0;
-        g     = 0.0;
-        b     = 0.0;
-        kr    = [ key stringByAppendingString: @"R" ];
-        kg    = [ key stringByAppendingString: @"G" ];
-        kb    = [ key stringByAppendingString: @"B" ];
-        color = [ color colorUsingColorSpaceName: NSDeviceRGBColorSpace ];
-        
-        [ color getRed: &r green: &g blue: &b alpha: NULL ];
-        [ self.defaults setDouble: ( double )r forKey: kr ];
-        [ self.defaults setDouble: ( double )g forKey: kg ];
-        [ self.defaults setDouble: ( double )b forKey: kb ];
-    }
-}
-
 - ( void )restoreDefaults
 {
     id key;
@@ -669,6 +504,8 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
         {
             [ self.defaults removeObjectForKey: key ];
         }
+        
+        self.cachedColorTheme = nil;
         
         [ self.defaults synchronize ];
         [ [ NSNotificationCenter defaultCenter ] postNotificationName: ULogSettingsNotificationDefaultsRestored object: nil userInfo: nil ];

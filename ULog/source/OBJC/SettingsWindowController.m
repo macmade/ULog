@@ -33,33 +33,30 @@
 
 @interface ULogSettingsColorItem: NSObject
 
-- ( instancetype )initWithLabel: ( NSString * )label color: ( NSColor * )color changedSelector: ( SEL )selector;
-- ( instancetype )initWithLabel: ( NSString * )label color: ( NSColor * )color textColor: ( NSColor * )textColor changedSelector: ( SEL )selector;
+@property( atomic, readwrite, strong ) NSString          * label;
+@property( atomic, readwrite, strong ) ULogMessageColors * colors;
+@property( atomic, readwrite, assign ) SEL                 changedSelector;
 
-@property( atomic, readwrite, strong ) NSString * label;
-@property( atomic, readwrite, strong ) NSColor  * color;
-@property( atomic, readwrite, strong ) NSColor  * textColor;
-@property( atomic, readwrite, assign ) SEL        changedSelector;
+- ( instancetype )initWithLabel: ( NSString * )label colors: ( ULogMessageColors * )colors changedSelector: ( SEL )selector;
 
 @end
 
 @implementation ULogSettingsColorItem
 
-- ( instancetype )initWithLabel: ( NSString * )label color: ( NSColor * )color changedSelector: ( SEL )selector
+- ( instancetype )initWithLabel: ( NSString * )label colors: ( ULogMessageColors * )colors changedSelector: ( SEL )selector
 {
-    return [ self initWithLabel: label color: color textColor: color changedSelector: selector ];
-}
-
-- ( instancetype )initWithLabel: ( NSString * )label color: ( NSColor * )color textColor: ( NSColor * )textColor changedSelector: ( SEL )selector
-{
-    if( ( self = [ self init ] ) )
+    if( ( self = [ super init ] ) )
     {
         self.label           = label;
-        self.color           = color;
-        self.textColor       = textColor;
+        self.colors          = [ colors copy ];
         self.changedSelector = selector;
         
-        [ self addObserver: self forKeyPath: @"color" options: NSKeyValueObservingOptionNew context: NULL ];
+        [ self.colors addObserver: self forKeyPath: @"backgroundColor" options: NSKeyValueObservingOptionNew context: NULL ];
+        [ self.colors addObserver: self forKeyPath: @"foregroundColor" options: NSKeyValueObservingOptionNew context: NULL ];
+        [ self.colors addObserver: self forKeyPath: @"timeColor"       options: NSKeyValueObservingOptionNew context: NULL ];
+        [ self.colors addObserver: self forKeyPath: @"sourceColor"     options: NSKeyValueObservingOptionNew context: NULL ];
+        [ self.colors addObserver: self forKeyPath: @"levelColor"      options: NSKeyValueObservingOptionNew context: NULL ];
+        [ self.colors addObserver: self forKeyPath: @"messageColor"    options: NSKeyValueObservingOptionNew context: NULL ];
     }
     
     return self;
@@ -67,24 +64,54 @@
 
 - ( void )dealloc
 {
-    [ self removeObserver: self forKeyPath: @"color" ];
+    [ self.colors removeObserver: self forKeyPath: @"backgroundColor" ];
+    [ self.colors removeObserver: self forKeyPath: @"foregroundColor" ];
+    [ self.colors removeObserver: self forKeyPath: @"timeColor" ];
+    [ self.colors removeObserver: self forKeyPath: @"sourceColor" ];
+    [ self.colors removeObserver: self forKeyPath: @"levelColor" ];
+    [ self.colors removeObserver: self forKeyPath: @"messageColor" ];
 }
 
 - ( void )observeValueForKeyPath: ( NSString * )keyPath ofObject: ( id )object change: ( NSDictionary * )change context: ( void * )context
 {
-    ( void )context;
-    ( void )change;
+    ULogColorTheme * theme;
     
-    if( object == self && [ keyPath isEqualToString: @"color" ] )
+    ( void )keyPath;
+    ( void )change;
+    ( void )context;
+    
+    if( object != self.colors || self.changedSelector == NULL )
     {
-        if( self.changedSelector )
-        {
-            #pragma clang diagnostic push
-            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [ [ ULogSettings sharedInstance ] performSelector: self.changedSelector withObject: self.color ];
-            #pragma clang diagnostic pop
-        }
+        return;
     }
+    
+    theme = [ [ ULogSettings sharedInstance ].colorTheme copy ];
+    
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [ theme performSelector: self.changedSelector withObject: self.colors ];
+    #pragma clang diagnostic pop
+    
+    [ ULogSettings sharedInstance ].colorTheme = theme;
+}
+
+@end
+
+@interface ULogColorTableCellView: NSTableCellView
+
+@end
+
+@implementation ULogColorTableCellView
+
+- ( void )drawRect: ( NSRect )rect
+{
+    ULogSettingsColorItem * item;
+    
+    item = [ self valueForKey: @"objectValue" ];
+    
+    [ item.colors.backgroundColor setFill ];
+    
+    NSRectFill( rect );
 }
 
 @end
@@ -166,119 +193,42 @@
 
 - ( void )update
 {
-    self.fontDescription           = [ NSString stringWithFormat: @"%@ %u", [ ULogSettings sharedInstance ].fontName, ( unsigned int )( [ ULogSettings sharedInstance ].fontSize ) ];
-    self.tableView.backgroundColor = [ ULogSettings sharedInstance ].backgroundColor;
-    self.font                      = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
-    self.selectedTheme             = 0;
-    
-    self.colors = @[
-        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Background" color: [ ULogSettings sharedInstance ].backgroundColor textColor: [ ULogSettings sharedInstance ].foregoundColor changedSelector: @selector( setBackgroundColor: ) ],
-        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Foreground" color: [ ULogSettings sharedInstance ].foregoundColor changedSelector: @selector( setForegoundColor: ) ],
-        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Time" color: [ ULogSettings sharedInstance ].timeColor changedSelector: @selector( setTimeColor: ) ],
-        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Source" color: [ ULogSettings sharedInstance ].sourceColor changedSelector: @selector( setSourceColor: ) ],
-        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Level" color: [ ULogSettings sharedInstance ].levelColor changedSelector: @selector( setLevelColor: ) ],
-        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Message" color: [ ULogSettings sharedInstance ].messageColor changedSelector: @selector( setMessageColor: ) ]
+    self.fontDescription    = [ NSString stringWithFormat: @"%@ %u", [ ULogSettings sharedInstance ].fontName, ( unsigned int )( [ ULogSettings sharedInstance ].fontSize ) ];
+    self.font               = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    self.selectedTheme      = 0;
+    self.colors             = @[
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Emergency" colors: [ ULogSettings sharedInstance ].colorTheme.emergencyColors changedSelector: @selector( setEmergencyColors: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Alert"     colors: [ ULogSettings sharedInstance ].colorTheme.alertColors     changedSelector: @selector( setAlertColors: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Critical"  colors: [ ULogSettings sharedInstance ].colorTheme.criticalColors  changedSelector: @selector( setCriticalColors: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Error"     colors: [ ULogSettings sharedInstance ].colorTheme.errorColors     changedSelector: @selector( setErrorColors: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Warning"   colors: [ ULogSettings sharedInstance ].colorTheme.warningColors   changedSelector: @selector( setWarningColors: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Notice"    colors: [ ULogSettings sharedInstance ].colorTheme.noticeColors    changedSelector: @selector( setNoticeColors: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Info"      colors: [ ULogSettings sharedInstance ].colorTheme.infoColors      changedSelector: @selector( setInfoColors: ) ],
+        [ [ ULogSettingsColorItem alloc ] initWithLabel: @"Debug"     colors: [ ULogSettings sharedInstance ].colorTheme.debugColors     changedSelector: @selector( setDebugColors: ) ]
     ];
 }
 
 - ( IBAction )choosePreset: ( id )sender
 {
-    NSColor * background;
-    NSColor * foreground;
-    NSColor * time;
-    NSColor * source;
-    NSColor * level;
-    NSColor * message;
+    ULogColorTheme * theme;
     
     ( void )sender;
     
     switch( self.selectedTheme )
     {
-        /* BareBones */
-        case 1:
-            
-            background  = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
-            foreground  = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
-            time        = ULOG_HEXCOLOR( 0x993300, 1 );
-            source      = ULOG_HEXCOLOR( 0x0000CC, 1 );
-            level       = ULOG_HEXCOLOR( 0xFF3399, 1 );
-            message     = ULOG_HEXCOLOR( 0x000000, 1 );
-            
-            break;
-        
-        /* Dusk */
-        case 2:
-            
-            background  = ULOG_HEXCOLOR( 0x1E2028, 1 );
-            foreground  = ULOG_HEXCOLOR( 0x55747C, 1 );
-            time        = ULOG_HEXCOLOR( 0x41B645, 1 );
-            source      = ULOG_HEXCOLOR( 0xC67C48, 1 );
-            level       = ULOG_HEXCOLOR( 0xDB2C38, 1 );
-            message     = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
-            
-            break;
-            
-        /* Sunset */
-        case 3:
-            
-            background  = ULOG_HEXCOLOR( 0xFFFCE5, 1 );
-            foreground  = ULOG_HEXCOLOR( 0x646485, 1 );
-            time        = ULOG_HEXCOLOR( 0x4349AC, 1 );
-            source      = ULOG_HEXCOLOR( 0x476A97, 1 );
-            level       = ULOG_HEXCOLOR( 0xDF0700, 1 );
-            message     = ULOG_HEXCOLOR( 0xC3741C, 1 );
-            
-            break;
-            
-        /* Xcode */
-        case 4:
-            
-            background  = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
-            foreground  = ULOG_HEXCOLOR( 0x203C3F, 1 );
-            time        = ULOG_HEXCOLOR( 0x1D8519, 1 );
-            source      = ULOG_HEXCOLOR( 0x000BFF, 1 );
-            level       = ULOG_HEXCOLOR( 0xBA0011, 1 );
-            message     = ULOG_HEXCOLOR( 0x000000, 1 );
-            
-            break;
-            
-        /* XS - Dark */
-        case 5:
-            
-            background  = ULOG_HEXCOLOR( 0x161A1D, 1 );
-            foreground  = ULOG_HEXCOLOR( 0x6C6C6C, 1 );
-            time        = ULOG_HEXCOLOR( 0x5A773C, 1 );
-            source      = ULOG_HEXCOLOR( 0x5EA09F, 1 );
-            level       = ULOG_HEXCOLOR( 0x996633, 1 );
-            message     = ULOG_HEXCOLOR( 0xBFBFBF, 1 );
-            
-            break;
-            
-        /* XS - Light */
-        case 6:
-            
-            background  = ULOG_HEXCOLOR( 0xFFFFFF, 1 );
-            foreground  = ULOG_HEXCOLOR( 0x7F7F7F, 1 );
-            time        = ULOG_HEXCOLOR( 0x7F007F, 1 );
-            source      = ULOG_HEXCOLOR( 0x007FFF, 1 );
-            level       = ULOG_HEXCOLOR( 0xFF7F7F, 1 );
-            message     = ULOG_HEXCOLOR( 0x000000, 1 );
-            
-            break;
-            
-        default:
-            
-            self.selectedTheme = 0;
-            
-            return;
+        case 1:     theme = [ ULogColorTheme civicTheme ];      break;
+        case 2:     theme = [ ULogColorTheme duskTheme ];       break;
+        case 3:     theme = [ ULogColorTheme midnightTheme ];   break;
+        case 4:     theme = [ ULogColorTheme sunsetTheme ];     break;
+        case 5:     theme = [ ULogColorTheme xcodeTheme ];      break;
+        case 6:     theme = [ ULogColorTheme xsTheme ];         break;
+        default:    theme = nil;
     }
     
-    [ ULogSettings sharedInstance ].backgroundColor = background;
-    [ ULogSettings sharedInstance ].foregoundColor  = foreground;
-    [ ULogSettings sharedInstance ].timeColor       = time;
-    [ ULogSettings sharedInstance ].sourceColor     = source;
-    [ ULogSettings sharedInstance ].levelColor      = level;
-    [ ULogSettings sharedInstance ].messageColor    = message;
+    if( theme )
+    {
+        [ ULogSettings sharedInstance ].colorTheme = theme;
+    }
     
     [ self update ];
 }

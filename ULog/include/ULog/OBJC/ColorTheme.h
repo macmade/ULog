@@ -41,7 +41,7 @@
 #include <ULog/Base.h>
 #include <ULog/OBJC/MessageColors.h>
 
-@interface ULogColorTheme: NSObject < NSSecureCoding >
+@interface ULogColorTheme: NSObject < NSSecureCoding, NSCopying >
 
 @property( atomic, readwrite, strong ) ULogMessageColors * emergencyColors;
 @property( atomic, readwrite, strong ) ULogMessageColors * alertColors;
@@ -53,13 +53,12 @@
 @property( atomic, readwrite, strong ) ULogMessageColors * debugColors;
 
 + ( instancetype )defaultTheme;
-+ ( instancetype )xcodeTheme;
-+ ( instancetype )duskTheme;
-+ ( instancetype )sunsetTheme;
-+ ( instancetype )xsTheme;
-+ ( instancetype )bareBonesTheme;
 + ( instancetype )civicTheme;
++ ( instancetype )duskTheme;
 + ( instancetype )midnightTheme;
++ ( instancetype )sunsetTheme;
++ ( instancetype )xcodeTheme;
++ ( instancetype )xsTheme;
 
 @end
 

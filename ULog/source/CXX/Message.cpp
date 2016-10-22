@@ -281,12 +281,10 @@ namespace ULog
         
         {
             time_t     t;
-            struct tm  now;
             SYSTEMTIME time;
             
             time( &t );
             GetSystemTime( &time );
-            localtime_s( &now, &t );
             
             this->_time         = static_cast< uint64_t >( t );
             this->_milliseconds = static_cast< uint64_t >( time.wMilliseconds );
@@ -296,11 +294,9 @@ namespace ULog
         
         {
             time_t         t;
-            struct tm    * now;
             struct timeval tv;
             
-            t   = time( NULL );
-            now = localtime( &t );
+            t = time( NULL );
             
             gettimeofday( &tv, NULL );
             

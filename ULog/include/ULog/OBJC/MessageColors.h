@@ -40,7 +40,7 @@
 
 #include <ULog/Base.h>
 
-@interface ULogMessageColors: NSObject < NSSecureCoding >
+@interface ULogMessageColors: NSObject < NSSecureCoding, NSCopying >
 
 @property( atomic, readwrite, strong ) NSColor * backgroundColor;
 @property( atomic, readwrite, strong ) NSColor * foregroundColor;

@@ -38,20 +38,9 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-#define ULOG_HEXCOLOR( c, a )   [ NSColor   colorWithDeviceRed: ( ( CGFloat )( ( c >> 16 ) & 0x0000FF ) ) / ( CGFloat )255  \
-                                            green:              ( ( CGFloat )( ( c >>  8 ) & 0x0000FF ) ) / ( CGFloat )255  \
-                                            blue:               ( ( CGFloat )( ( c       ) & 0x0000FF ) ) / ( CGFloat )255  \
-                                            alpha:              ( CGFloat )a                                                \
-                                ]
-
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyFontName;
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyFontSize;
-FOUNDATION_EXPORT NSString * const ULogSettingsKeyBackgroundColor;
-FOUNDATION_EXPORT NSString * const ULogSettingsKeyForegoundColor;
-FOUNDATION_EXPORT NSString * const ULogSettingsKeyTimeColor;
-FOUNDATION_EXPORT NSString * const ULogSettingsKeySourceColor;
-FOUNDATION_EXPORT NSString * const ULogSettingsKeyLevelColor;
-FOUNDATION_EXPORT NSString * const ULogSettingsKeyMessageColor;
+FOUNDATION_EXPORT NSString * const ULogSettingsKeyColorTheme;
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyShowC;
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyShowCXX;
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyShowOBJC;
@@ -71,27 +60,22 @@ FOUNDATION_EXPORT NSString * const ULogSettingsNotificationDefaultsRestored;
 
 @interface ULogSettings: NSObject
 
-@property( atomic, readwrite, strong ) NSString * fontName;
-@property( atomic, readwrite, assign ) CGFloat    fontSize;
-@property( atomic, readwrite, strong ) NSColor  * backgroundColor;
-@property( atomic, readwrite, strong ) NSColor  * foregoundColor;
-@property( atomic, readwrite, strong ) NSColor  * timeColor;
-@property( atomic, readwrite, strong ) NSColor  * sourceColor;
-@property( atomic, readwrite, strong ) NSColor  * levelColor;
-@property( atomic, readwrite, strong ) NSColor  * messageColor;
-@property( atomic, readwrite, assign ) BOOL       showC;
-@property( atomic, readwrite, assign ) BOOL       showCXX;
-@property( atomic, readwrite, assign ) BOOL       showOBJC;
-@property( atomic, readwrite, assign ) BOOL       showOBJCXX;
-@property( atomic, readwrite, assign ) BOOL       showASL;
-@property( atomic, readwrite, assign ) BOOL       showEmergency;
-@property( atomic, readwrite, assign ) BOOL       showAlert;
-@property( atomic, readwrite, assign ) BOOL       showCritical;
-@property( atomic, readwrite, assign ) BOOL       showError;
-@property( atomic, readwrite, assign ) BOOL       showWarning;
-@property( atomic, readwrite, assign ) BOOL       showNotice;
-@property( atomic, readwrite, assign ) BOOL       showInfo;
-@property( atomic, readwrite, assign ) BOOL       showDebug;
+@property( atomic, readwrite, strong ) NSString       * fontName;
+@property( atomic, readwrite, assign ) CGFloat          fontSize;
+@property( atomic, readwrite, strong ) ULogColorTheme * colorTheme;
+@property( atomic, readwrite, assign ) BOOL             showC;
+@property( atomic, readwrite, assign ) BOOL             showCXX;
+@property( atomic, readwrite, assign ) BOOL             showOBJC;
+@property( atomic, readwrite, assign ) BOOL             showOBJCXX;
+@property( atomic, readwrite, assign ) BOOL             showASL;
+@property( atomic, readwrite, assign ) BOOL             showEmergency;
+@property( atomic, readwrite, assign ) BOOL             showAlert;
+@property( atomic, readwrite, assign ) BOOL             showCritical;
+@property( atomic, readwrite, assign ) BOOL             showError;
+@property( atomic, readwrite, assign ) BOOL             showWarning;
+@property( atomic, readwrite, assign ) BOOL             showNotice;
+@property( atomic, readwrite, assign ) BOOL             showInfo;
+@property( atomic, readwrite, assign ) BOOL             showDebug;
 
 + ( instancetype )sharedInstance;
 - ( void )restoreDefaults;
