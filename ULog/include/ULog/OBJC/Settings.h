@@ -58,6 +58,7 @@ FOUNDATION_EXPORT NSString * const ULogSettingsKeyShowProcess;
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyShowTime;
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyShowSource;
 FOUNDATION_EXPORT NSString * const ULogSettingsKeyShowLevel;
+FOUNDATION_EXPORT NSString * const ULogSettingsKeyShowIcon;
 
 FOUNDATION_EXPORT NSString * const ULogSettingsNotificationDefaultsChanged;
 FOUNDATION_EXPORT NSString * const ULogSettingsNotificationDefaultsRestored;
@@ -84,6 +85,7 @@ FOUNDATION_EXPORT NSString * const ULogSettingsNotificationDefaultsRestored;
 @property( atomic, readwrite, assign ) BOOL             showTime;
 @property( atomic, readwrite, assign ) BOOL             showSource;
 @property( atomic, readwrite, assign ) BOOL             showLevel;
+@property( atomic, readwrite, assign ) BOOL             showIcon;
 
 + ( instancetype )sharedInstance;
 - ( void )restoreDefaults;

@@ -522,6 +522,42 @@ static void init( void )
     text    = [ [ NSAttributedString alloc ] initWithString: message.message       attributes: [ self messageAttributesForLevel: message.level ] ];
     fg      = [ self foregroundAttributesForLevel: message.level ];
     
+    if( [ ULogSettings sharedInstance ].showIcon )
+    {
+        if( message.level == ULogMessageLevelEmergency )
+        {
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"💣 " attributes: nil ] ];
+        }
+        else if( message.level == ULogMessageLevelAlert )
+        {
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"📛 " attributes: nil ] ];
+        }
+        else if( message.level == ULogMessageLevelCritical )
+        {
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"⛔️ " attributes: nil ] ];
+        }
+        else if( message.level == ULogMessageLevelError )
+        {
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"❌ " attributes: nil ] ];
+        }
+        else if( message.level == ULogMessageLevelWarning )
+        {
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"⚠️ " attributes: nil ] ];
+        }
+        else if( message.level == ULogMessageLevelNotice )
+        {
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"❕ " attributes: nil ] ];
+        }
+        else if( message.level == ULogMessageLevelInfo )
+        {
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"ℹ️ " attributes: nil ] ];
+        }
+        else if( message.level == ULogMessageLevelDebug )
+        {
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"🚧 " attributes: nil ] ];
+        }
+    }
+    
     if( [ ULogSettings sharedInstance ].showProcess )
     {
         [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];

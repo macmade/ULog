@@ -53,6 +53,7 @@ NSString * const ULogSettingsKeyShowProcess     = @"ShowProcess";
 NSString * const ULogSettingsKeyShowTime        = @"ShowTime";
 NSString * const ULogSettingsKeyShowSource      = @"ShowSource";
 NSString * const ULogSettingsKeyShowLevel       = @"ShowLevel";
+NSString * const ULogSettingsKeyShowIcon        = @"ShowIcon";
 
 NSString * const ULogSettingsNotificationDefaultsChanged  = @"ULogSettingsNotificationDefaultsChanged";
 NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotificationDefaultsRestored";
@@ -368,6 +369,19 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
     }
 }
 
+- ( BOOL )showIcon
+{
+    @synchronized( self )
+    {
+        if( [ self.defaults objectForKey: ULogSettingsKeyShowIcon ] )
+        {
+            return [ self.defaults boolForKey: ULogSettingsKeyShowIcon ];
+        }
+        
+        return YES;
+    }
+}
+
 - ( void )setFontName: ( NSString * )value
 {
     @synchronized( self )
@@ -590,6 +604,17 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
         [ self willChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
         [ self.defaults setBool: value forKey: ULogSettingsKeyShowLevel ];
         [ self synchronizeDefaultsAndNotifyForKey: ULogSettingsKeyShowLevel ];
+        [ self didChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
+    }
+}
+
+- ( void )setShowIcon: ( BOOL )value
+{
+    @synchronized( self )
+    {
+        [ self willChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
+        [ self.defaults setBool: value forKey: ULogSettingsKeyShowIcon ];
+        [ self synchronizeDefaultsAndNotifyForKey: ULogSettingsKeyShowIcon ];
         [ self didChangeValueForKey: [ self propertyNameFromSetter: _cmd ] ];
     }
 }
