@@ -566,8 +566,8 @@ namespace ULog
     }
     
     Logger::IMPL::IMPL( void ):
-        _enabled( true ),
-        _displayOptions( DisplayOptionProcess | DisplayOptionTime | DisplayOptionSource | DisplayOptionLevel )
+        _displayOptions( DisplayOptionProcess | DisplayOptionTime | DisplayOptionSource | DisplayOptionLevel ),
+        _enabled( true )
     {}
     
     Logger::IMPL::IMPL( const IMPL & o )
