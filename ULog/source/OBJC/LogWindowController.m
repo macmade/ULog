@@ -398,7 +398,41 @@ static void init( void )
         dispatch_get_main_queue(),
         ^( void )
         {
+            NSRange r1;
+            NSRange r2;
+            NSPoint origin;
+            double  pos;
+            
+            pos = self.textView.enclosingScrollView.verticalScroller.doubleValue;
+            r1  = [ self.textView.layoutManager glyphRangeForBoundingRect: [ self.textView visibleRect ] inTextContainer: self.textView.textContainer ];
+            r2  = [ self.textView.layoutManager characterRangeForGlyphRange: r1 actualGlyphRange: &r2 ];
+            
             self.log = log;
+            
+            if( fabs( pos - 1 ) < DBL_EPSILON )
+            {
+                if( [ [ self.textView.enclosingScrollView documentView ] isFlipped ] )
+                {
+                    origin = NSMakePoint
+                    (
+                        0.0,
+                        (
+                            NSMaxY( [ [ self.textView.enclosingScrollView documentView ] frame ] )
+                          - NSHeight( [ [ self.textView.enclosingScrollView contentView ] bounds ] )
+                        )
+                    );
+                }
+                else
+                {
+                    origin = NSMakePoint( 0.0, 0.0 );
+                }
+             
+                [ [ self.textView.enclosingScrollView documentView ] scrollPoint: origin ];
+            }
+            else
+            {
+                [ self.textView scrollRangeToVisible: r2 ];
+            }
             
             [ self updateTitleWithMessageCount: i ];
         }
