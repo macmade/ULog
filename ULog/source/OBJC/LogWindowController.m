@@ -58,6 +58,7 @@ static void init( void )
 
 - ( IBAction )clear: ( id )sender;
 - ( IBAction )togglePause: ( id )sender;
+- ( IBAction )save: ( id )sender;
 - ( IBAction )showSettings: ( id )sender;
 - ( void )updateSettings;
 - ( void )updateTitleWithMessageCount: ( NSUInteger )count;
@@ -177,6 +178,49 @@ static void init( void )
             self.pauseButtonTitle = @"Resume";
         }
     }
+}
+
+- ( IBAction )save: ( id )sender
+{
+    NSSavePanel     * panel;
+    NSString        * app;
+    NSString        * date;
+    NSDateFormatter * formatter;
+    
+    ( void )sender;
+    
+    formatter = [ NSDateFormatter new ];
+    
+    [ formatter setDateFormat: @"yyyy-MM-dd-hh-mm-ss" ];
+    
+    app   = [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ];
+    date  = [ formatter stringFromDate: [ NSDate date ] ];
+    panel = [ NSSavePanel savePanel ];
+    
+    [ panel setNameFieldStringValue: [ NSString stringWithFormat: @"ULog-%@-%@.txt", app, date ] ];
+    [ panel setCanCreateDirectories: YES ];
+    [ panel beginSheetModalForWindow: self.window completionHandler: ^( NSInteger result )
+        {
+            NSString * path;
+            NSData   * data;
+            
+            if( result != NSFileHandlingPanelOKButton )
+            {
+                return;
+            }
+            
+            path = panel.URL.path;
+            
+            if( path == nil )
+            {
+                return;
+            }
+            
+            data = [ self.log.string dataUsingEncoding: NSUTF8StringEncoding ];
+            
+            [ data writeToFile: path atomically: YES ];
+        }
+    ];
 }
 
 - ( IBAction )showSettings: ( id )sender

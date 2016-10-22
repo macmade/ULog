@@ -53,7 +53,7 @@
                         </scroller>
                     </scrollView>
                     <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="929-IA-7NH">
-                        <rect key="frame" x="20" y="28" width="784" height="19"/>
+                        <rect key="frame" x="20" y="28" width="734" height="19"/>
                         <searchFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="0o0-E9-eJU">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -64,7 +64,7 @@
                         </connections>
                     </searchField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q6k-hO-IXw">
-                        <rect key="frame" x="859" y="23" width="58" height="28"/>
+                        <rect key="frame" x="809" y="23" width="58" height="28"/>
                         <buttonCell key="cell" type="push" title="Pause" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mXX-8U-a7x">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -72,6 +72,16 @@
                         <connections>
                             <action selector="togglePause:" target="-2" id="ajk-g6-lUA"/>
                             <binding destination="-2" name="title" keyPath="pauseButtonTitle" id="4J6-CT-gNY"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Jo-pY-aLg">
+                        <rect key="frame" x="865" y="23" width="52" height="28"/>
+                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qEV-1u-Xno">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="save:" target="-2" id="CTY-Bg-b5V"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Hp-uu-9LU">
@@ -215,7 +225,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tmS-nC-gvx">
-                        <rect key="frame" x="807" y="23" width="54" height="28"/>
+                        <rect key="frame" x="757" y="23" width="54" height="28"/>
                         <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kIY-K4-WGF">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -226,9 +236,11 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="9Jo-pY-aLg" firstAttribute="leading" secondItem="Q6k-hO-IXw" secondAttribute="trailing" constant="8" id="0wv-a8-oRI"/>
                     <constraint firstItem="HLa-hc-2jg" firstAttribute="leading" secondItem="iL8-XE-lyQ" secondAttribute="trailing" constant="8" id="2Mj-8p-oEB"/>
                     <constraint firstItem="929-IA-7NH" firstAttribute="leading" secondItem="5Ee-YL-W7P" secondAttribute="leading" constant="20" id="3SA-aD-MmV"/>
                     <constraint firstItem="tmS-nC-gvx" firstAttribute="leading" secondItem="929-IA-7NH" secondAttribute="trailing" constant="8" id="3hQ-4t-Uju"/>
+                    <constraint firstItem="9Jo-pY-aLg" firstAttribute="centerY" secondItem="5Hp-uu-9LU" secondAttribute="centerY" id="5Mc-tM-hS1"/>
                     <constraint firstAttribute="trailing" secondItem="5Hp-uu-9LU" secondAttribute="trailing" constant="20" id="6Ku-3W-pJo"/>
                     <constraint firstItem="Ruc-K9-jRe" firstAttribute="top" secondItem="5Hp-uu-9LU" secondAttribute="bottom" constant="9" id="6v0-yX-kZ5"/>
                     <constraint firstAttribute="bottom" secondItem="5OM-ri-Neb" secondAttribute="bottom" constant="8" id="7w1-iY-MAU"/>
@@ -241,7 +253,6 @@
                     <constraint firstItem="Ruc-K9-jRe" firstAttribute="leading" secondItem="IWB-Xu-xC6" secondAttribute="trailing" constant="8" id="FGq-cH-5Id"/>
                     <constraint firstItem="Sl0-YG-4oQ" firstAttribute="bottom" secondItem="9PN-6C-SZh" secondAttribute="bottom" id="KLP-vl-Ens"/>
                     <constraint firstItem="9PN-6C-SZh" firstAttribute="leading" secondItem="Sl0-YG-4oQ" secondAttribute="trailing" constant="8" id="OrL-C4-GCD"/>
-                    <constraint firstItem="5Hp-uu-9LU" firstAttribute="leading" secondItem="Q6k-hO-IXw" secondAttribute="trailing" constant="8" id="P0t-SC-V8a"/>
                     <constraint firstItem="Sl0-YG-4oQ" firstAttribute="leading" secondItem="OCL-Bm-Vwm" secondAttribute="trailing" constant="8" id="Qch-JG-XsS"/>
                     <constraint firstItem="iL8-XE-lyQ" firstAttribute="leading" secondItem="5OM-ri-Neb" secondAttribute="trailing" constant="8" id="S6t-cc-DsS"/>
                     <constraint firstItem="WRZ-nt-Val" firstAttribute="leading" secondItem="Gcu-wM-Tfr" secondAttribute="trailing" constant="8" id="Te7-bE-IoM"/>
@@ -261,6 +272,7 @@
                     <constraint firstItem="9SD-Ig-TO0" firstAttribute="height" secondItem="5Ee-YL-W7P" secondAttribute="height" constant="-55" id="kxc-df-wMq"/>
                     <constraint firstAttribute="trailing" secondItem="Ruc-K9-jRe" secondAttribute="trailing" constant="20" id="lZI-ng-c0r"/>
                     <constraint firstItem="iL8-XE-lyQ" firstAttribute="bottom" secondItem="5OM-ri-Neb" secondAttribute="bottom" id="liC-hF-yya"/>
+                    <constraint firstItem="5Hp-uu-9LU" firstAttribute="leading" secondItem="9Jo-pY-aLg" secondAttribute="trailing" constant="8" id="o6L-vv-zqv"/>
                     <constraint firstItem="9SD-Ig-TO0" firstAttribute="width" secondItem="5Ee-YL-W7P" secondAttribute="width" id="qiP-9X-20C"/>
                     <constraint firstItem="9SD-Ig-TO0" firstAttribute="centerY" secondItem="5Ee-YL-W7P" secondAttribute="centerY" constant="-27.5" id="rJ6-lG-zMV"/>
                     <constraint firstItem="Gcu-wM-Tfr" firstAttribute="leading" secondItem="HLa-hc-2jg" secondAttribute="trailing" constant="8" id="t79-uG-vvW"/>
