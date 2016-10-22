@@ -60,6 +60,7 @@ static void init( void )
 - ( IBAction )togglePause: ( id )sender;
 - ( IBAction )showSettings: ( id )sender;
 - ( void )updateSettings;
+- ( void )updateTitleWithMessageCount: ( NSUInteger )count;
 - ( void )refresh;
 - ( void )renderMessages: ( NSArray * )messages until: ( ULogMessage * )last;
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message;
@@ -139,9 +140,10 @@ static void init( void )
     
     self.textView.textContainerInset    = NSMakeSize( 5.0, 10.0 );
     self.textView.drawsBackground       = YES;
-    self.window.title                   = [ NSString stringWithFormat: @"%@ - Logs", [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ] ];
     self.pauseButtonTitle               = @"Pause";
     self.window.alphaValue              = 0.95;
+    
+    [ self updateTitleWithMessageCount: 0 ];
 }
 
 - ( IBAction )clear: ( id )sender
@@ -207,6 +209,18 @@ static void init( void )
     }
 }
 
+- ( void )updateTitleWithMessageCount: ( NSUInteger )count
+{
+    if( count == 0 )
+    {
+        self.window.title = [ NSString stringWithFormat: @"%@ - Logs", [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ] ];
+    }
+    else
+    {
+        self.window.title = [ NSString stringWithFormat: @"%@ - Logs (%lu messages)", [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ], ( unsigned long )count ];
+    }
+}
+
 - ( void )refresh
 {
     NSArray< ULogMessage * >  * messages;
@@ -249,8 +263,10 @@ static void init( void )
     NSPredicate               * predicate;
     NSMutableAttributedString * log;
     ULogMessage               * message;
+    NSUInteger                  i;
         
     log = [ NSMutableAttributedString new ];
+    i   = 0;
     
     if( self.searchText.length )
     {
@@ -330,6 +346,8 @@ static void init( void )
             continue;
         }
         
+        i++;
+        
         [ log appendAttributedString: [ self stringForMessage: message ] ];
     }
     
@@ -339,6 +357,8 @@ static void init( void )
         ^( void )
         {
             self.log = log;
+            
+            [ self updateTitleWithMessageCount: i ];
         }
     );
 }
