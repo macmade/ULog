@@ -459,18 +459,34 @@ static void init( void )
     text    = [ [ NSAttributedString alloc ] initWithString: message.message       attributes: [ self messageAttributesForLevel: message.level ] ];
     fg      = [ self foregroundAttributesForLevel: message.level ];
     
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
-    [ str appendAttributedString: process ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
-    [ str appendAttributedString: time ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
-    [ str appendAttributedString: source ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
-    [ str appendAttributedString: level ];
-    [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
+    if( [ ULogSettings sharedInstance ].showProcess )
+    {
+        [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
+        [ str appendAttributedString: process ];
+        [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
+    }
+    
+    if( [ ULogSettings sharedInstance ].showTime )
+    {
+        [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
+        [ str appendAttributedString: time ];
+        [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
+    }
+    
+    if( [ ULogSettings sharedInstance ].showSource )
+    {
+        [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
+        [ str appendAttributedString: source ];
+        [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
+    }
+    
+    if( [ ULogSettings sharedInstance ].showLevel )
+    {
+        [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"[ ", nil ) attributes: fg ] ];
+        [ str appendAttributedString: level ];
+        [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @" ]> ", nil ) attributes: fg ] ];
+    }
+    
     [ str appendAttributedString: text ];
     [ str appendAttributedString: self.lf ];
     

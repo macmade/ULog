@@ -38,8 +38,7 @@
 @property( atomic, readwrite, assign ) NSInteger  selectedTheme;
 @property( atomic, readwrite, strong ) NSString * fontDescription;
 
-@property( atomic, readwrite, strong ) IBOutlet NSArrayController * arrayController;
-@property( atomic, readwrite, strong ) IBOutlet NSTableView       * tableView;
+@property( atomic, readwrite, strong ) IBOutlet NSTableView * tableView;
 
 - ( IBAction )chooseFont: ( id )sender;
 - ( void )changeFont: ( id )sender;

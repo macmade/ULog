@@ -8,7 +8,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ULogSettingsWindowController">
             <connections>
-                <outlet property="arrayController" destination="BM8-x8-c8R" id="AFe-3b-eB3"/>
                 <outlet property="tableView" destination="0Gx-i8-h0R" id="2Gn-TU-lOM"/>
                 <outlet property="window" destination="oSb-2r-Rbs" id="bdC-ty-gMf"/>
             </connections>
@@ -18,14 +17,14 @@
         <window title="ULog - Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oSb-2r-Rbs">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="670" height="427"/>
+            <rect key="contentRect" x="196" y="240" width="670" height="519"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <view key="contentView" id="5Ee-YL-W7P">
-                <rect key="frame" x="0.0" y="0.0" width="670" height="427"/>
+                <rect key="frame" x="0.0" y="0.0" width="670" height="519"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box fixedFrame="YES" title="Text" translatesAutoresizingMaskIntoConstraints="NO" id="Lye-dR-YQb">
-                        <rect key="frame" x="17" y="329" width="310" height="78"/>
+                        <rect key="frame" x="17" y="421" width="310" height="78"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="p2N-8s-zTm">
                             <rect key="frame" x="2" y="2" width="306" height="61"/>
@@ -41,7 +40,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cwf-1I-tnz">
-                                    <rect key="frame" x="59" y="19" width="84" height="22"/>
+                                    <rect key="frame" x="59" y="19" width="144" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" bezelStyle="round" id="ezn-Hn-vBW">
                                         <font key="font" metaFont="smallSystem"/>
@@ -67,7 +66,7 @@
                         </view>
                     </box>
                     <box fixedFrame="YES" title="Presets" translatesAutoresizingMaskIntoConstraints="NO" id="pPp-Op-EaV">
-                        <rect key="frame" x="343" y="329" width="310" height="78"/>
+                        <rect key="frame" x="343" y="421" width="310" height="78"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="HIf-fW-HAb">
                             <rect key="frame" x="2" y="2" width="306" height="61"/>
@@ -430,7 +429,7 @@
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="a4N-aR-ZX3">
-                            <rect key="frame" x="1" y="247" width="618" height="16"/>
+                            <rect key="frame" x="1" y="7" width="0.0" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="H8K-nM-hkV">
@@ -453,9 +452,63 @@
                             <action selector="restoreDefaults:" target="-2" id="wtu-xy-vD0"/>
                         </connections>
                     </button>
+                    <box fixedFrame="YES" title="Display" translatesAutoresizingMaskIntoConstraints="NO" id="Jz2-1w-WMz">
+                        <rect key="frame" x="17" y="339" width="636" height="78"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView" id="T2y-wL-JZM">
+                            <rect key="frame" x="2" y="2" width="632" height="61"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3d-1o-wXa">
+                                    <rect key="frame" x="18" y="25" width="71" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Process" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="64u-MA-zCO">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="3MS-bl-KdS" name="value" keyPath="showProcess" id="C1G-aT-efg"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdM-Jk-DbX">
+                                    <rect key="frame" x="93" y="25" width="52" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Time" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cLJ-tH-TPx">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="3MS-bl-KdS" name="value" keyPath="showTime" id="84N-4r-hUB"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XFx-4j-BMN">
+                                    <rect key="frame" x="149" y="25" width="65" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Source" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="okM-Du-V3z">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="3MS-bl-KdS" name="value" keyPath="showSource" id="cnb-ku-9Ki"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IIs-VL-mJc">
+                                    <rect key="frame" x="218" y="25" width="54" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Level" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EHF-I6-CIb">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="3MS-bl-KdS" name="value" keyPath="showLevel" id="Mz0-l5-s7g"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                    </box>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-411" y="-3.5"/>
+            <point key="canvasLocation" x="-411" y="42.5"/>
         </window>
         <arrayController objectClassName="ULogSettingsColorItem" automaticallyPreparesContent="YES" preservesSelection="NO" selectsInsertedObjects="NO" avoidsEmptySelection="NO" id="BM8-x8-c8R" userLabel="Colors">
             <connections>
@@ -463,5 +516,6 @@
             </connections>
         </arrayController>
         <customObject id="3MS-bl-KdS" customClass="ULogSettings"/>
+        <arrayController id="HnG-5G-75a" userLabel="Display"/>
     </objects>
 </document>
