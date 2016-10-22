@@ -604,7 +604,14 @@ static void init( void )
     
     if( bg )
     {
-        [ str addAttribute: NSBackgroundColorAttributeName value: bg range: NSMakeRange( 0, str.length ) ];
+        if( [ ULogSettings sharedInstance ].showIcon )
+        {
+            [ str addAttribute: NSBackgroundColorAttributeName value: bg range: NSMakeRange( 3, str.length - 3 ) ];
+        }
+        else
+        {
+            [ str addAttribute: NSBackgroundColorAttributeName value: bg range: NSMakeRange( 0, str.length ) ];
+        }
     }
     
     if( [ ULogSettings sharedInstance ].showIcon && [ ULogSettings sharedInstance ].fontSize < 15 )
