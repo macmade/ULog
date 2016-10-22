@@ -40,6 +40,7 @@ static void init( void )
 @interface ULogLogWindowController()
 
 @property( atomic, readwrite, strong ) ULogLogger                   * logger;
+@property( atomic, readwrite, strong ) ULogMessage                  * lastMessage;
 @property( atomic, readwrite, strong ) ULogSettingsWindowController * settingsWindowController;
 @property( atomic, readwrite, strong ) NSAttributedString           * log;
 @property( atomic, readwrite, strong ) NSAttributedString           * lf;
@@ -60,6 +61,7 @@ static void init( void )
 - ( IBAction )showSettings: ( id )sender;
 - ( void )updateSettings;
 - ( void )refresh;
+- ( void )renderMessages: ( NSArray * )messages until: ( ULogMessage * )last;
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message;
 
 @end
@@ -208,21 +210,20 @@ static void init( void )
 - ( void )refresh
 {
     NSArray< ULogMessage * >  * messages;
-    ULogMessage               * message;
-    NSMutableAttributedString * log;
-    NSPredicate               * predicate;
     
     while( 1 )
     {
+        messages = self.logger.messages;
+        
         if( self.paused )
         {
+            [ self renderMessages: messages until: self.lastMessage ];
             [ NSThread sleepForTimeInterval: 0.5 ];
             
             continue;
         }
         
-        messages = self.logger.messages;
-        log      = [ NSMutableAttributedString new ];
+        self.lastMessage = messages.lastObject;
         
         if( messages.count && self.shown == NO )
         {
@@ -238,93 +239,108 @@ static void init( void )
             );
         }
         
-        if( self.searchText.length )
-        {
-            predicate = [ NSPredicate predicateWithFormat: @"message contains[c] %@", self.searchText ];
-            messages  = [ messages filteredArrayUsingPredicate: predicate ];
-        }
-        
-        for( message in messages )
-        {
-            if( message.source == ULogMessageSourceC && [ ULogSettings sharedInstance ].showC == NO )
-            {
-                continue;
-            }
-            
-            if( message.source == ULogMessageSourceCXX && [ ULogSettings sharedInstance ].showCXX == NO )
-            {
-                continue;
-            }
-            
-            if( message.source == ULogMessageSourceOBJC && [ ULogSettings sharedInstance ].showOBJC == NO )
-            {
-                continue;
-            }
-            
-            if( message.source == ULogMessageSourceOBJCXX && [ ULogSettings sharedInstance ].showOBJCXX == NO )
-            {
-                continue;
-            }
-            
-            if( message.source == ULogMessageSourceASL && [ ULogSettings sharedInstance ].showASL == NO )
-            {
-                continue;
-            }
-            
-            if( message.level == ULogMessageLevelEmergency && [ ULogSettings sharedInstance ].showEmergency == NO )
-            {
-                continue;
-            }
-            
-            if( message.level == ULogMessageLevelAlert && [ ULogSettings sharedInstance ].showAlert == NO )
-            {
-                continue;
-            }
-            
-            if( message.level == ULogMessageLevelCritical && [ ULogSettings sharedInstance ].showCritical == NO )
-            {
-                continue;
-            }
-            
-            if( message.level == ULogMessageLevelError && [ ULogSettings sharedInstance ].showError == NO )
-            {
-                continue;
-            }
-            
-            if( message.level == ULogMessageLevelWarning && [ ULogSettings sharedInstance ].showWarning == NO )
-            {
-                continue;
-            }
-            
-            if( message.level == ULogMessageLevelNotice && [ ULogSettings sharedInstance ].showNotice == NO )
-            {
-                continue;
-            }
-            
-            if( message.level == ULogMessageLevelInfo && [ ULogSettings sharedInstance ].showInfo == NO )
-            {
-                continue;
-            }
-            
-            if( message.level == ULogMessageLevelDebug && [ ULogSettings sharedInstance ].showDebug == NO )
-            {
-                continue;
-            }
-            
-            [ log appendAttributedString: [ self stringForMessage: message ] ];
-        }
-        
-        dispatch_sync
-        (
-            dispatch_get_main_queue(),
-            ^( void )
-            {
-                self.log = log;
-            }
-        );
-        
+        [ self renderMessages: messages until: nil ];
         [ NSThread sleepForTimeInterval: 0.5 ];
     }
+}
+
+- ( void )renderMessages: ( NSArray * )messages until: ( ULogMessage * )last
+{
+    NSPredicate               * predicate;
+    NSMutableAttributedString * log;
+    ULogMessage               * message;
+        
+    log = [ NSMutableAttributedString new ];
+    
+    if( self.searchText.length )
+    {
+        predicate = [ NSPredicate predicateWithFormat: @"message contains[c] %@", self.searchText ];
+        messages  = [ messages filteredArrayUsingPredicate: predicate ];
+    }
+    
+    for( message in messages )
+    {
+        if( last && [ message isEqual: last ] )
+        {
+            break;
+        }
+        
+        if( message.source == ULogMessageSourceC && [ ULogSettings sharedInstance ].showC == NO )
+        {
+            continue;
+        }
+        
+        if( message.source == ULogMessageSourceCXX && [ ULogSettings sharedInstance ].showCXX == NO )
+        {
+            continue;
+        }
+        
+        if( message.source == ULogMessageSourceOBJC && [ ULogSettings sharedInstance ].showOBJC == NO )
+        {
+            continue;
+        }
+        
+        if( message.source == ULogMessageSourceOBJCXX && [ ULogSettings sharedInstance ].showOBJCXX == NO )
+        {
+            continue;
+        }
+        
+        if( message.source == ULogMessageSourceASL && [ ULogSettings sharedInstance ].showASL == NO )
+        {
+            continue;
+        }
+        
+        if( message.level == ULogMessageLevelEmergency && [ ULogSettings sharedInstance ].showEmergency == NO )
+        {
+            continue;
+        }
+        
+        if( message.level == ULogMessageLevelAlert && [ ULogSettings sharedInstance ].showAlert == NO )
+        {
+            continue;
+        }
+        
+        if( message.level == ULogMessageLevelCritical && [ ULogSettings sharedInstance ].showCritical == NO )
+        {
+            continue;
+        }
+        
+        if( message.level == ULogMessageLevelError && [ ULogSettings sharedInstance ].showError == NO )
+        {
+            continue;
+        }
+        
+        if( message.level == ULogMessageLevelWarning && [ ULogSettings sharedInstance ].showWarning == NO )
+        {
+            continue;
+        }
+        
+        if( message.level == ULogMessageLevelNotice && [ ULogSettings sharedInstance ].showNotice == NO )
+        {
+            continue;
+        }
+        
+        if( message.level == ULogMessageLevelInfo && [ ULogSettings sharedInstance ].showInfo == NO )
+        {
+            continue;
+        }
+        
+        if( message.level == ULogMessageLevelDebug && [ ULogSettings sharedInstance ].showDebug == NO )
+        {
+            continue;
+        }
+        
+        [ log appendAttributedString: [ self stringForMessage: message ] ];
+    }
+    
+    dispatch_sync
+    (
+        dispatch_get_main_queue(),
+        ^( void )
+        {
+            self.log = log;
+        }
+    );
 }
 
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message
