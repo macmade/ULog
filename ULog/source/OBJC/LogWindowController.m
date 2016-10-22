@@ -55,6 +55,8 @@ static void init( void )
 - ( IBAction )clear: ( id )sender;
 - ( IBAction )togglePause: ( id )sender;
 - ( IBAction )save: ( id )sender;
+- ( IBAction )saveAsText: ( id )sender;
+- ( IBAction )saveAsRTF: ( id )sender;
 - ( IBAction )showSettings: ( id )sender;
 - ( void )updateSettings;
 - ( void )updateTitleWithMessageCount: ( NSUInteger )count;
@@ -184,6 +186,22 @@ static void init( void )
 
 - ( IBAction )save: ( id )sender
 {
+    NSButton * btn;
+    
+    btn = ( NSButton * )sender;
+    
+    if( [ sender isKindOfClass: [ NSButton class ] ] == NO || btn.menu == nil )
+    {
+        [ self saveAsText: sender ];
+        
+        return;
+    }
+    
+    [ NSMenu popUpContextMenu: btn.menu withEvent: NSApp.currentEvent forView: btn ];
+}
+
+- ( IBAction )saveAsText: ( id )sender
+{
     NSSavePanel     * panel;
     NSString        * app;
     NSString        * date;
@@ -219,6 +237,51 @@ static void init( void )
             }
             
             data = [ self.log.string dataUsingEncoding: NSUTF8StringEncoding ];
+            
+            [ data writeToFile: path atomically: YES ];
+        }
+    ];
+}
+
+- ( IBAction )saveAsRTF: ( id )sender
+{
+    NSSavePanel     * panel;
+    NSString        * app;
+    NSString        * date;
+    NSDateFormatter * formatter;
+    
+    ( void )sender;
+    
+    formatter = [ NSDateFormatter new ];
+    
+    [ formatter setDateFormat: @"yyyy-MM-dd-hh-mm-ss" ];
+    
+    app   = [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ];
+    date  = [ formatter stringFromDate: [ NSDate date ] ];
+    panel = [ NSSavePanel savePanel ];
+    
+    [ panel setNameFieldStringValue: [ NSString stringWithFormat: @"ULog-%@-%@.rtf", app, date ] ];
+    [ panel setCanCreateDirectories: YES ];
+    [ panel beginSheetModalForWindow: self.window completionHandler: ^( NSInteger result )
+        {
+            NSString           * path;
+            NSData             * data;
+            NSAttributedString * log;
+            
+            if( result != NSFileHandlingPanelOKButton )
+            {
+                return;
+            }
+            
+            path = panel.URL.path;
+            
+            if( path == nil )
+            {
+                return;
+            }
+            
+            log  = self.log;
+            data = [ log RTFFromRange: NSMakeRange( 0, log.length ) documentAttributes: @{} ];
             
             [ data writeToFile: path atomically: YES ];
         }

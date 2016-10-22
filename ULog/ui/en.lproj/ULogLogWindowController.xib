@@ -83,6 +83,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="save:" target="-2" id="CTY-Bg-b5V"/>
+                            <outlet property="menu" destination="fHo-6K-Xoq" id="CaA-Yh-EeU"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Hp-uu-9LU">
@@ -286,5 +287,21 @@
         </window>
         <customObject id="XIX-oV-ytN" customClass="ULogSettings"/>
         <userDefaultsController representsSharedInstance="YES" id="ndo-3x-2nc"/>
+        <menu id="fHo-6K-Xoq">
+            <items>
+                <menuItem title="Save as Text..." id="J1f-Kx-UZc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="saveAsText:" target="-2" id="MEg-DF-oIH"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Save as RTF..." id="QfU-s3-qkn">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="saveAsRTF:" target="-2" id="pEv-wS-El5"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
     </objects>
 </document>
