@@ -199,6 +199,19 @@
     }
 }
 
+- ( void )addLogFile: ( NSString * )path
+{
+    @synchronized( self )
+    {
+        if( path == nil )
+        {
+            return;
+        }
+        
+        self.cxxLogger->AddLogFile( path.UTF8String );
+    }
+}
+
 - ( void )log: ( ULogMessage * )msg
 {
     @synchronized( self )

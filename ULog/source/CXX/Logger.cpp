@@ -144,6 +144,13 @@ namespace ULog
         this->impl->_messages.clear();
     }
     
+    void Logger::AddLogFile( const std::string & path )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        ( void )path;
+    }
+    
     void Logger::Log( const Message & msg )
     {
         std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );

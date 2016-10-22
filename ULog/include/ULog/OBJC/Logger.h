@@ -56,6 +56,7 @@ ULog_Logger_DisplayOption;
 + ( instancetype )sharedInstance;
 
 - ( void )clear;
+- ( void )addLogFile: ( NSString * )path;
 
 - ( void )log: ( ULogMessage * )msg;
 - ( void )logWithFormat: ( NSString * )fmt, ...;

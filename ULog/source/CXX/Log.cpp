@@ -69,6 +69,18 @@ namespace ULog
         }
     }
     
+    void AddLogFile( const std::string & path )
+    {
+        Logger * logger;
+        
+        logger = Logger::SharedInstance();
+        
+        if( logger )
+        {
+            logger->AddLogFile( path );
+        }
+    }
+    
     void Log( const char * fmt, ... )
     {
         va_list ap;

@@ -65,6 +65,9 @@ ULOG_EXPORT void     ULog_SetDisplayOptions( uint64_t opt );
 ULOG_EXPORT bool ULog_IsEnabled( void );
 ULOG_EXPORT void ULog_SetEnabled( bool value );
 
+ULOG_EXPORT void ULog_Clear( void );
+ULOG_EXPORT void ULog_AddLogFile( const char * path );
+
 ULOG_EXPORT void ULog_Log( const char * fmt, ... );
 ULOG_EXPORT void ULog_Log_V( const char * fmt, va_list ap );
 ULOG_EXPORT void ULog_LogWithLevel( ULog_Message_Level level, const char * fmt, ... );

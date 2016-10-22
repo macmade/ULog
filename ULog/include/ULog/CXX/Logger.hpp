@@ -70,6 +70,8 @@ namespace ULog
             
             void Clear( void );
             
+            void AddLogFile( const std::string & path );
+            
             void Log( const Message & msg );
             void Log( const char * fmt, ... );
             void Log( const char * fmt, va_list ap );

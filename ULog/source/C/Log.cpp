@@ -132,6 +132,35 @@ void ULog_SetEnabled( bool value )
     }
 }
 
+void ULog_Clear( void )
+{
+    ULog::Logger * logger;
+    
+    logger = ULog::Logger::SharedInstance();
+    
+    if( logger )
+    {
+        logger->Clear();
+    }
+}
+
+void ULog_AddLogFile( const char * path )
+{
+    ULog::Logger * logger;
+    
+    if( path == NULL )
+    {
+        return;
+    }
+    
+    logger = ULog::Logger::SharedInstance();
+    
+    if( logger )
+    {
+        logger->AddLogFile( path );
+    }
+}
+
 void ULog_Log( const char * fmt, ... )
 {
     va_list ap;

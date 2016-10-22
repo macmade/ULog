@@ -41,6 +41,8 @@ namespace ULog
     
     ULOG_EXPORT void Clear( void );
     
+    void AddLogFile( const std::string & path );
+    
     ULOG_EXPORT void Log( const char * fmt, ... );
     ULOG_EXPORT void Log( const char * fmt, va_list ap );
     ULOG_EXPORT void Log( Message::Level level, const char * fmt, ... );
