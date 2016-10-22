@@ -153,8 +153,10 @@ static void init( void )
     @synchronized( self )
     {
         [ self.logger clear ];
+        [ self updateTitleWithMessageCount: 0 ];
         
-        self.log = nil;
+        self.lastMessage = nil;
+        self.log         = nil;
     }
 }
 
@@ -231,7 +233,11 @@ static void init( void )
         
         if( self.paused )
         {
-            [ self renderMessages: messages until: self.lastMessage ];
+            if( self.log )
+            {
+                [ self renderMessages: messages until: self.lastMessage ];
+            }
+            
             [ NSThread sleepForTimeInterval: 0.5 ];
             
             continue;
