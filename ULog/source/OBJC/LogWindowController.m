@@ -53,6 +53,7 @@ static void init( void )
 @property( atomic, readwrite, strong ) NSString                     * pauseButtonTitle;
 @property( atomic, readwrite, assign ) BOOL                           shown;
 @property( atomic, readwrite, assign ) BOOL                           paused;
+@property( atomic, readwrite, assign ) BOOL                           editable;
 
 @property( atomic, readwrite, strong ) IBOutlet NSTextView * textView;
 

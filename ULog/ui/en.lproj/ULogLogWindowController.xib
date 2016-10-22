@@ -37,6 +37,7 @@
                                     <size key="maxSize" width="1093" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <connections>
+                                        <binding destination="-2" name="editable" keyPath="editable" id="deu-Kr-71B"/>
                                         <binding destination="-2" name="attributedString" keyPath="log" id="719-kz-lgg"/>
                                     </connections>
                                 </textView>
