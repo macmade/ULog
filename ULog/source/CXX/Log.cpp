@@ -31,6 +31,44 @@
 
 namespace ULog
 {
+    bool IsEnabled( void )
+    {
+        Logger * logger;
+        
+        logger = Logger::SharedInstance();
+        
+        if( logger )
+        {
+            return logger->IsEnabled();
+        }
+        
+        return false;
+    }
+    
+    void SetEnabled( bool value )
+    {
+        Logger * logger;
+        
+        logger = Logger::SharedInstance();
+        
+        if( logger )
+        {
+            logger->SetEnabled( value );
+        }
+    }
+    
+    void Clear( void )
+    {
+        Logger * logger;
+        
+        logger = Logger::SharedInstance();
+        
+        if( logger )
+        {
+            logger->Clear();
+        }
+    }
+    
     void Log( const char * fmt, ... )
     {
         va_list ap;

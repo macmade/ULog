@@ -36,6 +36,11 @@
 
 namespace ULog
 {
+    ULOG_EXPORT bool IsEnabled( void );
+    ULOG_EXPORT void SetEnabled( bool value );
+    
+    ULOG_EXPORT void Clear( void );
+    
     ULOG_EXPORT void Log( const char * fmt, ... );
     ULOG_EXPORT void Log( const char * fmt, va_list ap );
     ULOG_EXPORT void Log( Message::Level level, const char * fmt, ... );
