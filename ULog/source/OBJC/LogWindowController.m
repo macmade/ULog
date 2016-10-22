@@ -327,11 +327,6 @@ static void init( void )
     
     for( message in messages )
     {
-        if( last && [ message isEqual: last ] )
-        {
-            break;
-        }
-        
         if( message.source == ULogMessageSourceC && [ ULogSettings sharedInstance ].showC == NO )
         {
             continue;
@@ -400,6 +395,11 @@ static void init( void )
         i++;
         
         [ log appendAttributedString: [ self stringForMessage: message ] ];
+        
+        if( last && [ message isEqual: last ] )
+        {
+            break;
+        }
     }
     
     dispatch_sync
