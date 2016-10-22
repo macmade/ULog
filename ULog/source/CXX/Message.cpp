@@ -118,6 +118,16 @@ namespace ULog
             return false;
         }
         
+        if( this->impl->_time != o.impl->_time )
+        {
+            return false;
+        }
+        
+        if( this->impl->_milliseconds != o.impl->_milliseconds )
+        {
+            return false;
+        }
+        
         if( this->impl->_message != o.impl->_message )
         {
             return false;
