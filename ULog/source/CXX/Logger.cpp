@@ -156,22 +156,22 @@ namespace ULog
         
         if( this->impl->_displayOptions & DisplayOptionProcess )
         {
-            s += "[ " + msg.GetProcessString() + "]> ";
+            s += "[ " + msg.GetProcessString() + " ]> ";
         }
         
         if( this->impl->_displayOptions & DisplayOptionTime )
         {
-            s += "[ " + msg.GetTimeString() + "]> ";
+            s += "[ " + msg.GetTimeString() + " ]> ";
         }
         
         if( this->impl->_displayOptions & DisplayOptionSource )
         {
-            s += "[ " + msg.GetSourceString() + "]> ";
+            s += "[ " + msg.GetSourceString() + " ]> ";
         }
         
         if( this->impl->_displayOptions & DisplayOptionLevel )
         {
-            s += "[ " + msg.GetLevelString() + "]> ";
+            s += "[ " + msg.GetLevelString() + " ]> ";
         }
         
         s += msg.GetMessage();
