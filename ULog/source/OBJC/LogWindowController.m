@@ -607,6 +607,19 @@ static void init( void )
         [ str addAttribute: NSBackgroundColorAttributeName value: bg range: NSMakeRange( 0, str.length ) ];
     }
     
+    if( [ ULogSettings sharedInstance ].showIcon && [ ULogSettings sharedInstance ].fontSize < 15 )
+    {
+        {
+            NSMutableParagraphStyle * pStyle;
+            
+            pStyle = [ [ NSParagraphStyle defaultParagraphStyle ] mutableCopy ];
+            
+            pStyle.lineHeightMultiple = 0.7;
+            
+            [ str addAttribute: NSParagraphStyleAttributeName  value: pStyle range: NSMakeRange( 0, str.length ) ];
+        }
+    }
+    
     return str;
 }
 
