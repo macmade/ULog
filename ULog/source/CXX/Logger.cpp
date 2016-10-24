@@ -32,6 +32,9 @@
 #include <cstdlib>
 #include <mutex>
 #include <iostream>
+#include <fstream>
+#include <map>
+#include <memory>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -51,10 +54,11 @@ namespace ULog
             
             ~IMPL( void );
             
-                    std::vector< Message > _messages;
-            mutable std::recursive_mutex   _rmtx;
-                    uint64_t               _displayOptions;
-                    bool                   _enabled;
+                    std::vector< Message >                                   _messages;
+            mutable std::recursive_mutex                                     _rmtx;
+                    uint64_t                                                 _displayOptions;
+                    bool                                                     _enabled;
+                    std::map< std::string, std::shared_ptr< std::fstream > > _files;
     };
     
     Logger * Logger::SharedInstance( void )
@@ -147,8 +151,33 @@ namespace ULog
     void Logger::AddLogFile( const std::string & path )
     {
         std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        std::shared_ptr< std::fstream >         s;
         
-        ( void )path;
+        if( path.length() == 0 )
+        {
+            return;
+        }
+        
+        if( this->impl->_files.find( path ) != this->impl->_files.end() )
+        {
+            return;
+        }
+        
+        s = std::make_shared< std::fstream >
+        (
+              path,
+              std::ios_base::app
+            | std::ios_base::out
+        );
+        
+        if( s->good() == false )
+        {
+            this->Error( "ULog - Error opening log file: %s", path.c_str() );
+            
+            return;
+        }
+        
+        this->impl->_files[ path ] = s;
     }
     
     void Logger::Log( const Message & msg )
@@ -195,6 +224,11 @@ namespace ULog
             std::cerr << s << std::endl;
             
             #endif
+        }
+        
+        for( const auto & k: this->impl->_files )
+        {
+            *( k.second ) << s << std::endl;
         }
         
         this->impl->_messages.push_back( msg );
@@ -577,6 +611,7 @@ namespace ULog
         this->_messages       = o._messages;
         this->_enabled        = o._enabled;
         this->_displayOptions = o._displayOptions;
+        this->_files          = o._files;
     }
     
     Logger::IMPL::~IMPL( void )
