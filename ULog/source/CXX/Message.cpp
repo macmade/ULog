@@ -40,6 +40,7 @@
 #include <sys/time.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <sys/syscall.h>
 #endif
 
 namespace ULog
@@ -377,7 +378,7 @@ namespace ULog
         
         #else
         
-        this->_tid = static_cast< uint64_t >( gettid() );
+        this->_tid = static_cast< uint64_t >( syscall( SYS_gettid ) );
         
         #endif
     }
