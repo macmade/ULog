@@ -59,52 +59,52 @@ ULog_Logger_DisplayOption;
 - ( void )addLogFile: ( NSString * )path;
 
 - ( void )log: ( ULogMessage * )msg;
-- ( void )logWithFormat: ( NSString * )fmt, ...;
-- ( void )logWithFormat: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )logWithLevel: ( ULogMessageLevel )level format: ( NSString * )fmt, ...;
-- ( void )logWithLevel: ( ULogMessageLevel )level format: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )logWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )fmt, ...;
-- ( void )logWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )logWithFormat: ( NSString * )fmt, ...                                                                                             NS_FORMAT_FUNCTION( 1, 2 );
+- ( void )logWithFormat: ( NSString * )fmt arguments: ( va_list )ap                                                                         NS_FORMAT_FUNCTION( 1, 0 );
+- ( void )logWithLevel: ( ULogMessageLevel )level format: ( NSString * )fmt, ...                                                            NS_FORMAT_FUNCTION( 2, 3 );
+- ( void )logWithLevel: ( ULogMessageLevel )level format: ( NSString * )fmt arguments: ( va_list )ap                                        NS_FORMAT_FUNCTION( 2, 0 );
+- ( void )logWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )fmt, ...                        NS_FORMAT_FUNCTION( 3, 4 );
+- ( void )logWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )fmt arguments: ( va_list )ap    NS_FORMAT_FUNCTION( 3, 0 );
 
-- ( void )emergency: ( NSString * )fmt, ...;
-- ( void )emergency: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )emergencyWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...;
-- ( void )emergencyWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )emergency: ( NSString * )fmt, ...                                                                     NS_FORMAT_FUNCTION( 1, 2 );
+- ( void )emergency: ( NSString * )fmt arguments: ( va_list )ap                                                 NS_FORMAT_FUNCTION( 1, 0 );
+- ( void )emergencyWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...                       NS_FORMAT_FUNCTION( 2, 3 );
+- ( void )emergencyWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap   NS_FORMAT_FUNCTION( 2, 0 );
 
-- ( void )alert: ( NSString * )fmt, ...;
-- ( void )alert: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )alertWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...;
-- ( void )alertWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )alert: ( NSString * )fmt, ...                                                                         NS_FORMAT_FUNCTION( 1, 2 );
+- ( void )alert: ( NSString * )fmt arguments: ( va_list )ap                                                     NS_FORMAT_FUNCTION( 1, 0 );
+- ( void )alertWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...                           NS_FORMAT_FUNCTION( 2, 3 );
+- ( void )alertWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap       NS_FORMAT_FUNCTION( 2, 0 );
 
-- ( void )critical: ( NSString * )fmt, ...;
-- ( void )critical: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )criticalWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...;
-- ( void )criticalWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )critical: ( NSString * )fmt, ...                                                                      NS_FORMAT_FUNCTION( 1, 2 );
+- ( void )critical: ( NSString * )fmt arguments: ( va_list )ap                                                  NS_FORMAT_FUNCTION( 1, 0 );
+- ( void )criticalWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...                        NS_FORMAT_FUNCTION( 2, 3 );
+- ( void )criticalWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap    NS_FORMAT_FUNCTION( 2, 0 );
 
-- ( void )error: ( NSString * )fmt, ...;
-- ( void )error: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )errorWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...;
-- ( void )errorWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )error: ( NSString * )fmt, ...                                                                     NS_FORMAT_FUNCTION( 1, 2 );
+- ( void )error: ( NSString * )fmt arguments: ( va_list )ap                                                 NS_FORMAT_FUNCTION( 1, 0 );
+- ( void )errorWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...                       NS_FORMAT_FUNCTION( 2, 3 );
+- ( void )errorWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap   NS_FORMAT_FUNCTION( 2, 0 );
 
-- ( void )warning: ( NSString * )fmt, ...;
-- ( void )warning: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )warningWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...;
-- ( void )warningWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )warning: ( NSString * )fmt, ...                                                                   NS_FORMAT_FUNCTION( 1, 2 );
+- ( void )warning: ( NSString * )fmt arguments: ( va_list )ap                                               NS_FORMAT_FUNCTION( 1, 0 );
+- ( void )warningWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...                     NS_FORMAT_FUNCTION( 2, 3 );
+- ( void )warningWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap NS_FORMAT_FUNCTION( 2, 0 );
 
-- ( void )notice: ( NSString * )fmt, ...;
-- ( void )notice: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )noticeWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...;
-- ( void )noticeWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )notice: ( NSString * )fmt, ...                                                                    NS_FORMAT_FUNCTION( 1, 2 );
+- ( void )notice: ( NSString * )fmt arguments: ( va_list )ap                                                NS_FORMAT_FUNCTION( 1, 0 );
+- ( void )noticeWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...                      NS_FORMAT_FUNCTION( 2, 3 );
+- ( void )noticeWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap  NS_FORMAT_FUNCTION( 2, 0 );
 
-- ( void )info: ( NSString * )fmt, ...;
-- ( void )info: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )infoWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...;
-- ( void )infoWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )info: ( NSString * )fmt, ...                                                                      NS_FORMAT_FUNCTION( 1, 2 );
+- ( void )info: ( NSString * )fmt arguments: ( va_list )ap                                                  NS_FORMAT_FUNCTION( 1, 0 );
+- ( void )infoWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...                        NS_FORMAT_FUNCTION( 2, 3 );
+- ( void )infoWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap    NS_FORMAT_FUNCTION( 2, 0 );
 
-- ( void )debug: ( NSString * )fmt, ...;
-- ( void )debug: ( NSString * )fmt arguments: ( va_list )ap;
-- ( void )debugWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...;
-- ( void )debugWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap;
+- ( void )debug: ( NSString * )fmt, ...                                                                     NS_FORMAT_FUNCTION( 1, 2 );
+- ( void )debug: ( NSString * )fmt arguments: ( va_list )ap                                                 NS_FORMAT_FUNCTION( 1, 0 );
+- ( void )debugWithSource: ( ULogMessageSource )source format: ( NSString * )fmt, ...                       NS_FORMAT_FUNCTION( 2, 3 );
+- ( void )debugWithSource: ( ULogMessageSource )source format: ( NSString * )fmt arguments: ( va_list )ap   NS_FORMAT_FUNCTION( 2, 0 );
 
 @end
 

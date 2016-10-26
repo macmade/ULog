@@ -43,27 +43,27 @@ namespace ULog
     
     void AddLogFile( const std::string & path );
     
-    ULOG_EXPORT void Log( const char * fmt, ... );
-    ULOG_EXPORT void Log( const char * fmt, va_list ap );
-    ULOG_EXPORT void Log( Message::Level level, const char * fmt, ... );
-    ULOG_EXPORT void Log( Message::Level level, const char * fmt, va_list ap );
+    ULOG_EXPORT void Log( const char * fmt, ... )                               ULOG_ATTRIBUTE_FORMAT( 1, 2 );
+    ULOG_EXPORT void Log( const char * fmt, va_list ap )                        ULOG_ATTRIBUTE_FORMAT( 1, 0 );
+    ULOG_EXPORT void Log( Message::Level level, const char * fmt, ... )         ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+    ULOG_EXPORT void Log( Message::Level level, const char * fmt, va_list ap )  ULOG_ATTRIBUTE_FORMAT( 2, 0 );
     
-    ULOG_EXPORT void Emergency( const char * fmt, ... );
-    ULOG_EXPORT void Emergency( const char * fmt, va_list ap );
-    ULOG_EXPORT void Alert( const char * fmt, ... );
-    ULOG_EXPORT void Alert( const char * fmt, va_list ap );
-    ULOG_EXPORT void Critical( const char * fmt, ... );
-    ULOG_EXPORT void Critical( const char * fmt, va_list ap );
-    ULOG_EXPORT void Error( const char * fmt, ... );
-    ULOG_EXPORT void Error( const char * fmt, va_list ap );
-    ULOG_EXPORT void Warning( const char * fmt, ... );
-    ULOG_EXPORT void Warning( const char * fmt, va_list ap );
-    ULOG_EXPORT void Notice( const char * fmt, ... );
-    ULOG_EXPORT void Notice( const char * fmt, va_list ap );
-    ULOG_EXPORT void Info( const char * fmt, ... );
-    ULOG_EXPORT void Info( const char * fmt, va_list ap );
-    ULOG_EXPORT void Debug( const char * fmt, ... );
-    ULOG_EXPORT void Debug( const char * fmt, va_list ap );
+    ULOG_EXPORT void Emergency( const char * fmt, ... )         ULOG_ATTRIBUTE_FORMAT( 1, 2 );
+    ULOG_EXPORT void Emergency( const char * fmt, va_list ap )  ULOG_ATTRIBUTE_FORMAT( 1, 0 );
+    ULOG_EXPORT void Alert( const char * fmt, ... )             ULOG_ATTRIBUTE_FORMAT( 1, 2 );
+    ULOG_EXPORT void Alert( const char * fmt, va_list ap )      ULOG_ATTRIBUTE_FORMAT( 1, 0 );
+    ULOG_EXPORT void Critical( const char * fmt, ... )          ULOG_ATTRIBUTE_FORMAT( 1, 2 );
+    ULOG_EXPORT void Critical( const char * fmt, va_list ap )   ULOG_ATTRIBUTE_FORMAT( 1, 0 );
+    ULOG_EXPORT void Error( const char * fmt, ... )             ULOG_ATTRIBUTE_FORMAT( 1, 2 );
+    ULOG_EXPORT void Error( const char * fmt, va_list ap )      ULOG_ATTRIBUTE_FORMAT( 1, 0 );
+    ULOG_EXPORT void Warning( const char * fmt, ... )           ULOG_ATTRIBUTE_FORMAT( 1, 2 );
+    ULOG_EXPORT void Warning( const char * fmt, va_list ap )    ULOG_ATTRIBUTE_FORMAT( 1, 0 );
+    ULOG_EXPORT void Notice( const char * fmt, ... )            ULOG_ATTRIBUTE_FORMAT( 1, 2 );
+    ULOG_EXPORT void Notice( const char * fmt, va_list ap )     ULOG_ATTRIBUTE_FORMAT( 1, 0 );
+    ULOG_EXPORT void Info( const char * fmt, ... )              ULOG_ATTRIBUTE_FORMAT( 1, 2 );
+    ULOG_EXPORT void Info( const char * fmt, va_list ap )       ULOG_ATTRIBUTE_FORMAT( 1, 0 );
+    ULOG_EXPORT void Debug( const char * fmt, ... )             ULOG_ATTRIBUTE_FORMAT( 1, 2 );
+    ULOG_EXPORT void Debug( const char * fmt, va_list ap )      ULOG_ATTRIBUTE_FORMAT( 1, 0 );
 }
 
 #endif /* ULOG_CXX_LOG_H */

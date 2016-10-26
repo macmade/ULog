@@ -85,8 +85,8 @@ ULogMessageLevel;
 #endif
 
 - ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level message: ( NSString * )message;
-- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )format, ...;
-- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )format arguments: ( va_list )ap;
+- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )format, ...                     NS_FORMAT_FUNCTION( 3, 4 );
+- ( instancetype )initWithSource: ( ULogMessageSource )source level: ( ULogMessageLevel )level format: ( NSString * )format arguments: ( va_list )ap NS_FORMAT_FUNCTION( 3, 0 );
 
 - ( BOOL )isEqualToMessage: ( ULogMessage * )message;
 

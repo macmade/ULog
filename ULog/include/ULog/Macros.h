@@ -92,4 +92,10 @@
 
 #endif
 
+#if defined( __clang__ )
+#define ULOG_ATTRIBUTE_FORMAT( _f_, _v_ )   __attribute__( ( __format__ ( __printf__, _f_, _v_ ) ) )
+#else
+#define ULOG_ATTRIBUTE_FORMAT( _f_, _v_ )   
+#endif
+
 #endif /* ULOG_MACROS_H */

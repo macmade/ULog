@@ -66,8 +66,8 @@ namespace ULog
             Level;
             
             Message( Source = SourceCXX, Level level = LevelDebug, const std::string & message = "" );
-            Message( Source source, Level level, const char * fmt, ... );
-            Message( Source source, Level level, const char * fmt, va_list ap );
+            Message( Source source, Level level, const char * fmt, ... )        ULOG_ATTRIBUTE_FORMAT( 4, 5 );
+            Message( Source source, Level level, const char * fmt, va_list ap ) ULOG_ATTRIBUTE_FORMAT( 4, 0 );
             Message( const Message & o );
             Message( Message && o );
             

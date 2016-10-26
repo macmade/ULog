@@ -73,52 +73,52 @@ namespace ULog
             void AddLogFile( const std::string & path );
             
             void Log( const Message & msg );
-            void Log( const char * fmt, ... );
-            void Log( const char * fmt, va_list ap );
-            void Log( Message::Level level, const char * fmt, ... );
-            void Log( Message::Level level, const char * fmt, va_list ap );
-            void Log( Message::Source source, Message::Level level, const char * fmt, ... );
-            void Log( Message::Source source, Message::Level level, const char * fmt, va_list ap );
+            void Log( const char * fmt, ... )                                                       ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+            void Log( const char * fmt, va_list ap )                                                ULOG_ATTRIBUTE_FORMAT( 2, 0 );
+            void Log( Message::Level level, const char * fmt, ... )                                 ULOG_ATTRIBUTE_FORMAT( 3, 4 );
+            void Log( Message::Level level, const char * fmt, va_list ap )                          ULOG_ATTRIBUTE_FORMAT( 3, 0 );
+            void Log( Message::Source source, Message::Level level, const char * fmt, ... )         ULOG_ATTRIBUTE_FORMAT( 4, 5 );
+            void Log( Message::Source source, Message::Level level, const char * fmt, va_list ap )  ULOG_ATTRIBUTE_FORMAT( 4, 0 );
             
-            void Emergency( const char * fmt, ... );
-            void Emergency( const char * fmt, va_list ap );
-            void Emergency( Message::Source source, const char * fmt, ... );
-            void Emergency( Message::Source source, const char * fmt, va_list ap );
+            void Emergency( const char * fmt, ... )                                 ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+            void Emergency( const char * fmt, va_list ap )                          ULOG_ATTRIBUTE_FORMAT( 2, 0 );
+            void Emergency( Message::Source source, const char * fmt, ... )         ULOG_ATTRIBUTE_FORMAT( 3, 4 );
+            void Emergency( Message::Source source, const char * fmt, va_list ap )  ULOG_ATTRIBUTE_FORMAT( 3, 0 );
             
-            void Alert( const char * fmt, ... );
-            void Alert( const char * fmt, va_list ap );
-            void Alert( Message::Source source, const char * fmt, ... );
-            void Alert( Message::Source source, const char * fmt, va_list ap );
+            void Alert( const char * fmt, ... )                                 ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+            void Alert( const char * fmt, va_list ap )                          ULOG_ATTRIBUTE_FORMAT( 2, 0 );
+            void Alert( Message::Source source, const char * fmt, ... )         ULOG_ATTRIBUTE_FORMAT( 3, 4 );
+            void Alert( Message::Source source, const char * fmt, va_list ap )  ULOG_ATTRIBUTE_FORMAT( 3, 0 );
             
-            void Critical( const char * fmt, ... );
-            void Critical( const char * fmt, va_list ap );
-            void Critical( Message::Source source, const char * fmt, ... );
-            void Critical( Message::Source source, const char * fmt, va_list ap );
+            void Critical( const char * fmt, ... )                                  ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+            void Critical( const char * fmt, va_list ap )                           ULOG_ATTRIBUTE_FORMAT( 2, 0 );
+            void Critical( Message::Source source, const char * fmt, ... )          ULOG_ATTRIBUTE_FORMAT( 3, 4 );
+            void Critical( Message::Source source, const char * fmt, va_list ap )   ULOG_ATTRIBUTE_FORMAT( 3, 0 );
             
-            void Error( const char * fmt, ... );
-            void Error( const char * fmt, va_list ap );
-            void Error( Message::Source source, const char * fmt, ... );
-            void Error( Message::Source source, const char * fmt, va_list ap );
+            void Error( const char * fmt, ... )                                 ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+            void Error( const char * fmt, va_list ap )                          ULOG_ATTRIBUTE_FORMAT( 2, 0 );
+            void Error( Message::Source source, const char * fmt, ... )         ULOG_ATTRIBUTE_FORMAT( 3, 4 );
+            void Error( Message::Source source, const char * fmt, va_list ap )  ULOG_ATTRIBUTE_FORMAT( 3, 0 );
             
-            void Warning( const char * fmt, ... );
-            void Warning( const char * fmt, va_list ap );
-            void Warning( Message::Source source, const char * fmt, ... );
-            void Warning( Message::Source source, const char * fmt, va_list ap );
+            void Warning( const char * fmt, ... )                                   ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+            void Warning( const char * fmt, va_list ap )                            ULOG_ATTRIBUTE_FORMAT( 2, 0 );
+            void Warning( Message::Source source, const char * fmt, ... )           ULOG_ATTRIBUTE_FORMAT( 3, 4 );
+            void Warning( Message::Source source, const char * fmt, va_list ap )    ULOG_ATTRIBUTE_FORMAT( 3, 0 );
             
-            void Notice( const char * fmt, ... );
-            void Notice( const char * fmt, va_list ap );
-            void Notice( Message::Source source, const char * fmt, ... );
-            void Notice( Message::Source source, const char * fmt, va_list ap );
+            void Notice( const char * fmt, ... )                                ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+            void Notice( const char * fmt, va_list ap )                         ULOG_ATTRIBUTE_FORMAT( 2, 0 );
+            void Notice( Message::Source source, const char * fmt, ... )        ULOG_ATTRIBUTE_FORMAT( 3, 4 );
+            void Notice( Message::Source source, const char * fmt, va_list ap ) ULOG_ATTRIBUTE_FORMAT( 3, 0 );
             
-            void Info( const char * fmt, ... );
-            void Info( const char * fmt, va_list ap );
-            void Info( Message::Source source, const char * fmt, ... );
-            void Info( Message::Source source, const char * fmt, va_list ap );
+            void Info( const char * fmt, ... )                                  ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+            void Info( const char * fmt, va_list ap )                           ULOG_ATTRIBUTE_FORMAT( 2, 0 );
+            void Info( Message::Source source, const char * fmt, ... )          ULOG_ATTRIBUTE_FORMAT( 3, 4 );
+            void Info( Message::Source source, const char * fmt, va_list ap )   ULOG_ATTRIBUTE_FORMAT( 3, 0 );
             
-            void Debug( const char * fmt, ... );
-            void Debug( const char * fmt, va_list ap );
-            void Debug( Message::Source source, const char * fmt, ... );
-            void Debug( Message::Source source, const char * fmt, va_list ap );
+            void Debug( const char * fmt, ... )                                 ULOG_ATTRIBUTE_FORMAT( 2, 3 );
+            void Debug( const char * fmt, va_list ap )                          ULOG_ATTRIBUTE_FORMAT( 2, 0 );
+            void Debug( Message::Source source, const char * fmt, ... )         ULOG_ATTRIBUTE_FORMAT( 3, 4 );
+            void Debug( Message::Source source, const char * fmt, va_list ap )  ULOG_ATTRIBUTE_FORMAT( 3, 0 );
             
             std::vector< Message > GetMessages( void ) const;
             
