@@ -53,6 +53,7 @@ namespace ULog
                 std::function< void( const Message & ) > _callback;
                 std::vector< std::string >               _senders;
                 bool                                     _started;
+                bool                                     _stopped;
     };
     
     ASL::ASL( void ): impl( new IMPL )
@@ -140,10 +141,14 @@ namespace ULog
         return this->impl->_started;
     }
     
-    ASL::IMPL::IMPL( void )
+    ASL::IMPL::IMPL( void ):
+        _started( false ),
+        _stopped( false )
     {}
     
-    ASL::IMPL::IMPL( const IMPL & o )
+    ASL::IMPL::IMPL( const IMPL & o ):
+        _started( false ),
+        _stopped( false )
     {
         std::lock_guard< std::recursive_mutex > l( o._rmtx );
         
@@ -152,10 +157,42 @@ namespace ULog
     }
     
     ASL::IMPL::~IMPL( void )
-    {}
+    {
+        {
+            std::lock_guard< std::recursive_mutex > l( this->_rmtx );
+            
+            this->_started = false;
+        }
+        
+        while( 1 )
+        {
+            {
+                std::lock_guard< std::recursive_mutex > l( this->_rmtx );
+                
+                if( this->_stopped )
+                {
+                    return;
+                }
+            }
+        }
+    }
     
     void ASL::IMPL::GetMessages( void )
-    {}
+    {
+        while( 1 )
+        {
+            {
+                std::lock_guard< std::recursive_mutex > l( this->_rmtx );
+                
+                if( this->_started == false )
+                {
+                    this->_stopped = true;
+                    
+                    return;
+                }
+            }
+        }
+    }
 }
 
 #endif
