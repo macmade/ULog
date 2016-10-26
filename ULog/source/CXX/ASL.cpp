@@ -34,6 +34,7 @@
 
 #include <mutex>
 #include <thread>
+#include <chrono>
 #include <asl.h>
 
 namespace ULog
@@ -194,6 +195,8 @@ namespace ULog
                     return;
                 }
             }
+            
+            std::this_thread::sleep_for( std::chrono::milliseconds( 500 ) );
         }
     }
 }
