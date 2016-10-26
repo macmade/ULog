@@ -36,8 +36,10 @@
 #include <map>
 #include <memory>
 
-#ifdef _WIN32
+#if defined( _WIN32 )
 #include <Windows.h>
+#elif defined( __APPLE__ )
+#include <ULog/CXX/ASL.hpp>
 #endif
 
 static ULog::Logger * volatile SharedLogger = nullptr;
@@ -59,6 +61,10 @@ namespace ULog
                     uint64_t                                                 _displayOptions;
                     bool                                                     _enabled;
                     std::map< std::string, std::shared_ptr< std::fstream > > _files;
+                    
+            #ifdef __APPLE__
+            
+            #endif
     };
     
     Logger * Logger::SharedInstance( void )
@@ -87,7 +93,9 @@ namespace ULog
     }
     
     Logger::~Logger( void )
-    {}
+    {
+        delete this->impl;
+    }
     
     Logger & Logger::operator =( Logger o )
     {

@@ -31,6 +31,7 @@
 		05406D881DB974890046302A /* OBJCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406D871DB974890046302A /* OBJCLog.m */; };
 		05406D8B1DB974930046302A /* OBJCXXLog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05406D8A1DB974930046302A /* OBJCXXLog.mm */; };
 		055FD5721DB81AC300AE1BF4 /* C in Resources */ = {isa = PBXBuildFile; fileRef = 055FD5711DB81AC300AE1BF4 /* C */; };
+		0567DA521DC1367D000BC1B6 /* ASL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0567DA511DC1367D000BC1B6 /* ASL.cpp */; };
 		0597E3321DB7E55200E845E9 /* ULog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0597E3301DB7E55200E845E9 /* ULog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0597E35A1DB7E71900E845E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3591DB7E71900E845E9 /* main.m */; };
 		0597E3671DB7EC2300E845E9 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3661DB7EC2300E845E9 /* ApplicationDelegate.m */; };
@@ -93,6 +94,7 @@
 		05406D891DB974930046302A /* OBJCXXLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJCXXLog.h; sourceTree = "<group>"; };
 		05406D8A1DB974930046302A /* OBJCXXLog.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OBJCXXLog.mm; sourceTree = "<group>"; };
 		055FD5711DB81AC300AE1BF4 /* C */ = {isa = PBXFileReference; lastKnownFileType = folder; path = C; sourceTree = "<group>"; };
+		0567DA511DC1367D000BC1B6 /* ASL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ASL.cpp; sourceTree = "<group>"; };
 		0597E3301DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3311DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3531DB7E71900E845E9 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +221,7 @@
 		05362AED1DB7F51800AAA8E9 /* CXX */ = {
 			isa = PBXGroup;
 			children = (
+				0567DA511DC1367D000BC1B6 /* ASL.cpp */,
 				05362B041DB7FB8300AAA8E9 /* Atomic.cpp */,
 				0598A1881DB805E3004CC9B7 /* Log.cpp */,
 				05362AEE1DB7F51800AAA8E9 /* Logger.cpp */,
@@ -436,6 +439,7 @@
 				05180D301DB82246000723D7 /* Logger.mm in Sources */,
 				05B9A66B1DBB0B410071E19A /* ColorTheme.m in Sources */,
 				0598A1891DB805E3004CC9B7 /* Log.cpp in Sources */,
+				0567DA521DC1367D000BC1B6 /* ASL.cpp in Sources */,
 				05362AF01DB7F51800AAA8E9 /* Logger.cpp in Sources */,
 				05362AF11DB7F51800AAA8E9 /* Message.cpp in Sources */,
 				05B58F4B1DBBC8F8006CA5B0 /* SettingsColorItem.m in Sources */,
