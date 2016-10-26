@@ -30,6 +30,7 @@
 #import <ULog/ULog.h>
 #import "MainWindowController.h"
 #import "CLog.h"
+#import "ASLLog.h"
 #import "CXXLog.hpp"
 #import "OBJCLog.h"
 #import "OBJCXXLog.h"
@@ -95,6 +96,10 @@ NS_ASSUME_NONNULL_END
     {
         if( self.started )
         {
+            if( x % 5 == 0 )
+            {
+                ASLLog( &i );
+            }
             if( x % 4 == 0 )
             {
                 OBJCXXLog( &i );

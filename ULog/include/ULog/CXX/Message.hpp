@@ -36,6 +36,10 @@
 #include <cstdarg>
 #include <cstdint>
 
+#ifdef __APPLE__
+#include <asl.h>
+#endif
+
 namespace ULog
 {
     class ULOG_EXPORT Message
@@ -70,6 +74,10 @@ namespace ULog
             Message( Source source, Level level, const char * fmt, va_list ap ) ULOG_ATTRIBUTE_FORMAT( 4, 0 );
             Message( const Message & o );
             Message( Message && o );
+            
+            #ifdef __APPLE__
+            Message( aslmsg m );
+            #endif
             
             ~Message( void );
             

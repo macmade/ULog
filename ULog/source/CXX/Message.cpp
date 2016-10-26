@@ -102,6 +102,52 @@ namespace ULog
         o.impl = nullptr;
     }
     
+    #ifdef __APPLE__
+    
+    Message::Message( aslmsg m ): impl( new IMPL )
+    {
+        const char       * cp;
+        unsigned long long i;
+        
+        this->impl->_source         = SourceASL;
+        this->impl->_level          = LevelDebug;
+        this->impl->_time           = 0;
+        this->impl->_milliseconds   = 0;
+        this->impl->_pid            = 0;
+        this->impl->_tid            = 0;
+        
+        if( ( cp = asl_get( m, ASL_KEY_MSG ) ) )
+        {
+            this->impl->_message = cp;
+        }
+        
+        if( ( cp = asl_get( m, ASL_KEY_LEVEL ) ) )
+        {
+            i = std::stoull( std::string( cp ) );
+            
+            switch( i )
+            {
+                case 0:     this->impl->_level = LevelEmergency; break;
+                case 1:     this->impl->_level = LevelAlert;     break;
+                case 2:     this->impl->_level = LevelCritical;  break;
+                case 3:     this->impl->_level = LevelError;     break;
+                case 4:     this->impl->_level = LevelWarning;   break;
+                case 5:     this->impl->_level = LevelNotice;    break;
+                case 6:     this->impl->_level = LevelInfo;      break;
+                default:    this->impl->_level = LevelDebug;     break;
+            }
+        }
+        
+        if( ( cp = asl_get( m, ASL_KEY_PID ) ) )
+        {
+            this->impl->_pid = static_cast< uint64_t >( std::stoull( std::string( cp ) ) );
+        }
+        
+        this->impl->_timeString = this->impl->GetTimeString( this->impl->_time, this->impl->_milliseconds );
+    }
+    
+    #endif
+    
     Message::~Message( void )
     {
         delete this->impl;

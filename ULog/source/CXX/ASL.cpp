@@ -146,6 +146,7 @@ namespace ULog
     }
     
     ASL::IMPL::IMPL( void ):
+        _callback( nullptr ),
         _started( false ),
         _stopped( false )
     {}
@@ -183,6 +184,11 @@ namespace ULog
     
     void ASL::IMPL::GetMessages( void )
     {
+        Message   ref;
+        aslclient client;
+        
+        client = asl_open( NULL, NULL, 0 );
+        
         while( 1 )
         {
             {
@@ -192,7 +198,62 @@ namespace ULog
                 {
                     this->_stopped = true;
                     
+                    asl_close( client );
+                    
                     return;
+                }
+            }
+            
+            {
+                aslmsg       query;
+                aslresponse  response;
+                aslmsg       msg;
+                const char * cp;
+                std::string  sender;
+                
+                query = asl_new( ASL_TYPE_QUERY );
+                
+                asl_set_query( query, ASL_KEY_MSG, NULL, ASL_QUERY_OP_NOT_EQUAL );
+                
+                response = asl_search( client, query );
+                
+                asl_free( query );
+                
+                msg = asl_next( response );
+                
+                while( msg )
+                {
+                    cp = asl_get( msg, ASL_KEY_SENDER );
+                    
+                    if( cp == NULL )
+                    {
+                        goto next;
+                    }
+                    
+                    sender = cp;
+                    
+                    if( std::find( this->_senders.begin(), this->_senders.end(), sender ) == this->_senders.end() )
+                    {
+                        goto next;
+                    }
+                    
+                    {
+                        Message m( msg );
+                        
+                        if( m.GetProcessID() != ref.GetProcessID() )
+                        {
+                            goto next;
+                        }
+                        
+                        if( this->_callback != nullptr )
+                        {
+                            this->_callback( m );
+                        }
+                    }
+                    
+                    next:
+                        
+                        msg = asl_next( response );
                 }
             }
             
