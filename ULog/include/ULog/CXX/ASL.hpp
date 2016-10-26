@@ -31,8 +31,13 @@
 #define ULOG_CXX_ASL_H
 
 #include <ULog/Base.h>
+#include <ULog/CXX/Message.hpp>
 
 #ifdef __APPLE__
+
+#include <functional>
+#include <string>
+#include <vector>
 
 namespace ULog
 {
@@ -49,6 +54,13 @@ namespace ULog
             ASL & operator =( ASL o );
             
             friend void swap( ASL & o1, ASL & o2 );
+            
+            void SetMessageCallback( std::function< void( const Message & ) > f );
+            
+            void AddSender( const std::string & sender );
+            
+            void Start( void );
+            bool Started( void );
             
         private:
             

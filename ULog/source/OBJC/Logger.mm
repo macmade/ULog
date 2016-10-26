@@ -42,7 +42,7 @@
 + ( instancetype )sharedInstance
 {
     static dispatch_once_t once;
-    static id              instance = nil;
+    static ULogLogger    * instance = nil;
     
     dispatch_once
     (
@@ -50,6 +50,8 @@
         ^( void )
         {
             instance = [ [ self alloc ] initWithCXXLogger: ULog::Logger::SharedInstance() ];
+            
+            [ instance addASLSender: [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ] ];
         }
     );
     
@@ -209,6 +211,19 @@
         }
         
         self.cxxLogger->AddLogFile( path.UTF8String );
+    }
+}
+
+- ( void )addASLSender: ( NSString * )sender
+{
+    @synchronized( self )
+    {
+        if( sender == nil )
+        {
+            return;
+        }
+        
+        self.cxxLogger->AddASLSender( sender.UTF8String );
     }
 }
 

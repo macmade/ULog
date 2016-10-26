@@ -64,6 +64,8 @@ namespace ULog
                     
             #ifdef __APPLE__
             
+            ASL _asl;
+            
             #endif
     };
     
@@ -82,10 +84,31 @@ namespace ULog
     }
     
     Logger::Logger( void ): impl( new IMPL )
-    {}
+    {
+        #ifdef __APPLE__
+        
+        this->impl->_asl.SetMessageCallback
+        (
+            [ = ]( const Message & msg )
+            {
+                this->Log( msg );
+            }
+        );
+        
+        #endif
+    }
     
     Logger::Logger( const Logger & o ): impl( new IMPL( *( o.impl ) ) )
-    {}
+    {
+        #ifdef __APPLE__
+        
+        if( o.impl->_asl.Started() )
+        {
+            this->impl->_asl.Start();
+        }
+        
+        #endif
+    }
     
     Logger::Logger( Logger && o ): impl( o.impl )
     {
@@ -187,6 +210,23 @@ namespace ULog
         
         this->impl->_files[ path ] = s;
     }
+    
+    #ifdef __APPLE__
+    
+    void Logger::AddASLSender( const std::string & sender )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        if( sender.length() == 0 )
+        {
+            return;
+        }
+        
+        this->impl->_asl.AddSender( sender );
+        this->impl->_asl.Start();
+    }
+    
+    #endif
     
     void Logger::Log( const Message & msg )
     {
@@ -620,6 +660,7 @@ namespace ULog
         this->_enabled        = o._enabled;
         this->_displayOptions = o._displayOptions;
         this->_files          = o._files;
+        this->_asl            = o._asl;
     }
     
     Logger::IMPL::~IMPL( void )

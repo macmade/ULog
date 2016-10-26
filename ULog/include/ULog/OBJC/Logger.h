@@ -57,6 +57,7 @@ ULog_Logger_DisplayOption;
 
 - ( void )clear;
 - ( void )addLogFile: ( NSString * )path;
+- ( void )addASLSender: ( NSString * )sender;
 
 - ( void )log: ( ULogMessage * )msg;
 - ( void )logWithFormat: ( NSString * )fmt, ...                                                                                             NS_FORMAT_FUNCTION( 1, 2 );

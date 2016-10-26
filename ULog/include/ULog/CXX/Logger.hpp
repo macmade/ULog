@@ -72,6 +72,10 @@ namespace ULog
             
             void AddLogFile( const std::string & path );
             
+            #ifdef __APPLE__
+            void AddASLSender( const std::string & sender );
+            #endif
+            
             void Log( const Message & msg );
             void Log( const char * fmt, ... )                                                       ULOG_ATTRIBUTE_FORMAT( 2, 3 );
             void Log( const char * fmt, va_list ap )                                                ULOG_ATTRIBUTE_FORMAT( 2, 0 );

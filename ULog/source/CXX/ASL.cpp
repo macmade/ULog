@@ -33,6 +33,7 @@
 #if defined( __APPLE__ )
 
 #include <mutex>
+#include <thread>
 #include <asl.h>
 
 namespace ULog
@@ -45,8 +46,13 @@ namespace ULog
             IMPL( const IMPL & o );
             
             ~IMPL( void );
-        
-        mutable std::recursive_mutex _rmtx;
+            
+            void GetMessages( void );
+            
+        mutable std::recursive_mutex                     _rmtx;
+                std::function< void( const Message & ) > _callback;
+                std::vector< std::string >               _senders;
+                bool                                     _started;
     };
     
     ASL::ASL( void ): impl( new IMPL )
@@ -89,15 +95,66 @@ namespace ULog
         swap( o1.impl, o2.impl );
     }
     
+    void ASL::SetMessageCallback( std::function< void( const Message & ) > f )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        this->impl->_callback = f;
+    }
+    
+    void ASL::AddSender( const std::string & sender )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        if( sender.length() )
+        {
+            this->impl->_senders.push_back( sender );
+        }
+    }
+    
+    void ASL::Start( void )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        if( this->impl->_started )
+        {
+            return;
+        }
+        {
+            std::thread t
+            (
+                [ = ]()
+                {
+                    this->impl->GetMessages();
+                }
+            );
+            
+            t.detach();
+        }
+    }
+    
+    bool ASL::Started( void )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        return this->impl->_started;
+    }
+    
     ASL::IMPL::IMPL( void )
     {}
     
     ASL::IMPL::IMPL( const IMPL & o )
     {
         std::lock_guard< std::recursive_mutex > l( o._rmtx );
+        
+        this->_senders  = o._senders;
+        this->_callback = o._callback;
     }
     
     ASL::IMPL::~IMPL( void )
+    {}
+    
+    void ASL::IMPL::GetMessages( void )
     {}
 }
 
