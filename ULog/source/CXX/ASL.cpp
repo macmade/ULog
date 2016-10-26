@@ -121,6 +121,9 @@ namespace ULog
         {
             return;
         }
+        
+        this->impl->_started = true;
+        
         {
             std::thread t
             (
