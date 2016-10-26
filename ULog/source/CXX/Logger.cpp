@@ -660,7 +660,10 @@ namespace ULog
         this->_enabled        = o._enabled;
         this->_displayOptions = o._displayOptions;
         this->_files          = o._files;
-        this->_asl            = o._asl;
+        
+        #ifdef __APPLE__
+        this->_asl = o._asl;
+        #endif
     }
     
     Logger::IMPL::~IMPL( void )
