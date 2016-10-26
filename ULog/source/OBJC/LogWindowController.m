@@ -325,7 +325,7 @@ static void init( void )
 
 - ( void )refresh
 {
-    NSArray< ULogMessage * >  * messages;
+    NSArray< ULogMessage * > * messages;
     
     while( 1 )
     {
@@ -467,38 +467,47 @@ static void init( void )
             NSPoint origin;
             double  pos;
             
-            pos = self.textView.enclosingScrollView.verticalScroller.doubleValue;
-            r1  = [ self.textView.layoutManager glyphRangeForBoundingRect: [ self.textView visibleRect ] inTextContainer: self.textView.textContainer ];
-            r2  = [ self.textView.layoutManager characterRangeForGlyphRange: r1 actualGlyphRange: &r2 ];
-            
-            self.log = log;
-            
-            if( fabs( pos - 1 ) < DBL_EPSILON )
+            @try
             {
-                if( [ [ self.textView.enclosingScrollView documentView ] isFlipped ] )
+                pos = self.textView.enclosingScrollView.verticalScroller.doubleValue;
+                r1  = [ self.textView.layoutManager glyphRangeForBoundingRect: [ self.textView visibleRect ] inTextContainer: self.textView.textContainer ];
+                r2  = [ self.textView.layoutManager characterRangeForGlyphRange: r1 actualGlyphRange: &r2 ];
+                
+                self.log = log;
+                
+                if( fabs( pos - 1 ) < DBL_EPSILON )
                 {
-                    origin = NSMakePoint
-                    (
-                        0.0,
+                    if( [ [ self.textView.enclosingScrollView documentView ] isFlipped ] )
+                    {
+                        origin = NSMakePoint
                         (
-                            NSMaxY( [ [ self.textView.enclosingScrollView documentView ] frame ] )
-                          - NSHeight( [ [ self.textView.enclosingScrollView contentView ] bounds ] )
-                        )
-                    );
+                            0.0,
+                            (
+                                NSMaxY( [ [ self.textView.enclosingScrollView documentView ] frame ] )
+                              - NSHeight( [ [ self.textView.enclosingScrollView contentView ] bounds ] )
+                            )
+                        );
+                    }
+                    else
+                    {
+                        origin = NSMakePoint( 0.0, 0.0 );
+                    }
+                 
+                    [ [ self.textView.enclosingScrollView documentView ] scrollPoint: origin ];
                 }
                 else
                 {
-                    origin = NSMakePoint( 0.0, 0.0 );
+                    [ self.textView scrollRangeToVisible: r2 ];
                 }
-             
-                [ [ self.textView.enclosingScrollView documentView ] scrollPoint: origin ];
+                
+                [ self updateTitleWithMessageCount: i ];
             }
-            else
+            @catch( NSException * e )
             {
-                [ self.textView scrollRangeToVisible: r2 ];
+                ( void )e;
+                
+                self.log = log;
             }
-            
-            [ self updateTitleWithMessageCount: i ];
         }
     );
 }
