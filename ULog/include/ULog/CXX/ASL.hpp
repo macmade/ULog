@@ -41,7 +41,7 @@
 
 namespace ULog
 {
-    class ASL
+    class ULOG_EXPORT ASL
     {
         public:
             

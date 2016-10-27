@@ -31,13 +31,32 @@
 #include <iostream>
 #include <thread>
 #include <Windows.h>
+#include "../Example/CLog.h"
+#include "../Example/CXXLog.hpp"
 
 static void start( void );
 static void start( void )
 {
+    int x;
+    int i;
+
+    i = 0;
+    x = 1;
+
     while( 1 )
     {
-        Sleep( 500 );
+        if( x % 2 == 0 )
+        {
+            CXXLog( &i );
+        }
+        else
+        {
+            CLog( &i );
+        }
+
+        x++;
+
+        Sleep( 1000 );
     }
 }
 

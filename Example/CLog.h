@@ -30,6 +30,14 @@
 #ifndef C_LOG_H
 #define C_LOG_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void CLog( int * i );
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* C_LOG_H */

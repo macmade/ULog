@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Example">
+      <UniqueIdentifier>{426e2792-5598-4d59-8a54-8ceee357e925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Example">
+      <UniqueIdentifier>{e1f6e2c4-6c8e-4666-bb23-699b6e1f256c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Example-Win\stdafx.cpp">
@@ -21,6 +27,12 @@
     <ClCompile Include="..\Example-Win\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Example\CXXLog.cpp">
+      <Filter>Source Files\Example</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Example\CLog.c">
+      <Filter>Source Files\Example</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Example-Win\stdafx.h">
@@ -28,6 +40,12 @@
     </ClInclude>
     <ClInclude Include="..\Example-Win\targetver.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Example\CLog.h">
+      <Filter>Header Files\Example</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Example\CXXLog.hpp">
+      <Filter>Header Files\Example</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

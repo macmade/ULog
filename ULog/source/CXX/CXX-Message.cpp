@@ -32,6 +32,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
+#include <cstring>
+#include <cstdio>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -307,6 +309,10 @@ namespace ULog
         return std::to_string( this->impl->_pid ) + ":" + std::to_string( this->impl->_tid );
     }
     
+    #if defined( _WIN32 ) && defined( GetMessage )
+    #undef GetMessage
+    #endif
+
     std::string Message::GetMessage( void ) const
     {
         return this->impl->_message;
@@ -382,13 +388,13 @@ namespace ULog
         
         {
             time_t     t;
-            SYSTEMTIME time;
+            SYSTEMTIME st;
             
             time( &t );
-            GetSystemTime( &time );
+            GetSystemTime( &st );
             
             this->_time         = static_cast< uint64_t >( t );
-            this->_milliseconds = static_cast< uint64_t >( time.wMilliseconds );
+            this->_milliseconds = static_cast< uint64_t >( st.wMilliseconds );
         }
         
         #else
@@ -509,7 +515,11 @@ namespace ULog
         
         #endif
         
+        #ifdef _WIN32
+        _snprintf( tbuf, sizeof( tbuf ), "%s.%03llu", dbuf, static_cast< unsigned long long >( msec ) );
+        #else
         snprintf( tbuf, sizeof( tbuf ), "%s.%03llu", dbuf, static_cast< unsigned long long >( msec ) );
+        #endif
         
         return std::string( tbuf );
     }

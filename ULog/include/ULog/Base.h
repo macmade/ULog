@@ -57,12 +57,10 @@ ULOG_EXTERN_C_BEGIN
  * @abstract    Definition for exported symbols
  */
 #if defined( _WIN32 )
-#if defined( ULOG_DLL_BUILD ) && defined( __cplusplus )
+#if defined( ULOG_DLL_BUILD )
 #define ULOG_EXPORT             __declspec( dllexport )
-#elif defined( ULOG_DLL_BUILD ) && !defined( __cplusplus )
-#define ULOG_EXPORT             __declspec( dllexport )
-#elif defined( __cplusplus )
-#define ULOG_EXPORT             __declspec( dllimport )
+#elif defined( ULOG_LIB_BUILD )
+#define ULOG_EXPORT             
 #else
 #define ULOG_EXPORT             __declspec( dllimport )
 #endif

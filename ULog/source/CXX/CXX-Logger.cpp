@@ -42,8 +42,8 @@
 #include <ULog/CXX/ASL.hpp>
 #endif
 
-static ULog::Logger * volatile SharedLogger = nullptr;
-static ULog::SpinLock          GlobalLock   = 0;
+static ULog::Logger * volatile SharedLogger   = nullptr;
+static ULog::SpinLock          ULogGlobalLock = 0;
 
 namespace ULog
 {
@@ -71,14 +71,14 @@ namespace ULog
     
     Logger * Logger::SharedInstance( void )
     {
-        SpinLockLock( &GlobalLock );
+        SpinLockLock( &ULogGlobalLock );
         
         if( SharedLogger == nullptr )
         {
             SharedLogger = new Logger();
         }
         
-        SpinLockUnlock( &GlobalLock );
+        SpinLockUnlock( &ULogGlobalLock );
         
         return SharedLogger;
     }
@@ -258,6 +258,10 @@ namespace ULog
             s += "[ " + msg.GetLevelString() + " ]> ";
         }
         
+        #if defined( _WIN32 ) && defined( GetMessage )
+        #undef GetMessage
+        #endif
+
         s += msg.GetMessage();
         
         if( msg.GetSource() != Message::SourceASL )
@@ -267,6 +271,28 @@ namespace ULog
             OutputDebugStringA( s.c_str() );
             OutputDebugStringA( "\n" );
             
+            /* Detects if we run in console... */
+            {
+                SHFILEINFOA fi;
+                char        proc[ MAX_PATH ];
+                DWORD_PTR   hr;
+
+                memset( proc, 0, MAX_PATH );
+                GetModuleFileNameA( NULL, proc, MAX_PATH );
+
+                if( strlen( proc ) == 0 )
+                {
+                    return;
+                }
+
+                hr = SHGetFileInfoA( proc, 0, &fi, 0, SHGFI_EXETYPE );
+
+                if( ( hr & 0xFFFF ) == IMAGE_NT_SIGNATURE && ( ( hr >> 16 ) & 0xFFFF ) == 0 )
+                {
+                    std::cerr << s << std::endl;
+                }
+            }
+
             #else
             
             std::cerr << s << std::endl;
