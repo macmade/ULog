@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "053291B71DA64C4B00E46312"
                BuildableName = "ULog.framework"
-               BlueprintName = "ULog"
+               BlueprintName = "ULog - Mac Framework"
                ReferencedContainer = "container:ULog.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,7 +34,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "053291B71DA64C4B00E46312"
             BuildableName = "ULog.framework"
-            BlueprintName = "ULog"
+            BlueprintName = "ULog - Mac Framework"
             ReferencedContainer = "container:ULog.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,7 +56,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "053291B71DA64C4B00E46312"
             BuildableName = "ULog.framework"
-            BlueprintName = "ULog"
+            BlueprintName = "ULog - Mac Framework"
             ReferencedContainer = "container:ULog.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -74,7 +74,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "053291B71DA64C4B00E46312"
             BuildableName = "ULog.framework"
-            BlueprintName = "ULog"
+            BlueprintName = "ULog - Mac Framework"
             ReferencedContainer = "container:ULog.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

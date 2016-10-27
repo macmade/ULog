@@ -539,31 +539,31 @@ static void init( void )
         }
         else if( message.level == ULogMessageLevelAlert )
         {
-            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"📛 " attributes: nil ] ];
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"📛 ", nil ) attributes: nil ] ];
         }
         else if( message.level == ULogMessageLevelCritical )
         {
-            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"⛔️ " attributes: nil ] ];
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"⛔️ ", nil ) attributes: nil ] ];
         }
         else if( message.level == ULogMessageLevelError )
         {
-            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"❌ " attributes: nil ] ];
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"❌ ", nil ) attributes: nil ] ];
         }
         else if( message.level == ULogMessageLevelWarning )
         {
-            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"⚠️ " attributes: nil ] ];
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"⚠️ ", nil ) attributes: nil ] ];
         }
         else if( message.level == ULogMessageLevelNotice )
         {
-            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"❕ " attributes: nil ] ];
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"❕ ", nil ) attributes: nil ] ];
         }
         else if( message.level == ULogMessageLevelInfo )
         {
-            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"ℹ️ " attributes: nil ] ];
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"ℹ️ ", nil ) attributes: nil ] ];
         }
         else if( message.level == ULogMessageLevelDebug )
         {
-            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: @"🚧 " attributes: nil ] ];
+            [ str appendAttributedString: [ [ NSAttributedString alloc ] initWithString: NSLocalizedString( @"🚧 ", nil ) attributes: nil ] ];
         }
     }
     

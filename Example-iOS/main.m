@@ -23,36 +23,18 @@
  ******************************************************************************/
 
 /*!
- * @file        ApplicationDelegate.m
+ * @file        main.m
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#import "ApplicationDelegate.h"
-#import "MainWindowController.h"
+@import UIKit;
 
-@interface ApplicationDelegate ()
+#import "ApplicationDelegate-iOS.h"
 
-@property( atomic, readwrite, strong ) MainWindowController * mainWindowController;
-
-@end
-
-@implementation ApplicationDelegate
-
-- ( void )applicationDidFinishLaunching: ( NSNotification * )notification
+int main( int argc, char * argv[] )
 {
-    ( void )notification;
-    
-    self.mainWindowController = [ MainWindowController new ];
-    
-    [ self.mainWindowController.window center ];
-    [ self.mainWindowController.window makeKeyAndOrderFront: nil ];
+    @autoreleasepool
+    {
+        return UIApplicationMain( argc, argv, nil, NSStringFromClass( [ ApplicationDelegate class ] ) );
+    }
 }
-
-- ( BOOL )applicationShouldTerminateAfterLastWindowClosed: ( NSApplication * )sender
-{
-    ( void )sender;
-    
-    return YES;
-}
-
-@end

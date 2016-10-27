@@ -23,13 +23,15 @@
  ******************************************************************************/
 
 /*!
- * @header      ApplicationDelegate.h
+ * @header      ApplicationDelegate-iOS.h
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-@import Cocoa;
+@import UIKit;
 
-@interface ApplicationDelegate: NSObject < NSApplicationDelegate >
+@interface ApplicationDelegate: UIResponder < UIApplicationDelegate >
+
+@property( nonatomic, readwrite, strong ) UIWindow * window;
 
 @end
 
