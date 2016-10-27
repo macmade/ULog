@@ -306,6 +306,7 @@ namespace ULog
         }
         
         this->impl->_messages.push_back( msg );
+        std::sort( this->impl->_messages.begin(), this->impl->_messages.end() );
     }
     
     void Logger::Log( const char * fmt, ... )

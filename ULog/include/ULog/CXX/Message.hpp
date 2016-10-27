@@ -83,8 +83,13 @@ namespace ULog
             
             Message & operator =( Message o );
             
-            bool operator ==( const Message & o );
-            bool operator !=( const Message & o );
+            bool operator ==( const Message & o ) const;
+            bool operator !=( const Message & o ) const;
+            
+            bool operator > ( const Message & o ) const;
+            bool operator >=( const Message & o ) const;
+            bool operator < ( const Message & o ) const;
+            bool operator <=( const Message & o ) const;
             
             friend void swap( Message & o1, Message & o2 );
             friend std::ostream & operator <<( std::ostream & os, const Message & e );

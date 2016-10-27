@@ -150,6 +150,16 @@ namespace ULog
             this->impl->_pid = static_cast< uint64_t >( std::stoull( std::string( cp ) ) );
         }
         
+        if( ( cp = asl_get( m, ASL_KEY_TIME ) ) )
+        {
+            this->impl->_time = static_cast< uint64_t >( std::stoull( std::string( cp ) ) );
+        }
+        
+        if( ( cp = asl_get( m, ASL_KEY_TIME_NSEC ) ) )
+        {
+            this->impl->_milliseconds = static_cast< uint64_t >( std::stoull( std::string( cp ) ) / 1000000 );
+        }
+        
         this->impl->_timeString = this->impl->GetTimeString( this->impl->_time, this->impl->_milliseconds );
     }
     
@@ -171,7 +181,7 @@ namespace ULog
         return *( this );
     }
     
-    bool Message::operator ==( const Message & o )
+    bool Message::operator ==( const Message & o ) const
     {
         if( this->impl->_source != o.impl->_source )
         {
@@ -211,9 +221,69 @@ namespace ULog
         return true;
     }
     
-    bool Message::operator !=( const Message & o )
+    bool Message::operator !=( const Message & o ) const
     {
         return !operator ==( o );
+    }
+       
+    bool Message::operator >( const Message & o ) const
+    {
+        if( this->impl->_time > o.impl->_time )
+        {
+            return true;
+        }
+        
+        if( this->impl->_milliseconds > o.impl->_milliseconds )
+        {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    bool Message::operator >=( const Message & o ) const
+    {
+        if( this->operator >( o ) )
+        {
+            return true;
+        }
+        
+        if( this->impl->_time == o.impl->_time && this->impl->_milliseconds == o.impl->_milliseconds )
+        {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    bool Message::operator <( const Message & o ) const
+    {
+        if( this->impl->_time < o.impl->_time )
+        {
+            return true;
+        }
+        
+        if( this->impl->_milliseconds < o.impl->_milliseconds )
+        {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    bool Message::operator <=( const Message & o ) const
+    {
+        if( this->operator <( o ) )
+        {
+            return true;
+        }
+        
+        if( this->impl->_time == o.impl->_time && this->impl->_milliseconds == o.impl->_milliseconds )
+        {
+            return true;
+        }
+        
+        return false;
     }
     
     void swap( Message & o1, Message & o2 )

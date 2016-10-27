@@ -33,7 +33,6 @@
 		051030A21DC242EB00BBA893 /* OBJC-Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05180D2E1DB82246000723D7 /* OBJC-Logger.mm */; };
 		051030A41DC242EB00BBA893 /* OBJC-Message.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05180D2F1DB82246000723D7 /* OBJC-Message.mm */; };
 		051030B21DC243CC00BBA893 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 051030B11DC243CC00BBA893 /* main.m */; };
-		051030C81DC2448500BBA893 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 051030C71DC2448500BBA893 /* Info.plist */; };
 		051030D41DC2448B00BBA893 /* ApplicationDelegate-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 051030CB1DC2448B00BBA893 /* ApplicationDelegate-iOS.m */; };
 		051030D51DC2448B00BBA893 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051030CD1DC2448B00BBA893 /* ViewController.m */; };
 		051030D61DC2448B00BBA893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051030CF1DC2448B00BBA893 /* Assets.xcassets */; };
@@ -551,7 +550,7 @@
 		053291AF1DA64C4B00E46312 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "XS-Labs";
 				TargetAttributes = {
 					0510306A1DC2414100BBA893 = {
@@ -605,7 +604,6 @@
 			files = (
 				051030D71DC2448B00BBA893 /* LaunchScreen.storyboard in Resources */,
 				051030D61DC2448B00BBA893 /* Assets.xcassets in Resources */,
-				051030C81DC2448500BBA893 /* Info.plist in Resources */,
 				051030D81DC2448B00BBA893 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -782,6 +780,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = ULog/include;
 				PRODUCT_NAME = ULog;
 			};
 			name = Debug;
@@ -790,6 +789,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = ULog/include;
 				PRODUCT_NAME = ULog;
 			};
 			name = Release;
@@ -1146,6 +1146,7 @@
 				051030731DC2414100BBA893 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0510308E1DC2423C00BBA893 /* Build configuration list for PBXNativeTarget "ULog - iOS Static Library" */ = {
 			isa = XCConfigurationList;
@@ -1154,6 +1155,7 @@
 				051030901DC2423C00BBA893 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		051030C21DC243CC00BBA893 /* Build configuration list for PBXNativeTarget "ULog Example - iOS" */ = {
 			isa = XCConfigurationList;
@@ -1162,6 +1164,7 @@
 				051030C41DC243CC00BBA893 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		053291B21DA64C4B00E46312 /* Build configuration list for PBXProject "ULog" */ = {
 			isa = XCConfigurationList;
