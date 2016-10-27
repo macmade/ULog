@@ -35,6 +35,7 @@
 #include <fstream>
 #include <map>
 #include <memory>
+#include <algorithm>
 
 #if defined( _WIN32 )
 #include <Windows.h>
