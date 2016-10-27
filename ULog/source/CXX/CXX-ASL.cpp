@@ -189,9 +189,12 @@ namespace ULog
     
     void ASL::IMPL::GetMessages( void )
     {
-        Message   ref;
-        aslclient client;
+        Message     ref;
+        aslclient   client;
+        std::string t;
+        std::string lastID;
         
+        t      = std::to_string( time( NULL ) );
         client = asl_open( NULL, NULL, 0 );
         
         while( 1 )
@@ -218,7 +221,13 @@ namespace ULog
                 
                 query = asl_new( ASL_TYPE_QUERY );
                 
-                asl_set_query( query, ASL_KEY_MSG, NULL, ASL_QUERY_OP_NOT_EQUAL );
+                asl_set_query( query, ASL_KEY_MSG,  NULL,      ASL_QUERY_OP_NOT_EQUAL );
+                asl_set_query( query, ASL_KEY_TIME, t.c_str(), ASL_QUERY_OP_GREATER_EQUAL );
+                
+                if( lastID.length() )
+                {
+                    asl_set_query( query, ASL_KEY_MSG_ID, lastID.c_str(), ASL_QUERY_OP_GREATER_EQUAL );
+                }
                 
                 response = asl_search( client, query );
                 
@@ -228,7 +237,15 @@ namespace ULog
                 
                 while( msg )
                 {
-                    cp = asl_get( msg, ASL_KEY_SENDER );
+                    cp = asl_get( msg, ASL_KEY_MSG_ID );
+                    
+                    if( cp == NULL )
+                    {
+                        goto next;
+                    }
+                    
+                    lastID = cp;
+                    cp     = asl_get( msg, ASL_KEY_SENDER );
                     
                     if( cp == NULL )
                     {
