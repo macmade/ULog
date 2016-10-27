@@ -239,7 +239,7 @@ void ULog_Emergency( const char * fmt, ... )
 
 void ULog_Emergency_V( const char * fmt, va_list ap )
 {
-    ULog_LogWithLevel( ULog_Message_LevelEmergency, fmt, ap );
+    ULog_LogWithLevel_V( ULog_Message_LevelEmergency, fmt, ap );
 }
 
 void ULog_Alert( const char * fmt, ... )
@@ -255,7 +255,7 @@ void ULog_Alert( const char * fmt, ... )
 
 void ULog_Alert_V( const char * fmt, va_list ap )
 {
-    ULog_LogWithLevel( ULog_Message_LevelAlert, fmt, ap );
+    ULog_LogWithLevel_V( ULog_Message_LevelAlert, fmt, ap );
 }
 
 void ULog_Critical( const char * fmt, ... )
@@ -271,7 +271,7 @@ void ULog_Critical( const char * fmt, ... )
 
 void ULog_Critical_V( const char * fmt, va_list ap )
 {
-    ULog_LogWithLevel( ULog_Message_LevelCritical, fmt, ap );
+    ULog_LogWithLevel_V( ULog_Message_LevelCritical, fmt, ap );
 }
 
 void ULog_Error( const char * fmt, ... )
@@ -287,7 +287,7 @@ void ULog_Error( const char * fmt, ... )
 
 void ULog_Error_V( const char * fmt, va_list ap )
 {
-    ULog_LogWithLevel( ULog_Message_LevelError, fmt, ap );
+    ULog_LogWithLevel_V( ULog_Message_LevelError, fmt, ap );
 }
 
 void ULog_Warning( const char * fmt, ... )
@@ -303,7 +303,7 @@ void ULog_Warning( const char * fmt, ... )
 
 void ULog_Warning_V( const char * fmt, va_list ap )
 {
-    ULog_LogWithLevel( ULog_Message_LevelWarning, fmt, ap );
+    ULog_LogWithLevel_V( ULog_Message_LevelWarning, fmt, ap );
 }
 
 void ULog_Notice( const char * fmt, ... )
@@ -319,7 +319,7 @@ void ULog_Notice( const char * fmt, ... )
 
 void ULog_Notice_V( const char * fmt, va_list ap )
 {
-    ULog_LogWithLevel( ULog_Message_LevelNotice, fmt, ap );
+    ULog_LogWithLevel_V( ULog_Message_LevelNotice, fmt, ap );
 }
 
 void ULog_Info( const char * fmt, ... )
@@ -335,7 +335,7 @@ void ULog_Info( const char * fmt, ... )
 
 void ULog_Info_V( const char * fmt, va_list ap )
 {
-    ULog_LogWithLevel( ULog_Message_LevelInfo, fmt, ap );
+    ULog_LogWithLevel_V( ULog_Message_LevelInfo, fmt, ap );
 }
 
 void ULog_Debug( const char * fmt, ... )
@@ -351,5 +351,5 @@ void ULog_Debug( const char * fmt, ... )
 
 void ULog_Debug_V( const char * fmt, va_list ap )
 {
-    ULog_LogWithLevel( ULog_Message_LevelDebug, fmt, ap );
+    ULog_LogWithLevel_V( ULog_Message_LevelDebug, fmt, ap );
 }
