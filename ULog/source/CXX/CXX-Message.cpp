@@ -232,6 +232,11 @@ namespace ULog
         {
             return true;
         }
+
+        if( this->impl->_time < o.impl->_time )
+        {
+            return false;
+        }
         
         if( this->impl->_milliseconds > o.impl->_milliseconds )
         {
@@ -261,6 +266,11 @@ namespace ULog
         if( this->impl->_time < o.impl->_time )
         {
             return true;
+        }
+
+        if( this->impl->_time > o.impl->_time )
+        {
+            return false;
         }
         
         if( this->impl->_milliseconds < o.impl->_milliseconds )
