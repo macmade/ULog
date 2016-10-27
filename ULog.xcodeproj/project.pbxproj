@@ -31,7 +31,6 @@
 		05406D881DB974890046302A /* OBJCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406D871DB974890046302A /* OBJCLog.m */; };
 		05406D8B1DB974930046302A /* OBJCXXLog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05406D8A1DB974930046302A /* OBJCXXLog.mm */; };
 		055FD5721DB81AC300AE1BF4 /* C in Resources */ = {isa = PBXBuildFile; fileRef = 055FD5711DB81AC300AE1BF4 /* C */; };
-		056181D71DC150D1000E823F /* ASLLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 056181D51DC150D1000E823F /* ASLLog.m */; };
 		0567DA521DC1367D000BC1B6 /* ASL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0567DA511DC1367D000BC1B6 /* ASL.cpp */; };
 		0597E3321DB7E55200E845E9 /* ULog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0597E3301DB7E55200E845E9 /* ULog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0597E35A1DB7E71900E845E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3591DB7E71900E845E9 /* main.m */; };
@@ -95,8 +94,6 @@
 		05406D891DB974930046302A /* OBJCXXLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJCXXLog.h; sourceTree = "<group>"; };
 		05406D8A1DB974930046302A /* OBJCXXLog.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OBJCXXLog.mm; sourceTree = "<group>"; };
 		055FD5711DB81AC300AE1BF4 /* C */ = {isa = PBXFileReference; lastKnownFileType = folder; path = C; sourceTree = "<group>"; };
-		056181D51DC150D1000E823F /* ASLLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLLog.m; sourceTree = "<group>"; };
-		056181D61DC150D1000E823F /* ASLLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLLog.h; sourceTree = "<group>"; };
 		0567DA511DC1367D000BC1B6 /* ASL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ASL.cpp; sourceTree = "<group>"; };
 		0597E3301DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3311DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
@@ -237,8 +234,6 @@
 		05406D7F1DB9745D0046302A /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				056181D51DC150D1000E823F /* ASLLog.m */,
-				056181D61DC150D1000E823F /* ASLLog.h */,
 				05406D801DB9746E0046302A /* CLog.c */,
 				05406D811DB9746E0046302A /* CLog.h */,
 				05406D831DB9747B0046302A /* CXXLog.cpp */,
@@ -462,7 +457,6 @@
 				05406D881DB974890046302A /* OBJCLog.m in Sources */,
 				05406D821DB9746E0046302A /* CLog.c in Sources */,
 				05406D851DB9747B0046302A /* CXXLog.cpp in Sources */,
-				056181D71DC150D1000E823F /* ASLLog.m in Sources */,
 				0597E3711DB7EDB800E845E9 /* MainWindowController.m in Sources */,
 				05406D8B1DB974930046302A /* OBJCXXLog.mm in Sources */,
 				0597E3671DB7EC2300E845E9 /* ApplicationDelegate.m in Sources */,
