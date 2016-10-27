@@ -182,6 +182,11 @@ namespace ULog
         }
     }
     
+    #ifdef __clang__
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    #endif
+    
     void ASL::IMPL::GetMessages( void )
     {
         Message   ref;
@@ -260,6 +265,10 @@ namespace ULog
             std::this_thread::sleep_for( std::chrono::milliseconds( 500 ) );
         }
     }
+    
+    #ifdef __clang__
+    #pragma clang diagnostic pop
+    #endif
 }
 
 #endif

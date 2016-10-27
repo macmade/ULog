@@ -104,6 +104,11 @@ namespace ULog
     
     #ifdef __APPLE__
     
+    #ifdef __clang__
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    #endif
+    
     Message::Message( aslmsg m ): impl( new IMPL )
     {
         const char       * cp;
@@ -145,6 +150,10 @@ namespace ULog
         
         this->impl->_timeString = this->impl->GetTimeString( this->impl->_time, this->impl->_milliseconds );
     }
+    
+    #ifdef __clang__
+    #pragma clang diagnostic pop
+    #endif
     
     #endif
     
