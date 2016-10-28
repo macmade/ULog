@@ -29,6 +29,6 @@
 
 namespace ULog
 {
-    pubic partial class Logger
+    public partial class Logger
     {}
 }

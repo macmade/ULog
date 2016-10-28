@@ -29,6 +29,6 @@
 
 namespace ULog
 {
-    pubic partial class Message
+    public partial class Message
     {}
 }
