@@ -52,7 +52,8 @@ namespace ULog
                 SourceCXX       = 1,
                 SourceOBJC      = 2,
                 SourceOBJCXX    = 3,
-                SourceASL       = 4
+                SourceASL       = 4,
+                SourceCS        = 5
             }
             Source;
             

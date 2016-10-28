@@ -44,7 +44,8 @@ typedef enum
     ULogMessageSourceC          = 1,
     ULogMessageSourceOBJC       = 2,
     ULogMessageSourceOBJCXX     = 3,
-    ULogMessageSourceASL        = 4
+    ULogMessageSourceASL        = 4, 
+    ULogMessageSourceCS         = 5
 }
 ULogMessageSource;
 

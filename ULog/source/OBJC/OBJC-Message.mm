@@ -79,6 +79,7 @@
         case ULogMessageSourceOBJC:     s = ULog::Message::SourceOBJC;      break;
         case ULogMessageSourceOBJCXX:   s = ULog::Message::SourceOBJCXX;    break;
         case ULogMessageSourceASL:      s = ULog::Message::SourceASL;       break;
+        case ULogMessageSourceCS:       s = ULog::Message::SourceCS;        break;
         
         break;
     }
@@ -173,6 +174,7 @@
             case ULog::Message::SourceOBJC:     self.source = ULogMessageSourceOBJC;   break;
             case ULog::Message::SourceOBJCXX:   self.source = ULogMessageSourceOBJCXX; break;
             case ULog::Message::SourceASL:      self.source = ULogMessageSourceASL;    break;
+            case ULog::Message::SourceCS:       self.source = ULogMessageSourceCS;     break;
             
             break;
         }

@@ -349,6 +349,7 @@ namespace ULog
             case SourceOBJC:    return "Objective-C";
             case SourceOBJCXX:  return "Objective-C++";
             case SourceASL:     return "ASL";
+            case SourceCS:      return "C#";
         }
         
         #if defined( _WIN32 ) && !defined( __clang__ )
