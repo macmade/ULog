@@ -19,47 +19,60 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Example-Win\stdafx.cpp" />
-    <ClCompile Include="..\Example-Win\main.cpp" />
-    <ClCompile Include="..\Example\CLog.c" />
-    <ClCompile Include="..\Example\CXXLog.cpp" />
+    <ClInclude Include="..\ULog\include\ULog\Base.h" />
+    <ClInclude Include="..\ULog\include\ULog\CXX\ASL.hpp" />
+    <ClInclude Include="..\ULog\include\ULog\CXX\Atomic.hpp" />
+    <ClInclude Include="..\ULog\include\ULog\CXX\Log.hpp" />
+    <ClInclude Include="..\ULog\include\ULog\CXX\Logger.hpp" />
+    <ClInclude Include="..\ULog\include\ULog\CXX\Message.hpp" />
+    <ClInclude Include="..\ULog\include\ULog\CXX\SpinLock.hpp" />
+    <ClInclude Include="..\ULog\include\ULog\C\Log.h" />
+    <ClInclude Include="..\ULog\include\ULog\Macros.h" />
+    <ClInclude Include="..\ULog\include\ULog\ULog.h" />
+    <ClInclude Include="DLL\stdafx.h" />
+    <ClInclude Include="DLL\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Example-Win\stdafx.h" />
-    <ClInclude Include="..\Example-Win\targetver.h" />
-    <ClInclude Include="..\Example\CLog.h" />
-    <ClInclude Include="..\Example\CXXLog.hpp" />
+    <ClCompile Include="..\ULog\source\CXX\CXX-ASL.cpp" />
+    <ClCompile Include="..\ULog\source\CXX\CXX-Atomic.cpp" />
+    <ClCompile Include="..\ULog\source\CXX\CXX-Log.cpp" />
+    <ClCompile Include="..\ULog\source\CXX\CXX-Logger.cpp" />
+    <ClCompile Include="..\ULog\source\CXX\CXX-Message.cpp" />
+    <ClCompile Include="..\ULog\source\CXX\CXX-SpinLock.cpp" />
+    <ClCompile Include="..\ULog\source\C\C-Log.cpp" />
+    <ClCompile Include="DLL\dllmain.cpp" />
+    <ClCompile Include="DLL\stdafx.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{58EA7258-BC87-45D2-8CBE-6E7C282E677D}</ProjectGuid>
+    <ProjectGuid>{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ULogExampleWin</RootNamespace>
+    <RootNamespace>ULog_DLL_V120XP</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -107,14 +120,12 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>ULOG_LIB_BUILD;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions> _CRT_SECURE_NO_WARNINGS;ULOG_DLL_BUILD;WIN32;_DEBUG;_WINDOWS;_USRDLL;ULOG_DLL_V120XP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\ULog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ULog_DLL_V140XP.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -123,14 +134,12 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>ULOG_LIB_BUILD;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions> _CRT_SECURE_NO_WARNINGS;ULOG_DLL_BUILD;_DEBUG;_WINDOWS;_USRDLL;ULOG_DLL_V120XP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\ULog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ULog_DLL_V140XP.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,16 +150,14 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>ULOG_LIB_BUILD;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions> _CRT_SECURE_NO_WARNINGS;ULOG_DLL_BUILD;WIN32;NDEBUG;_WINDOWS;_USRDLL;ULOG_DLL_V120XP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\ULog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ULog_DLL_V140XP.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -161,16 +168,14 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>ULOG_LIB_BUILD;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions> _CRT_SECURE_NO_WARNINGS;ULOG_DLL_BUILD;NDEBUG;_WINDOWS;_USRDLL;ULOG_DLL_V120XP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\ULog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ULog_DLL_V140XP.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\DLL">
+      <UniqueIdentifier>{722a8384-2d06-44d6-aa81-3712521b5803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DLL">
+      <UniqueIdentifier>{91ca4d13-07ad-4c42-a5f4-08df868123c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\C">
+      <UniqueIdentifier>{b18d79c8-2064-4651-8688-b2511b561185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CXX">
+      <UniqueIdentifier>{7c842270-491d-4982-982f-bad2f2a930d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\C">
+      <UniqueIdentifier>{3b2e02b0-ae09-4a9f-9c3a-6643f9e315fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CXX">
+      <UniqueIdentifier>{f5b2d5d4-d4f5-43b3-a901-d0a72bcb056f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DLL\targetver.h">
+      <Filter>Header Files\DLL</Filter>
+    </ClInclude>
+    <ClInclude Include="DLL\stdafx.h">
+      <Filter>Header Files\DLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\Macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\ULog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\C\Log.h">
+      <Filter>Header Files\C</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\CXX\ASL.hpp">
+      <Filter>Header Files\CXX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\CXX\Atomic.hpp">
+      <Filter>Header Files\CXX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\CXX\Log.hpp">
+      <Filter>Header Files\CXX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\CXX\Logger.hpp">
+      <Filter>Header Files\CXX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\CXX\Message.hpp">
+      <Filter>Header Files\CXX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ULog\include\ULog\CXX\SpinLock.hpp">
+      <Filter>Header Files\CXX</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DLL\stdafx.cpp">
+      <Filter>Source Files\DLL</Filter>
+    </ClCompile>
+    <ClCompile Include="DLL\dllmain.cpp">
+      <Filter>Source Files\DLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ULog\source\C\C-Log.cpp">
+      <Filter>Source Files\C</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ULog\source\CXX\CXX-ASL.cpp">
+      <Filter>Source Files\CXX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ULog\source\CXX\CXX-Atomic.cpp">
+      <Filter>Source Files\CXX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ULog\source\CXX\CXX-Log.cpp">
+      <Filter>Source Files\CXX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ULog\source\CXX\CXX-Logger.cpp">
+      <Filter>Source Files\CXX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ULog\source\CXX\CXX-Message.cpp">
+      <Filter>Source Files\CXX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ULog\source\CXX\CXX-SpinLock.cpp">
+      <Filter>Source Files\CXX</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
