@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 /*!
- * @file        LogWindowController.m
+ * @file        OBJC-LogWindowController.m
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 

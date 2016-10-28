@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 /*!
- * @file        ULogMessageColors.m
+ * @file        OBJC-ULogMessageColors.m
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 

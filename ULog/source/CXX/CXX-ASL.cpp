@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 /*!
- * @file        ASL.cpp
+ * @file        CXX-ASL.cpp
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 

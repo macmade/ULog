@@ -68,6 +68,8 @@
 		05362B051DB7FB8300AAA8E9 /* CXX-Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362B041DB7FB8300AAA8E9 /* CXX-Atomic.cpp */; };
 		055FD5721DB81AC300AE1BF4 /* C in Resources */ = {isa = PBXBuildFile; fileRef = 055FD5711DB81AC300AE1BF4 /* C */; };
 		0567DA521DC1367D000BC1B6 /* CXX-ASL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0567DA511DC1367D000BC1B6 /* CXX-ASL.cpp */; };
+		0591B6471DC391C3000CB0A5 /* CS-Logger.cs in Resources */ = {isa = PBXBuildFile; fileRef = 0591B6451DC391C3000CB0A5 /* CS-Logger.cs */; };
+		0591B6481DC391C3000CB0A5 /* CS-Message.cs in Resources */ = {isa = PBXBuildFile; fileRef = 0591B6461DC391C3000CB0A5 /* CS-Message.cs */; };
 		0597E3321DB7E55200E845E9 /* ULog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0597E3301DB7E55200E845E9 /* ULog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0597E35A1DB7E71900E845E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3591DB7E71900E845E9 /* main.m */; };
 		0597E3671DB7EC2300E845E9 /* ApplicationDelegate-Mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3661DB7EC2300E845E9 /* ApplicationDelegate-Mac.m */; };
@@ -152,6 +154,8 @@
 		05362B041DB7FB8300AAA8E9 /* CXX-Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "CXX-Atomic.cpp"; sourceTree = "<group>"; };
 		055FD5711DB81AC300AE1BF4 /* C */ = {isa = PBXFileReference; lastKnownFileType = folder; path = C; sourceTree = "<group>"; };
 		0567DA511DC1367D000BC1B6 /* CXX-ASL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "CXX-ASL.cpp"; sourceTree = "<group>"; };
+		0591B6451DC391C3000CB0A5 /* CS-Logger.cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CS-Logger.cs"; sourceTree = "<group>"; };
+		0591B6461DC391C3000CB0A5 /* CS-Message.cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CS-Message.cs"; sourceTree = "<group>"; };
 		0597E3301DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3311DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3531DB7E71900E845E9 /* ULog Example - Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ULog Example - Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				05180D181DB81C93000723D7 /* C */,
+				0591B6441DC391C3000CB0A5 /* CS */,
 				05362AED1DB7F51800AAA8E9 /* CXX */,
 				05180D1D1DB82195000723D7 /* OBJC */,
 			);
@@ -368,6 +373,15 @@
 				05362B021DB7FAC200AAA8E9 /* CXX-SpinLock.cpp */,
 			);
 			path = CXX;
+			sourceTree = "<group>";
+		};
+		0591B6441DC391C3000CB0A5 /* CS */ = {
+			isa = PBXGroup;
+			children = (
+				0591B6451DC391C3000CB0A5 /* CS-Logger.cs */,
+				0591B6461DC391C3000CB0A5 /* CS-Message.cs */,
+			);
+			path = CS;
 			sourceTree = "<group>";
 		};
 		0597E32F1DB7E55200E845E9 /* ULog */ = {
@@ -568,6 +582,7 @@
 					053291B71DA64C4B00E46312 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 326Y53CJMD;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					0597E3521DB7E71900E845E9 = {
@@ -612,7 +627,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0591B6481DC391C3000CB0A5 /* CS-Message.cs in Resources */,
 				055FD5721DB81AC300AE1BF4 /* C in Resources */,
+				0591B6471DC391C3000CB0A5 /* CS-Logger.cs in Resources */,
 				05E8D4351DB967A000C6EB6A /* ULogLogWindowController.xib in Resources */,
 				05362AEA1DB7F4FF00AAA8E9 /* CXX in Resources */,
 				051EE2821DBABFA2000A1D08 /* ULogSettingsWindowController.xib in Resources */,
@@ -1075,8 +1092,10 @@
 		053291C11DA64C4C00E46312 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 326Y53CJMD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1089,14 +1108,18 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ULog";
 				PRODUCT_NAME = ULog;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		053291C21DA64C4C00E46312 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 326Y53CJMD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1109,6 +1132,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ULog";
 				PRODUCT_NAME = ULog;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 /*!
- * @file        SettingsWindowController.m
+ * @file        OBJC-SettingsWindowController.m
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 

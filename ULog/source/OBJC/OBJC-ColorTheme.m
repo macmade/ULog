@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 /*!
- * @file        MessageColors.m
+ * @file        OBJC-ColorTheme.m
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 

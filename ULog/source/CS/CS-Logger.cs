@@ -23,27 +23,12 @@
  ******************************************************************************/
 
 /*!
- * @file        OBJC-SettingsColorTableCellView.m
+ * @file        CS-Logger.cs
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
-#import <ULog/ULog.h>
-
-#if !defined( TARGET_OS_IOS ) || TARGET_OS_IOS == 0
-
-@implementation ULogSettingsColorTableCellView
-
-- ( void )drawRect: ( NSRect )rect
+namespace ULog
 {
-    ULogSettingsColorItem * item;
-    
-    item = [ self valueForKey: @"objectValue" ];
-    
-    [ item.colors.backgroundColor setFill ];
-    
-    NSRectFill( rect );
+    pubic partial class Logger
+    {}
 }
-
-@end
-
-#endif

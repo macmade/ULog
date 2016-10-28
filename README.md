@@ -27,7 +27,7 @@ Table of Contents
 1 - About
 ---------
 
-ULog is a unified cross-platform logging framework for C, C++, Objective-C, Swift and ASL.
+ULog is a unified cross-platform logging framework for C, C++, Objective-C, Swift, C# and ASL.
 
 <a name="1-1"></a>
 ### 1.1 - Motivation
@@ -36,6 +36,20 @@ ULog is a unified cross-platform logging framework for C, C++, Objective-C, Swif
 
 <a name="1-2"></a>
 ### 1.2 - Features
+
+#### 1.2.1 - Cross-Platform
+
+ULog is cross-platform by design.
+
+#### 1.2.2 - Thread Safety
+
+...
+
+### 1.2.3 - Graphical Interface
+
+...
+
+#### 1.2.4 - Customisation
 
 ...
 
