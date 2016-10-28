@@ -38,9 +38,9 @@ namespace ULog
         public enum DisplayOption
         {
             DisplayOptionProcess = 1 << 1,
-            DisplayOptionTime = 1 << 2,
-            DisplayOptionSource = 1 << 3,
-            DisplayOptionLevel = 1 << 4
+            DisplayOptionTime    = 1 << 2,
+            DisplayOptionSource  = 1 << 3,
+            DisplayOptionLevel   = 1 << 4
         }
 
         public static Logger SharedInstance()
