@@ -19,7 +19,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ULog_DLL_V120XP", "VisualSt
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ULog_DLL_V140XP", "VisualStudio\ULog_DLL_V140XP.vcxproj", "{5079D22A-25BD-424A-85C0-9D66CD7D49C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ULog_NET", "VisualStudio\ULog_NET.csproj", "{5FC638D0-97DB-4D28-BF15-118BEE3EFF5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ULog_NET", "VisualStudio\ULog_NET\ULog_NET.csproj", "{5FC638D0-97DB-4D28-BF15-118BEE3EFF5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
