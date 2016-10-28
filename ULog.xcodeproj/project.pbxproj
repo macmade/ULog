@@ -67,6 +67,12 @@
 		05362B031DB7FAC200AAA8E9 /* CXX-SpinLock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362B021DB7FAC200AAA8E9 /* CXX-SpinLock.cpp */; };
 		05362B051DB7FB8300AAA8E9 /* CXX-Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362B041DB7FB8300AAA8E9 /* CXX-Atomic.cpp */; };
 		055FD5721DB81AC300AE1BF4 /* C in Resources */ = {isa = PBXBuildFile; fileRef = 055FD5711DB81AC300AE1BF4 /* C */; };
+		056459581DC3EB98003704AA /* CXX-CS-Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056459571DC3EB8F003704AA /* CXX-CS-Logger.cpp */; };
+		056459591DC3EB99003704AA /* CXX-CS-Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056459571DC3EB8F003704AA /* CXX-CS-Logger.cpp */; };
+		0564595A1DC3EB9A003704AA /* CXX-CS-Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056459571DC3EB8F003704AA /* CXX-CS-Logger.cpp */; };
+		0564595C1DC3EE1E003704AA /* CXX-CS-Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0564595B1DC3EE1E003704AA /* CXX-CS-Message.cpp */; };
+		0564595D1DC3EE1E003704AA /* CXX-CS-Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0564595B1DC3EE1E003704AA /* CXX-CS-Message.cpp */; };
+		0564595E1DC3EE1E003704AA /* CXX-CS-Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0564595B1DC3EE1E003704AA /* CXX-CS-Message.cpp */; };
 		0567DA521DC1367D000BC1B6 /* CXX-ASL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0567DA511DC1367D000BC1B6 /* CXX-ASL.cpp */; };
 		0591B6471DC391C3000CB0A5 /* CS-Logger.cs in Resources */ = {isa = PBXBuildFile; fileRef = 0591B6451DC391C3000CB0A5 /* CS-Logger.cs */; };
 		0591B6481DC391C3000CB0A5 /* CS-Message.cs in Resources */ = {isa = PBXBuildFile; fileRef = 0591B6461DC391C3000CB0A5 /* CS-Message.cs */; };
@@ -153,6 +159,8 @@
 		05362B021DB7FAC200AAA8E9 /* CXX-SpinLock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "CXX-SpinLock.cpp"; sourceTree = "<group>"; };
 		05362B041DB7FB8300AAA8E9 /* CXX-Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "CXX-Atomic.cpp"; sourceTree = "<group>"; };
 		055FD5711DB81AC300AE1BF4 /* C */ = {isa = PBXFileReference; lastKnownFileType = folder; path = C; sourceTree = "<group>"; };
+		056459571DC3EB8F003704AA /* CXX-CS-Logger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "CXX-CS-Logger.cpp"; sourceTree = "<group>"; };
+		0564595B1DC3EE1E003704AA /* CXX-CS-Message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "CXX-CS-Message.cpp"; sourceTree = "<group>"; };
 		0567DA511DC1367D000BC1B6 /* CXX-ASL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "CXX-ASL.cpp"; sourceTree = "<group>"; };
 		0591B6451DC391C3000CB0A5 /* CS-Logger.cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CS-Logger.cs"; sourceTree = "<group>"; };
 		0591B6461DC391C3000CB0A5 /* CS-Message.cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CS-Message.cs"; sourceTree = "<group>"; };
@@ -371,6 +379,8 @@
 				05362AEE1DB7F51800AAA8E9 /* CXX-Logger.cpp */,
 				05362AEF1DB7F51800AAA8E9 /* CXX-Message.cpp */,
 				05362B021DB7FAC200AAA8E9 /* CXX-SpinLock.cpp */,
+				056459571DC3EB8F003704AA /* CXX-CS-Logger.cpp */,
+				0564595B1DC3EE1E003704AA /* CXX-CS-Message.cpp */,
 			);
 			path = CXX;
 			sourceTree = "<group>";
@@ -662,7 +672,9 @@
 				0510307E1DC2417800BBA893 /* OBJC-Message.mm in Sources */,
 				0510307B1DC2417800BBA893 /* OBJC-ColorTheme.m in Sources */,
 				051030791DC2417000BBA893 /* CXX-Message.cpp in Sources */,
+				056459591DC3EB99003704AA /* CXX-CS-Logger.cpp in Sources */,
 				051030761DC2417000BBA893 /* CXX-Atomic.cpp in Sources */,
+				0564595D1DC3EE1E003704AA /* CXX-CS-Message.cpp in Sources */,
 				051030781DC2417000BBA893 /* CXX-Logger.cpp in Sources */,
 				0510307A1DC2417000BBA893 /* CXX-SpinLock.cpp in Sources */,
 				0510307F1DC2417800BBA893 /* OBJC-MessageColors.m in Sources */,
@@ -677,7 +689,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				051030A21DC242EB00BBA893 /* OBJC-Logger.mm in Sources */,
+				056459581DC3EB98003704AA /* CXX-CS-Logger.cpp in Sources */,
 				051030921DC2427500BBA893 /* CXX-ASL.cpp in Sources */,
+				0564595E1DC3EE1E003704AA /* CXX-CS-Message.cpp in Sources */,
 				051030A41DC242EB00BBA893 /* OBJC-Message.mm in Sources */,
 				051030961DC2427500BBA893 /* CXX-Message.cpp in Sources */,
 				051030931DC2427500BBA893 /* CXX-Atomic.cpp in Sources */,
@@ -715,7 +729,9 @@
 				05B9A66B1DBB0B410071E19A /* OBJC-ColorTheme.m in Sources */,
 				0598A1891DB805E3004CC9B7 /* CXX-Log.cpp in Sources */,
 				0567DA521DC1367D000BC1B6 /* CXX-ASL.cpp in Sources */,
+				0564595A1DC3EB9A003704AA /* CXX-CS-Logger.cpp in Sources */,
 				05362AF01DB7F51800AAA8E9 /* CXX-Logger.cpp in Sources */,
+				0564595C1DC3EE1E003704AA /* CXX-CS-Message.cpp in Sources */,
 				05362AF11DB7F51800AAA8E9 /* CXX-Message.cpp in Sources */,
 				05B58F4B1DBBC8F8006CA5B0 /* OBJC-SettingsColorItem.m in Sources */,
 				05362B031DB7FAC200AAA8E9 /* CXX-SpinLock.cpp in Sources */,
