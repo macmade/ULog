@@ -27,8 +27,115 @@
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
+using System;
+using System.Collections.Generic;
+
 namespace ULog
 {
     public partial class Logger
-    {}
+    {
+        [ Flags ]
+        public enum DisplayOption
+        {
+            DisplayOptionProcess = 1 << 1,
+            DisplayOptionTime = 1 << 2,
+            DisplayOptionSource = 1 << 3,
+            DisplayOptionLevel = 1 << 4
+        }
+
+        public static Logger SharedInstance()
+        {
+            return null;
+        }
+
+        public Logger()
+        {}
+
+        public DisplayOption GetDisplayOptions()
+        {
+            return 0;
+        }
+
+        public void SetDisplayOptions( DisplayOption opt )
+        {}
+
+        public bool IsEnabled()
+        {
+            return false;
+        }
+
+        public void SetEnabled( bool value )
+        {}
+
+        public void Clear()
+        {}
+
+        public void AddLogFile( string path )
+        {}
+
+        public void Log( Message msg )
+        {}
+
+        public void Log( string fmt, params object[] args )
+        {}
+
+        public void Log( Message.Level level, string fmt, params object[] args )
+        {}
+
+        public void Log( Message.Source source, Message.Level level, string fmt, params object[] args )
+        {}
+
+        public void Emergency( string fmt, params object[] args )
+        {}
+
+        public void Emergency( Message.Source source, string fmt, params object[] args )
+        {}
+
+        public void Alert( string fmt, params object[] args )
+        {}
+
+        public void Alert( Message.Source source, string fmt, params object[] args )
+        {}
+
+        public void Critical( string fmt, params object[] args )
+        {}
+
+        public void Critical( Message.Source source, string fmt, params object[] args )
+        {}
+
+        public void Error( string fmt, params object[] args )
+        {}
+
+        public void Error( Message.Source source, string fmt, params object[] args )
+        {}
+
+        public void Warning( string fmt, params object[] args )
+        {}
+
+        public void Warning( Message.Source source, string fmt, params object[] args )
+        {}
+
+        public void Notice( string fmt, params object[] args )
+        {}
+
+        public void Notice( Message.Source source, string fmt, params object[] args )
+        {}
+
+        public void Info( string fmt, params object[] args )
+        {}
+
+        public void Info( Message.Source source, string fmt, params object[] args )
+        {}
+
+        public void Debug( string fmt, params object[] args )
+        {}
+        
+        public void Debug( Message.Source source, string fmt, params object[] args )
+        {}
+
+        public List< Message > GetMessages()
+        {
+            return null;
+        }
+    }
 }
