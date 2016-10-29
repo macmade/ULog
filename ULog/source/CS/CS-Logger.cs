@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace ULog
 {
@@ -136,6 +137,12 @@ namespace ULog
         public List< Message > GetMessages()
         {
             return null;
+        }
+
+        private static class PI
+        {
+            [ DllImport( "ULog", EntryPoint = "ULog_CS_Logger_SharedInstance" ) ]
+            private static extern IntPtr SharedInstance();
         }
     }
 }

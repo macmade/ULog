@@ -45,6 +45,12 @@
     <ClCompile Include="..\ULog\source\CXX\CXX-Log.cpp">
       <Filter>Source Files\CXX</Filter>
     </ClCompile>
+    <ClCompile Include="..\ULog\source\CXX\CXX-CS-Message.cpp">
+      <Filter>Source Files\CXX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ULog\source\CXX\CXX-CS-Logger.cpp">
+      <Filter>Source Files\CXX</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ULog\include\ULog\Macros.h">

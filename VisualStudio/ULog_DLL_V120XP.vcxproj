@@ -35,6 +35,8 @@
   <ItemGroup>
     <ClCompile Include="..\ULog\source\CXX\CXX-ASL.cpp" />
     <ClCompile Include="..\ULog\source\CXX\CXX-Atomic.cpp" />
+    <ClCompile Include="..\ULog\source\CXX\CXX-CS-Logger.cpp" />
+    <ClCompile Include="..\ULog\source\CXX\CXX-CS-Message.cpp" />
     <ClCompile Include="..\ULog\source\CXX\CXX-Log.cpp" />
     <ClCompile Include="..\ULog\source\CXX\CXX-Logger.cpp" />
     <ClCompile Include="..\ULog\source\CXX\CXX-Message.cpp" />

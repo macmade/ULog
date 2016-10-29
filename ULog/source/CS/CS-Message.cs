@@ -27,6 +27,9 @@
  * @copyright   (c) 2016, Jean-David Gadina - www.xs-labs.com
  */
 
+using System;
+using System.Runtime.InteropServices;
+
 namespace ULog
 {
     public partial class Message
@@ -53,10 +56,12 @@ namespace ULog
             Debug     = 7
         }
 
-        Message( Source source = Source.CXX, Level level = Level.Debug, string message = "" )
-        {}
+        public Message( Source source = Source.CXX, Level level = Level.Debug, string message = "" )
+        {
+            PI.New_Souce_Level_String( source, level, message );
+        }
 
-        Message( Source source, Level level, string fmt, params object[] args )
+        public Message( Source source, Level level, string fmt, params object[] args )
         {}
 
         public override bool Equals( object o )
@@ -171,6 +176,12 @@ namespace ULog
         public string GetDescription()
         {
             return "";
+        }
+
+        private static class PI
+        {
+            [ DllImport( "ULog_DLL_V120XP", EntryPoint = "ULog_CS_Message_New_Souce_Level_String" ) ]
+            public static extern IntPtr New_Souce_Level_String( Source source, Level level, string message );
         }
     }
 }

@@ -31,6 +31,10 @@
 
 #ifdef _WIN32
 
-
+ULOG_EXPORT void * __stdcall ULog_CS_Message_New_Souce_Level_String( ULog::Message::Source source, ULog::Message::Level level, const std::string & message );
+ULOG_EXPORT void * __stdcall ULog_CS_Message_New_Souce_Level_String( ULog::Message::Source source, ULog::Message::Level level, const std::string & message )
+{
+    return new ULog::Message( source, level, message );
+}
 
 #endif
