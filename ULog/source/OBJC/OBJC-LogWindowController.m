@@ -37,7 +37,11 @@ static void init( void )
     [ ULogLogWindowController sharedInstance ];
 }
 
+#ifdef MAC_OS_X_VERSION_10_12_1
+@interface ULogLogWindowController() < NSTouchBarProvider, NSTouchBarDelegate >
+#else
 @interface ULogLogWindowController()
+#endif
 
 @property( atomic, readwrite, strong ) ULogLogger                   * logger;
 @property( atomic, readwrite, strong ) ULogMessage                  * lastMessage;
@@ -50,7 +54,15 @@ static void init( void )
 @property( atomic, readwrite, assign ) BOOL                           paused;
 @property( atomic, readwrite, assign ) BOOL                           editable;
 
+#ifdef MAC_OS_X_VERSION_10_12_1
+@property( atomic, readwrite, strong ) NSTouchBar * touchBar;
+#endif
+
 @property( atomic, readwrite, strong ) IBOutlet NSTextView * textView;
+@property( atomic, readwrite, strong ) IBOutlet NSButton   * clearButton;
+@property( atomic, readwrite, strong ) IBOutlet NSButton   * pauseButton;
+@property( atomic, readwrite, strong ) IBOutlet NSButton   * saveButton;
+@property( atomic, readwrite, strong ) IBOutlet NSButton   * settingsButton;
 
 - ( IBAction )clear: ( id )sender;
 - ( IBAction )togglePause: ( id )sender;
@@ -149,6 +161,15 @@ static void init( void )
     self.window.alphaValue              = 0.95;
     
     [ self updateTitleWithMessageCount: 0 ];
+    
+    #ifdef MAC_OS_X_VERSION_10_12_1
+    
+    if( NSClassFromString( @"NSTouchBar" ) != Nil )
+    {
+        self.touchBar = [ self makeTouchBar ];
+    }
+    
+    #endif
 }
 
 - ( IBAction )clear: ( id )sender
@@ -806,6 +827,70 @@ static void init( void )
     
     return @{ NSFontAttributeName : font };
 }
+
+#ifdef MAC_OS_X_VERSION_10_12_1
+
+#pragma mark - NSTouchBarProvider
+
+- ( nullable NSTouchBar * )makeTouchBar
+{
+    NSTouchBar * tb;
+    
+    if( NSClassFromString( @"NSTouchBar" ) == Nil )
+    {
+        return nil;
+    }
+    
+    tb                        = [ NSTouchBar new ];
+    tb.delegate               = self;
+    tb.defaultItemIdentifiers = @[ @"Clear", @"Pause", @"Save", @"Settings" ];
+    
+    return tb;
+}
+
+#pragma mark - NSTouchBarDelegate
+
+- ( nullable NSTouchBarItem * )touchBar: ( NSTouchBar * )touchBar makeItemForIdentifier: ( NSTouchBarItemIdentifier )identifier
+{
+    NSCustomTouchBarItem * item;
+    NSButton             * btn;
+    NSButton             * windowBtn;
+    
+    ( void )touchBar;
+    
+    item      = nil;
+    windowBtn = nil;
+    
+    if( [ identifier isEqualToString: @"Clear" ] )
+    {
+        windowBtn = self.clearButton;
+    }
+    else if( [ identifier isEqualToString: @"Pause" ] )
+    {
+        windowBtn = self.pauseButton;
+    }
+    else if( [ identifier isEqualToString: @"Save" ] )
+    {
+        windowBtn = self.saveButton;
+    }
+    else if( [ identifier isEqualToString: @"Settings" ] )
+    {
+        windowBtn = self.settingsButton;
+    }
+    
+    if( windowBtn )
+    {
+        btn       = [ NSButton buttonWithTitle: windowBtn.title target: windowBtn.target action: windowBtn.action ];
+        item      = [ [ NSCustomTouchBarItem alloc ] initWithIdentifier: identifier ];
+        item.view = btn;
+        
+        [ btn bind: @"title" toObject: windowBtn withKeyPath: @"title" options: nil ];
+    }
+    
+    return item;
+}
+
+#endif
 
 @end
 
