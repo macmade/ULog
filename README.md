@@ -39,7 +39,7 @@ ULog is a unified cross-platform logging framework for C, C++, Objective-C, Swif
 
 #### 1.2.1 - Cross-Platform
 
-ULog is cross-platform by design.
+...
 
 #### 1.2.2 - Thread Safety
 
@@ -102,6 +102,8 @@ A VisualStudio solution is provided, containing the following projects:
 
  - **`ULog_Static_V140XP`**: VS 2015 static library with XP support
  - **`ULog_Static_V120XP`**: VS 2013 static library with XP support
+ - **`ULog_DLL_V140XP`**: VS 2015 DLL with XP support
+ - **`ULog_DLL_V120XP`**: VS 2013 DLL with XP support
 
 _Note that the ULog GUI is not available for Windows at the moment._
 
