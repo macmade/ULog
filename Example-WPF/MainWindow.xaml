@@ -1,0 +1,33 @@
+﻿<Window x:Class="ULog.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ULog.WPF"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="ULog Example -WPF">
+    <Grid Margin="50">
+        <Button Click="_StartStop"
+                Padding="10">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Started}"
+                                     Value="False">
+                            <Setter Property="Content"
+                                    Value="Start Logging..." />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Started}"
+                                     Value="True">
+                            <Setter Property="Content"
+                                    Value="Stop Logging..." />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>
