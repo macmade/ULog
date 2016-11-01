@@ -32,21 +32,6 @@
 		051030971DC2427500BBA893 /* CXX-SpinLock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05362B021DB7FAC200AAA8E9 /* CXX-SpinLock.cpp */; };
 		051030A21DC242EB00BBA893 /* OBJC-Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05180D2E1DB82246000723D7 /* OBJC-Logger.mm */; };
 		051030A41DC242EB00BBA893 /* OBJC-Message.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05180D2F1DB82246000723D7 /* OBJC-Message.mm */; };
-		051030B21DC243CC00BBA893 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 051030B11DC243CC00BBA893 /* main.m */; };
-		051030D41DC2448B00BBA893 /* ApplicationDelegate-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 051030CB1DC2448B00BBA893 /* ApplicationDelegate-iOS.m */; };
-		051030D51DC2448B00BBA893 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051030CD1DC2448B00BBA893 /* ViewController.m */; };
-		051030D61DC2448B00BBA893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051030CF1DC2448B00BBA893 /* Assets.xcassets */; };
-		051030D71DC2448B00BBA893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051030D01DC2448B00BBA893 /* LaunchScreen.storyboard */; };
-		051030D81DC2448B00BBA893 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051030D21DC2448B00BBA893 /* Main.storyboard */; };
-		051030E21DC246A600BBA893 /* CLog.c in Sources */ = {isa = PBXBuildFile; fileRef = 051030DA1DC246A600BBA893 /* CLog.c */; };
-		051030E31DC246A600BBA893 /* CLog.c in Sources */ = {isa = PBXBuildFile; fileRef = 051030DA1DC246A600BBA893 /* CLog.c */; };
-		051030E41DC246A600BBA893 /* CXXLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051030DC1DC246A600BBA893 /* CXXLog.cpp */; };
-		051030E51DC246A600BBA893 /* CXXLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051030DC1DC246A600BBA893 /* CXXLog.cpp */; };
-		051030E61DC246A600BBA893 /* OBJCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 051030DF1DC246A600BBA893 /* OBJCLog.m */; };
-		051030E71DC246A600BBA893 /* OBJCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 051030DF1DC246A600BBA893 /* OBJCLog.m */; };
-		051030E81DC246A600BBA893 /* OBJCXXLog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 051030E11DC246A600BBA893 /* OBJCXXLog.mm */; };
-		051030E91DC246A600BBA893 /* OBJCXXLog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 051030E11DC246A600BBA893 /* OBJCXXLog.mm */; };
-		051030EA1DC248A200BBA893 /* libULog-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051030881DC2423C00BBA893 /* libULog-iOS.a */; };
 		05180D1A1DB81CA3000723D7 /* C-Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05180D191DB81CA3000723D7 /* C-Log.cpp */; };
 		05180D1C1DB82189000723D7 /* OBJC in Resources */ = {isa = PBXBuildFile; fileRef = 05180D1B1DB82189000723D7 /* OBJC */; };
 		05180D301DB82246000723D7 /* OBJC-Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05180D2E1DB82246000723D7 /* OBJC-Logger.mm */; };
@@ -77,13 +62,6 @@
 		0591B6471DC391C3000CB0A5 /* CS-Logger.cs in Resources */ = {isa = PBXBuildFile; fileRef = 0591B6451DC391C3000CB0A5 /* CS-Logger.cs */; };
 		0591B6481DC391C3000CB0A5 /* CS-Message.cs in Resources */ = {isa = PBXBuildFile; fileRef = 0591B6461DC391C3000CB0A5 /* CS-Message.cs */; };
 		0597E3321DB7E55200E845E9 /* ULog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0597E3301DB7E55200E845E9 /* ULog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0597E35A1DB7E71900E845E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3591DB7E71900E845E9 /* main.m */; };
-		0597E3671DB7EC2300E845E9 /* ApplicationDelegate-Mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3661DB7EC2300E845E9 /* ApplicationDelegate-Mac.m */; };
-		0597E36B1DB7ECCF00E845E9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0597E3691DB7ECCF00E845E9 /* MainMenu.xib */; };
-		0597E36C1DB7ECE300E845E9 /* ULog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053291B81DA64C4B00E46312 /* ULog.framework */; };
-		0597E36E1DB7ECF600E845E9 /* ULog.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 053291B81DA64C4B00E46312 /* ULog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0597E3711DB7EDB800E845E9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0597E3701DB7EDB800E845E9 /* MainWindowController.m */; };
-		0597E3741DB7EE2400E845E9 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0597E3721DB7EE2400E845E9 /* MainWindowController.xib */; };
 		0598A1891DB805E3004CC9B7 /* CXX-Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598A1881DB805E3004CC9B7 /* CXX-Log.cpp */; };
 		05B58F4B1DBBC8F8006CA5B0 /* OBJC-SettingsColorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B58F491DBBC8F8006CA5B0 /* OBJC-SettingsColorItem.m */; };
 		05B58F4C1DBBC8F8006CA5B0 /* OBJC-SettingsColorTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B58F4A1DBBC8F8006CA5B0 /* OBJC-SettingsColorTableCellView.m */; };
@@ -101,39 +79,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0597E36D1DB7ECEC00E845E9 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				0597E36E1DB7ECF600E845E9 /* ULog.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0510306B1DC2414100BBA893 /* libULog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libULog.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		051030881DC2423C00BBA893 /* libULog-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libULog-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		051030AE1DC243CC00BBA893 /* ULog Example - iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ULog Example - iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		051030B11DC243CC00BBA893 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		051030C71DC2448500BBA893 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		051030CA1DC2448B00BBA893 /* ApplicationDelegate-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApplicationDelegate-iOS.h"; sourceTree = "<group>"; };
-		051030CB1DC2448B00BBA893 /* ApplicationDelegate-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApplicationDelegate-iOS.m"; sourceTree = "<group>"; };
-		051030CC1DC2448B00BBA893 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		051030CD1DC2448B00BBA893 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		051030CF1DC2448B00BBA893 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		051030D11DC2448B00BBA893 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		051030D31DC2448B00BBA893 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
-		051030DA1DC246A600BBA893 /* CLog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CLog.c; sourceTree = "<group>"; };
-		051030DB1DC246A600BBA893 /* CLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLog.h; sourceTree = "<group>"; };
-		051030DC1DC246A600BBA893 /* CXXLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CXXLog.cpp; sourceTree = "<group>"; };
-		051030DD1DC246A600BBA893 /* CXXLog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CXXLog.hpp; sourceTree = "<group>"; };
-		051030DE1DC246A600BBA893 /* OBJCLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJCLog.h; sourceTree = "<group>"; };
-		051030DF1DC246A600BBA893 /* OBJCLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJCLog.m; sourceTree = "<group>"; };
-		051030E01DC246A600BBA893 /* OBJCXXLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJCXXLog.h; sourceTree = "<group>"; };
-		051030E11DC246A600BBA893 /* OBJCXXLog.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OBJCXXLog.mm; sourceTree = "<group>"; };
 		05180D191DB81CA3000723D7 /* C-Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "C-Log.cpp"; sourceTree = "<group>"; };
 		05180D1B1DB82189000723D7 /* OBJC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OBJC; sourceTree = "<group>"; };
 		05180D2E1DB82246000723D7 /* OBJC-Logger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "OBJC-Logger.mm"; sourceTree = "<group>"; };
@@ -166,15 +116,6 @@
 		0591B6461DC391C3000CB0A5 /* CS-Message.cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CS-Message.cs"; sourceTree = "<group>"; };
 		0597E3301DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
 		0597E3311DB7E55200E845E9 /* ULog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULog.h; sourceTree = "<group>"; };
-		0597E3531DB7E71900E845E9 /* ULog Example - Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ULog Example - Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0597E3591DB7E71900E845E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0597E3601DB7E71900E845E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0597E3651DB7EC2300E845E9 /* ApplicationDelegate-Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApplicationDelegate-Mac.h"; sourceTree = "<group>"; };
-		0597E3661DB7EC2300E845E9 /* ApplicationDelegate-Mac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApplicationDelegate-Mac.m"; sourceTree = "<group>"; };
-		0597E36A1DB7ECCF00E845E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		0597E36F1DB7EDB800E845E9 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
-		0597E3701DB7EDB800E845E9 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
-		0597E3731DB7EE2400E845E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindowController.xib; sourceTree = "<group>"; };
 		0598A1881DB805E3004CC9B7 /* CXX-Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "CXX-Log.cpp"; sourceTree = "<group>"; };
 		05B58F491DBBC8F8006CA5B0 /* OBJC-SettingsColorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OBJC-SettingsColorItem.m"; sourceTree = "<group>"; };
 		05B58F4A1DBBC8F8006CA5B0 /* OBJC-SettingsColorTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OBJC-SettingsColorTableCellView.m"; sourceTree = "<group>"; };
@@ -197,14 +138,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		051030AB1DC243CC00BBA893 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				051030EA1DC248A200BBA893 /* libULog-iOS.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		053291B41DA64C4B00E46312 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -212,72 +145,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0597E3501DB7E71900E845E9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0597E36C1DB7ECE300E845E9 /* ULog.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		051030AF1DC243CC00BBA893 /* Example-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				051030C91DC2448B00BBA893 /* Classes */,
-				051030CE1DC2448B00BBA893 /* Interface */,
-				051030B01DC243CC00BBA893 /* Supporting Files */,
-			);
-			path = "Example-iOS";
-			sourceTree = "<group>";
-		};
-		051030B01DC243CC00BBA893 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				051030C71DC2448500BBA893 /* Info.plist */,
-				051030B11DC243CC00BBA893 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		051030C91DC2448B00BBA893 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				051030CA1DC2448B00BBA893 /* ApplicationDelegate-iOS.h */,
-				051030CB1DC2448B00BBA893 /* ApplicationDelegate-iOS.m */,
-				051030CC1DC2448B00BBA893 /* ViewController.h */,
-				051030CD1DC2448B00BBA893 /* ViewController.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		051030CE1DC2448B00BBA893 /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				051030CF1DC2448B00BBA893 /* Assets.xcassets */,
-				051030D01DC2448B00BBA893 /* LaunchScreen.storyboard */,
-				051030D21DC2448B00BBA893 /* Main.storyboard */,
-			);
-			path = Interface;
-			sourceTree = "<group>";
-		};
-		051030D91DC246A600BBA893 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				051030DA1DC246A600BBA893 /* CLog.c */,
-				051030DB1DC246A600BBA893 /* CLog.h */,
-				051030DC1DC246A600BBA893 /* CXXLog.cpp */,
-				051030DD1DC246A600BBA893 /* CXXLog.hpp */,
-				051030DE1DC246A600BBA893 /* OBJCLog.h */,
-				051030DF1DC246A600BBA893 /* OBJCLog.m */,
-				051030E01DC246A600BBA893 /* OBJCXXLog.h */,
-				051030E11DC246A600BBA893 /* OBJCXXLog.mm */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
 		05180D181DB81C93000723D7 /* C */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,9 +179,6 @@
 				053292971DA6B50D00E46312 /* Makefile */,
 				0532929C1DA8FA3E00E46312 /* Scripts */,
 				053291BA1DA64C4B00E46312 /* ULog */,
-				051030D91DC246A600BBA893 /* Example */,
-				0597E3541DB7E71900E845E9 /* Example-Mac */,
-				051030AF1DC243CC00BBA893 /* Example-iOS */,
 				053291B91DA64C4B00E46312 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -320,10 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				053291B81DA64C4B00E46312 /* ULog.framework */,
-				0597E3531DB7E71900E845E9 /* ULog Example - Mac.app */,
 				0510306B1DC2414100BBA893 /* libULog.a */,
 				051030881DC2423C00BBA893 /* libULog-iOS.a */,
-				051030AE1DC243CC00BBA893 /* ULog Example - iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -407,45 +272,6 @@
 			path = ULog;
 			sourceTree = "<group>";
 		};
-		0597E3541DB7E71900E845E9 /* Example-Mac */ = {
-			isa = PBXGroup;
-			children = (
-				0597E3641DB7EC2300E845E9 /* Classes */,
-				0597E3681DB7ECCF00E845E9 /* Interface */,
-				0597E3581DB7E71900E845E9 /* Supporting Files */,
-			);
-			path = "Example-Mac";
-			sourceTree = "<group>";
-		};
-		0597E3581DB7E71900E845E9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0597E3601DB7E71900E845E9 /* Info.plist */,
-				0597E3591DB7E71900E845E9 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0597E3641DB7EC2300E845E9 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				0597E3651DB7EC2300E845E9 /* ApplicationDelegate-Mac.h */,
-				0597E3661DB7EC2300E845E9 /* ApplicationDelegate-Mac.m */,
-				0597E36F1DB7EDB800E845E9 /* MainWindowController.h */,
-				0597E3701DB7EDB800E845E9 /* MainWindowController.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		0597E3681DB7ECCF00E845E9 /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				0597E3691DB7ECCF00E845E9 /* MainMenu.xib */,
-				0597E3721DB7EE2400E845E9 /* MainWindowController.xib */,
-			);
-			path = Interface;
-			sourceTree = "<group>";
-		};
 		05E8D4321DB9676C00C6EB6A /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,23 +341,6 @@
 			productReference = 051030881DC2423C00BBA893 /* libULog-iOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		051030AD1DC243CC00BBA893 /* ULog Example - iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 051030C21DC243CC00BBA893 /* Build configuration list for PBXNativeTarget "ULog Example - iOS" */;
-			buildPhases = (
-				051030AA1DC243CC00BBA893 /* Sources */,
-				051030AB1DC243CC00BBA893 /* Frameworks */,
-				051030AC1DC243CC00BBA893 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "ULog Example - iOS";
-			productName = "ULog Example - iOS";
-			productReference = 051030AE1DC243CC00BBA893 /* ULog Example - iOS.app */;
-			productType = "com.apple.product-type.application";
-		};
 		053291B71DA64C4B00E46312 /* ULog - Mac Framework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 053291C01DA64C4C00E46312 /* Build configuration list for PBXNativeTarget "ULog - Mac Framework" */;
@@ -550,24 +359,6 @@
 			productReference = 053291B81DA64C4B00E46312 /* ULog.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		0597E3521DB7E71900E845E9 /* ULog Example - Mac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0597E3631DB7E71900E845E9 /* Build configuration list for PBXNativeTarget "ULog Example - Mac" */;
-			buildPhases = (
-				0597E34F1DB7E71900E845E9 /* Sources */,
-				0597E3501DB7E71900E845E9 /* Frameworks */,
-				0597E3511DB7E71900E845E9 /* Resources */,
-				0597E36D1DB7ECEC00E845E9 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "ULog Example - Mac";
-			productName = Example;
-			productReference = 0597E3531DB7E71900E845E9 /* ULog Example - Mac.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -585,18 +376,10 @@
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
-					051030AD1DC243CC00BBA893 = {
-						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Automatic;
-					};
 					053291B71DA64C4B00E46312 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 326Y53CJMD;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Automatic;
-					};
-					0597E3521DB7E71900E845E9 = {
-						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -616,23 +399,11 @@
 				053291B71DA64C4B00E46312 /* ULog - Mac Framework */,
 				0510306A1DC2414100BBA893 /* ULog - Mac Static Library */,
 				051030871DC2423C00BBA893 /* ULog - iOS Static Library */,
-				0597E3521DB7E71900E845E9 /* ULog Example - Mac */,
-				051030AD1DC243CC00BBA893 /* ULog Example - iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		051030AC1DC243CC00BBA893 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				051030D71DC2448B00BBA893 /* LaunchScreen.storyboard in Resources */,
-				051030D61DC2448B00BBA893 /* Assets.xcassets in Resources */,
-				051030D81DC2448B00BBA893 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		053291B61DA64C4B00E46312 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -644,15 +415,6 @@
 				05362AEA1DB7F4FF00AAA8E9 /* CXX in Resources */,
 				051EE2821DBABFA2000A1D08 /* ULogSettingsWindowController.xib in Resources */,
 				05180D1C1DB82189000723D7 /* OBJC in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0597E3511DB7E71900E845E9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0597E3741DB7EE2400E845E9 /* MainWindowController.xib in Resources */,
-				0597E36B1DB7ECCF00E845E9 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,20 +464,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		051030AA1DC243CC00BBA893 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				051030E71DC246A600BBA893 /* OBJCLog.m in Sources */,
-				051030E91DC246A600BBA893 /* OBJCXXLog.mm in Sources */,
-				051030E31DC246A600BBA893 /* CLog.c in Sources */,
-				051030E51DC246A600BBA893 /* CXXLog.cpp in Sources */,
-				051030D51DC2448B00BBA893 /* ViewController.m in Sources */,
-				051030B21DC243CC00BBA893 /* main.m in Sources */,
-				051030D41DC2448B00BBA893 /* ApplicationDelegate-iOS.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		053291B31DA64C4B00E46312 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -741,61 +489,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0597E34F1DB7E71900E845E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				051030E81DC246A600BBA893 /* OBJCXXLog.mm in Sources */,
-				051030E41DC246A600BBA893 /* CXXLog.cpp in Sources */,
-				051030E61DC246A600BBA893 /* OBJCLog.m in Sources */,
-				0597E3711DB7EDB800E845E9 /* MainWindowController.m in Sources */,
-				051030E21DC246A600BBA893 /* CLog.c in Sources */,
-				0597E3671DB7EC2300E845E9 /* ApplicationDelegate-Mac.m in Sources */,
-				0597E35A1DB7E71900E845E9 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		051030D01DC2448B00BBA893 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				051030D11DC2448B00BBA893 /* en */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		051030D21DC2448B00BBA893 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				051030D31DC2448B00BBA893 /* en */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		051EE2801DBABFA2000A1D08 /* ULogSettingsWindowController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				051EE2811DBABFA2000A1D08 /* en */,
 			);
 			name = ULogSettingsWindowController.xib;
-			sourceTree = "<group>";
-		};
-		0597E3691DB7ECCF00E845E9 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0597E36A1DB7ECCF00E845E9 /* en */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		0597E3721DB7EE2400E845E9 /* MainWindowController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0597E3731DB7EE2400E845E9 /* en */,
-			);
-			name = MainWindowController.xib;
 			sourceTree = "<group>";
 		};
 		05E8D4331DB967A000C6EB6A /* ULogLogWindowController.xib */ = {
@@ -846,39 +548,6 @@
 				PRODUCT_NAME = "ULog-iOS";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		051030C31DC243CC00BBA893 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				HEADER_SEARCH_PATHS = ULog/include;
-				INFOPLIST_FILE = "Example-iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ULog-Example-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		051030C41DC243CC00BBA893 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				HEADER_SEARCH_PATHS = ULog/include;
-				INFOPLIST_FILE = "Example-iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ULog-Example-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1154,32 +823,6 @@
 			};
 			name = Release;
 		};
-		0597E3611DB7E71900E845E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Example-Mac/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ULog-Example-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		0597E3621DB7E71900E845E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Example-Mac/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ULog-Example-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1201,15 +844,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		051030C21DC243CC00BBA893 /* Build configuration list for PBXNativeTarget "ULog Example - iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				051030C31DC243CC00BBA893 /* Debug */,
-				051030C41DC243CC00BBA893 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		053291B21DA64C4B00E46312 /* Build configuration list for PBXProject "ULog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1224,15 +858,6 @@
 			buildConfigurations = (
 				053291C11DA64C4C00E46312 /* Debug */,
 				053291C21DA64C4C00E46312 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0597E3631DB7E71900E845E9 /* Build configuration list for PBXNativeTarget "ULog Example - Mac" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0597E3611DB7E71900E845E9 /* Debug */,
-				0597E3621DB7E71900E845E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

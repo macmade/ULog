@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0597E3521DB7E71900E845E9"
-               BuildableName = "ULog Example - Mac.app"
-               BlueprintName = "ULog Example - Mac"
-               ReferencedContainer = "container:ULog.xcodeproj">
+               BlueprintIdentifier = "051030AD1DC243CC00BBA893"
+               BuildableName = "ULog Example - iOS.app"
+               BlueprintName = "ULog Example - iOS"
+               ReferencedContainer = "container:Example-iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0597E3521DB7E71900E845E9"
-            BuildableName = "ULog Example - Mac.app"
-            BlueprintName = "ULog Example - Mac"
-            ReferencedContainer = "container:ULog.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -55,10 +46,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0597E3521DB7E71900E845E9"
-            BuildableName = "ULog Example - Mac.app"
-            BlueprintName = "ULog Example - Mac"
-            ReferencedContainer = "container:ULog.xcodeproj">
+            BlueprintIdentifier = "051030AD1DC243CC00BBA893"
+            BuildableName = "ULog Example - iOS.app"
+            BlueprintName = "ULog Example - iOS"
+            ReferencedContainer = "container:Example-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +65,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0597E3521DB7E71900E845E9"
-            BuildableName = "ULog Example - Mac.app"
-            BlueprintName = "ULog Example - Mac"
-            ReferencedContainer = "container:ULog.xcodeproj">
+            BlueprintIdentifier = "051030AD1DC243CC00BBA893"
+            BuildableName = "ULog Example - iOS.app"
+            BlueprintName = "ULog Example - iOS"
+            ReferencedContainer = "container:Example-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
