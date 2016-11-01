@@ -1,6 +1,6 @@
 language: cpp
 compiler: clang
-script: ./Scripts/travis-build.sh
+script: sh Scripts/travis-build.sh
 sudo: required
 dist: trusty
 before_install:
