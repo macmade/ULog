@@ -120,6 +120,7 @@
 		05B58F491DBBC8F8006CA5B0 /* OBJC-SettingsColorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OBJC-SettingsColorItem.m"; sourceTree = "<group>"; };
 		05B58F4A1DBBC8F8006CA5B0 /* OBJC-SettingsColorTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OBJC-SettingsColorTableCellView.m"; sourceTree = "<group>"; };
 		05B9A66A1DBB0B410071E19A /* OBJC-ColorTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OBJC-ColorTheme.m"; sourceTree = "<group>"; };
+		05E54CF31DC925F900023A14 /* travis-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-build.sh"; sourceTree = "<group>"; };
 		05E8D4341DB967A000C6EB6A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ULogLogWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +228,7 @@
 		0532929C1DA8FA3E00E46312 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				05E54CF31DC925F900023A14 /* travis-build.sh */,
 				0532929E1DA8FA3E00E46312 /* travis-linux-after.sh */,
 				0532929F1DA8FA3E00E46312 /* travis-linux-before.sh */,
 				053292A01DA8FA3E00E46312 /* travis-osx-after.sh */,
