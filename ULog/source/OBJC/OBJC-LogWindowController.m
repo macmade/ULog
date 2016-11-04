@@ -667,6 +667,11 @@ static void init( void )
     
     font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
     
+    if( font == nil )
+    {
+        font = [ NSFont systemFontOfSize: [ NSFont systemFontSize ] ];
+    }
+    
     switch( level )
     {
         case ULogMessageLevelEmergency: color = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.foregroundColor; break;
@@ -694,6 +699,11 @@ static void init( void )
     NSColor           * color;
     
     font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    
+    if( font == nil )
+    {
+        font = [ NSFont systemFontOfSize: [ NSFont systemFontSize ] ];
+    }
     
     switch( level )
     {
@@ -723,6 +733,11 @@ static void init( void )
     
     font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
     
+    if( font == nil )
+    {
+        font = [ NSFont systemFontOfSize: [ NSFont systemFontSize ] ];
+    }
+    
     switch( level )
     {
         case ULogMessageLevelEmergency: color = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.timeColor; break;
@@ -750,6 +765,11 @@ static void init( void )
     NSColor           * color;
     
     font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    
+    if( font == nil )
+    {
+        font = [ NSFont systemFontOfSize: [ NSFont systemFontSize ] ];
+    }
     
     switch( level )
     {
@@ -779,6 +799,11 @@ static void init( void )
     
     font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
     
+    if( font == nil )
+    {
+        font = [ NSFont systemFontOfSize: [ NSFont systemFontSize ] ];
+    }
+    
     switch( level )
     {
         case ULogMessageLevelEmergency: color = [ ULogSettings sharedInstance ].colorTheme.emergencyColors.levelColor; break;
@@ -806,6 +831,11 @@ static void init( void )
     NSColor           * color;
     
     font = [ NSFont fontWithName: [ ULogSettings sharedInstance ].fontName size: [ ULogSettings sharedInstance ].fontSize ];
+    
+    if( font == nil )
+    {
+        font = [ NSFont systemFontOfSize: [ NSFont systemFontSize ] ];
+    }
     
     switch( level )
     {
