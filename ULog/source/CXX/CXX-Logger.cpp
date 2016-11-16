@@ -237,11 +237,10 @@ namespace ULog
     void Logger::Log( const Message & msg_ )
     {
         #ifndef __APPLE__
-        const Message                         & msg;
+        
+        const Message                         & msg( msg_ );
         std::string                             s;
         std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
-        
-        msg = msg_;
         
         #endif
         
@@ -258,6 +257,7 @@ namespace ULog
             {
                 std::string                             s;
                 std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+                
         #endif
         
         if( this->impl->_enabled == false )
@@ -336,8 +336,10 @@ namespace ULog
         std::sort( this->impl->_messages.begin(), this->impl->_messages.end() );
         
         #ifdef __APPLE__
+        
             }
         );
+        
         #endif
     }
     
