@@ -41,6 +41,7 @@
 #include <Windows.h>
 #elif defined( __APPLE__ )
 #include <ULog/CXX/ASL.hpp>
+#include <dispatch/dispatch.h>
 #endif
 
 static ULog::Logger * volatile SharedLogger   = nullptr;
@@ -65,21 +66,25 @@ namespace ULog
                     
             #ifdef __APPLE__
             
-            ASL _asl;
+            dispatch_queue_t _queue;
+            ASL              _asl;
             
             #endif
     };
     
     Logger * Logger::SharedInstance( void )
     {
-        SpinLockLock( &ULogGlobalLock );
-        
         if( SharedLogger == nullptr )
         {
-            SharedLogger = new Logger();
+            SpinLockLock( &ULogGlobalLock );
+            
+            if( SharedLogger == nullptr )
+            {
+                SharedLogger = new Logger();
+            }
+            
+            SpinLockUnlock( &ULogGlobalLock );
         }
-        
-        SpinLockUnlock( &ULogGlobalLock );
         
         return SharedLogger;
     }
@@ -229,10 +234,31 @@ namespace ULog
     
     #endif
     
-    void Logger::Log( const Message & msg )
+    void Logger::Log( const Message & msg_ )
     {
-        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        #ifndef __APPLE__
+        const Message                         & msg;
         std::string                             s;
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        msg = msg_;
+        
+        #endif
+        
+        #ifdef __APPLE__
+        
+        Message msg;
+        
+        msg = msg_;
+        
+        dispatch_async
+        (
+            this->impl->_queue,
+            ^( void )
+            {
+                std::string                             s;
+                std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        #endif
         
         if( this->impl->_enabled == false )
         {
@@ -308,6 +334,11 @@ namespace ULog
         
         this->impl->_messages.push_back( msg );
         std::sort( this->impl->_messages.begin(), this->impl->_messages.end() );
+        
+        #ifdef __APPLE__
+            }
+        );
+        #endif
     }
     
     void Logger::Log( const char * fmt, ... )
@@ -678,7 +709,13 @@ namespace ULog
     Logger::IMPL::IMPL( void ):
         _displayOptions( DisplayOptionProcess | DisplayOptionTime | DisplayOptionSource | DisplayOptionLevel ),
         _enabled( true )
-    {}
+    {
+        #ifdef __APPLE__
+        
+        this->_queue = dispatch_queue_create( "ULog", DISPATCH_QUEUE_SERIAL );
+        
+        #endif
+    }
     
     Logger::IMPL::IMPL( const IMPL & o )
     {
@@ -690,10 +727,19 @@ namespace ULog
         this->_files          = o._files;
         
         #ifdef __APPLE__
-        this->_asl = o._asl;
+        
+        this->_asl   = o._asl;
+        this->_queue = dispatch_queue_create( "ULog", DISPATCH_QUEUE_SERIAL );
+        
         #endif
     }
     
     Logger::IMPL::~IMPL( void )
-    {}
+    {
+        #ifdef __APPLE__
+        
+        dispatch_release( this->_queue );
+        
+        #endif
+    }
 }
