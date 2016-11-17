@@ -519,6 +519,7 @@
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = ULog/include;
 				PRODUCT_NAME = ULog;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -528,6 +529,7 @@
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = ULog/include;
 				PRODUCT_NAME = ULog;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
