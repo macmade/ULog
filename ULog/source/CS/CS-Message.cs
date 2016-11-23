@@ -180,7 +180,7 @@ namespace ULog
 
         private static class PI
         {
-            [ DllImport( "ULog_DLL_V120XP", EntryPoint = "ULog_CS_Message_New_Souce_Level_String" ) ]
+            [DllImport( "ULog_DLL_V120XP", EntryPoint = "ULog_CS_Message_New_Souce_Level_String" )]
             public static extern IntPtr New_Souce_Level_String( Source source, Level level, string message );
         }
     }
