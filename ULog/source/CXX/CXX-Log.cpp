@@ -204,7 +204,7 @@ namespace ULog
     
     void Warning( const char * fmt, va_list ap )
     {
-        Log( Message::LevelError, fmt, ap );
+        Log( Message::LevelWarning, fmt, ap );
     }
     
     void Notice( const char * fmt, ... )
