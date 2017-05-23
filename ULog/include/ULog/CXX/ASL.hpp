@@ -60,6 +60,7 @@ namespace ULog
             void AddSender( const std::string & sender );
             
             void Start( void );
+            void Stop( void );
             bool Started( void );
             
         private:

@@ -138,6 +138,18 @@ namespace ULog
         }
     }
     
+    void ASL::Stop( void )
+    {
+        std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
+        
+        if( this->impl->_started == false )
+        {
+            return;
+        }
+        
+        this->impl->_started = false;
+    }
+    
     bool ASL::Started( void )
     {
         std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );

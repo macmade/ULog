@@ -50,9 +50,11 @@ static void init( void )
 @property( atomic, readwrite, strong ) NSAttributedString           * lf;
 @property( atomic, readwrite, strong ) NSString                     * searchText;
 @property( atomic, readwrite, strong ) NSString                     * pauseButtonTitle;
+@property( atomic, readwrite, strong ) NSTimer                      * timer;
 @property( atomic, readwrite, assign ) BOOL                           shown;
 @property( atomic, readwrite, assign ) BOOL                           paused;
 @property( atomic, readwrite, assign ) BOOL                           editable;
+@property( atomic, readwrite, assign ) BOOL                           refreshing;
 
 #ifdef MAC_OS_X_VERSION_10_12_1
 @property( atomic, readwrite, strong ) NSTouchBar * touchBar;
@@ -72,6 +74,7 @@ static void init( void )
 - ( IBAction )showSettings: ( id )sender;
 - ( void )updateSettings;
 - ( void )updateTitleWithMessageCount: ( NSUInteger )count;
+- ( void )startRefreshIfNecessary;
 - ( void )refresh;
 - ( void )renderMessages: ( NSArray * )messages until: ( ULogMessage * )last;
 - ( NSAttributedString * )stringForMessage: ( ULogMessage * )message;
@@ -114,7 +117,14 @@ static void init( void )
     {
         self.logger = logger;
         
-        [ NSThread detachNewThreadSelector: @selector( refresh ) toTarget: self withObject: nil ];
+        dispatch_async
+        (
+            dispatch_get_main_queue(),
+            ^( void )
+            {
+                self.timer = [ NSTimer scheduledTimerWithTimeInterval: 2.0 target: self selector: @selector( startRefreshIfNecessary ) userInfo: nil repeats: YES ];
+            }
+        );
     }
     
     return self;
@@ -148,6 +158,7 @@ static void init( void )
 
 - ( void )dealloc
 {
+    [ self.timer invalidate ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self ];
 }
 
@@ -344,12 +355,33 @@ static void init( void )
     }
 }
 
+- ( void )startRefreshIfNecessary
+{
+    if( self.refreshing )
+    {
+        return;
+    }
+    
+    self.refreshing = YES;
+    
+    [ NSThread detachNewThreadSelector: @selector( refresh ) toTarget: self withObject: nil ];
+}
+
 - ( void )refresh
 {
     NSArray< ULogMessage * > * messages;
     
+    self.refreshing = YES;
+    
     while( 1 )
     {
+        if( self.logger.isEnabled == NO )
+        {
+            self.refreshing = NO;
+            
+            return;
+        }
+        
         messages = self.logger.messages;
         
         if( self.paused )
