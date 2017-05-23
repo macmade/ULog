@@ -176,6 +176,17 @@ namespace ULog
         std::lock_guard< std::recursive_mutex > l( this->impl->_rmtx );
         
         this->impl->_enabled = value;
+        
+        #ifdef __APPLE__
+        if( value )
+        {
+            this->impl->_asl.Start();
+        }
+        else
+        {
+            this->impl->_asl.Stop();
+        }
+        #endif
     }
     
     void Logger::Clear( void )
