@@ -245,7 +245,7 @@ namespace ULog
                 
                 asl_free( query );
                 
-                msg = asl_next( response );
+                msg = aslresponse_next( response );
                 
                 while( msg )
                 {
@@ -287,7 +287,7 @@ namespace ULog
                     
                     next:
                         
-                        msg = asl_next( response );
+                        msg = aslresponse_next( response );
                 }
             }
             

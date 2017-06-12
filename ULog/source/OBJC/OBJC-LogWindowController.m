@@ -173,9 +173,9 @@ static void init( void )
     
     [ self updateTitleWithMessageCount: 0 ];
     
-    #ifdef MAC_OS_X_VERSION_10_12_1
+    #ifdef MAC_OS_X_VERSION_10_13
     
-    if( NSClassFromString( @"NSTouchBar" ) != Nil )
+    if( @available( macOS 10.12.2, * ) )
     {
         self.touchBar = [ self makeTouchBar ];
     }
@@ -890,7 +890,9 @@ static void init( void )
     return @{ NSFontAttributeName : font };
 }
 
-#ifdef MAC_OS_X_VERSION_10_12_1
+#ifdef MAC_OS_X_VERSION_10_13
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
 
 #pragma mark - NSTouchBarProvider
 
@@ -914,44 +916,50 @@ static void init( void )
 
 - ( nullable NSTouchBarItem * )touchBar: ( NSTouchBar * )touchBar makeItemForIdentifier: ( NSTouchBarItemIdentifier )identifier
 {
-    NSCustomTouchBarItem * item;
-    NSButton             * btn;
-    NSButton             * windowBtn;
-    
-    ( void )touchBar;
-    
-    item      = nil;
-    windowBtn = nil;
-    
-    if( [ identifier isEqualToString: @"Clear" ] )
-    {
-        windowBtn = self.clearButton;
-    }
-    else if( [ identifier isEqualToString: @"Pause" ] )
-    {
-        windowBtn = self.pauseButton;
-    }
-    else if( [ identifier isEqualToString: @"Save" ] )
-    {
-        windowBtn = self.saveButton;
-    }
-    else if( [ identifier isEqualToString: @"Settings" ] )
-    {
-        windowBtn = self.settingsButton;
-    }
-    
-    if( windowBtn )
-    {
-        btn       = [ NSButton buttonWithTitle: windowBtn.title target: windowBtn.target action: windowBtn.action ];
-        item      = [ [ NSCustomTouchBarItem alloc ] initWithIdentifier: identifier ];
-        item.view = btn;
+	if( @available( macOS 10.12.2, * ) )
+	{
+        NSCustomTouchBarItem * item;
+        NSButton             * btn;
+        NSButton             * windowBtn;
         
-        [ btn bind: @"title" toObject: windowBtn withKeyPath: @"title" options: nil ];
+        ( void )touchBar;
+        
+        item      = nil;
+        windowBtn = nil;
+        
+        if( [ identifier isEqualToString: @"Clear" ] )
+        {
+            windowBtn = self.clearButton;
+        }
+        else if( [ identifier isEqualToString: @"Pause" ] )
+        {
+            windowBtn = self.pauseButton;
+        }
+        else if( [ identifier isEqualToString: @"Save" ] )
+        {
+            windowBtn = self.saveButton;
+        }
+        else if( [ identifier isEqualToString: @"Settings" ] )
+        {
+            windowBtn = self.settingsButton;
+        }
+        
+        if( windowBtn )
+        {
+            btn       = [ NSButton buttonWithTitle: windowBtn.title target: windowBtn.target action: windowBtn.action ];
+            item      = [ [ NSCustomTouchBarItem alloc ] initWithIdentifier: identifier ];
+            item.view = btn;
+            
+            [ btn bind: @"title" toObject: windowBtn withKeyPath: @"title" options: nil ];
+        }
+        
+        return item;
     }
     
-    return item;
+    return nil;
 }
 
+#pragma clang diagnostic pop
 #endif
 
 @end

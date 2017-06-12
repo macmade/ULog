@@ -91,7 +91,9 @@ NSString * const ULogSettingsNotificationDefaultsRestored = @"ULogSettingsNotifi
 {
     if( ( self = [ super init ] ) )
     {
-        self.defaults = [ [ NSUserDefaults alloc ] initWithSuiteName: @"com.xs-labs.ULog" ];
+        self.defaults = [ NSUserDefaults new ];
+        
+        [ self.defaults addSuiteNamed: @"com.xs-labs.ULog" ];
     }
     
     return self;
