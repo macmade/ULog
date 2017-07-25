@@ -57,7 +57,7 @@ static void init( void )
 @property( atomic, readwrite, assign ) BOOL                           refreshing;
 
 #ifdef MAC_OS_X_VERSION_10_12_1
-@property( atomic, readwrite, strong ) NSTouchBar * touchBar;
+@property( atomic, readwrite, strong ) id touchBar;
 #endif
 
 @property( atomic, readwrite, strong ) IBOutlet NSTextView * textView;
