@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ULog_Static_V120XP", "VisualStudio\ULog_Static_V120XP.vcxproj", "{51AB6AB0-73C5-4F55-A165-91404A1780AF}"
 EndProject
@@ -18,6 +18,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ULog_NET", "VisualStudio\UL
 		{51AB6AB0-73C5-4F55-A165-91404A1780AF} = {51AB6AB0-73C5-4F55-A165-91404A1780AF}
 		{CEFE4BCB-1BBA-4583-BDCD-2E4410AC0E92} = {CEFE4BCB-1BBA-4583-BDCD-2E4410AC0E92}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ULog_DLL_V141XP", "VisualStudio\ULog_DLL_V141XP.vcxproj", "{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ULog_Static_V141XP", "VisualStudio\ULog_Static_V141XP.vcxproj", "{C0134361-8AFA-40CC-BFF1-6202BA0D0713}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,8 +85,31 @@ Global
 		{5FC638D0-97DB-4D28-BF15-118BEE3EFF5B}.Release|x64.Build.0 = Release|Any CPU
 		{5FC638D0-97DB-4D28-BF15-118BEE3EFF5B}.Release|x86.ActiveCfg = Release|Any CPU
 		{5FC638D0-97DB-4D28-BF15-118BEE3EFF5B}.Release|x86.Build.0 = Release|Any CPU
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|x64.ActiveCfg = Debug|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|x64.Build.0 = Debug|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|x86.ActiveCfg = Debug|Win32
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|x86.Build.0 = Debug|Win32
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|Any CPU.ActiveCfg = Release|Win32
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|x64.ActiveCfg = Release|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|x64.Build.0 = Release|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|x86.ActiveCfg = Release|Win32
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|x86.Build.0 = Release|Win32
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Debug|x64.ActiveCfg = Debug|x64
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Debug|x64.Build.0 = Debug|x64
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Debug|x86.ActiveCfg = Debug|Win32
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Debug|x86.Build.0 = Debug|Win32
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Release|Any CPU.ActiveCfg = Release|Win32
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Release|x64.ActiveCfg = Release|x64
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Release|x64.Build.0 = Release|x64
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Release|x86.ActiveCfg = Release|Win32
+		{C0134361-8AFA-40CC-BFF1-6202BA0D0713}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57D3D337-087B-4392-BE73-2663B49931BB}
 	EndGlobalSection
 EndGlobal
