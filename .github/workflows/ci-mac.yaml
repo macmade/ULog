@@ -1,0 +1,34 @@
+name: ci-mac
+on:   [push]
+jobs:
+    ci:
+        runs-on: macos-latest
+        strategy:
+            matrix:
+                run-config:
+                    - { scheme: 'ULog - Mac Static Library', configuration: 'Debug',   project: 'ULog.xcodeproj',        build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'ULog - Mac Static Library', configuration: 'Release', project: 'ULog.xcodeproj',        build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'ULog - Mac Framework',      configuration: 'Debug',   project: 'ULog.xcodeproj',        build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'ULog - Mac Framework',      configuration: 'Release', project: 'ULog.xcodeproj',        build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'ULog - iOS Static Library', configuration: 'Debug',   project: 'ULog.xcodeproj',        build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=iOS Simulator,name=iPhone 12' }
+                    - { scheme: 'ULog - iOS Static Library', configuration: 'Release', project: 'ULog.xcodeproj',        build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=iOS Simulator,name=iPhone 12' }
+                    - { scheme: 'ULog Example - Mac',        configuration: 'Debug',   project: 'Example-Mac.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'ULog Example - Mac',        configuration: 'Release', project: 'Example-Mac.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'ULog Example - iOS',        configuration: 'Debug',   project: 'Example-iOS.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=iOS Simulator,name=iPhone 12' }
+                    - { scheme: 'ULog Example - iOS',        configuration: 'Release', project: 'Example-iOS.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=iOS Simulator,name=iPhone 12' }
+        steps:
+            
+            - uses: actions/checkout@v1
+              with:
+                submodules: 'recursive'
+                
+            - uses: macmade/action-xcodebuild@v1.0.0
+            
+            - uses: macmade/action-slack@v1.0.0
+              if:   ${{ always() }}
+              env:
+                SLACK_WEBHOOK_URL:  ${{ secrets.SLACK_WEBHOOK_URL }}
+              with:
+                channel:    '#ci'
+                status:     ${{ job.status }}
+                title:      ${{ matrix.run-config[ 'scheme' ] }} - ${{ matrix.run-config[ 'configuration' ] }}

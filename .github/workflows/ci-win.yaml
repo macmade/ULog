@@ -1,0 +1,36 @@
+name: ci-win
+on:   [push]
+jobs:
+    ci:
+        runs-on: windows-latest
+        strategy:
+            matrix:
+                run-config:
+                    - { platform: 'x64', toolset: 'x64', configuration: 'Debug',   solution: 'ULog.sln' }
+                    - { platform: 'x64', toolset: 'x64', configuration: 'Release', solution: 'ULog.sln' }
+                    - { platform: 'x86', toolset: 'x64', configuration: 'Debug',   solution: 'ULog.sln' }
+                    - { platform: 'x86', toolset: 'x64', configuration: 'Release', solution: 'ULog.sln' }
+                    - { platform: 'x64', toolset: 'x64', configuration: 'Debug',   solution: 'Example-Win.sln' }
+                    - { platform: 'x64', toolset: 'x64', configuration: 'Release', solution: 'Example-Win.sln' }
+                    - { platform: 'x86', toolset: 'x64', configuration: 'Debug',   solution: 'Example-Win.sln' }
+                    - { platform: 'x86', toolset: 'x64', configuration: 'Release', solution: 'Example-Win.sln' }
+                    - { platform: 'x64', toolset: 'x64', configuration: 'Debug',   solution: 'Example-WPF.sln' }
+                    - { platform: 'x64', toolset: 'x64', configuration: 'Release', solution: 'Example-WPF.sln' }
+                    - { platform: 'x86', toolset: 'x64', configuration: 'Debug',   solution: 'Example-WPF.sln' }
+                    - { platform: 'x86', toolset: 'x64', configuration: 'Release', solution: 'Example-WPF.sln' }
+        steps:
+            
+            - uses: actions/checkout@v1
+              with:
+                submodules: 'recursive'
+                
+            - uses: macmade/action-msbuild@v1.1.0
+            
+            - uses: macmade/action-slack@v1.0.0
+              if:   ${{ always() }}
+              env:
+                SLACK_WEBHOOK_URL:  ${{ secrets.SLACK_WEBHOOK_URL }}
+              with:
+                channel:    '#ci'
+                status:     ${{ job.status }}
+                title:      ${{ matrix.run-config[ 'solution' ] }} - ${{ matrix.run-config[ 'configuration' ] }} - ${{ matrix.run-config[ 'platform' ] }}
