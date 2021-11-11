@@ -141,7 +141,7 @@ namespace ULog
 
         private static class PI
         {
-            [ DllImport( "ULog", EntryPoint = "ULog_CS_Logger_SharedInstance" ) ]
+            [ DllImport( "ULog_DLL", EntryPoint = "ULog_CS_Logger_SharedInstance" ) ]
             private static extern IntPtr SharedInstance();
         }
     }

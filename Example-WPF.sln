@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ULog Example -WPF", "Example-WPF\ULog Example -WPF.csproj", "{A390724D-7E76-4B60-B58B-CB32FB6C28A8}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -10,10 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ULog Example -WPF", "Exampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ULog_NET", "VisualStudio\ULog_NET\ULog_NET.csproj", "{5FC638D0-97DB-4D28-BF15-118BEE3EFF5B}"
 	ProjectSection(ProjectDependencies) = postProject
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA} = {7E8E4894-8593-4E0E-ACC4-8330DEB631FA}
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA} = {B315DDE7-5647-4547-BBE4-B26CB47FDDAA}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ULog_DLL_V120XP", "VisualStudio\ULog_DLL_V120XP.vcxproj", "{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ULog_DLL", "VisualStudio\ULog_DLL.vcxproj", "{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,18 +49,23 @@ Global
 		{5FC638D0-97DB-4D28-BF15-118BEE3EFF5B}.Release|x64.Build.0 = Release|Any CPU
 		{5FC638D0-97DB-4D28-BF15-118BEE3EFF5B}.Release|x86.ActiveCfg = Release|Any CPU
 		{5FC638D0-97DB-4D28-BF15-118BEE3EFF5B}.Release|x86.Build.0 = Release|Any CPU
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Debug|x64.ActiveCfg = Debug|x64
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Debug|x64.Build.0 = Debug|x64
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Debug|x86.ActiveCfg = Debug|Win32
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Debug|x86.Build.0 = Debug|Win32
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Release|Any CPU.ActiveCfg = Release|Win32
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Release|x64.ActiveCfg = Release|x64
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Release|x64.Build.0 = Release|x64
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Release|x86.ActiveCfg = Release|Win32
-		{7E8E4894-8593-4E0E-ACC4-8330DEB631FA}.Release|x86.Build.0 = Release|Win32
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|Any CPU.Build.0 = Debug|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|x64.ActiveCfg = Debug|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|x64.Build.0 = Debug|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|x86.ActiveCfg = Debug|Win32
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Debug|x86.Build.0 = Debug|Win32
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|Any CPU.ActiveCfg = Release|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|Any CPU.Build.0 = Release|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|x64.ActiveCfg = Release|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|x64.Build.0 = Release|x64
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|x86.ActiveCfg = Release|Win32
+		{B315DDE7-5647-4547-BBE4-B26CB47FDDAA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4F1C313-3DE2-433D-A9CA-F64B50C0204B}
 	EndGlobalSection
 EndGlobal
